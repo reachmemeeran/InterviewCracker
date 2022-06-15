@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Manage Student - InterviewCracker Administration</title>
+	<title>Manage Code Complexity - InterviewCracker Administration</title>
 	<link rel="stylesheet" href="../css/style.css">
 	<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
 	<script type="text/javascript" src="../js/jquery.validate.min.js"></script>
@@ -15,12 +14,12 @@
 	<jsp:directive.include file="header.jsp" />
 	<div class="indexmiddlebar">
 	<div align="center">
-		<h2 class="pageheading">Student Management</h2>
+		<h2 class="pageheading">Code Complexity Management</h2>
 	</div>
 
 	<div align="center">
 		<h3>
-			<a href="student_form.jsp">Create New Student</a>
+			<a href="codecomplexity_form.jsp">Create New Code Complexity</a>
 		</h3>
 	</div>
 
@@ -34,26 +33,24 @@
 
 	<div align="center">
 		<table border="1" cellpadding="5">
-			<tr>
-				<th>Index</th>
-				<th>ID</th>
-				<th>E-Mail</th>
-				<th>Full Name</th>
-				<th>Actions</th>
-			</tr>
-			<c:forEach var="student" items="${listStudents}" varStatus="status">
 				<tr>
-					<td>${status.index+1}</td>
-					<td>${student.studentsId}</td>
-					<td>${student.email}</td>
-					<td>${student.fullname}</td>
-					<td>
-						<a href="edit_student?id=${student.studentsId}">Edit</a> &nbsp; 
-						<a href="javascript:void(0);" class="deleteLink" id="${student.studentsId}">Delete</a>
-					</td>
+					<th>Index</th>
+					<th>ID</th>
+					<th>Name</th>
+					<th>Actions</th>
 				</tr>
-			</c:forEach>
-		</table>
+				<c:forEach var="codeComplexity" items="${listCodeComplexity}" varStatus="status">
+						<tr>
+							<td>${status.index + 1}</td>
+							<td>${codeComplexity.codeComplexityId}</td>
+							<td>${codeComplexity.complexityDesc}</td>
+							<td>
+								<a href="edit_codeComplexity?id=${codeComplexity.codeComplexityId}">Edit</a> &nbsp; 
+								<a href="javascript:void(0);" class="deleteLink" id="${codeComplexity.codeComplexityId}">Delete</a>
+							</td>
+						</tr>
+				</c:forEach>
+			</table>
 	</div>
 </div>
 
@@ -64,9 +61,9 @@
 		$(document).ready(function(){
 			$(".deleteLink").each(function(){
 				$(this).on("click",function(){
-					studentId=$(this).attr("id");
-					if(confirm("Are you sure you want to delete the student with ID " + studentId + " ?")){
-						window.location = 'delete_student?id='+studentId;
+					codeComplexityId=$(this).attr("id");
+					if(confirm("Are you sure you want to delete the Code Complexity with ID " + codeComplexityId + " ?")){
+						window.location = 'delete_codeComplexity?id='+codeComplexityId;
 					}
 				});
 			});

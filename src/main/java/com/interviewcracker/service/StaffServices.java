@@ -15,7 +15,6 @@ import javax.servlet.http.Part;
 import com.interviewcracker.dao.HashGenerator;
 import com.interviewcracker.dao.StaffDAO;
 import com.interviewcracker.entity.Staffs;
-import com.interviewcracker.entity.Staffs;
 
 public class StaffServices extends CommonUtility {
 	private StaffDAO staffDAO;

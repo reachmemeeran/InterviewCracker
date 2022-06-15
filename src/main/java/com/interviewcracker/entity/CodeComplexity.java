@@ -1,14 +1,18 @@
 package com.interviewcracker.entity;
 // Generated 14 Jun 2022, 09:42:01 by Hibernate Tools 4.3.6.Final
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 import java.util.HashSet;
 import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -17,11 +21,16 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "code_complexity", catalog = "interviewcrackerdb")
+@NamedQueries({
+	@NamedQuery(name="CodeComplexity.findAll", query= "SELECT c FROM CodeComplexity c ORDER BY c.codeComplexityId"),
+	@NamedQuery(name="CodeComplexity.countAll", query= "SELECT count(c) FROM CodeComplexity c"),
+	@NamedQuery(name="CodeComplexity.findByName",query="SELECT c FROM CodeComplexity c WHERE c.complexityDesc=:name")
+})
 public class CodeComplexity implements java.io.Serializable {
 
 	private Integer codeComplexityId;
 	private String complexityDesc;
-	private Set codingQuestions = new HashSet(0);
+	private Set<CodingQuestion> codingQuestions = new HashSet<CodingQuestion>(0);
 
 	public CodeComplexity() {
 	}
@@ -30,7 +39,7 @@ public class CodeComplexity implements java.io.Serializable {
 		this.complexityDesc = complexityDesc;
 	}
 
-	public CodeComplexity(String complexityDesc, Set codingQuestions) {
+	public CodeComplexity(String complexityDesc, Set<CodingQuestion> codingQuestions) {
 		this.complexityDesc = complexityDesc;
 		this.codingQuestions = codingQuestions;
 	}
@@ -56,12 +65,13 @@ public class CodeComplexity implements java.io.Serializable {
 		this.complexityDesc = complexityDesc;
 	}
 
-	/*
-	 * @OneToMany(fetch = FetchType.LAZY, mappedBy = "codeComplexity") public Set
-	 * getCodingQuestions() { return this.codingQuestions; }
-	 * 
-	 * public void setCodingQuestions(Set codingQuestions) { this.codingQuestions =
-	 * codingQuestions; }
-	 */
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "codeComplexity")
+	public Set<CodingQuestion> getCodingQuestions() {
+		return this.codingQuestions;
+	}
+
+	public void setCodingQuestions(Set<CodingQuestion> codingQuestions) {
+		this.codingQuestions = codingQuestions;
+	}
 
 }

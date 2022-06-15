@@ -13,6 +13,7 @@ import javax.servlet.http.Part;
 
 import com.interviewcracker.dao.HashGenerator;
 import com.interviewcracker.dao.StudentDAO;
+import com.interviewcracker.entity.CodeComplexity;
 import com.interviewcracker.entity.Students;
 
 public class StudentServices extends CommonUtility {
@@ -39,6 +40,7 @@ public class StudentServices extends CommonUtility {
 	
 	public void createStudent() throws ServletException, IOException {
 		String email = request.getParameter("email");
+		System.out.println("email--````->"+email);
 		Students existStudents = studentDAO.findByEmail(email);
 		
 		if (existStudents != null) {
@@ -70,11 +72,16 @@ public class StudentServices extends CommonUtility {
 		}
 		
 		student.setFullname(fullname);
+		System.out.println("email--->"+email);
+		System.out.println("fullname--->"+fullname);
+		System.out.println("password--->"+password);
 		
 		if (password != null & !password.isEmpty()) {
 			String encryptedPassword = HashGenerator.generateMD5(password);
 			student.setPassword(encryptedPassword);				
 		}		
+		
+		System.out.println("password-22-->"+student.getPassword());
 		
 		
 		try {
@@ -132,8 +139,9 @@ public class StudentServices extends CommonUtility {
 			// if left blank, the student's password won't be updated
 			// this is to work with the encrypted password feature
 			student.setPassword(null);
-			request.setAttribute("student", student);		
-			forwardToPage("student_form.jsp", request, response);			
+			request.setAttribute("student", student);	
+			request.setAttribute("studentId", student.getStudentsId());
+			forwardToPage("student_form.jsp", request, response);		
 		}		
 	}
 
@@ -150,7 +158,9 @@ public class StudentServices extends CommonUtility {
 			
 		} else {
 			
+			System.out.println("studentId--->"+studentId);
 			Students studentById = studentDAO.get(studentId);
+			System.out.println("studentById--->"+studentById.getEmail());
 			updateStudentFieldsFromForm(studentById);
 			
 			studentDAO.update(studentById);

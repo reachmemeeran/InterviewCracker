@@ -21,7 +21,7 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Table(name = "students", catalog = "interviewcrackerdb", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 @NamedQueries({
-	@NamedQuery(name="Students.findAll", query= "SELECT c FROM Students c ORDER BY c.fullname DESC"),
+	@NamedQuery(name="Students.findAll", query= "SELECT c FROM Students c ORDER BY c.studentsId"),
 	@NamedQuery(name="Students.findByEmail", query= "SELECT c FROM Students c where c.email=:email"),
 	@NamedQuery(name="Students.countAll", query= "SELECT count(c) FROM Students c"),
 	@NamedQuery(name="Students.checkLogin", query= "SELECT c FROM Students c WHERE c.email=:email AND c.password=:password")
@@ -33,9 +33,9 @@ public class Students implements java.io.Serializable {
 	private String fullname;
 	private String password;
 	private byte[] profilepic;
-	private Set studentCourses = new HashSet(0);
-	private Set studentCodings = new HashSet(0);
-	private Set studentCodingTests = new HashSet(0);
+	private Set<StudentCourse> studentCourses = new HashSet<StudentCourse>(0);
+	private Set<StudentCoding> studentCodings = new HashSet<StudentCoding>(0);
+	private Set<StudentCodingTest> studentCodingTests = new HashSet<StudentCodingTest>(0);
 
 	public Students() {
 	}
@@ -46,8 +46,8 @@ public class Students implements java.io.Serializable {
 		this.password = password;
 	}
 
-	public Students(String email, String fullname, String password, byte[] profilepic, Set studentCourses,
-			Set studentCodings, Set studentCodingTests) {
+	public Students(String email, String fullname, String password, byte[] profilepic, Set<StudentCourse> studentCourses,
+			Set<StudentCoding> studentCodings, Set<StudentCodingTest> studentCodingTests) {
 		this.email = email;
 		this.fullname = fullname;
 		this.password = password;
@@ -105,24 +105,31 @@ public class Students implements java.io.Serializable {
 		this.profilepic = profilepic;
 	}
 
-	/*
-	 * @OneToMany(fetch = FetchType.LAZY, mappedBy = "students") public Set
-	 * getStudentCourses() { return this.studentCourses; }
-	 * 
-	 * public void setStudentCourses(Set studentCourses) { this.studentCourses =
-	 * studentCourses; }
-	 * 
-	 * @OneToMany(fetch = FetchType.LAZY, mappedBy = "students") public Set
-	 * getStudentCodings() { return this.studentCodings; }
-	 * 
-	 * public void setStudentCodings(Set studentCodings) { this.studentCodings =
-	 * studentCodings; }
-	 * 
-	 * @OneToMany(fetch = FetchType.LAZY, mappedBy = "students") public Set
-	 * getStudentCodingTests() { return this.studentCodingTests; }
-	 * 
-	 * public void setStudentCodingTests(Set studentCodingTests) {
-	 * this.studentCodingTests = studentCodingTests; }
-	 */
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "students")
+	public Set<StudentCourse> getStudentCourses() {
+		return this.studentCourses;
+	}
+
+	public void setStudentCourses(Set<StudentCourse> studentCourses) {
+		this.studentCourses = studentCourses;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "students")
+	public Set<StudentCoding> getStudentCodings() {
+		return this.studentCodings;
+	}
+
+	public void setStudentCodings(Set<StudentCoding> studentCodings) {
+		this.studentCodings = studentCodings;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "students")
+	public Set<StudentCodingTest> getStudentCodingTests() {
+		return this.studentCodingTests;
+	}
+
+	public void setStudentCodingTests(Set<StudentCodingTest> studentCodingTests) {
+		this.studentCodingTests = studentCodingTests;
+	}
 
 }

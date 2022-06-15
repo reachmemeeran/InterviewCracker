@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import com.interviewcracker.entity.Staffs;
-import com.interviewcracker.entity.Students;
 
 public class StaffDAO extends JpaDAO<Staffs> implements GenericDAO<Staffs> {
 

@@ -22,7 +22,7 @@ public class Courses implements java.io.Serializable {
 	private Integer coursesId;
 	private String courseName;
 	private int studentEnrollCount;
-	private Set studentCourses = new HashSet(0);
+	private Set<StudentCourse> studentCourses = new HashSet<StudentCourse>(0);
 
 	public Courses() {
 	}
@@ -32,7 +32,7 @@ public class Courses implements java.io.Serializable {
 		this.studentEnrollCount = studentEnrollCount;
 	}
 
-	public Courses(String courseName, int studentEnrollCount, Set studentCourses) {
+	public Courses(String courseName, int studentEnrollCount, Set<StudentCourse> studentCourses) {
 		this.courseName = courseName;
 		this.studentEnrollCount = studentEnrollCount;
 		this.studentCourses = studentCourses;
@@ -68,12 +68,13 @@ public class Courses implements java.io.Serializable {
 		this.studentEnrollCount = studentEnrollCount;
 	}
 
-	/*
-	 * @OneToMany(fetch = FetchType.LAZY, mappedBy = "courses") public Set
-	 * getStudentCourses() { return this.studentCourses; }
-	 * 
-	 * public void setStudentCourses(Set studentCourses) { this.studentCourses =
-	 * studentCourses; }
-	 */
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "courses")
+	public Set<StudentCourse> getStudentCourses() {
+		return this.studentCourses;
+	}
+
+	public void setStudentCourses(Set<StudentCourse> studentCourses) {
+		this.studentCourses = studentCourses;
+	}
 
 }

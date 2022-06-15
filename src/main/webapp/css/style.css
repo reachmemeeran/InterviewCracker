@@ -63,6 +63,32 @@
 	box-shadow: rgb(0, 43, 86) 10px 10px 20px;
 }
 
+.indexmiddlebaradmin {
+	position: absolute;
+	top: 250px;
+	left: 30%;
+	width: 40%;
+	z-index: 1;
+	padding: 15px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	box-shadow: rgb(0, 43, 86) 10px 10px 20px;
+}
+
+.indexmiddlebaradminbottom {
+	position: absolute;
+	top: 450px;
+	left: 30%;
+	width: 40%;
+	z-index: 1;
+	padding: 15px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	box-shadow: rgb(0, 43, 86) 10px 10px 20px;
+}
+
 .indexmiddlebartop {
 	position: absolute;
 	top: 100px;

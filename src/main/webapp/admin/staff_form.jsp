@@ -43,7 +43,7 @@
 			<tr>
 				<td align="right">Full Name:</td>
 				<td align="left"><input type="text" id="fullname"
-					name="fullname" size="20" value="${staff.fullName}" /></td>
+					name="fullname" size="20" value="${staff.fullname}" /></td>
 			</tr>
 			<tr>
 				<td align="right">Password:</td>
