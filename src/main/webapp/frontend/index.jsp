@@ -31,32 +31,52 @@
 	
 	<div class="indexmiddlebartop">
 	<div align="center">
-		<h2>Coding Questions:</h2>
-		dsf <br>
+		<h2>Coding Challenge:</h2>
+		<!-- jkhfjkdsfdsjfhdskjfdsnfldsncfbkdsjlcnsjnkdscbndscdsncldsncdccnskcnsdcnsdcjndscjkdsncdksncsdkncdsmcnds mcnsd mcnsdcmnds csdc sdmdsf <br>
 		dsfsd<br>
 		dsf<br>
 		sdf<br>
 		sdf<br>
 		ds<br>
-		fsd<br>
+		fsd<br>jkhfjkdsfdsjfhdskjfdsnfldsncfbkdsjlcnsjnkdscbndscdsncldsncdccnskcnsdcnsdcjndscjkdsncdksncsdkncdsmcnds
 		fdsf<br>
 		fsd<br>
 		fdsf<br>
+		dsf <br>jkhfjkdsfdsjfhdskjfdsnfldsncfbkdsjlcnsjnkdscbndscdsncldsncdccnskcnsdcnsdcjndscjkdsncdksncsdkncdsmcnds
+		dsfsd<br>
+		dsf<br>
+		sdf<br>jkhfjkdsfdsjfhdskjfdsnfldsncfbkdsjlcnsjnkdscbndscdsncldsncdccnskcnsdcnsdcjndscjkdsncdksncsdkncdsmcnds
+		sdf<br>
+		ds<br>
+		fsd<br>jkhfjkdsfdsjfhdskjfdsnfldsncfbkdsjlcnsjnkdscbndscdsncldsncdccnskcnsdcnsdcjndscjkdsncdksncsdkncdsmcnds
+		fdsf<br>
+		fsd<br>
+		fdsf<br> -->
 	</div>
 	</div>
 	<div class="indexmiddlebarbottom">
 	<div align="center">
 		<h2>Java Courses:</h2>
-		dsf <br>
+		<!-- dsf <br>
 		dsfsd<br>
 		dsf<br>
 		sdf<br>
 		sdf<br>
+		ds<br>jkhfjkdsfdsjfhdskjfdsnfldsncfbkdsjlcnsjnkdscbndscdsncldsncdccnskcnsdcnsdcjndscjkdsncdksncsdkncdsmcnds
+		fsd<br>
+		fdsf<br>
+		fsd<br>
+		fdsf<br>jkhfjkdsfdsjfhdskjfdsnfldsncfbkdsjlcnsjnkdscbndscdsncldsncdccnskcnsdcnsdcjndscjkdsncdksncsdkncdsmcnds
+		dsf <br>
+		dsfsd<br>
+		dsf<br>jkhfjkdsfdsjfhdskjfdsnfldsncfbkdsjlcnsjnkdscbndscdsncldsncdccnskcnsdcnsdcjndscjkdsncdksncsdkncdsmcnds
+		sdf<br>
+		sdf<br>
 		ds<br>
-		fsd<br>
+		fsd<br>jkhfjkdsfdsjfhdskjfdsnfldsncfbkdsjlcnsjnkdscbndscdsncldsncdccnskcnsdcnsdcjndscjkdsncdksncsdkncdsmcnds
 		fdsf<br>
 		fsd<br>
-		fdsf<br>
+		fdsf<br> -->
 	</div>
 	</div>
 	
@@ -68,6 +88,14 @@
             <div class="link-item-s item-margin-2">
                 I WILL UPDATE SHORTLY
             </div>
+            
+            <c:forEach items="${listPopLeaders}" var="popLeaders">
+            
+            ${popLeaders.studentCodingTestId}
+            ${popLeaders.students.studentsId}
+            ${popLeaders.hitCount}
+            
+            </c:forEach>
 
         </div>
 	

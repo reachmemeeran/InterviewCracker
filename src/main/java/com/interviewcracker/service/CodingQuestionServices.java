@@ -43,14 +43,14 @@ public class CodingQuestionServices extends CommonUtility {
 			request.setAttribute("message", message);
 		}
 		
-		String listPage ="codingQuestion_list.jsp";
+		String listPage ="codingquestion_list.jsp";
 		
 		CommonUtility.forwardToPage(listPage, request, response);
 	}
 	
 	public void showCodingQuestionNewForm() throws ServletException, IOException {
 		
-		String listPage ="codingQuestion_form.jsp";
+		String listPage ="codingquestion_form.jsp";
 		CommonUtility.forwardToPage(listPage, request, response);
 	}
 
@@ -113,7 +113,7 @@ public class CodingQuestionServices extends CommonUtility {
 	public void editCodingQuestion() throws ServletException, IOException {
 		Integer codingQuestionId = Integer.parseInt(request.getParameter("id"));
 		CodingQuestion codingQuestion = codingQuestionDAO.get(codingQuestionId);
-		String destPage = "codingQuestion_form.jsp";
+		String destPage = "codingquestion_form.jsp";
 		
 		if (codingQuestion != null) {
 			List<CodeComplexity> listCodeComplexity = codeComplexityDAO.listAll();
@@ -206,7 +206,7 @@ public class CodingQuestionServices extends CommonUtility {
 		int codingQuestionId = Integer.parseInt(request.getParameter("id"));
 		CodingQuestion codingQuestion = codingQuestionDAO.get(codingQuestionId);
 		
-		String destPage ="frontend/codingQuestion_detail.jsp";
+		String destPage ="frontend/codingquestion_detail.jsp";
 		
 		if (codingQuestion != null) {
 			request.setAttribute("codingQuestion", codingQuestion);

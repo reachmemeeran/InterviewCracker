@@ -12,37 +12,146 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.interviewcracker.dao.HashGenerator;
+import com.interviewcracker.dao.PopExerciseDAO;
+import com.interviewcracker.dao.StudentCodingTestDAO;
 import com.interviewcracker.dao.StudentDAO;
+import com.interviewcracker.entity.CodingQuestion;
+import com.interviewcracker.entity.CodingTestCase;
 import com.interviewcracker.entity.OkHttpResponse;
+import com.interviewcracker.entity.POPExercises;
+import com.interviewcracker.entity.StudentCodingTest;
 import com.interviewcracker.entity.Students;
 import com.squareup.okhttp.MediaType;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.RequestBody;
-import com.squareup.okhttp.Response;
 import com.squareup.okhttp.ResponseBody;
 
-public class StudentServices extends CommonUtility {
+public class PopExerciseServices extends CommonUtility {
 	
 	private StudentDAO studentDAO;
+	private PopExerciseDAO popExerciseDAO;
 	private HttpServletRequest request;
 	private HttpServletResponse response;
 	
-	public StudentServices(HttpServletRequest request, HttpServletResponse response) {
+	public PopExerciseServices(HttpServletRequest request, HttpServletResponse response) {
 		this.request = request;
 		this.response = response;
 		this.studentDAO = new StudentDAO();
+		this.popExerciseDAO = new PopExerciseDAO();
 	}
 	
-	public void listStudents(String message) throws ServletException, IOException {
-		List<Students> listStudents = studentDAO.listAll();		
-		request.setAttribute("listStudents", listStudents);
-		forwardToPage("student_list.jsp", message, request, response);
+	public void listExercises(String message) throws ServletException, IOException {
+		List<POPExercises> listPOPExercises = popExerciseDAO.listAll();		
+		request.setAttribute("listPOPExercises", listPOPExercises);
+		forwardToPage("frontend/popexercise_list.jsp", message, request, response);
 	}
 	
-	public void listStudents() throws ServletException, IOException {
-		listStudents(null);
+	public void listExercises() throws ServletException, IOException {
+		listExercises(null);
+	}
+	
+	public void attemptExercise(Integer exerciseId) throws ServletException, IOException {
+		request.setAttribute("exerciseId", exerciseId);
+		forwardToPage("frontend/popexercises/"+exerciseId+"_exercise.jsp", request, response);
+	}
+	
+	public void attemptExercise() throws ServletException, IOException {
+		Integer exerciseId = Integer.parseInt(request.getParameter("id"));
+		System.out.println("Exercise id--> "+exerciseId);
+		attemptExercise(exerciseId);
+	}
+	
+	public void submitCCode() throws ServletException, IOException {
+		
+		String code = request.getParameter("ccode");
+		Integer exerciseId = Integer.parseInt(request.getParameter("exerciseId"));
+		
+		request.setAttribute("attemptedCode", code);
+		
+		
+		String answerCode = request.getParameter("answerCode");
+		
+		System.out.println("Code from Form-->"+code);
+		
+		
+		JsonObject rootObject = new JsonObject();
+	    rootObject.addProperty("code", code);
+	    rootObject.addProperty("language", "c");
+	    rootObject.addProperty("input", "");
+	    
+	    Gson gsonC = new Gson();
+	    
+	    String jsonCString = gsonC.toJson(rootObject);
+	    
+	    System.out.println("jsonCString--->"+jsonCString);
+		
+		OkHttpClient client = new OkHttpClient();
+		MediaType mediaType = MediaType.parse("application/json; charset=utf-8");
+		//RequestBody body = RequestBody.create(mediaType, "{\r\n  \"code\": \"public class Test{ public static void main(String []args) { System.out.println(\\\"Meeran\\\");}}\",\r\n  \"language\": \"java\",\r\n  \"input\": \"\"\r\n}");
+		RequestBody body = RequestBody.create(mediaType, jsonCString);
+
+		Request requestBuild = new Request.Builder()
+		  .url("https://codex-api.herokuapp.com/")
+		  .method("POST", body)
+		  .addHeader("Content-Type", "application/json")
+		  .build();
+		
+		Gson gson = new Gson(); 
+		ResponseBody responseBody = client.newCall(requestBuild).execute().body(); 
+		OkHttpResponse entity = gson.fromJson(responseBody.string(), OkHttpResponse.class);
+		
+		
+		
+		if(entity != null) {
+			String message = "";
+			if (entity.getSuccess()) {
+				System.out.println("Entity 1--IS Success?-->"+entity.getSuccess());
+				System.out.println("Entity 2--Output?-->"+entity.getOutput().trim());
+				System.out.println("Entity 3--Timestamp-->"+entity.getTimestamp());
+				System.out.println("Entity 4--Language-->"+entity.getLanguage());
+				
+				if(entity.getOutput().trim().equals(answerCode.trim())) {
+					message = "Successfully passed the test case";
+					
+					HttpSession session = request.getSession();
+					Students student = (Students) session.getAttribute("loggedStudent");
+					System.out.println("studentId--->"+student.getStudentsId());
+					
+					StudentCodingTest studentCodeTest = new StudentCodingTest();
+					CodingQuestion codeQuestion = new CodingQuestion();
+					codeQuestion.setCodingQuestionId(99999);
+					studentCodeTest.setCodingQuestion(codeQuestion);
+					CodingTestCase codingTestCase = new CodingTestCase();
+					codingTestCase.setCodingTestCaseId(99999);
+					studentCodeTest.setCodingTestCase(codingTestCase);
+					studentCodeTest.setStudents(student);
+					studentCodeTest.setHitCount(1);
+					studentCodeTest.setStatus('Y');
+					
+					StudentCodingTestDAO studentCodingTestDAO = new StudentCodingTestDAO();
+					studentCodingTestDAO.create(studentCodeTest);
+					request.setAttribute("status", "Done");
+					
+				}else {
+					message = "Test Case Failed - Expected output is: "+answerCode.trim();
+				}
+				request.setAttribute("output", entity.getOutput().trim());
+			} else {		
+				System.out.println("Entity 1--IS Success?-->"+entity.getSuccess());
+				System.out.println("Entity 2--Output?-->"+entity.getError().trim());
+				System.out.println("Entity 3--Timestamp-->"+entity.getTimestamp());
+				System.out.println("Entity 4--Language-->"+entity.getLanguage());
+				
+				message = entity.getError();
+				message=message.substring(message.indexOf("error: ") , message.length());
+				request.setAttribute("output", null);
+			}
+			request.setAttribute("message", message);
+			attemptExercise(exerciseId);
+		}
 	}
 	
 	public void createStudent() throws ServletException, IOException {
@@ -53,7 +162,7 @@ public class StudentServices extends CommonUtility {
 		if (existStudents != null) {
 			String message = "Could not create new student: the email "
 					+ email + " is already registered by another student.";
-			listStudents(message);
+			listExercises(message);
 			
 		} else {
 			Students newStudents = new Students();
@@ -61,7 +170,7 @@ public class StudentServices extends CommonUtility {
 			studentDAO.create(newStudents);
 			
 			String message = "New student has been created successfully.";
-			listStudents(message);
+			listExercises(message);
 			
 		}
 		
@@ -175,7 +284,7 @@ public class StudentServices extends CommonUtility {
 			message = "The student has been updated successfully.";
 		}
 		
-		listStudents(message);
+		listExercises(message);
 	}
 
 	public void deleteStudent() throws ServletException, IOException {
@@ -185,7 +294,7 @@ public class StudentServices extends CommonUtility {
 		if (student != null) {
 			studentDAO.delete(studentId);			
 			String message = "The student has been deleted successfully.";
-			listStudents(message);
+			listExercises(message);
 		} else {
 			String message = "Could not find student with ID " + studentId + ", "
 					+ "or it has been deleted by another admin";
@@ -231,38 +340,6 @@ public class StudentServices extends CommonUtility {
 			}
 		}
 	}
-	
-	/*
-	public void getResponse() {
-		System.out.println("I AM INSIDE getResponse");
-		try {
-			OkHttpClient client = new OkHttpClient();
-			MediaType mediaType = MediaType.parse("application/json");
-			RequestBody body = RequestBody.create(mediaType, "{\r\n  \"code\": \"public class Test{ public static void main(String []args) { System.out.println(\\\"Meeran\\\");}}\",\r\n  \"language\": \"java\",\r\n  \"input\": \"\"\r\n}");
-			Request request = new Request.Builder()
-			  .url("https://codex-api.herokuapp.com/")
-			  .method("POST", body)
-			  .addHeader("Content-Type", "application/json")
-			  .build();
-			Response response = client.newCall(request).execute();
-			System.out.println("response.body()--->"+response.body().toString());
-			System.out.println("response.body()--->"+response.body().string());
-			System.out.println("response.toString()--->"+response.toString());
-			
-			Gson gson = new Gson(); 
-			ResponseBody responseBody = client.newCall(request).execute().body(); 
-			OkHttpResponse entity = gson.fromJson(responseBody.string(), OkHttpResponse.class);
-			
-			System.out.println("Entity 1---->"+entity.getSuccess());
-			System.out.println("Entity 2---->"+entity.getOutput().trim());
-			System.out.println("Entity 3---->"+entity.getTimestamp());
-			System.out.println("Entity 4---->"+entity.getLanguage());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	*/
 	
 	public void showStudentProfile() throws ServletException, IOException {
 		forwardToPage("frontend/student_profile.jsp", request, response);

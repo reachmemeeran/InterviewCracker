@@ -12,7 +12,7 @@
             </div>
             <div class="middle-item">
                 <div class="link-item-h">
-                	<a class="ah" href="#">Home</a>
+                	<a class="ah" href="list_pop_exercise">POP Exercises</a>
                 </div>
                 <div class="link-item-h">
                     <a class="ah" href="#">Coding Challenge</a>

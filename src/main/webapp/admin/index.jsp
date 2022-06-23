@@ -39,8 +39,8 @@
 		<hr width="60%"/>
 		    <h2 class="pageheading">Quick Actions:</h2> 
 		     <b>
-		     <a href="new_code">New Code</a>&nbsp;&nbsp;&nbsp;
-		     <a href="new_course">New Course</a>&nbsp;&nbsp;&nbsp;
+		     <a href="codingquestion_form.jsp">New Code</a>&nbsp;&nbsp;&nbsp;
+		     <a href="course_form.jsp">New Course</a>&nbsp;&nbsp;&nbsp;
 		     <a href="staff_form.jsp">New Staff</a>&nbsp;&nbsp;&nbsp;
 		     <a href="student_form.jsp">New Student</a>
 		     </b>

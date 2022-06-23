@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
 public class StudentLoginFilter implements Filter {
 
 	private static final String[] loginrequiredURLs = {
-			"/view_profile","/edit_profile","/update_profile"
+			"/view_profile","/edit_profile","/update_profile","/list_pop_exercise"
 	};
     public StudentLoginFilter() {
     }

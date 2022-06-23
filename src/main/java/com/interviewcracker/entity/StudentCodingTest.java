@@ -9,6 +9,8 @@ import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
@@ -16,6 +18,12 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "student_coding_test", catalog = "interviewcrackerdb")
+@NamedQueries({
+	@NamedQuery(name="StudentCodingTest.findAll", query= "SELECT c FROM StudentCodingTest c ORDER BY c.studentCodingTestId")//,
+	//@NamedQuery(name = "StudentCodingTest.findPOPLeaders", query = "SELECT c.students, COUNT(c.hitCount) AS POPLeaderCount FROM  StudentCodingTest c "
+		//	+ "GROUP BY c.students.studentsId "
+		//	+ "ORDER BY POPLeaderCount DESC") 
+})
 public class StudentCodingTest implements java.io.Serializable {
 
 	private Integer studentCodingTestId;
