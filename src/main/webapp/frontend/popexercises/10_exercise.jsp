@@ -32,18 +32,17 @@
 			<h3>Exercise:</h3>
 			<p>&nbsp;</p>
 
-			1. Run the "Hello World" program below by selecting the run button<br>
-			 2. Edit the code so the program prints out "Goodbye World" instead.<br>
-			 3. Edit the code further so the program prints out different text<br>
+			Modify the function below so that it populates the array evenNumbers with calculated value rather than printing it out.<br>
+Now create a function that prints out this evenNumbers array and call it from the main function<br>
 
 			<p>&nbsp;</p>
-			Output should be:<br> Goodbye World <br>
+			Output should be:<br> <br>2<br> 4<br>6<br> 8<br> 10<br> 12<br> 14<br> 16<br> 18<br> 20 <br>
 			<br>
 		</div>
 		<div class="popmiddlebar">
 			<div align="center">
 
-				<h3 class="pageheading">1. Week 1: Writing and Running Your First Programs - Lesson 2: Your 1st Program</h3>
+				<h3 class="pageheading">10. Week 3: Arrays and Strings - Lesson 2: Arrays</h3>
 			</div>
 
 
@@ -57,10 +56,17 @@
 					</c:if>
 					<c:if test="${attemptedCode==null}">
 						<textarea name="ccode" rows="25" cols="70" required="true">#include <stdio.h>
-            
+
+
+int evenNumbersSize = 10;
+int evenNumbers[10];
+
+void populateArray(){
+}
+
 int main(void) {
-	printf("Hello World\n");
-	return 0;
+  populateArray();
+  return 0;
 }
         </textarea>
 					</c:if>
@@ -83,9 +89,26 @@ int main(void) {
 
 					<textarea name="answerCode" style="display: none;">#include <stdio.h>
 
+
+int evenNumbersSize = 10;
+int evenNumbers[10];
+
+void populateArray(){
+for(int i = 0; i < evenNumbersSize; i++){
+evenNumbers[i] = (i+1)*2;
+}
+}
+
+void printArray(){
+for(int i = 0; i < evenNumbersSize; i++){
+printf("%d\n",evenNumbers[i]);
+}
+}
+
 int main(void) {
-  printf("Goodbye World\n");
-  return 0;
+populateArray();
+printArray();
+return 0;
 }
 </textarea>
 					<input type="hidden" name="exerciseId" value="${exerciseId}">

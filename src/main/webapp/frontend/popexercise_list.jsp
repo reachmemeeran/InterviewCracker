@@ -17,7 +17,7 @@
 </head>
 <body>
 	<jsp:directive.include file="header.jsp" />
-	<div class="popmiddlebar">
+	<div class="poplistmiddlebar">
 	<div align="center">
 
 		<h2 class="pageheading">

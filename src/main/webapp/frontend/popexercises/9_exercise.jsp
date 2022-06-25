@@ -32,18 +32,20 @@
 			<h3>Exercise:</h3>
 			<p>&nbsp;</p>
 
-			1. Run the "Hello World" program below by selecting the run button<br>
-			 2. Edit the code so the program prints out "Goodbye World" instead.<br>
-			 3. Edit the code further so the program prints out different text<br>
+			Modify the function below so that it prints out the square multiplication tables for a number.  
+How might you modify this function, or add a new function, so it prints out the multiplication tables for numbers? <br>
 
 			<p>&nbsp;</p>
-			Output should be:<br> Goodbye World <br>
+			Output should be:<br> <br>
+			 1&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 2&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 3	<br>
+			 2&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 4&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 6	<br>
+			 3&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 6&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 9	<br> <br>
 			<br>
 		</div>
 		<div class="popmiddlebar">
 			<div align="center">
 
-				<h3 class="pageheading">1. Week 1: Writing and Running Your First Programs - Lesson 2: Your 1st Program</h3>
+				<h3 class="pageheading">9. Week 3: Arrays and Strings - Lesson 1: Encapsulation</h3>
 			</div>
 
 
@@ -57,10 +59,14 @@
 					</c:if>
 					<c:if test="${attemptedCode==null}">
 						<textarea name="ccode" rows="25" cols="70" required="true">#include <stdio.h>
-            
+
+void squareMultTable(int n){
+
+}
+
 int main(void) {
-	printf("Hello World\n");
-	return 0;
+  squareMultTable(3);
+  return 0;
 }
         </textarea>
 					</c:if>
@@ -83,8 +89,26 @@ int main(void) {
 
 					<textarea name="answerCode" style="display: none;">#include <stdio.h>
 
+void printLine(int n){
+  int i = 1;
+  while (i <= 3){ // 
+    int mult = i * n;
+    printf ("%d\t", mult);
+    i = i + 1;
+  }
+  printf("\n");
+}
+
+void squareMultTable(int n){
+  int count = 1;
+  while(count <= n){
+    printLine(count);
+    count = count + 1;
+  }
+}
+
 int main(void) {
-  printf("Goodbye World\n");
+  squareMultTable(3);
   return 0;
 }
 </textarea>
@@ -118,7 +142,6 @@ int main(void) {
 			<c:if test="${output!=null}">
 					<pre style="text-align: left; width: 100%; color: blue; overflow-x: auto; overflow-y: hidden;">Output for your code is: <br>${output}<br></br><p>&nbsp;</p></pre>
 			</c:if>
-
 			<p>&nbsp;</p>
 			<p>&nbsp;</p>
 

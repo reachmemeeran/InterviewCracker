@@ -32,18 +32,19 @@
 			<h3>Exercise:</h3>
 			<p>&nbsp;</p>
 
-			1. Run the "Hello World" program below by selecting the run button<br>
-			 2. Edit the code so the program prints out "Goodbye World" instead.<br>
-			 3. Edit the code further so the program prints out different text<br>
+			Modify the function below so that it prints out each character in the
+			string on a new line. <br>Hint: the end of a string is signified
+			by the '\0' char<br>
 
 			<p>&nbsp;</p>
-			Output should be:<br> Goodbye World <br>
+			Output should be:<br> A<br> <p>&nbsp;</p> s<br> t<br> r<br>
+			i<br> n<br> g<br> <br>
 			<br>
 		</div>
 		<div class="popmiddlebar">
 			<div align="center">
 
-				<h3 class="pageheading">1. Week 1: Writing and Running Your First Programs - Lesson 2: Your 1st Program</h3>
+				<h3 class="pageheading">11. Week 3: Arrays and Strings - Lesson 3: Strings</h3>
 			</div>
 
 
@@ -57,10 +58,15 @@
 					</c:if>
 					<c:if test="${attemptedCode==null}">
 						<textarea name="ccode" rows="25" cols="70" required="true">#include <stdio.h>
-            
+
+void printCharsInString(char string[]){
+  printf("%s\n", string);
+}
+
 int main(void) {
-	printf("Hello World\n");
-	return 0;
+  char my_string[] = "A string";
+  printCharsInString(my_string);
+  return 0;
 }
         </textarea>
 					</c:if>
@@ -83,8 +89,16 @@ int main(void) {
 
 					<textarea name="answerCode" style="display: none;">#include <stdio.h>
 
+
+void printCharsInString(char string[]){
+  for (int i = 0; string[i] != '\0'; i++){
+    printf("%c\n",string[i]);
+  }
+}
+
 int main(void) {
-  printf("Goodbye World\n");
+  char my_string[] = "A string";
+  printCharsInString(my_string);
   return 0;
 }
 </textarea>

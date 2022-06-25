@@ -164,7 +164,7 @@ public class PopExerciseServices extends CommonUtility {
 					request.setAttribute("status", "Done");
 					
 				}else {
-					message = "Test Case Failed - Expected output is: "+ansEntity.getOutput();
+					message = "Test Case Failed - Expected output is:\n"+ansEntity.getOutput();
 				}
 				request.setAttribute("output", entity.getOutput().trim());
 			} else {		
