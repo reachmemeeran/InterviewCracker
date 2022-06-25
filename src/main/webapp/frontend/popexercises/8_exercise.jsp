@@ -23,7 +23,7 @@
 	<div align="center">
 
 		<h3 class="pageheading">
-			Week 1: Writing and Running Your First Programs - Lesson 2: Your 1st Program
+			Week 2: Functions and Parameters - Lesson 5: Iteration
 		</h3>
 	</div>
 	
@@ -51,11 +51,15 @@
 	</c:if>
 
 
-	<div align="left">
+	<div align="left" >
 	<br><br>
-			 1. Run the "Hello World" program below by selecting the run button<br>
-			 2. Edit the code so the program prints out "Goodbye World" instead.<br>
-			 3. Edit the code further so the program prints out different text<br>
+
+Complete the fibonacci function below such that it calculates the nth term of the Fibonacci sequence using iteration.<br>
+The first 4 terms of the Fibonacci sequence in this example are  1, 1, 2, 3 <br>
+call fibonacci(10) we should get the value 1 1 2 3 5 8 13 21 34 55 returned <br>
+
+			 
+			 Output should be: The Fibonacci series of 10 is : 1 1 2 3 5 8 13 21 34 55
 			<br><br>
 	</div>
 
@@ -64,15 +68,20 @@
 		
 		
 		<c:if test="${attemptedCode!=null}">
-			<textarea name="ccode" rows="16" cols="80">${attemptedCode}</textarea>
+			<textarea name="ccode" rows="12" cols="80">${attemptedCode}</textarea>
 				
 		</c:if>
 		<c:if test="${attemptedCode==null}">
-			<textarea name="ccode" rows="16" cols="80" required="true">#include <stdio.h>
-            
+			<textarea name="ccode" rows="12" cols="80" required="true">#include <stdio.h>
+
+
+int fibonacci(int term){
+  return 1;
+}
+
 int main(void) {
-	printf("Hello World\n");
-	return 0;
+  printf("Hello World\n");
+  return 0;
 }
         </textarea>
 		</c:if>
@@ -92,13 +101,38 @@ int main(void) {
 		</c:if>
 		
 		
+        
         <textarea name="answerCode" style="display:none;">#include <stdio.h>
 
-int main(void) {
-  printf("Goodbye World\n");
-  return 0;
+
+int fibonacci(int term){
+
+int prev = 0;
+int current = 1;
+int next =0;
+int count = 1;
+
+
+while(count<=term){
+if(count==1){
+printf("%d ", count);
+}else{
+next= prev + current;
+prev=current;
+current=next;
+printf("%d ", current);
 }
-</textarea>
+count +=1;
+}
+return current;
+}
+
+int main(void) {
+int term=10;
+printf("The Fibonacci series of %d is : ",term);
+fibonacci(term);
+return 0;
+}</textarea>
         <input type="hidden" name="exerciseId" value="${exerciseId}">
 
 		<c:if test="${status==null}">

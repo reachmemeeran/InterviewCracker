@@ -23,7 +23,7 @@
 	<div align="center">
 
 		<h3 class="pageheading">
-			Week 1: Writing and Running Your First Programs - Lesson 2: Your 1st Program
+			Week 2: Functions and Parameters - Lesson 1: Functions
 		</h3>
 	</div>
 	
@@ -51,11 +51,14 @@
 	</c:if>
 
 
-	<div align="left">
+	<div align="left" >
 	<br><br>
-			 1. Run the "Hello World" program below by selecting the run button<br>
-			 2. Edit the code so the program prints out "Goodbye World" instead.<br>
-			 3. Edit the code further so the program prints out different text<br>
+			 Using the math.h library (imported already)<br>
+			 1. Complete the pow3 function below and returns that value raised to the power of 3 (hint use the pow function in the math library) <br>
+			 2. Create a function that return the natural log of the value. <br>
+			 Demonstrate your functions by calling them the main function and printing out the values returned <br>
+			 
+			 Output should be: The Power of 3 for the value 3.000000 is 27.000000 The Power of 3 for the value 3.000000 is 1.098612 
 			<br><br>
 	</div>
 
@@ -64,15 +67,22 @@
 		
 		
 		<c:if test="${attemptedCode!=null}">
-			<textarea name="ccode" rows="16" cols="80">${attemptedCode}</textarea>
+			<textarea name="ccode" rows="12" cols="80">${attemptedCode}</textarea>
 				
 		</c:if>
 		<c:if test="${attemptedCode==null}">
-			<textarea name="ccode" rows="16" cols="80" required="true">#include <stdio.h>
-            
+			<textarea name="ccode" rows="12" cols="80" required="true">#include <stdio.h>
+#include <math.h>
+
+double pow3(double value){
+  return 1.0;
+}
+
 int main(void) {
-	printf("Hello World\n");
-	return 0;
+  double inputValue=3;
+  printf("Hello World\n");
+  printf("The Power of 3 for the value ", inputValue,pow3(inputValue));
+  return 0;
 }
         </textarea>
 		</c:if>
@@ -93,12 +103,22 @@ int main(void) {
 		
 		
         <textarea name="answerCode" style="display:none;">#include <stdio.h>
+#include <math.h>
+
+double pow3(double value){
+return pow(value,3);
+}
+
+double logValue(double value){
+return log(value);
+}
 
 int main(void) {
-  printf("Goodbye World\n");
-  return 0;
-}
-</textarea>
+double inputValue=3;
+printf("The Power of 3 for the value %lf is %lf\n", inputValue,pow3(inputValue));
+printf("The Power of 3 for the value %lf is %lf\n", inputValue,logValue(inputValue));
+return 0;
+}</textarea>
         <input type="hidden" name="exerciseId" value="${exerciseId}">
 
 		<c:if test="${status==null}">

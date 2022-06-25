@@ -23,7 +23,7 @@
 	<div align="center">
 
 		<h3 class="pageheading">
-			Week 1: Writing and Running Your First Programs - Lesson 2: Your 1st Program
+			Week 2: Functions and Parameters - Lesson 4: Recursion
 		</h3>
 	</div>
 	
@@ -51,11 +51,12 @@
 	</c:if>
 
 
-	<div align="left">
+	<div align="left" >
 	<br><br>
-			 1. Run the "Hello World" program below by selecting the run button<br>
-			 2. Edit the code so the program prints out "Goodbye World" instead.<br>
-			 3. Edit the code further so the program prints out different text<br>
+Complete the recursive function below which performs multiplication of two numbers without using the inbuilt multiply sign <br>
+
+			 
+			 Output should be: The multiplication of 2 by 3 is 6 The multiplication of 9 by 8 is 72
 			<br><br>
 	</div>
 
@@ -64,15 +65,20 @@
 		
 		
 		<c:if test="${attemptedCode!=null}">
-			<textarea name="ccode" rows="16" cols="80">${attemptedCode}</textarea>
+			<textarea name="ccode" rows="12" cols="80">${attemptedCode}</textarea>
 				
 		</c:if>
 		<c:if test="${attemptedCode==null}">
-			<textarea name="ccode" rows="16" cols="80" required="true">#include <stdio.h>
-            
+			<textarea name="ccode" rows="12" cols="80" required="true">#include <stdio.h>
+
+
+int multiply(int number, int by){
+  return 1;
+}
+
 int main(void) {
-	printf("Hello World\n");
-	return 0;
+  printf("The multiplication of 2 by 3 is %d\n", multiply(2,3));
+  return 0;
 }
         </textarea>
 		</c:if>
@@ -92,13 +98,23 @@ int main(void) {
 		</c:if>
 		
 		
+        
         <textarea name="answerCode" style="display:none;">#include <stdio.h>
 
-int main(void) {
-  printf("Goodbye World\n");
-  return 0;
+
+int multiply(int number, int by){
+if(by==0){
+return 0;
+} else {
+return number+multiply(number, (by-1));
 }
-</textarea>
+}
+
+int main(void) {
+printf("The multiplication of 2 by 3 is %d\n", multiply(2,3));
+printf("The multiplication of 9 by 8 is %d\n", multiply(9,8));
+return 0;
+}</textarea>
         <input type="hidden" name="exerciseId" value="${exerciseId}">
 
 		<c:if test="${status==null}">

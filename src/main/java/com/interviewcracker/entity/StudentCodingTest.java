@@ -19,7 +19,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "student_coding_test", catalog = "interviewcrackerdb")
 @NamedQueries({
-	@NamedQuery(name="StudentCodingTest.findAll", query= "SELECT c FROM StudentCodingTest c ORDER BY c.studentCodingTestId")//,
+	@NamedQuery(name="StudentCodingTest.findAll", query= "SELECT c FROM StudentCodingTest c ORDER BY c.studentCodingTestId"),
+	@NamedQuery(name="StudentCodingTest.findStudentCode", query="SELECT c from StudentCodingTest c where c.studentId=:studentId"),
+	@NamedQuery(name="StudentCodingTest.findExerciseStatus", query="SELECT c.status from StudentCodingTest c where c.studentId=:studentId and c.codingQuestionId=:popExerciseId")
 	//@NamedQuery(name = "StudentCodingTest.findPOPLeaders", query = "SELECT c.students, COUNT(c.hitCount) AS POPLeaderCount FROM  StudentCodingTest c "
 		//	+ "GROUP BY c.students.studentsId "
 		//	+ "ORDER BY POPLeaderCount DESC") 
@@ -27,26 +29,27 @@ import javax.persistence.Table;
 public class StudentCodingTest implements java.io.Serializable {
 
 	private Integer studentCodingTestId;
-	private CodingQuestion codingQuestion;
+	private Integer codingQuestionId;
 	private CodingTestCase codingTestCase;
 	private Students students;
+	private Integer studentId;
 	private Integer hitCount;
 	private Character status;
 
 	public StudentCodingTest() {
 	}
 
-	public StudentCodingTest(CodingQuestion codingQuestion, CodingTestCase codingTestCase, Students students) {
-		this.codingQuestion = codingQuestion;
+	public StudentCodingTest(CodingTestCase codingTestCase, Students students) {
 		this.codingTestCase = codingTestCase;
 		this.students = students;
 	}
 
-	public StudentCodingTest(CodingQuestion codingQuestion, CodingTestCase codingTestCase, Students students,
-			Integer hitCount, Character status) {
-		this.codingQuestion = codingQuestion;
+	public StudentCodingTest(Integer codingQuestionId, CodingTestCase codingTestCase, Students students,
+			Integer studentId, Integer hitCount, Character status) {
+		this.codingQuestionId = codingQuestionId;
 		this.codingTestCase = codingTestCase;
 		this.students = students;
+		this.studentId = studentId;
 		this.hitCount = hitCount;
 		this.status = status;
 	}
@@ -63,14 +66,13 @@ public class StudentCodingTest implements java.io.Serializable {
 		this.studentCodingTestId = studentCodingTestId;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "coding_question_id", nullable = false)
-	public CodingQuestion getCodingQuestion() {
-		return this.codingQuestion;
+	@Column(name = "coding_question_id", nullable = false)
+	public Integer getCodingQuestionId() {
+		return codingQuestionId;
 	}
 
-	public void setCodingQuestion(CodingQuestion codingQuestion) {
-		this.codingQuestion = codingQuestion;
+	public void setCodingQuestionId(Integer codingQuestionId) {
+		this.codingQuestionId = codingQuestionId;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -91,6 +93,15 @@ public class StudentCodingTest implements java.io.Serializable {
 
 	public void setStudents(Students students) {
 		this.students = students;
+	}
+	
+	@Column(name = "students_id", nullable = false, insertable=false , updatable=false)
+	public Integer getStudentId() {
+		return studentId;
+	}
+
+	public void setStudentId(Integer studentId) {
+		this.studentId = studentId;
 	}
 
 	@Column(name = "hit_count")

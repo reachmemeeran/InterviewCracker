@@ -24,13 +24,15 @@ public class POPExercises implements java.io.Serializable {
 	private Integer popExerciseId;
 	private String week;
 	private String lesson;
+	private Character status;
 
 	public POPExercises() {
 	}
 
-	public POPExercises(String week, String lesson) {
+	public POPExercises(String week, String lesson,Character status) {
 		this.week = week;
 		this.lesson = lesson;
+		this.status=status;
 	}
 
 	@Id
@@ -62,4 +64,14 @@ public class POPExercises implements java.io.Serializable {
 	public void setLesson(String lesson) {
 		this.lesson = lesson;
 	}
+
+	@Column(name = "status", length = 1)
+	public Character getStatus() {
+		return status;
+	}
+
+	public void setStatus(Character status) {
+		this.status = status;
+	}
+	
 }

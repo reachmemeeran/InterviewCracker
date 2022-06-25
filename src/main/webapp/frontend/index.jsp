@@ -83,11 +83,10 @@
 	<div class="indexrightbar">
 	
             <div class="link-item-s">
-                <i>LEADER BOARD</i>
+                <h3>POP LEADER BOARD</h3>
             </div>
-            <div class="link-item-s item-margin-2">
-                I WILL UPDATE SHORTLY
-            </div>
+            
+            <!--  
             
             <c:forEach items="${listPopLeaders}" var="popLeaders">
             
@@ -96,8 +95,22 @@
             ${popLeaders.hitCount}
             
             </c:forEach>
-
-        </div>
+            -->
+            
+            <div align="center">
+			    <table border="1">
+					<tr>
+						<th style="background-color:#002B56; color:#FFF; padding: 10px;">Leader</th>
+						<th style="background-color:#002B56; color:#FFF; padding: 10px;">Points</th>
+					</tr>
+					<c:forEach items="${leaderMap}" var="entry">
+						<tr>
+							<td style="background-color:#002B5636; text-align: center">${entry.key}</td>
+							<td style="background-color:#002B5636; text-align: center">${entry.value}</td>
+						</tr>
+					</c:forEach>
+				</table>
+	        </div>
 	
 	<jsp:directive.include file="footer.jsp" />
 	</div>

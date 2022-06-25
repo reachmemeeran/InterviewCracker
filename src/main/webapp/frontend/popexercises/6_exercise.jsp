@@ -23,7 +23,7 @@
 	<div align="center">
 
 		<h3 class="pageheading">
-			Week 1: Writing and Running Your First Programs - Lesson 2: Your 1st Program
+			Week 2: Functions and Parameters - Lesson 3: The Flow of Execution
 		</h3>
 	</div>
 	
@@ -51,11 +51,14 @@
 	</c:if>
 
 
-	<div align="left">
+	<div align="left" >
 	<br><br>
-			 1. Run the "Hello World" program below by selecting the run button<br>
-			 2. Edit the code so the program prints out "Goodbye World" instead.<br>
-			 3. Edit the code further so the program prints out different text<br>
+			 Write a function which returns true if a number is divisible by 3 and false if it is not.<br>
+			 Hint: use the modulo (%) operator.<br>
+			 Modify your code so that your function now returns true if a number 3 is divisible by 3 or 5 and false if it is not.<br>
+
+			 
+			 Output should be: Result:12
 			<br><br>
 	</div>
 
@@ -64,15 +67,17 @@
 		
 		
 		<c:if test="${attemptedCode!=null}">
-			<textarea name="ccode" rows="16" cols="80">${attemptedCode}</textarea>
+			<textarea name="ccode" rows="12" cols="80">${attemptedCode}</textarea>
 				
 		</c:if>
 		<c:if test="${attemptedCode==null}">
-			<textarea name="ccode" rows="16" cols="80" required="true">#include <stdio.h>
-            
+			<textarea name="ccode" rows="12" cols="80" required="true">#include <stdio.h>
+#include <stdbool.h>
+
+
 int main(void) {
-	printf("Hello World\n");
-	return 0;
+  printf("Hello World\n");
+  return 0;
 }
         </textarea>
 		</c:if>
@@ -92,13 +97,36 @@ int main(void) {
 		</c:if>
 		
 		
+        
         <textarea name="answerCode" style="display:none;">#include <stdio.h>
+#include <stdbool.h>
+
+
+bool is_divisible_by_3(int num){
+if(num%3==0){
+return true;
+}else{
+return false;
+}
+}
+
+bool is_divisible_by_3_or_5(int num){
+if(num%3==0 || num%5==0){
+return true;
+}else{
+return false;
+}
+}
 
 int main(void) {
-  printf("Goodbye World\n");
-  return 0;
-}
-</textarea>
+int num=3;
+bool x = is_divisible_by_3(num);
+printf("The Number %d is divisble by 3? %s \n", num, x ? "YES(true)" : "NO(false)");
+
+bool y = is_divisible_by_3_or_5(num);
+printf("The Number %d is divisble by 3 or 5? %s \n", num, y ? "YES(true)" : "NO(false)");
+return 0;
+}</textarea>
         <input type="hidden" name="exerciseId" value="${exerciseId}">
 
 		<c:if test="${status==null}">

@@ -23,7 +23,7 @@
 	<div align="center">
 
 		<h3 class="pageheading">
-			Week 1: Writing and Running Your First Programs - Lesson 2: Your 1st Program
+			Week 1: Writing and Running Your First Programs - Lesson 3: Variables
 		</h3>
 	</div>
 	
@@ -51,11 +51,14 @@
 	</c:if>
 
 
-	<div align="left">
+	<div align="left" >
 	<br><br>
-			 1. Run the "Hello World" program below by selecting the run button<br>
-			 2. Edit the code so the program prints out "Goodbye World" instead.<br>
-			 3. Edit the code further so the program prints out different text<br>
+			 In the code below, <br>
+			 1. change the value stored in n to 24. Now, using the printf function in the stdio.h library (imported above),<br>
+			 2. print out the value of n<br>
+			 3. change the value of n to 4 and in a new variable, store the value of n multiplied by 3 and print it out<br>
+			 
+			 Output should be: Result:12
 			<br><br>
 	</div>
 
@@ -64,15 +67,16 @@
 		
 		
 		<c:if test="${attemptedCode!=null}">
-			<textarea name="ccode" rows="16" cols="80">${attemptedCode}</textarea>
+			<textarea name="ccode" rows="12" cols="80">${attemptedCode}</textarea>
 				
 		</c:if>
 		<c:if test="${attemptedCode==null}">
-			<textarea name="ccode" rows="16" cols="80" required="true">#include <stdio.h>
+			<textarea name="ccode" rows="12" cols="80" required="true">#include <stdio.h>
             
 int main(void) {
-	printf("Hello World\n");
-	return 0;
+  int n = 14;
+  printf("Hello World\n");
+  return 0;
 }
         </textarea>
 		</c:if>
@@ -92,13 +96,16 @@ int main(void) {
 		</c:if>
 		
 		
+        
         <textarea name="answerCode" style="display:none;">#include <stdio.h>
 
 int main(void) {
-  printf("Goodbye World\n");
-  return 0;
-}
-</textarea>
+int n = 24;
+n=4;
+int mulValue = n * 3;
+printf("Result:%d \n", mulValue);
+return 0;
+}</textarea>
         <input type="hidden" name="exerciseId" value="${exerciseId}">
 
 		<c:if test="${status==null}">

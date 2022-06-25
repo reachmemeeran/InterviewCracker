@@ -44,7 +44,18 @@ public class PopExerciseServices extends CommonUtility {
 	}
 	
 	public void listExercises(String message) throws ServletException, IOException {
-		List<POPExercises> listPOPExercises = popExerciseDAO.listAll();		
+		List<POPExercises> listPOPExercises = popExerciseDAO.listAll();	
+		
+		HttpSession session = request.getSession();
+		Students student = (Students) session.getAttribute("loggedStudent");
+		Integer studentId = student.getStudentsId();
+		StudentCodingTestDAO studentCodingTestDAO = new StudentCodingTestDAO();
+		
+		for(POPExercises pop : listPOPExercises) {
+			Character status = studentCodingTestDAO.getExerciseStatus(studentId,pop.getPopExerciseId());
+			pop.setStatus(status);
+			System.out.println("pop status-->"+pop.getStatus());
+		}
 		request.setAttribute("listPOPExercises", listPOPExercises);
 		forwardToPage("frontend/popexercise_list.jsp", message, request, response);
 	}
@@ -68,24 +79,18 @@ public class PopExerciseServices extends CommonUtility {
 		
 		String code = request.getParameter("ccode");
 		Integer exerciseId = Integer.parseInt(request.getParameter("exerciseId"));
-		
 		request.setAttribute("attemptedCode", code);
-		
 		
 		String answerCode = request.getParameter("answerCode");
 		
-		System.out.println("Code from Form-->"+code);
-		
-		
+		// User Answer
 		JsonObject rootObject = new JsonObject();
 	    rootObject.addProperty("code", code);
 	    rootObject.addProperty("language", "c");
 	    rootObject.addProperty("input", "");
 	    
 	    Gson gsonC = new Gson();
-	    
 	    String jsonCString = gsonC.toJson(rootObject);
-	    
 	    System.out.println("jsonCString--->"+jsonCString);
 		
 		OkHttpClient client = new OkHttpClient();
@@ -102,18 +107,43 @@ public class PopExerciseServices extends CommonUtility {
 		Gson gson = new Gson(); 
 		ResponseBody responseBody = client.newCall(requestBuild).execute().body(); 
 		OkHttpResponse entity = gson.fromJson(responseBody.string(), OkHttpResponse.class);
+		//
 		
+		// Answer
+		JsonObject ansObject = new JsonObject();
+		ansObject.addProperty("code", answerCode);
+		ansObject.addProperty("language", "c");
+		ansObject.addProperty("input", "");
+	    
+	    String jsonCAnsString = gsonC.toJson(ansObject);
+	    System.out.println("jsonCAnsString--->"+jsonCAnsString);
+		
+		RequestBody ansBody = RequestBody.create(mediaType, jsonCAnsString);
+
+		Request requestAnsBuild = new Request.Builder()
+		  .url("https://codex-api.herokuapp.com/")
+		  .method("POST", ansBody)
+		  .addHeader("Content-Type", "application/json")
+		  .build();
+		
+		ResponseBody responseAnsBody = client.newCall(requestAnsBuild).execute().body(); 
+		OkHttpResponse ansEntity = gson.fromJson(responseAnsBody.string(), OkHttpResponse.class);
+		
+		if(ansEntity.getOutput()!=null) {
+			System.out.println("ansEntity--Output?-->"+ansEntity.getOutput());
+		}else if (ansEntity.getError()!=null) {
+			System.out.println("ansEntity--Error?-->"+ansEntity.getError());
+		}
+		
+		//
 		
 		
 		if(entity != null) {
 			String message = "";
 			if (entity.getSuccess()) {
-				System.out.println("Entity 1--IS Success?-->"+entity.getSuccess());
-				System.out.println("Entity 2--Output?-->"+entity.getOutput().trim());
-				System.out.println("Entity 3--Timestamp-->"+entity.getTimestamp());
-				System.out.println("Entity 4--Language-->"+entity.getLanguage());
+				System.out.println("Entity--Output?-->"+entity.getOutput());
 				
-				if(entity.getOutput().trim().equals(answerCode.trim())) {
+				if(entity.getOutput().trim().equals(ansEntity.getOutput().trim())) {
 					message = "Successfully passed the test case";
 					
 					HttpSession session = request.getSession();
@@ -121,9 +151,7 @@ public class PopExerciseServices extends CommonUtility {
 					System.out.println("studentId--->"+student.getStudentsId());
 					
 					StudentCodingTest studentCodeTest = new StudentCodingTest();
-					CodingQuestion codeQuestion = new CodingQuestion();
-					codeQuestion.setCodingQuestionId(99999);
-					studentCodeTest.setCodingQuestion(codeQuestion);
+					studentCodeTest.setCodingQuestionId(exerciseId);
 					CodingTestCase codingTestCase = new CodingTestCase();
 					codingTestCase.setCodingTestCaseId(99999);
 					studentCodeTest.setCodingTestCase(codingTestCase);
@@ -136,17 +164,19 @@ public class PopExerciseServices extends CommonUtility {
 					request.setAttribute("status", "Done");
 					
 				}else {
-					message = "Test Case Failed - Expected output is: "+answerCode.trim();
+					message = "Test Case Failed - Expected output is: "+ansEntity.getOutput();
 				}
 				request.setAttribute("output", entity.getOutput().trim());
 			} else {		
-				System.out.println("Entity 1--IS Success?-->"+entity.getSuccess());
-				System.out.println("Entity 2--Output?-->"+entity.getError().trim());
-				System.out.println("Entity 3--Timestamp-->"+entity.getTimestamp());
-				System.out.println("Entity 4--Language-->"+entity.getLanguage());
+				System.out.println("Entity 2--Error?-->"+entity.getError().trim());
 				
 				message = entity.getError();
-				message=message.substring(message.indexOf("error: ") , message.length());
+				if(message.contains("error")) {
+					message=message.substring(message.indexOf("error: ") , message.length());
+				}else if(message.contains("warning")) {
+					message=message.substring(message.indexOf("warning: ") , message.length());
+				}
+				System.out.println("message---->"+message);
 				request.setAttribute("output", null);
 			}
 			request.setAttribute("message", message);

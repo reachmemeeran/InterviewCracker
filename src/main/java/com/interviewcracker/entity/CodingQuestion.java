@@ -45,7 +45,6 @@ public class CodingQuestion implements java.io.Serializable {
 	private String question;
 	private Set<CodingTestCase> codingTestCases = new HashSet<CodingTestCase>(0);
 	private Set<StudentCoding> studentCodings = new HashSet<StudentCoding>(0);
-	private Set<StudentCodingTest> studentCodingTests = new HashSet<StudentCodingTest>(0);
 
 	public CodingQuestion() {
 	}
@@ -57,13 +56,12 @@ public class CodingQuestion implements java.io.Serializable {
 	}
 
 	public CodingQuestion(CodeComplexity codeComplexity, String summary, String question, Set<CodingTestCase> codingTestCases,
-			Set<StudentCoding> studentCodings, Set<StudentCodingTest> studentCodingTests) {
+			Set<StudentCoding> studentCodings) {
 		this.codeComplexity = codeComplexity;
 		this.summary = summary;
 		this.question = question;
 		this.codingTestCases = codingTestCases;
 		this.studentCodings = studentCodings;
-		this.studentCodingTests = studentCodingTests;
 	}
 
 	@Id
@@ -125,14 +123,4 @@ public class CodingQuestion implements java.io.Serializable {
 		  this.studentCodings = studentCodings; 
 	  }
 	  
-	  @OneToMany(fetch = FetchType.LAZY, mappedBy = "codingQuestion") 
-	  public Set<StudentCodingTest> getStudentCodingTests() { 
-		  return this.studentCodingTests; 
-	  }
-	  
-	  public void setStudentCodingTests(Set<StudentCodingTest> studentCodingTests) {
-		  this.studentCodingTests = studentCodingTests; 
-	  }
-	 
-
 }

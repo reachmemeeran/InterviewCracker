@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,20 +42,117 @@
 	<div align="center">
 		<table border="1" cellpadding="5">
 			<tr>
-				<th>Index</th>
-				<th>Week</th>
-				<th>Lesson</th>
-				<th>Actions</th>
+				<th style="background-color:#002B56; color:#FFF; padding: 10px;">Index</th>
+				<th style="background-color:#002B56; color:#FFF; padding: 10px;">Week</th>
+				<th style="background-color:#002B56; color:#FFF; padding: 10px;">Lesson</th>
+				<th style="background-color:#002B56; color:#FFF; padding: 10px;">Actions</th>
 			</tr>
 			<c:forEach var="popExercise" items="${listPOPExercises}" varStatus="status">
-				<tr>
-					<td>${popExercise.popExerciseId}</td>
-					<td>${popExercise.week}</td>
-					<td>${popExercise.lesson}</td>
-					<td>
-						<a href="attempt_exercise?id=${popExercise.popExerciseId}">Attempt Exercise</a> &nbsp; 
-<%-- 						<a href="javascript:void(0);" class="deleteLink" id="${popExercise.popExerciseId}">Delete</a>
- --%>					</td>
+				<tr style="padding: 10px">
+				<c:if test = "${fn:contains(popExercise.week, 'Week 1: Writing')}">
+					<td style="background-color:#002B5636">${popExercise.popExerciseId}</td>
+					<td style="background-color:#002B5636">${popExercise.week}</td>
+					<td style="background-color:#002B5636">${popExercise.lesson}</td>
+					<td style="background-color:#002B5636">
+						<c:if test="${fn:contains(popExercise.status, 'Y')}">
+							<a style="color:#3CA234" href="attempt_exercise?id=${popExercise.popExerciseId}">Solved</a> &nbsp; 
+						</c:if>
+						<c:if test="${fn:contains(popExercise.status, 'N')}">
+							<a style="color:#BD1B1B" href="attempt_exercise?id=${popExercise.popExerciseId}">Solve Exercise</a> &nbsp; 
+						</c:if>
+ 					</td>
+				</c:if>
+				<c:if test = "${fn:contains(popExercise.week, 'Week 2')}">
+					<td style="background-color:#BCD6F0">${popExercise.popExerciseId}</td>
+					<td style="background-color:#BCD6F0">${popExercise.week}</td>
+					<td style="background-color:#BCD6F0">${popExercise.lesson}</td>
+					<td style="background-color:#BCD6F0">
+						<c:if test="${fn:contains(popExercise.status, 'Y')}">
+							<a style="color:#3CA234" href="attempt_exercise?id=${popExercise.popExerciseId}">Solved</a> &nbsp; 
+						</c:if>
+						<c:if test="${fn:contains(popExercise.status, 'N')}">
+							<a style="color:#BD1B1B" href="attempt_exercise?id=${popExercise.popExerciseId}">Solve Exercise</a> &nbsp; 
+						</c:if>
+ 					</td>
+				</c:if>
+				<c:if test = "${fn:contains(popExercise.week, 'Week 3')}">
+					<td style="background-color:#002B5636">${popExercise.popExerciseId}</td>
+					<td style="background-color:#002B5636">${popExercise.week}</td>
+					<td style="background-color:#002B5636">${popExercise.lesson}</td>
+					<td style="background-color:#002B5636">
+						<c:if test="${fn:contains(popExercise.status, 'Y')}">
+							<a style="color:#3CA234" href="attempt_exercise?id=${popExercise.popExerciseId}">Solved</a> &nbsp; 
+						</c:if>
+						<c:if test="${fn:contains(popExercise.status, 'N')}">
+							<a style="color:#BD1B1B" href="attempt_exercise?id=${popExercise.popExerciseId}">Solve Exercise</a> &nbsp; 
+						</c:if>
+ 					</td>
+				</c:if>
+				<c:if test = "${fn:contains(popExercise.week, 'Week 5')}">
+					<td style="background-color:#BCD6F0">${popExercise.popExerciseId}</td>
+					<td style="background-color:#BCD6F0">${popExercise.week}</td>
+					<td style="background-color:#BCD6F0">${popExercise.lesson}</td>
+					<td style="background-color:#BCD6F0">
+						<c:if test="${fn:contains(popExercise.status, 'Y')}">
+							<a style="color:#3CA234" href="attempt_exercise?id=${popExercise.popExerciseId}">Solved</a> &nbsp; 
+						</c:if>
+						<c:if test="${fn:contains(popExercise.status, 'N')}">
+							<a style="color:#BD1B1B" href="attempt_exercise?id=${popExercise.popExerciseId}">Solve Exercise</a> &nbsp; 
+						</c:if>
+ 					</td>
+				</c:if>
+				<c:if test = "${fn:contains(popExercise.week, 'Week 7')}">
+					<td style="background-color:#002B5636">${popExercise.popExerciseId}</td>
+					<td style="background-color:#002B5636">${popExercise.week}</td>
+					<td style="background-color:#002B5636">${popExercise.lesson}</td>
+					<td style="background-color:#002B5636">
+						<c:if test="${fn:contains(popExercise.status, 'Y')}">
+							<a style="color:#3CA234" href="attempt_exercise?id=${popExercise.popExerciseId}">Solved</a> &nbsp; 
+						</c:if>
+						<c:if test="${fn:contains(popExercise.status, 'N')}">
+							<a style="color:#BD1B1B" href="attempt_exercise?id=${popExercise.popExerciseId}">Solve Exercise</a> &nbsp; 
+						</c:if>
+ 					</td>
+				</c:if>
+				<c:if test = "${fn:contains(popExercise.week, 'Week 8')}">
+					<td style="background-color:#BCD6F0">${popExercise.popExerciseId}</td>
+					<td style="background-color:#BCD6F0">${popExercise.week}</td>
+					<td style="background-color:#BCD6F0">${popExercise.lesson}</td>
+					<td style="background-color:#BCD6F0">
+						<c:if test="${fn:contains(popExercise.status, 'Y')}">
+							<a style="color:#3CA234" href="attempt_exercise?id=${popExercise.popExerciseId}">Solved</a> &nbsp; 
+						</c:if>
+						<c:if test="${fn:contains(popExercise.status, 'N')}">
+							<a style="color:#BD1B1B" href="attempt_exercise?id=${popExercise.popExerciseId}">Solve Exercise</a> &nbsp; 
+						</c:if>
+ 					</td>
+				</c:if>
+				<c:if test = "${fn:contains(popExercise.week, 'Week 10: Object')}">
+					<td style="background-color:#002B5636">${popExercise.popExerciseId}</td>
+					<td style="background-color:#002B5636">${popExercise.week}</td>
+					<td style="background-color:#002B5636">${popExercise.lesson}</td>
+					<td style="background-color:#002B5636">
+						<c:if test="${fn:contains(popExercise.status, 'Y')}">
+							<a style="color:#3CA234" href="attempt_exercise?id=${popExercise.popExerciseId}">Solved</a> &nbsp; 
+						</c:if>
+						<c:if test="${fn:contains(popExercise.status, 'N')}">
+							<a style="color:#BD1B1B" href="attempt_exercise?id=${popExercise.popExerciseId}">Solve Exercise</a> &nbsp; 
+						</c:if>
+ 					</td>
+				</c:if>
+				<c:if test = "${fn:contains(popExercise.week, 'Week 11: Abstract')}">
+					<td style="background-color:#BCD6F0">${popExercise.popExerciseId}</td>
+					<td style="background-color:#BCD6F0">${popExercise.week}</td>
+					<td style="background-color:#BCD6F0">${popExercise.lesson}</td>
+					<td style="background-color:#BCD6F0">
+						<c:if test="${fn:contains(popExercise.status, 'Y')}">
+							<a style="color:#3CA234" href="attempt_exercise?id=${popExercise.popExerciseId}">Solved</a> &nbsp; 
+						</c:if>
+						<c:if test="${fn:contains(popExercise.status, 'N')}">
+							<a style="color:#BD1B1B" href="attempt_exercise?id=${popExercise.popExerciseId}">Solve Exercise</a> &nbsp; 
+						</c:if>
+					</td>
+				</c:if>
 				</tr>
 			</c:forEach>
 		</table>
@@ -74,6 +173,10 @@
 				});
 			});
 		});
+		
+		fn:contains(){
+			boolean contains(java.lang.String, java.lang.String)
+		}
 	</script>
 </body>
 </html>
