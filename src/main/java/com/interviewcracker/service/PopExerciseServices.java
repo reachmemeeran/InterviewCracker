@@ -113,7 +113,7 @@ public class PopExerciseServices extends CommonUtility {
 		// Answer
 		JsonObject ansObject = new JsonObject();
 		ansObject.addProperty("code", answerCode);
-		ansObject.addProperty("language", "c");
+		ansObject.addProperty("language", language);
 		ansObject.addProperty("input", "");
 	    
 	    String jsonCAnsString = gsonC.toJson(ansObject);

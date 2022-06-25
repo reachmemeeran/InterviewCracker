@@ -4,168 +4,323 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="ISO-8859-1">
-	<title>POP Exercises</title>
-	
-	<link rel="stylesheet" href="../css/style.css">
-	<link rel="stylesheet" href="../css/jquery-ui.min.css">
-	
-	<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
-	<script type="text/javascript" src="../js/jquery.validate.min.js"></script>
+<meta charset="ISO-8859-1">
+<title>POP Exercises</title>
+
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/jquery-ui.min.css">
+
+<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="../js/jquery.validate.min.js"></script>
 </head>
 <body>
-<div class="main-container">
-	<jsp:directive.include file="../header.jsp" />
-	<br/><br/><br/><br/><br/><br/><br/><br/>
-	<jsp:directive.include file="../header.jsp" />
-	
-	<div class="popmiddlebar">
-	<div align="center">
+	<div class="main-container">
+		<jsp:directive.include file="../header.jsp" />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<jsp:directive.include file="../header.jsp" />
 
-		<h3 class="pageheading">
-			Week 2: Functions and Parameters - Lesson 5: Iteration
-		</h3>
-	</div>
-	
-		<c:if test="${output!=null}">
-		<div align="center">
-			<h4 class="message" style="text-align: left; width: 100%; color: blue; overflow-x: auto; overflow-y: hidden;">
-				Output for your code is: ${output}
-			</h4>
+		<div class="popleftbar">
+
+			<p>&nbsp;</p>
+			<h3>Exercise:</h3>
+			<p>&nbsp;</p>
+
+			
+1. Modify the method printCharsInString so that it prints out each character in the string on a new line. <br>
+2. Modify the method printStringInReverse so that it prints out the string in reverse order<br>
+3. Modify the method printStringInUppercase so that it prints out the string as all uppercase <br>
+4. Implement the method encryptText which encrypts the text passed in as an argument using a Ceaser cypher.  <br>
+  /* <br>
+  * https://en.wikipedia.org/wiki/Caesar_cipher <br>
+  * <br>
+  * This is illustrated below <br>
+  *<br>
+  * input string = "ABC"<br>
+  * shift by = 3<br>
+  * encrypted text = "DEF"<br>
+  */<br>
+
+5. Implement the method decryptText which decrypts a Ceaser cypher encrypted message <br>
+
+			<p>&nbsp;</p>
+			Output should be:<br>  DEF <br> ABC <br>
+			<br>
 		</div>
-	</c:if>
-	
-	<c:if test="${message!=null}">
-		<div align="center">
-			<c:if test="${message=='Successfully passed the test case'}">
-				<pre class="message" style="text-align: left; width: 100%; color: green">${message}</pre>
-			</c:if>
-			<c:if test="${message!='Successfully passed the test case'}">
-				<pre class="message" style="text-align: left; width: 100%; color: red">${message}</pre>
-			</c:if>
-		</div>
-	</c:if>
+		<div class="popmiddlebar">
+			<div align="center">
+
+				<h3 class="pageheading">15. Week 7: Java and Object Oriented Programming - Lesson 4 Exercise: Strings</h3>
+			</div>
 
 
-	<div align="left" >
-	<br><br>
+			<div align="center">
+				<form action="submit_javacode" method="post" id="submitJavaCodeForm">
 
-Complete the fibonacci function below such that it calculates the nth term of the Fibonacci sequence using iteration.<br>
-The first 4 terms of the Fibonacci sequence in this example are  1, 1, 2, 3 <br>
-call fibonacci(10) we should get the value 1 1 2 3 5 8 13 21 34 55 returned <br>
+					<p>&nbsp;</p>
+					<c:if test="${attemptedCode!=null}">
+						<textarea name="ccode" rows="25" cols="70">${attemptedCode}</textarea>
 
-			 
-			 Output should be:<br> The Fibonacci series of 10 is : 1 1 2 3 5 8 13 21 34 55
-			<br><br>
-	</div>
+					</c:if>
+					<c:if test="${attemptedCode==null}">
+						<textarea name="ccode" rows="25" cols="70" required="true">class Main {
 
-	<div align="center">
-		<form action="submit_ccode" method="post" id="submitCCodeForm">
-		
-		
-		<c:if test="${attemptedCode!=null}">
-			<textarea name="ccode" rows="12" cols="80">${attemptedCode}</textarea>
-				
-		</c:if>
-		<c:if test="${attemptedCode==null}">
-			<textarea name="ccode" rows="12" cols="80" required="true">#include <stdio.h>
+  public static void main(String[] args) {
+    Main m = new Main();
+    m.printCharsInString("This is an example string");
+  }
 
+  /*
+  * Modify the method below so that it prints out each character in the string
+  * on a new line.
+  */
 
-int fibonacci(int term){
-  return 1;
-}
+  public void printCharsInString(String s){
+    System.out.println(s);
+  }
 
-int main(void) {
-  printf("Hello World\n");
-  return 0;
+  /*
+  * Modify the method below so that it prints out
+  * the string in reverse order
+  */
+
+  public void printStringInReverse(String s){
+    System.out.println(s);
+  }
+
+  /*
+  * Modify the method below so that it prints out
+  * the string as all uppercase
+  */
+
+  public void printStringInUppercase(String s){
+    System.out.println(s);
+  }
+
+  /*
+  * Implement the method below which encrypts the
+  * text passed in as an argument using a 
+  * Ceaser cypher.  
+  * 
+  * https://en.wikipedia.org/wiki/Caesar_cipher
+  * 
+  * This is illustrated below 
+  *
+  * input string = "ABC"
+  * shift by = 3
+  * encrypted text = "DEF"
+  */
+  public String encryptText(String s, int shiftBy){
+    return s;
+  }
+
+  /*
+  * Implement the method below which decrypts a
+  * Ceaser cypher encrypted message
+  *
+  */
+
+  public String decryptText(String s, int shiftBy){
+    return s;
+  }
+
 }
         </textarea>
-		</c:if>
-		
-		<c:if test="${status!=null}">
-			<table class="form">
-			<tr>
-				<td>&nbsp;</td>
-			</tr>
-			<tr>
-				<td colspan="1" align="center">
-					<input type="BUTTON" value="List of Excersises" onclick="window.location.href='list_pop_exercise'">
-				</td>
-			</tr>
-		</table>
-				
-		</c:if>
-		
-		
-        
-        <textarea name="answerCode" style="display:none;">#include <stdio.h>
+					</c:if>
+
+					<c:if test="${status!=null}">
+						<table class="form">
+							<tr>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td colspan="1" align="center"><input type="BUTTON"
+									value="List of Excersises"
+									onclick="window.location.href='list_pop_exercise'"></td>
+							</tr>
+						</table>
+
+					</c:if>
 
 
-int fibonacci(int term){
 
-int prev = 0;
-int current = 1;
-int next =0;
-int count = 1;
+					<textarea name="answerCode" style="display: none;">
+					class Main {
 
-
-while(count<=term){
-if(count==1){
-printf("%d ", count);
-}else{
-next= prev + current;
-prev=current;
-current=next;
-printf("%d ", current);
-}
-count +=1;
-}
-return current;
+public static void main(String[] args) {
+Main m = new Main();
+//m.printCharsInString("This is an example string");
+//m.printStringInReverse("This is an example string");
+//m.printStringInUppercase("This is an example string");
+String encrpyted = m.encryptText("ABC", 3);
+System.out.println(encrpyted);
+String decrpyted = m.decryptText("DEF", 3);
+System.out.println(decrpyted);
 }
 
-int main(void) {
-int term=10;
-printf("The Fibonacci series of %d is : ",term);
-fibonacci(term);
-return 0;
-}</textarea>
-        <input type="hidden" name="exerciseId" value="${exerciseId}">
+/*
+* Modify the method below so that it prints out each character in the string on a new line.
+*/
 
-		<c:if test="${status==null}">
-		<table class="form">
-			<tr>
-				<td>&nbsp;</td>
-			</tr>
-			<tr>
-				<td colspan="2" align="center">
-					<button type="submit">Save</button>&nbsp;&nbsp;&nbsp;
-					<input type="BUTTON" value="List of Excersises" onclick="window.location.href='list_pop_exercise'">
-				</td>
-			</tr>
-		</table>
-		</c:if>
-		</form>
-	</div>
+public void printCharsInString(String s) {
+//System.out.println(s);
+for(int i = 0; i < s.length(); i++ ){
+System.out.println(s.charAt(i));
+}
 
-</div>
-	<jsp:directive.include file="../footer.jsp" />
+}
+
+/*
+* Modify the method below so that it prints out the string in reverse order.
+*/
+
+public void printStringInReverse(String s) {
+//System.out.println(s);
+for(int i = s.length() - 1; i >= 0; i--){
+System.out.println(s.charAt(i));
+}
+}
+
+/*
+* Modify the method below so that it prints out the string as all uppercase.
+*/
+
+public void printStringInUppercase(String s){
+System.out.println(s.toUpperCase());
+}
+
+/*
+* Implement the method below which encrypts the
+* text passed in as an argument using a
+* Ceaser cypher.
+*
+* https://en.wikipedia.org/wiki/Caesar_cipher
+*
+* This is illustrated below
+*
+* input string = "ABC"
+* shift by = 3
+* encrypted text = "DEF"
+*/
+public String encryptText(String s, int shiftBy){
+// if shiftBy is greater that 26.
+if (shiftBy > 26){
+
+shiftBy = shiftBy % 26;
+}
+// if shiftBy is negative.
+else if (shiftBy < 0){
+shiftBy = (shiftBy % 26) + 26;
+}
+
+// initialising cipher string to be returned.
+String cipher = "";
+
+// split the string in to characters and loop through each character in the array.
+for (char i: s.toCharArray()) {
+// if the character is a letter.
+if (Character.isLetter(i)) {
+// if character is lower case.
+if (Character.isLowerCase(i)) {
+// using ASCII numbers for letters
+char c = (char)(i + shiftBy);
+if (c > 'z') {
+cipher += (char)(i - (26 - shiftBy));
+}
+else {
+cipher += c;
+}
+}
+// if character is upper case.
+else if (Character.isUpperCase(i)) {
+// using ASCII numbers for letters
+char c = (char)(i + shiftBy);
+if (c > 'Z') {
+cipher += (char)(i - (26 - shiftBy));
+}
+else {
+cipher += c;
+}
+}
+}
+}
+return cipher;
+}
+
+/*
+* Implement the method below which decrypts a
+* Ceaser cypher encrypted message
+*
+*/
+
+public String decryptText(String s, int shiftBy){
+return encryptText(s, -shiftBy);
+}
+}
+</textarea>
+					<input type="hidden" name="exerciseId" value="${exerciseId}">
+
+					<c:if test="${status==null}">
+						<table class="form">
+							<tr>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td colspan="2" align="center">
+									<button type="submit">Save</button>&nbsp;&nbsp;&nbsp; <input
+									type="BUTTON" value="List of Excersises"
+									onclick="window.location.href='list_pop_exercise'">
+								</td>
+							</tr>
+						</table>
+					</c:if>
+				</form>
+			</div>
+
+
+
+		</div>
+		<div class="poprightbar">
+			<h3>Output and Results</h3>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+
+			<c:if test="${output!=null}">
+					<pre style="text-align: left; width: 100%; color: blue; overflow-x: auto; overflow-y: auto;">Output for your code is: <br>${output}<br></br><p>&nbsp;</p></pre>
+			</c:if>
+
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+
+			<c:if test="${message!=null}">
+					<c:if test="${message=='Successfully passed the test case'}">
+						<pre style="text-align: left; width: 100%; color: green">${message}</pre>
+					</c:if>
+					<c:if test="${message!='Successfully passed the test case'}">
+						<pre style="text-align: left; width: 100%; color: red; overflow-x: auto; overflow-y: auto;">${message}<br></br><p>&nbsp;</p></pre>
+					</c:if>
+			</c:if>
+		</div>
+		<jsp:directive.include file="../footer.jsp" />
 	</div>
 </body>
 <script type="text/javascript">
-
 	$(document).ready(function() {
-		$("#submitCCodeForm").validate({
-			rules: {
-			},
-			
-			messages: {
-			}
+		$("#submitJavaCodeForm").validate({
+			rules : {},
+
+			messages : {}
 		});
-		
+
 		$("#buttonCancel").click(function() {
 			history.back();
 		});
 	});
-	
 </script>
 </html>
