@@ -4,168 +4,286 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="ISO-8859-1">
-	<title>POP Exercises</title>
-	
-	<link rel="stylesheet" href="../css/style.css">
-	<link rel="stylesheet" href="../css/jquery-ui.min.css">
-	
-	<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
-	<script type="text/javascript" src="../js/jquery.validate.min.js"></script>
+<meta charset="ISO-8859-1">
+<title>POP Exercises</title>
+
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/jquery-ui.min.css">
+
+<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="../js/jquery.validate.min.js"></script>
 </head>
 <body>
-<div class="main-container">
-	<jsp:directive.include file="../header.jsp" />
-	<br/><br/><br/><br/><br/><br/><br/><br/>
-	<jsp:directive.include file="../header.jsp" />
-	
-	<div class="popmiddlebar">
-	<div align="center">
+	<div class="main-container">
+		<jsp:directive.include file="../header.jsp" />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<jsp:directive.include file="../header.jsp" />
 
-		<h3 class="pageheading">
-			Week 2: Functions and Parameters - Lesson 5: Iteration
-		</h3>
-	</div>
-	
-		<c:if test="${output!=null}">
-		<div align="center">
-			<h4 class="message" style="text-align: left; width: 100%; color: blue; overflow-x: auto; overflow-y: hidden;">
-				Output for your code is: ${output}
-			</h4>
+		<div class="popleftbar">
+
+			<p>&nbsp;</p>
+			<h3>Exercise:</h3>
+			<p>&nbsp;</p>
+
+			
+Implement the methods convertIntArray to  <br>
+1. convert an array of ints to an array of doubles <br>
+2. convert an array of ints to an ArrayList  <br>
+
+			<p>&nbsp;</p>
+			Output should be:<br>  [1.0 2.0 3.0 4.0 5.0 ] <br>
+[1 2 3 4 5 ]
+ <br>
+			<br>
 		</div>
-	</c:if>
-	
-	<c:if test="${message!=null}">
-		<div align="center">
-			<c:if test="${message=='Successfully passed the test case'}">
-				<pre class="message" style="text-align: left; width: 100%; color: green">${message}</pre>
-			</c:if>
-			<c:if test="${message!='Successfully passed the test case'}">
-				<pre class="message" style="text-align: left; width: 100%; color: red">${message}</pre>
-			</c:if>
-		</div>
-	</c:if>
+		<div class="popmiddlebar">
+			<div align="center">
+
+				<h3 class="pageheading">16. Week 8: Java Types, Control Flow and Error Handing - Lesson 1 Exercise: Methods</h3>
+			</div>
 
 
-	<div align="left" >
-	<br><br>
+			<div align="center">
+				<form action="submit_javacode" method="post" id="submitJavaCodeForm">
 
-Complete the fibonacci function below such that it calculates the nth term of the Fibonacci sequence using iteration.<br>
-The first 4 terms of the Fibonacci sequence in this example are  1, 1, 2, 3 <br>
-call fibonacci(10) we should get the value 1 1 2 3 5 8 13 21 34 55 returned <br>
+					<p>&nbsp;</p>
+					<c:if test="${attemptedCode!=null}">
+						<textarea name="ccode" rows="25" cols="70">${attemptedCode}</textarea>
 
-			 
-			 Output should be:<br> The Fibonacci series of 10 is : 1 1 2 3 5 8 13 21 34 55
-			<br><br>
-	</div>
+					</c:if>
+					<c:if test="${attemptedCode==null}">
+						<textarea name="ccode" rows="25" cols="70" required="true">import java.util.*;
 
-	<div align="center">
-		<form action="submit_ccode" method="post" id="submitCCodeForm">
-		
-		
-		<c:if test="${attemptedCode!=null}">
-			<textarea name="ccode" rows="12" cols="80">${attemptedCode}</textarea>
-				
-		</c:if>
-		<c:if test="${attemptedCode==null}">
-			<textarea name="ccode" rows="12" cols="80" required="true">#include <stdio.h>
+/*
+ * Implement the methods marked with a * in the comments below.  
+ * 
+ * You can test your implementations by calling them from 
+ * the main method,
+ * 
+ * e.g. double[] newArray = m.convertIntArray(exampleArray);
+ *      m.printArray(newArray);
+ */
 
+class Main {
+  public static void main(String[] args) {
+    Main m = new Main();
+    m.printArray(new double[]{1.3,2.3,3.3,4.3});
+    m.printArray(new int[]{1,2,3,4});
+  }
 
-int fibonacci(int term){
-  return 1;
-}
+  // * - method to convert an array of ints to an array of doubles 
+  public double[] convertIntArray(int[] array){
+    return null;
+  }
 
-int main(void) {
-  printf("Hello World\n");
-  return 0;
+  // * - method to convert an array of ints to an ArrayList 
+  public ArrayList<Integer> convertIntArrayToArrayList(int[] array){
+    return null;
+  }
+
+  // ---------------------------------------------------
+  // helpful methods to print arrays of different types
+  // ---------------------------------------------------
+  public void printArray(int[] array){
+    System.out.print("[");
+    for(int i=0; i< array.length; i++){
+      System.out.print(array[i] + " ");
+    }
+    System.out.println("]");
+  }
+
+  public void printArray(double[] array){
+    System.out.print("[");
+    for(int i=0; i< array.length; i++){
+      System.out.print(array[i] + " ");
+    }
+    System.out.println("]");
+  }
+
+  public void printArrayList(ArrayList array){
+    System.out.print("[");
+    for(int i=0; i< array.size(); i++){
+      System.out.print(array.get(i) + " ");
+    }
+    System.out.println("]");
+  }
 }
         </textarea>
-		</c:if>
-		
-		<c:if test="${status!=null}">
-			<table class="form">
-			<tr>
-				<td>&nbsp;</td>
-			</tr>
-			<tr>
-				<td colspan="1" align="center">
-					<input type="BUTTON" value="List of Excersises" onclick="window.location.href='list_pop_exercise'">
-				</td>
-			</tr>
-		</table>
-				
-		</c:if>
-		
-		
-        
-        <textarea name="answerCode" style="display:none;">#include <stdio.h>
+					</c:if>
+
+					<c:if test="${status!=null}">
+						<table class="form">
+							<tr>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td colspan="1" align="center"><input type="BUTTON"
+									value="List of Excersises"
+									onclick="window.location.href='list_pop_exercise'"></td>
+							</tr>
+						</table>
+
+					</c:if>
 
 
-int fibonacci(int term){
 
-int prev = 0;
-int current = 1;
-int next =0;
-int count = 1;
+					<textarea name="answerCode" style="display: none;">
+					import java.util.*;
 
+/*
+* Implement the methods marked with a * in the comments below.
+*
+* You can test your implementations by calling them from
+* the main method,
+*
+* e.g. double[] newArray = m.convertIntArray(exampleArray);
+* m.printArray(newArray);
+*/
 
-while(count<=term){
-if(count==1){
-printf("%d ", count);
-}else{
-next= prev + current;
-prev=current;
-current=next;
-printf("%d ", current);
+class Main {
+
+public static void main(String[] args) {
+
+Main m = new Main();
+
+// demo for convertIntArray
+int[] integerArray = { 1, 2, 3, 4, 5 };
+double[] doubleArray = m.convertIntArray(integerArray);
+m.printArray(doubleArray);
+
+// demo for convertIntArrayToArrayList
+ArrayList<Integer> ArrayList = m.convertIntArrayToArrayList(integerArray);
+m.printArrayList(ArrayList);
 }
-count +=1;
+
+// * - method to convert an array of ints to an array of doubles
+public double[] convertIntArray(int[] array) {
+
+// inputs an array of integers.
+
+// initialising output double array with a length equal to that of the input
+// array length.
+double[] output = new double[array.length];
+for (int i = 0; i <= array.length - 1; i++) {
+// add each integer value from array input in to the output double array.
+output[i] = array[i];
 }
-return current;
+
+// returning an array of doubles
+return output;
 }
 
-int main(void) {
-int term=10;
-printf("The Fibonacci series of %d is : ",term);
-fibonacci(term);
-return 0;
-}</textarea>
-        <input type="hidden" name="exerciseId" value="${exerciseId}">
+// * - method to convert an array of ints to an ArrayList
+public ArrayList<Integer> convertIntArrayToArrayList(int[] array) {
 
-		<c:if test="${status==null}">
-		<table class="form">
-			<tr>
-				<td>&nbsp;</td>
-			</tr>
-			<tr>
-				<td colspan="2" align="center">
-					<button type="submit">Save</button>&nbsp;&nbsp;&nbsp;
-					<input type="BUTTON" value="List of Excersises" onclick="window.location.href='list_pop_exercise'">
-				</td>
-			</tr>
-		</table>
-		</c:if>
-		</form>
-	</div>
+// inputs an array of intergers.
 
-</div>
-	<jsp:directive.include file="../footer.jsp" />
+// Initialising an interger ArrayList
+ArrayList<Integer> outputArrayList = new ArrayList<>();
+
+for (int i = 0; i <= array.length - 1; i++) {
+// NOTE integer x = new Integer(1); example in week8 is incorrect.
+// Error Message: the constructor Integer(int) is deprecated since version 9
+// java.
+Integer x = array[i];
+outputArrayList.add(x);
+}
+// returning an ArrayList of Intergers.
+return outputArrayList;
+}
+
+// ---------------------------------------------------
+// helpful methods to print arrays of different types
+// ---------------------------------------------------
+public void printArray(int[] array) {
+System.out.print("[");
+for (int i = 0; i < array.length; i++) {
+System.out.print(array[i] + " ");
+}
+System.out.println("]");
+}
+
+public void printArray(double[] array) {
+System.out.print("[");
+for (int i = 0; i < array.length; i++) {
+System.out.print(array[i] + " ");
+}
+System.out.println("]");
+}
+
+public void printArrayList(ArrayList array) {
+System.out.print("[");
+for (int i = 0; i < array.size(); i++) {
+System.out.print(array.get(i) + " ");
+}
+System.out.println("]");
+}
+}
+</textarea>
+					<input type="hidden" name="exerciseId" value="${exerciseId}">
+
+					<c:if test="${status==null}">
+						<table class="form">
+							<tr>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td colspan="2" align="center">
+									<button type="submit">Save</button>&nbsp;&nbsp;&nbsp; <input
+									type="BUTTON" value="List of Excersises"
+									onclick="window.location.href='list_pop_exercise'">
+								</td>
+							</tr>
+						</table>
+					</c:if>
+				</form>
+			</div>
+
+
+
+		</div>
+		<div class="poprightbar">
+			<h3>Output and Results</h3>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+
+			<c:if test="${output!=null}">
+					<pre style="text-align: left; width: 100%; color: blue; overflow-x: auto; overflow-y: auto;">Output for your code is: <br>${output}<br></br><p>&nbsp;</p></pre>
+			</c:if>
+
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+
+			<c:if test="${message!=null}">
+					<c:if test="${message=='Successfully passed the test case'}">
+						<pre style="text-align: left; width: 100%; color: green">${message}</pre>
+					</c:if>
+					<c:if test="${message!='Successfully passed the test case'}">
+						<pre style="text-align: left; width: 100%; color: red; overflow-x: auto; overflow-y: auto;">${message}<br></br><p>&nbsp;</p></pre>
+					</c:if>
+			</c:if>
+		</div>
+		<jsp:directive.include file="../footer.jsp" />
 	</div>
 </body>
 <script type="text/javascript">
-
 	$(document).ready(function() {
-		$("#submitCCodeForm").validate({
-			rules: {
-			},
-			
-			messages: {
-			}
+		$("#submitJavaCodeForm").validate({
+			rules : {},
+
+			messages : {}
 		});
-		
+
 		$("#buttonCancel").click(function() {
 			history.back();
 		});
 	});
-	
 </script>
 </html>
