@@ -75,7 +75,8 @@ public class PopExerciseServices extends CommonUtility {
 		attemptExercise(exerciseId);
 	}
 	
-	public void submitCCode() throws ServletException, IOException {
+	
+	public void submitCode(String language) throws ServletException, IOException {
 		
 		String code = request.getParameter("ccode");
 		Integer exerciseId = Integer.parseInt(request.getParameter("exerciseId"));
@@ -86,7 +87,7 @@ public class PopExerciseServices extends CommonUtility {
 		// User Answer
 		JsonObject rootObject = new JsonObject();
 	    rootObject.addProperty("code", code);
-	    rootObject.addProperty("language", "c");
+	    rootObject.addProperty("language", language);
 	    rootObject.addProperty("input", "");
 	    
 	    Gson gsonC = new Gson();

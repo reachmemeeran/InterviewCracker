@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.interviewcracker.service.PopExerciseServices;
 
-@WebServlet("/submit_ccode")
+@WebServlet("/submit_javacode")
 public class SubmitJavaCodeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -21,7 +21,7 @@ public class SubmitJavaCodeServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		PopExerciseServices popExerciseServices = new PopExerciseServices(request, response);
-		popExerciseServices.submitCCode();
+		popExerciseServices.submitCode("java");
 	}
 
 }

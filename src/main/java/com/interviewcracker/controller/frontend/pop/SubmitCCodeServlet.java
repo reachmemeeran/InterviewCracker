@@ -21,7 +21,7 @@ public class SubmitCCodeServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		PopExerciseServices popExerciseServices = new PopExerciseServices(request, response);
-		popExerciseServices.submitCCode();
+		popExerciseServices.submitCode("c");
 	}
 
 }
