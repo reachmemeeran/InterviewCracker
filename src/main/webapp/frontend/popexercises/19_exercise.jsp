@@ -4,168 +4,222 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="ISO-8859-1">
-	<title>POP Exercises</title>
-	
-	<link rel="stylesheet" href="../css/style.css">
-	<link rel="stylesheet" href="../css/jquery-ui.min.css">
-	
-	<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
-	<script type="text/javascript" src="../js/jquery.validate.min.js"></script>
+<meta charset="ISO-8859-1">
+<title>POP Exercises</title>
+
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/jquery-ui.min.css">
+
+<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="../js/jquery.validate.min.js"></script>
 </head>
 <body>
-<div class="main-container">
-	<jsp:directive.include file="../header.jsp" />
-	<br/><br/><br/><br/><br/><br/><br/><br/>
-	<jsp:directive.include file="../header.jsp" />
-	
-	<div class="popmiddlebar">
-	<div align="center">
+	<div class="main-container">
+		<jsp:directive.include file="../header.jsp" />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<jsp:directive.include file="../header.jsp" />
 
-		<h3 class="pageheading">
-			Week 2: Functions and Parameters - Lesson 5: Iteration
-		</h3>
-	</div>
-	
-		<c:if test="${output!=null}">
-		<div align="center">
-			<h4 class="message" style="text-align: left; width: 100%; color: blue; overflow-x: auto; overflow-y: hidden;">
-				Output for your code is: ${output}
-			</h4>
+		<div class="popleftbar">
+
+			<p>&nbsp;</p>
+			<h3>Exercise:</h3>
+			<p>&nbsp;</p>
+
+			
+ Implement the class methods in MyMath class. <br>
+ Test your implementations using the main method <br>
+
+
+			<p>&nbsp;</p>
+			Output should be:<br>  Add: 5<br>
+Sub: 1<br>
+Multiply: 6<br>
+Division: 1<br>
+Power: 1<br>
+Square Root: 2<br>
+PI: 3.14159 <br>
+ <br>
+			<br>
 		</div>
-	</c:if>
+		<div class="popmiddlebar">
+			<div align="center">
+
+				<h3 class="pageheading">19. Week 10: Object Oriented Classes and Inheritance - Lesson 1: Class Methods</h3>
+			</div>
+
+
+			<div align="center">
+				<form action="submit_javacode" method="post" id="submitJavaCodeForm">
+
+					<p>&nbsp;</p>
+					<c:if test="${attemptedCode!=null}">
+						<textarea name="ccode" rows="25" cols="70">${attemptedCode}</textarea>
+
+					</c:if>
+					<c:if test="${attemptedCode==null}">
+						<textarea name="ccode" rows="25" cols="70" required="true">/* 
+ * Implement the class methods in MyMath class. 
+ *
+ * Test your implementations using the main method below
+ */ 
+
+class Main {
+	public static void main(String[] args) {
 	
-	<c:if test="${message!=null}">
-		<div align="center">
-			<c:if test="${message=='Successfully passed the test case'}">
-				<pre class="message" style="text-align: left; width: 100%; color: green">${message}</pre>
-			</c:if>
-			<c:if test="${message!='Successfully passed the test case'}">
-				<pre class="message" style="text-align: left; width: 100%; color: red">${message}</pre>
-			</c:if>
-		</div>
-	</c:if>
-
-
-	<div align="left" >
-	<br><br>
-
-Complete the fibonacci function below such that it calculates the nth term of the Fibonacci sequence using iteration.<br>
-The first 4 terms of the Fibonacci sequence in this example are  1, 1, 2, 3 <br>
-call fibonacci(10) we should get the value 1 1 2 3 5 8 13 21 34 55 returned <br>
-
-			 
-			 Output should be:<br> The Fibonacci series of 10 is : 1 1 2 3 5 8 13 21 34 55
-			<br><br>
-	</div>
-
-	<div align="center">
-		<form action="submit_ccode" method="post" id="submitCCodeForm">
+		MyMath m = new MyMath();
 		
-		
-		<c:if test="${attemptedCode!=null}">
-			<textarea name="ccode" rows="12" cols="80">${attemptedCode}</textarea>
-				
-		</c:if>
-		<c:if test="${attemptedCode==null}">
-			<textarea name="ccode" rows="12" cols="80" required="true">#include <stdio.h>
-
-
-int fibonacci(int term){
-  return 1;
-}
-
-int main(void) {
-  printf("Hello World\n");
-  return 0;
+		System.out.println("Add: "+m.add(3,2));
+		System.out.println("Sub: "+m.sub(3,2));
+		System.out.println("Multiply: "+m.mult(3,2));
+		System.out.println("Division: "+m.div(3,2));
+		System.out.println("Power: "+m.pow(3,2));
+		System.out.println("Square Root: "+m.sqrt(4));
+		System.out.println("PI: "+m.PI);
+	}
 }
         </textarea>
-		</c:if>
-		
-		<c:if test="${status!=null}">
-			<table class="form">
-			<tr>
-				<td>&nbsp;</td>
-			</tr>
-			<tr>
-				<td colspan="1" align="center">
-					<input type="BUTTON" value="List of Excersises" onclick="window.location.href='list_pop_exercise'">
-				</td>
-			</tr>
-		</table>
-				
-		</c:if>
-		
-		
-        
-        <textarea name="answerCode" style="display:none;">#include <stdio.h>
+					</c:if>
+
+					<c:if test="${status!=null}">
+						<table class="form">
+							<tr>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td colspan="1" align="center"><input type="BUTTON"
+									value="List of Excersises"
+									onclick="window.location.href='list_pop_exercise'"></td>
+							</tr>
+						</table>
+
+					</c:if>
 
 
-int fibonacci(int term){
 
-int prev = 0;
-int current = 1;
-int next =0;
-int count = 1;
+					<textarea name="answerCode" style="display: none;">
+					class Main {
+public static void main(String[] args) {
+
+MyMath m = new MyMath();
 
 
-while(count<=term){
-if(count==1){
-printf("%d ", count);
-}else{
-next= prev + current;
-prev=current;
-current=next;
-printf("%d ", current);
+System.out.println("Add: "+m.add(3,2));
+System.out.println("Sub: "+m.sub(3,2));
+System.out.println("Multiply: "+m.mult(3,2));
+System.out.println("Division: "+m.div(3,2));
+System.out.println("Power: "+m.pow(3,2));
+System.out.println("Square Root: "+m.sqrt(4));
+System.out.println("PI: "+m.PI);
 }
-count +=1;
-}
-return current;
 }
 
-int main(void) {
-int term=10;
-printf("The Fibonacci series of %d is : ",term);
-fibonacci(term);
-return 0;
-}</textarea>
-        <input type="hidden" name="exerciseId" value="${exerciseId}">
 
-		<c:if test="${status==null}">
-		<table class="form">
-			<tr>
-				<td>&nbsp;</td>
-			</tr>
-			<tr>
-				<td colspan="2" align="center">
-					<button type="submit">Save</button>&nbsp;&nbsp;&nbsp;
-					<input type="BUTTON" value="List of Excersises" onclick="window.location.href='list_pop_exercise'">
-				</td>
-			</tr>
-		</table>
-		</c:if>
-		</form>
-	</div>
+public class MyMath{
 
-</div>
-	<jsp:directive.include file="../footer.jsp" />
+public static final float PI = 3.14159f;
+
+// addition
+public static int add(int x, int y){
+return x + y;
+}
+
+// subtraction
+public static int sub(int x, int y){
+return x - y;
+}
+
+// multiplication
+public static int mult(int x, int y){
+return x * y;
+}
+
+// division
+public static int div(int x, int y){
+if (y == 0){
+return -1;
+}
+return (int)(x / y);
+}
+
+// raise x to the power y - x^y
+public static int pow(int x, int y){
+return x ^ y;
+}
+
+// square root
+public static int sqrt(int x){
+if (x < 0){
+return -1;
+}
+return (int)Math.sqrt(x);
+}
+
+}
+</textarea>
+					<input type="hidden" name="exerciseId" value="${exerciseId}">
+
+					<c:if test="${status==null}">
+						<table class="form">
+							<tr>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td colspan="2" align="center">
+									<button type="submit">Save</button>&nbsp;&nbsp;&nbsp; <input
+									type="BUTTON" value="List of Excersises"
+									onclick="window.location.href='list_pop_exercise'">
+								</td>
+							</tr>
+						</table>
+					</c:if>
+				</form>
+			</div>
+
+
+
+		</div>
+		<div class="poprightbar">
+			<h3>Output and Results</h3>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+
+			<c:if test="${output!=null}">
+					<pre style="text-align: left; width: 100%; color: blue; overflow-x: auto; overflow-y: auto;">Output for your code is: <br>${output}<br></br><p>&nbsp;</p></pre>
+			</c:if>
+
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+
+			<c:if test="${message!=null}">
+					<c:if test="${message=='Successfully passed the test case'}">
+						<pre style="text-align: left; width: 100%; color: green">${message}</pre>
+					</c:if>
+					<c:if test="${message!='Successfully passed the test case'}">
+						<pre style="text-align: left; width: 100%; color: red; overflow-x: auto; overflow-y: auto;">${message}<br></br><p>&nbsp;</p></pre>
+					</c:if>
+			</c:if>
+		</div>
+		<jsp:directive.include file="../footer.jsp" />
 	</div>
 </body>
 <script type="text/javascript">
-
 	$(document).ready(function() {
-		$("#submitCCodeForm").validate({
-			rules: {
-			},
-			
-			messages: {
-			}
+		$("#submitJavaCodeForm").validate({
+			rules : {},
+
+			messages : {}
 		});
-		
+
 		$("#buttonCancel").click(function() {
 			history.back();
 		});
 	});
-	
 </script>
 </html>
