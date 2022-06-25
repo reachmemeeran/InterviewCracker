@@ -61,11 +61,28 @@ public class PopExerciseServices extends CommonUtility {
 	}
 	
 	public void listExercises() throws ServletException, IOException {
+		request.setAttribute("attemptedCode", null);
 		listExercises(null);
 	}
 	
 	public void attemptExercise(Integer exerciseId) throws ServletException, IOException {
 		request.setAttribute("exerciseId", exerciseId);
+		
+		HttpSession session = request.getSession();
+		Students student = (Students) session.getAttribute("loggedStudent");
+		Integer studentId = student.getStudentsId();
+		StudentCodingTestDAO studentCodingTestDAO = new StudentCodingTestDAO();
+		
+			String attemptedCode = studentCodingTestDAO.getExerciseCode(studentId,exerciseId);
+			if(attemptedCode!=null && !attemptedCode.isEmpty()) {
+				System.out.println("attemptedCode-->"+attemptedCode);
+				request.setAttribute("attemptedCode", attemptedCode);
+			}else {
+				request.setAttribute("attemptedCode", null);
+			}
+			
+		
+		
 		forwardToPage("frontend/popexercises/"+exerciseId+"_exercise.jsp", request, response);
 	}
 	
@@ -157,6 +174,7 @@ public class PopExerciseServices extends CommonUtility {
 					codingTestCase.setCodingTestCaseId(99999);
 					studentCodeTest.setCodingTestCase(codingTestCase);
 					studentCodeTest.setStudents(student);
+					studentCodeTest.setCode(code);
 					studentCodeTest.setHitCount(1);
 					studentCodeTest.setStatus('Y');
 					

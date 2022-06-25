@@ -21,7 +21,8 @@ import javax.persistence.Table;
 @NamedQueries({
 	@NamedQuery(name="StudentCodingTest.findAll", query= "SELECT c FROM StudentCodingTest c ORDER BY c.studentCodingTestId"),
 	@NamedQuery(name="StudentCodingTest.findStudentCode", query="SELECT c from StudentCodingTest c where c.studentId=:studentId"),
-	@NamedQuery(name="StudentCodingTest.findExerciseStatus", query="SELECT c.status from StudentCodingTest c where c.studentId=:studentId and c.codingQuestionId=:popExerciseId")
+	@NamedQuery(name="StudentCodingTest.findExerciseStatus", query="SELECT c.status from StudentCodingTest c where c.studentId=:studentId and c.codingQuestionId=:popExerciseId"),
+	@NamedQuery(name="StudentCodingTest.findExerciseCode", query="SELECT c.code from StudentCodingTest c where c.studentId=:studentId and c.codingQuestionId=:popExerciseId")
 	//@NamedQuery(name = "StudentCodingTest.findPOPLeaders", query = "SELECT c.students, COUNT(c.hitCount) AS POPLeaderCount FROM  StudentCodingTest c "
 		//	+ "GROUP BY c.students.studentsId "
 		//	+ "ORDER BY POPLeaderCount DESC") 
@@ -33,8 +34,10 @@ public class StudentCodingTest implements java.io.Serializable {
 	private CodingTestCase codingTestCase;
 	private Students students;
 	private Integer studentId;
+	private String code;
 	private Integer hitCount;
 	private Character status;
+	
 
 	public StudentCodingTest() {
 	}
@@ -45,11 +48,12 @@ public class StudentCodingTest implements java.io.Serializable {
 	}
 
 	public StudentCodingTest(Integer codingQuestionId, CodingTestCase codingTestCase, Students students,
-			Integer studentId, Integer hitCount, Character status) {
+			Integer studentId,String code, Integer hitCount, Character status) {
 		this.codingQuestionId = codingQuestionId;
 		this.codingTestCase = codingTestCase;
 		this.students = students;
 		this.studentId = studentId;
+		this.code = code;
 		this.hitCount = hitCount;
 		this.status = status;
 	}
@@ -102,6 +106,15 @@ public class StudentCodingTest implements java.io.Serializable {
 
 	public void setStudentId(Integer studentId) {
 		this.studentId = studentId;
+	}
+
+	@Column(name = "code")
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
 	}
 
 	@Column(name = "hit_count")
