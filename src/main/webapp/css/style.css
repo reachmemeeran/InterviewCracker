@@ -39,14 +39,15 @@
 .indexleftbar {
 	position: absolute;
 	top: 100px;
-	left: 120px;
+	left: 90px;
 	z-index: 1;
-	width: 18%;
+	width: 22%;
 	height: 75vh;
-	padding: 1px;
+	padding: 10px;
 	display: flex;
 	flex-direction: column;
-	box-shadow: rgb(0, 43, 86) 10px 10px 20px;
+	box-shadow: rgb(0, 43, 86) 5px 10px 10px 10px;
+	border-radius: 25px;
 }
 
 
@@ -60,12 +61,13 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	box-shadow: rgb(0, 43, 86) 10px 10px 20px;
+	box-shadow: rgb(0, 43, 86) 5px 10px 10px 10px;
+	border-radius: 25px;
 }
 .indexrightbar {
 	position: absolute;
 	top: 100px;
-	right: 60px;
+	right: 40px;
 	z-index: 1;
 	width: 22%;
 	height: 75vh;
@@ -73,7 +75,8 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	box-shadow: rgb(0, 43, 86) 10px 10px 20px;
+	box-shadow: rgb(0, 43, 86) 5px 10px 10px 10px;
+	border-radius: 25px;
 }
 
 .indexmiddlebaradmin {
@@ -86,7 +89,8 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	box-shadow: rgb(0, 43, 86) 10px 10px 20px;
+	box-shadow: rgb(0, 43, 86) 5px 10px 10px 10px;
+	border-radius: 25px;
 }
 
 .indexmiddlebaradminbottom {
@@ -99,13 +103,14 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	box-shadow: rgb(0, 43, 86) 10px 10px 20px;
+	box-shadow: rgb(0, 43, 86) 5px 10px 10px 10px;
+	border-radius: 25px;
 }
 
 .indexmiddlebartop {
 	position: absolute;
 	top: 100px;
-	left: 30%;
+	left: 32%;
 	width: 40%;
 	height: 35%;
 	z-index: 1;
@@ -113,7 +118,8 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	box-shadow: rgb(0, 43, 86) 10px 10px 20px;
+	box-shadow: rgb(0, 43, 86) 5px 10px 10px 10px;
+	border-radius: 25px;
 	overflow-x: auto;
 	overflow-y: auto;
 }
@@ -121,7 +127,7 @@
 .indexmiddlebarbottom {
 	position: absolute;
 	top: 390px;
-	left: 30%;
+	left: 32%;
 	width: 40%;
 	height: 35%;
 	z-index: 1;
@@ -129,7 +135,8 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	box-shadow: rgb(0, 43, 86) 10px 10px 20px;
+	box-shadow: rgb(0, 43, 86) 5px 10px 10px 10px;
+	border-radius: 25px;
 	overflow-x: auto;
 	overflow-y: auto;
 }
@@ -145,7 +152,8 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	box-shadow: rgb(0, 43, 86) 10px 10px 20px;
+	box-shadow: rgb(0, 43, 86) 5px 10px 10px 10px;
+	border-radius: 25px;
 	overflow-y: auto;
 }
 
@@ -160,7 +168,8 @@
 	display: flex;
 	flex-direction: column;
 	align-items: left;
-	box-shadow: rgb(0, 43, 86) 10px 10px 20px;
+	box-shadow: rgb(0, 43, 86) 5px 10px 10px 10px;
+	border-radius: 25px;
 	overflow-x: auto;
 	overflow-y: auto;
 }
@@ -176,7 +185,8 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	box-shadow: rgb(0, 43, 86) 10px 10px 20px;
+	box-shadow: rgb(0, 43, 86) 5px 10px 10px 10px;
+	border-radius: 25px;
 	overflow-y: auto;
 }
 
@@ -191,7 +201,8 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	box-shadow: rgb(0, 43, 86) 10px 10px 20px;
+	box-shadow: rgb(0, 43, 86) 5px 10px 10px 10px;
+	border-radius: 25px;
 	overflow-x: auto;
     overflow-y: hidden;
     white-space: nowrap;
@@ -332,7 +343,7 @@ a:hover {
 	color: #a7a7ca;
 }
 
-a:active, a:focus {
+a:active, a:focus, a:target {
 	color: #ff8000;
 }
 
@@ -356,10 +367,11 @@ ah:active, a:focus {
 
 .footer {
 	position: fixed;
-	left: 0;
+	left: 55px;
 	bottom: 0;
-	width: 100%;
+	width: calc(100% - 55px);
 	background-color: #343a40 !important;
+	justify-content: space-evenly;
 	color: #fff;
 	text-align: center;
 }

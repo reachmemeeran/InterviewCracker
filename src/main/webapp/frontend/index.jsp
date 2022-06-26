@@ -14,7 +14,7 @@
 	
 	<p>&nbsp;</p> 
 	<p>&nbsp;</p> 
-			<h3>POP Exercise Progress</h3>
+			<h3 style="background: #002b56; color: #fff; border-radius: 25px; text-align: center;">POP Exercise Progress</h3>
 				<p>&nbsp;</p>       
 				<c:if test="${loggedStudent!=null}">
 					<p>POP Exercises Solved:${solvedStudentExercise}</p>
@@ -33,10 +33,10 @@
 			<p>&nbsp;</p> 
 			<p>&nbsp;</p> 
 			<p>&nbsp;</p> 
-			<h3>Coding Challenge Progress</h3>
+			<h3 style="background: #002b56; color: #fff; border-radius: 25px; text-align: center;">Coding Challenge Progress</h3>
 				<p>&nbsp;</p>  
 			<p>Coding Question Solved:${totalStudentCode}</p>
-			<p>Coding Question Solved:${totalPendingCode}</p>
+			<p>Coding Question Pending:${totalPendingCode}</p>
 			
 				
      </div>
@@ -44,26 +44,22 @@
 	<div class="indexmiddlebartop">
 	<div align="center">
 		<h2>POP Exercises:</h2>
-		<!-- jkhfjkdsfdsjfhdskjfdsnfldsncfbkdsjlcnsjnkdscbndscdsncldsncdccnskcnsdcnsdcjndscjkdsncdksncsdkncdsmcnds mcnsd mcnsdcmnds csdc sdmdsf <br>
-		dsfsd<br>
-		dsf<br>
-		sdf<br>
-		sdf<br>
-		ds<br>
-		fsd<br>jkhfjkdsfdsjfhdskjfdsnfldsncfbkdsjlcnsjnkdscbndscdsncldsncdccnskcnsdcnsdcjndscjkdsncdksncsdkncdsmcnds
-		fdsf<br>
-		fsd<br>
-		fdsf<br>
-		dsf <br>jkhfjkdsfdsjfhdskjfdsnfldsncfbkdsjlcnsjnkdscbndscdsncldsncdccnskcnsdcnsdcjndscjkdsncdksncsdkncdsmcnds
-		dsfsd<br>
-		dsf<br>
-		sdf<br>jkhfjkdsfdsjfhdskjfdsnfldsncfbkdsjlcnsjnkdscbndscdsncldsncdccnskcnsdcnsdcjndscjkdsncdksncsdkncdsmcnds
-		sdf<br>
-		ds<br>
-		fsd<br>jkhfjkdsfdsjfhdskjfdsnfldsncfbkdsjlcnsjnkdscbndscdsncldsncdccnskcnsdcnsdcjndscjkdsncdksncsdkncdsmcnds
-		fdsf<br>
-		fsd<br>
-		fdsf<br> -->
+		<div align="center">
+			    <table border="1">
+					<tr>
+						<th style="background-color:#002B56; color:#FFF; padding: 10px; height:150px; width:150px;">
+							<a style="color:#FFF" href="attempt_exercise?id=1">Week 1-Lesson 2: Your 1st Program <br> 
+							<p>&nbsp;</p>  Language: C</a></th>
+						<th style="background-color:#002B56; color:#FFF; padding: 10px; height:150px; width:150px;">
+							<a style="color:#FFF" href="attempt_exercise?id=2">Week 1-Lesson 3: Variables<br> 
+							<p>&nbsp;</p>  Language: C</a></th>
+						<th style="background-color:#002B56; color:#FFF; padding: 10px; height:150px; width:150px;">
+							<a style="color:#FFF" href="attempt_exercise?id=3">Week 1-Lesson 4: Errors and Debugging_21<br> 
+							<p>&nbsp;</p>  Language: C</a></th>
+					</tr>
+				</table>
+	        </div>
+	        <a style="color:red; position: absolute; text-align:right; right: 40px;" href="list_pop_exercise">See More Exercises</a>
 	</div>
 	</div>
 	<div class="indexmiddlebarbottom">
