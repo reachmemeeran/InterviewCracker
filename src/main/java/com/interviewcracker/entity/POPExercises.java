@@ -24,14 +24,16 @@ public class POPExercises implements java.io.Serializable {
 	private Integer popExerciseId;
 	private String week;
 	private String lesson;
+	private String language;
 	private Character status;
 
 	public POPExercises() {
 	}
 
-	public POPExercises(String week, String lesson,Character status) {
+	public POPExercises(String week, String lesson,String language,Character status) {
 		this.week = week;
 		this.lesson = lesson;
+		this.language = language;
 		this.status=status;
 	}
 
@@ -63,6 +65,15 @@ public class POPExercises implements java.io.Serializable {
 
 	public void setLesson(String lesson) {
 		this.lesson = lesson;
+	}
+
+	@Column(name = "language")
+	public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
 	}
 
 	@Column(name = "status", length = 1)

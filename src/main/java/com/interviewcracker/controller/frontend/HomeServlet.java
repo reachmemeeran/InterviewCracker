@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.interviewcracker.dao.StudentCodingTestDAO;
 import com.interviewcracker.dao.StudentDAO;
@@ -79,6 +80,18 @@ public class HomeServlet extends HttpServlet {
         sorted_map.putAll(leaderMap);
         
 		request.setAttribute("leaderMap", sorted_map);
+		
+		long solvedExercise = studentCodingTestDAO.countSolvedExercise();
+		request.setAttribute("solvedExercise", solvedExercise);
+		
+		HttpSession session = request.getSession();
+		Students student = (Students) session.getAttribute("loggedStudent");
+		if(student!=null) {
+			Integer studentId = student.getStudentsId();
+			long solvedStudentExercise = studentCodingTestDAO.countSolvedStudentExercise(studentId);
+			request.setAttribute("solvedStudentExercise", solvedStudentExercise);
+		}
+		
 		
 		
 		String homePage= "frontend/index.jsp";

@@ -12,26 +12,38 @@
 	<jsp:directive.include file="header.jsp" />
 	<div class="indexleftbar">
 	
-            <div class="link-item-s">
-               <i>PROGRESS</i>
-            </div>
-            <div class="link-item-s item-margin-2">
-                <b>Coding Question Solved:${totalStudentCode}</b>
-            </div>
-            <div class="link-item-s">
-                <b>Coding Question Pending:${totalPendingCode}</b>
-            </div>
-            <div class="link-item-s">
-                <b>Module Covered:${totalStudentCourse}</b>
-            </div>
-            <div class="link-item-s">
-                <b>Module Pending:${totalPendingCourse}</b>
-            </div>
+	<p>&nbsp;</p> 
+	<p>&nbsp;</p> 
+			<h3>POP Exercise Progress</h3>
+				<p>&nbsp;</p>       
+				<c:if test="${loggedStudent!=null}">
+					<p>POP Exercises Solved:${solvedStudentExercise}</p>
+					<p>&nbsp;</p>  
+					<p>POP Exercises Pending:${22-solvedStudentExercise}</p>  
+					<p>&nbsp;</p>  
+					<p>Total POP Exercises Solved:${solvedExercise}</p>
+				</c:if>
+				<c:if test="${loggedStudent==null}">
+					<p>Total POP Exercises Solved:${solvedExercise}</p>
+					<p>&nbsp;</p>  
+					<p>Login to see your customised statistics</p>
+					<p>&nbsp;</p>  
+				</c:if>
+			
+			<p>&nbsp;</p> 
+			<p>&nbsp;</p> 
+			<p>&nbsp;</p> 
+			<h3>Coding Challenge Progress</h3>
+				<p>&nbsp;</p>  
+			<p>Coding Question Solved:${totalStudentCode}</p>
+			<p>Coding Question Solved:${totalPendingCode}</p>
+			
+				
      </div>
 	
 	<div class="indexmiddlebartop">
 	<div align="center">
-		<h2>Coding Challenge:</h2>
+		<h2>POP Exercises:</h2>
 		<!-- jkhfjkdsfdsjfhdskjfdsnfldsncfbkdsjlcnsjnkdscbndscdsncldsncdccnskcnsdcnsdcjndscjkdsncdksncsdkncdsmcnds mcnsd mcnsdcmnds csdc sdmdsf <br>
 		dsfsd<br>
 		dsf<br>
@@ -56,7 +68,7 @@
 	</div>
 	<div class="indexmiddlebarbottom">
 	<div align="center">
-		<h2>Java Courses:</h2>
+		<h2>Coding Challenge:</h2>
 		<!-- dsf <br>
 		dsfsd<br>
 		dsf<br>
@@ -82,10 +94,8 @@
 	
 	<div class="indexrightbar">
 	
-            <div class="link-item-s">
-                <h3>POP LEADER BOARD</h3>
-            </div>
-            
+                <h3>POP Leader Board</h3>
+				<p>&nbsp;</p>            
             <!--  
             
             <c:forEach items="${listPopLeaders}" var="popLeaders">
@@ -111,6 +121,11 @@
 					</c:forEach>
 				</table>
 	        </div>
+	        <p>&nbsp;</p>   
+	        <p>&nbsp;</p>   
+	        <p>&nbsp;</p>   
+	        <h3>Coding Challenge Leader Board</h3>
+				<p>&nbsp;</p>    
 	
 	<jsp:directive.include file="footer.jsp" />
 	</div>

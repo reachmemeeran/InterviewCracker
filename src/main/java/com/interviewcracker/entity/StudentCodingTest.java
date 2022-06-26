@@ -22,7 +22,9 @@ import javax.persistence.Table;
 	@NamedQuery(name="StudentCodingTest.findAll", query= "SELECT c FROM StudentCodingTest c ORDER BY c.studentCodingTestId"),
 	@NamedQuery(name="StudentCodingTest.findStudentCode", query="SELECT c from StudentCodingTest c where c.studentId=:studentId"),
 	@NamedQuery(name="StudentCodingTest.findExerciseStatus", query="SELECT c.status from StudentCodingTest c where c.studentId=:studentId and c.codingQuestionId=:popExerciseId"),
-	@NamedQuery(name="StudentCodingTest.findExerciseCode", query="SELECT c.code from StudentCodingTest c where c.studentId=:studentId and c.codingQuestionId=:popExerciseId")
+	@NamedQuery(name="StudentCodingTest.findExerciseCode", query="SELECT c.code from StudentCodingTest c where c.studentId=:studentId and c.codingQuestionId=:popExerciseId"),
+	@NamedQuery(name="StudentCodingTest.countSolvedStudentExercise", query= "SELECT count(c) FROM StudentCodingTest c where c.studentId=:studentId and c.codingQuestionId<=22"),
+	@NamedQuery(name="StudentCodingTest.countSolvedExercise", query= "SELECT count(c) FROM StudentCodingTest c where c.codingQuestionId<=22")
 	//@NamedQuery(name = "StudentCodingTest.findPOPLeaders", query = "SELECT c.students, COUNT(c.hitCount) AS POPLeaderCount FROM  StudentCodingTest c "
 		//	+ "GROUP BY c.students.studentsId "
 		//	+ "ORDER BY POPLeaderCount DESC") 

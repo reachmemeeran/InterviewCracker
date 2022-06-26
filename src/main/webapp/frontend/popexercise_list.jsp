@@ -45,6 +45,7 @@
 				<th style="background-color:#002B56; color:#FFF; padding: 10px;">Index</th>
 				<th style="background-color:#002B56; color:#FFF; padding: 10px;">Week</th>
 				<th style="background-color:#002B56; color:#FFF; padding: 10px;">Lesson</th>
+				<th style="background-color:#002B56; color:#FFF; padding: 10px;">Language</th>
 				<th style="background-color:#002B56; color:#FFF; padding: 10px;">Actions</th>
 			</tr>
 			<c:forEach var="popExercise" items="${listPOPExercises}" varStatus="status">
@@ -53,6 +54,7 @@
 					<td style="background-color:#002B5636">${popExercise.popExerciseId}</td>
 					<td style="background-color:#002B5636">${popExercise.week}</td>
 					<td style="background-color:#002B5636">${popExercise.lesson}</td>
+					<td style="background-color:#002B5636">${popExercise.language}</td>
 					<td style="background-color:#002B5636">
 						<c:if test="${fn:contains(popExercise.status, 'Y')}">
 							<a style="color:#3CA234" href="attempt_exercise?id=${popExercise.popExerciseId}">Solved</a> &nbsp; 
@@ -66,6 +68,7 @@
 					<td style="background-color:#BCD6F0">${popExercise.popExerciseId}</td>
 					<td style="background-color:#BCD6F0">${popExercise.week}</td>
 					<td style="background-color:#BCD6F0">${popExercise.lesson}</td>
+					<td style="background-color:#BCD6F0">${popExercise.language}</td>
 					<td style="background-color:#BCD6F0">
 						<c:if test="${fn:contains(popExercise.status, 'Y')}">
 							<a style="color:#3CA234" href="attempt_exercise?id=${popExercise.popExerciseId}">Solved</a> &nbsp; 
@@ -79,6 +82,7 @@
 					<td style="background-color:#002B5636">${popExercise.popExerciseId}</td>
 					<td style="background-color:#002B5636">${popExercise.week}</td>
 					<td style="background-color:#002B5636">${popExercise.lesson}</td>
+					<td style="background-color:#002B5636">${popExercise.language}</td>
 					<td style="background-color:#002B5636">
 						<c:if test="${fn:contains(popExercise.status, 'Y')}">
 							<a style="color:#3CA234" href="attempt_exercise?id=${popExercise.popExerciseId}">Solved</a> &nbsp; 
@@ -92,6 +96,7 @@
 					<td style="background-color:#BCD6F0">${popExercise.popExerciseId}</td>
 					<td style="background-color:#BCD6F0">${popExercise.week}</td>
 					<td style="background-color:#BCD6F0">${popExercise.lesson}</td>
+					<td style="background-color:#BCD6F0">${popExercise.language}</td>
 					<td style="background-color:#BCD6F0">
 						<c:if test="${fn:contains(popExercise.status, 'Y')}">
 							<a style="color:#3CA234" href="attempt_exercise?id=${popExercise.popExerciseId}">Solved</a> &nbsp; 
@@ -105,6 +110,7 @@
 					<td style="background-color:#002B5636">${popExercise.popExerciseId}</td>
 					<td style="background-color:#002B5636">${popExercise.week}</td>
 					<td style="background-color:#002B5636">${popExercise.lesson}</td>
+					<td style="background-color:#002B5636">${popExercise.language}</td>
 					<td style="background-color:#002B5636">
 						<c:if test="${fn:contains(popExercise.status, 'Y')}">
 							<a style="color:#3CA234" href="attempt_exercise?id=${popExercise.popExerciseId}">Solved</a> &nbsp; 
@@ -118,6 +124,7 @@
 					<td style="background-color:#BCD6F0">${popExercise.popExerciseId}</td>
 					<td style="background-color:#BCD6F0">${popExercise.week}</td>
 					<td style="background-color:#BCD6F0">${popExercise.lesson}</td>
+					<td style="background-color:#BCD6F0">${popExercise.language}</td>
 					<td style="background-color:#BCD6F0">
 						<c:if test="${fn:contains(popExercise.status, 'Y')}">
 							<a style="color:#3CA234" href="attempt_exercise?id=${popExercise.popExerciseId}">Solved</a> &nbsp; 
@@ -131,6 +138,7 @@
 					<td style="background-color:#002B5636">${popExercise.popExerciseId}</td>
 					<td style="background-color:#002B5636">${popExercise.week}</td>
 					<td style="background-color:#002B5636">${popExercise.lesson}</td>
+					<td style="background-color:#002B5636">${popExercise.language}</td>
 					<td style="background-color:#002B5636">
 						<c:if test="${fn:contains(popExercise.status, 'Y')}">
 							<a style="color:#3CA234" href="attempt_exercise?id=${popExercise.popExerciseId}">Solved</a> &nbsp; 
@@ -144,6 +152,7 @@
 					<td style="background-color:#BCD6F0">${popExercise.popExerciseId}</td>
 					<td style="background-color:#BCD6F0">${popExercise.week}</td>
 					<td style="background-color:#BCD6F0">${popExercise.lesson}</td>
+					<td style="background-color:#BCD6F0">${popExercise.language}</td>
 					<td style="background-color:#BCD6F0">
 						<c:if test="${fn:contains(popExercise.status, 'Y')}">
 							<a style="color:#3CA234" href="attempt_exercise?id=${popExercise.popExerciseId}">Solved</a> &nbsp; 
