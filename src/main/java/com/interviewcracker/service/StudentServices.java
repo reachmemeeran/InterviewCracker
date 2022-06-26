@@ -14,19 +14,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
-import com.google.gson.Gson;
 import com.interviewcracker.dao.HashGenerator;
 import com.interviewcracker.dao.StudentCodingTestDAO;
 import com.interviewcracker.dao.StudentDAO;
-import com.interviewcracker.entity.OkHttpResponse;
 import com.interviewcracker.entity.StudentCodingTest;
 import com.interviewcracker.entity.Students;
-import com.squareup.okhttp.MediaType;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.RequestBody;
-import com.squareup.okhttp.Response;
-import com.squareup.okhttp.ResponseBody;
 
 public class StudentServices extends CommonUtility {
 	

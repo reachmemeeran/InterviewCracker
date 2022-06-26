@@ -1,7 +1,6 @@
 package com.interviewcracker.service;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Base64;
 import java.util.List;
 
@@ -9,18 +8,15 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.servlet.http.Part;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import com.interviewcracker.dao.HashGenerator;
 import com.interviewcracker.dao.CodingQuestionDAO;
 import com.interviewcracker.dao.StudentCodingTestDAO;
 import com.interviewcracker.dao.StudentDAO;
 import com.interviewcracker.entity.CodingQuestion;
 import com.interviewcracker.entity.CodingTestCase;
 import com.interviewcracker.entity.OkHttpResponse;
-import com.interviewcracker.entity.CodingQuestion;
 import com.interviewcracker.entity.StudentCodingTest;
 import com.interviewcracker.entity.Students;
 import com.squareup.okhttp.MediaType;

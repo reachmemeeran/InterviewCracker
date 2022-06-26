@@ -1,10 +1,8 @@
 package com.interviewcracker.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.interviewcracker.entity.StudentCodingTest;
-import com.interviewcracker.entity.Students;
 
 public class StudentCodingTestDAO extends JpaDAO<StudentCodingTest> implements GenericDAO<StudentCodingTest> {
 

@@ -17,7 +17,6 @@ import com.interviewcracker.dao.HashGenerator;
 import com.interviewcracker.dao.PopExerciseDAO;
 import com.interviewcracker.dao.StudentCodingTestDAO;
 import com.interviewcracker.dao.StudentDAO;
-import com.interviewcracker.entity.CodingQuestion;
 import com.interviewcracker.entity.CodingTestCase;
 import com.interviewcracker.entity.OkHttpResponse;
 import com.interviewcracker.entity.POPExercises;

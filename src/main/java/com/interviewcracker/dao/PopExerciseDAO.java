@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import com.interviewcracker.entity.POPExercises;
-import com.interviewcracker.entity.Students;
 
 public class PopExerciseDAO extends JpaDAO<POPExercises> implements GenericDAO<POPExercises> {
 
