@@ -54,11 +54,11 @@ How might you modify this function, or add a new function, so it prints out the 
 
 					<p>&nbsp;</p>
 					<c:if test="${attemptedCode!=null}">
-						<textarea name="ccode" rows="25" cols="70">${attemptedCode}</textarea>
+						<textarea name="ccode" rows="25" cols="70" style="background-color:#002b56 ; color:#fff">${attemptedCode}</textarea>
 
 					</c:if>
 					<c:if test="${attemptedCode==null}">
-						<textarea name="ccode" rows="25" cols="70" required="true">#include <stdio.h>
+						<textarea name="ccode" rows="25" cols="70" style="background-color:#002b56 ; color:#fff" required="true">#include <stdio.h>
 
 void squareMultTable(int n){
 

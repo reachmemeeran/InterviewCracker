@@ -61,11 +61,11 @@ Hint: use the modulo (%) operator.  <br>
 
 					<p>&nbsp;</p>
 					<c:if test="${attemptedCode!=null}">
-						<textarea name="ccode" rows="25" cols="70">${attemptedCode}</textarea>
+						<textarea name="ccode" rows="25" cols="70" style="background-color:#002b56 ; color:#fff">${attemptedCode}</textarea>
 
 					</c:if>
 					<c:if test="${attemptedCode==null}">
-						<textarea name="ccode" rows="25" cols="70" required="true">/*
+						<textarea name="ccode" rows="25" cols="70" style="background-color:#002b56 ; color:#fff" required="true">/*
  * Implement the methods below.
  */ 
 

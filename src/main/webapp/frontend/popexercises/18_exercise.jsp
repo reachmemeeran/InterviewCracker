@@ -54,11 +54,11 @@
 
 					<p>&nbsp;</p>
 					<c:if test="${attemptedCode!=null}">
-						<textarea name="ccode" rows="25" cols="70">${attemptedCode}</textarea>
+						<textarea name="ccode" rows="25" cols="70" style="background-color:#002b56 ; color:#fff">${attemptedCode}</textarea>
 
 					</c:if>
 					<c:if test="${attemptedCode==null}">
-						<textarea name="ccode" rows="25" cols="70" required="true">class Main {
+						<textarea name="ccode" rows="25" cols="70" style="background-color:#002b56 ; color:#fff" required="true">class Main {
   public static void main(String[] args) {
   	String name = "Name";
 	int age = 35;

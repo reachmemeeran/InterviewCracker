@@ -55,11 +55,11 @@ Implement the methods convertIntArray to  <br>
 
 					<p>&nbsp;</p>
 					<c:if test="${attemptedCode!=null}">
-						<textarea name="ccode" rows="25" cols="70">${attemptedCode}</textarea>
+						<textarea name="ccode" rows="25" cols="70" style="background-color:#002b56 ; color:#fff">${attemptedCode}</textarea>
 
 					</c:if>
 					<c:if test="${attemptedCode==null}">
-						<textarea name="ccode" rows="25" cols="70" required="true">import java.util.*;
+						<textarea name="ccode" rows="25" cols="70" style="background-color:#002b56 ; color:#fff" required="true">import java.util.*;
 
 /*
  * Implement the methods marked with a * in the comments below.  

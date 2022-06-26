@@ -86,6 +86,11 @@ public class PopExerciseServices extends CommonUtility {
 		forwardToPage("frontend/popexercises/"+exerciseId+"_exercise.jsp", request, response);
 	}
 	
+	public void attemptExerciseSubmit(Integer exerciseId) throws ServletException, IOException {
+		request.setAttribute("exerciseId", exerciseId);
+		forwardToPage("frontend/popexercises/"+exerciseId+"_exercise.jsp", request, response);
+	}
+	
 	public void attemptExercise() throws ServletException, IOException {
 		Integer exerciseId = Integer.parseInt(request.getParameter("id"));
 		System.out.println("Exercise id--> "+exerciseId);
@@ -199,7 +204,7 @@ public class PopExerciseServices extends CommonUtility {
 				request.setAttribute("output", null);
 			}
 			request.setAttribute("message", message);
-			attemptExercise(exerciseId);
+			attemptExerciseSubmit(exerciseId);
 		}
 	}
 	
