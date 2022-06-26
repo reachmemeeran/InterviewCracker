@@ -39,20 +39,6 @@
 	                <i><a class="ah" href="logout"> <span>Logout</span></a></i>
 	            </c:if>
             </div>
-            <!-- <div class="right-item">
-                <div class="link-item-h margin-left-3">
-                   <a class="fa-solid fa-magnifying-glass"></a>
-                </div>
-                <div class="link-item-h margin-left-3">
-                   <a class="fa-solid fa-inbox"></a>
-                </div>
-                <div class="link-item-h margin-left-3">
-                   <a class="fa-solid fa-bell"></a>
-                </div>
-                <div class="link-item-h margin-left-3">
-                   <a class="fa-solid fa-cart-shopping"></a>
-                </div>
-            </div> -->
 
         </div>
         <div class="sidebar">

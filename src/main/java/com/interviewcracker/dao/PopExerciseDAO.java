@@ -48,9 +48,7 @@ public class PopExerciseDAO extends JpaDAO<POPExercises> implements GenericDAO<P
 		String encryptedPassword = HashGenerator.generateMD5(password);
 		parameters.put("email", email);
 		parameters.put("password",encryptedPassword);
-		System.out.println("result-am here->");
 		List<POPExercises> result = super.findWithNamedQuery("Students.checkLogin",parameters);
-		System.out.println("result-->"+result.size());
 		if(!result.isEmpty()) {
 			return result.get(0);
 		}

@@ -14,61 +14,92 @@
      <jsp:directive.include file="header.jsp" />
      
     <div class="indexleftbar">
-		<div class="link-item-s">
-		   <i>STATISTICS</i>
-		</div>
-		<div class="link-item-s item-margin-2">
-		    <b>Total Coding Question: ${totalCode}</b>
-		</div>
-		<div class="link-item-s">
-		    <b>Total Course: ${totalCourse}</b>
-		</div>
-		<div class="link-item-s">
-		    <b>Total Staffs: ${totalAdmins}</b>
-		</div>
-		<div class="link-item-s">
-		    <b>Total Students: ${totalStudents}</b>
-		</div>
+    	<p>&nbsp;</p> 
+		<p>&nbsp;</p> 
+		<h3 style="background: #002b56; color: #fff; border-radius: 25px; text-align: center;"><p>&nbsp;</p>Statistics<p>&nbsp;</p></h3>
+		<p>&nbsp;</p>       
+		<p>Total Number of POP Exercises:22</p>
+		<p>&nbsp;</p>  
+		<p>Total Coding Questions:0</p>  
+		<p>&nbsp;</p>  
+		<p>Total Course: ${totalCourse}</p>
+	
+		<p>&nbsp;</p> 
+		<p>Total Staffs: ${totalAdmins}</p> 
+		<p>&nbsp;</p> 
+		<p>Total Students: ${totalStudents}</p> 
+		<p>&nbsp;</p>  
      </div>
      
-	<div class="indexmiddlebar">     
+	<div class="indexmiddlebaradmin">     
 		<div align="center">
 		     <h2>Administrative Dashboard</h2>
 		</div>
 		<div align="center">
 		<hr width="60%"/>
+		<p>&nbsp;</p>  
 		    <h2 class="pageheading">Quick Actions:</h2> 
 		     <b>
-		     <a href="codingquestion_form.jsp">New Code</a>&nbsp;&nbsp;&nbsp;
-		     <a href="course_form.jsp">New Course</a>&nbsp;&nbsp;&nbsp;
-		     <a href="staff_form.jsp">New Staff</a>&nbsp;&nbsp;&nbsp;
-		     <a href="student_form.jsp">New Student</a>
+		     <p>&nbsp;</p>  
+		     <a href="codingquestion_form.jsp">Create New Coding Question</a><p>&nbsp;</p>  <br>
+		     <a href="course_form.jsp">Create New Course</a><p>&nbsp;</p>  <br>
+		     <a href="staff_form.jsp">Create New Staff</a><p>&nbsp;</p>  <br>
+		     <a href="student_form.jsp">Create New Student</a><br>
 		     </b>
 		</div>
 		
 		<div align="center">
 		     <hr width="60%"/>
+		     	<p>&nbsp;</p>  
+				<p>&nbsp;</p>  
 		     <h2 class="pageheading">Statistics</h2>
-		     <table>
+		     
+		     <table border="1">
 		     	<tr>
-		     		
-		     		<td><b>Total Coding Question: ${totalCode}</b></td>
-				<td><b>Total Course: ${totalCourse}</b></td>
-				<td><b>Total Staffs: ${totalAdmins}</b></td>
-				<td><b>Total Students: ${totalStudents}</b></td>
+		     		<th style="background-color:#002B56; color:#FFF; padding: 10px;">Total POP Exercises</th>
+		     		<th style="background-color:#002B56; color:#FFF; padding: 10px;">Total Coding Question</th>
+		     		<th style="background-color:#002B56; color:#FFF; padding: 10px;">Total Course</th>
+		     		<th style="background-color:#002B56; color:#FFF; padding: 10px;">Total Staffs</th>
+		     		<th style="background-color:#002B56; color:#FFF; padding: 10px;">Total Students</th>
+		     	</tr>
+		     	<tr>
+		     		<td style="background-color:#002B5636; text-align: center">22</td>
+		     		<td style="background-color:#002B5636; text-align: center">0</td>
+					<td style="background-color:#002B5636; text-align: center">0</td>
+					<td style="background-color:#002B5636; text-align: center">${totalAdmins}</td>
+					<td style="background-color:#002B5636; text-align: center">${totalStudents}</td>
 		     	</tr>
 		     </table>
 		</div>
+		<p>&nbsp;</p>  
+		     <p>&nbsp;</p>  
+		     <p>&nbsp;</p>  
      </div>
      
      <div class="indexrightbar">
 	
-         <div class="link-item-s">
-             <i>LEADER BOARD - CODING CHALLENGE</i>
-         </div>
-         <div class="link-item-s item-margin-2">
-             TO BE UPDATED
-         </div>
+         <h3>POP Leader Board</h3>
+		<p>&nbsp;</p>            
+            
+           <div align="center">
+		    <table border="1">
+				<tr>
+					<th style="background-color:#002B56; color:#FFF; padding: 10px;">Leader</th>
+					<th style="background-color:#002B56; color:#FFF; padding: 10px;">Points</th>
+				</tr>
+				<c:forEach items="${leaderMap}" var="entry">
+					<tr>
+						<td style="background-color:#002B5636; text-align: center">${entry.key}</td>
+						<td style="background-color:#002B5636; text-align: center">${entry.value}</td>
+					</tr>
+				</c:forEach>
+			</table>
+        </div>
+		<p>&nbsp;</p>   
+		<p>&nbsp;</p>   
+		<p>&nbsp;</p>   
+		<h3>Coding Challenge Leader Board</h3>
+		<p>&nbsp;</p> 
 
      </div>
      <jsp:directive.include file="footer.jsp" />

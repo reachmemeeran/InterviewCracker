@@ -81,20 +81,6 @@ public class CodingQuestionServices extends CommonUtility {
 		Integer codeComplexityId = Integer.parseInt(request.getParameter("codeComplexity"));
 		String title = request.getParameter("title");
 		String description = request.getParameter("description");
-		float price=Float.parseFloat(request.getParameter("price"));
-		Integer unitstock = Integer.parseInt(request.getParameter("stockAvailable"));
-		
-		
-		//codingQuestion.setTitle(title);
-		//codingQuestion.setDescription(description);
-		
-		CodeComplexity codeComplexity = codeComplexityDAO.get(codeComplexityId);
-		codingQuestion.setCodeComplexity(codeComplexity);
-		
-		//codingQuestion.setPrice(price);
-		float falsePrice = price+20;
-		//codingQuestion.setFalsePrice(falsePrice);
-		//codingQuestion.setUnitstock(unitstock);
 		
 		Part part = request.getPart("codingQuestionImage");
 		
@@ -106,7 +92,6 @@ public class CodingQuestionServices extends CommonUtility {
 			inputStream.read(imageBytes);
 			inputStream.close();
 			
-			//codingQuestion.setImage(imageBytes);
 		}
 	}
 

@@ -30,7 +30,6 @@ public class CodeComplexity implements java.io.Serializable {
 
 	private Integer codeComplexityId;
 	private String complexityDesc;
-	private Set<CodingQuestion> codingQuestions = new HashSet<CodingQuestion>(0);
 
 	public CodeComplexity() {
 	}
@@ -39,10 +38,6 @@ public class CodeComplexity implements java.io.Serializable {
 		this.complexityDesc = complexityDesc;
 	}
 
-	public CodeComplexity(String complexityDesc, Set<CodingQuestion> codingQuestions) {
-		this.complexityDesc = complexityDesc;
-		this.codingQuestions = codingQuestions;
-	}
 
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
@@ -63,15 +58,6 @@ public class CodeComplexity implements java.io.Serializable {
 
 	public void setComplexityDesc(String complexityDesc) {
 		this.complexityDesc = complexityDesc;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "codeComplexity")
-	public Set<CodingQuestion> getCodingQuestions() {
-		return this.codingQuestions;
-	}
-
-	public void setCodingQuestions(Set<CodingQuestion> codingQuestions) {
-		this.codingQuestions = codingQuestions;
 	}
 
 }

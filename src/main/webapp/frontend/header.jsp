@@ -15,7 +15,7 @@
                 	<a class="ah" href="list_pop_exercise">POP Exercises</a>
                 </div>
                 <div class="link-item-h">
-                    <a class="ah" href="#">Coding Challenge</a>
+                    <a class="ah" href="list_code">Coding Challenge</a>
                 </div>
                 <div class="link-item-h">
                     <a class="ah" href="#">Java Courses</a>

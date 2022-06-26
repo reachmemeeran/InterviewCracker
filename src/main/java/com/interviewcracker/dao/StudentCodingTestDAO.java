@@ -40,18 +40,15 @@ public class StudentCodingTestDAO extends JpaDAO<StudentCodingTest> implements G
 		StudentCodingTest studentCodeTest = new StudentCodingTest();
 		
 		List<Object[]> result = super.findWithNamedQueryObjects("StudentCodingTest.findPOPLeaders",0,10);
-		System.out.println("result --> "+result.size());
 		
 		if (!result.isEmpty()) {
 			for (Object[] elements : result) {
 				Students student = (Students) elements[0];
 				studentCodeTest.setStudents(student);
 				popLeaders.add(studentCodeTest);
-				System.out.println("elements--->"+elements);
 			}
 		} 
 		
-		System.out.println("popLeaders --> "+popLeaders.size());
 		
 		return popLeaders;*/
 	}

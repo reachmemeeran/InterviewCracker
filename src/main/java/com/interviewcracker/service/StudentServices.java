@@ -52,7 +52,6 @@ public class StudentServices extends CommonUtility {
 	
 	public void createStudent() throws ServletException, IOException {
 		String email = request.getParameter("email");
-		System.out.println("email--````->"+email);
 		Students existStudents = studentDAO.findByEmail(email);
 		
 		if (existStudents != null) {
@@ -84,17 +83,10 @@ public class StudentServices extends CommonUtility {
 		}
 		
 		student.setFullname(fullname);
-		System.out.println("email--->"+email);
-		System.out.println("fullname--->"+fullname);
-		System.out.println("password--->"+password);
-		
 		if (password != null & !password.isEmpty()) {
 			String encryptedPassword = HashGenerator.generateMD5(password);
 			student.setPassword(encryptedPassword);				
 		}		
-		
-		System.out.println("password-22-->"+student.getPassword());
-		
 		
 		try {
 			//String profilepic = request.getParameter("profilepic");
@@ -170,9 +162,7 @@ public class StudentServices extends CommonUtility {
 			
 		} else {
 			
-			System.out.println("studentId--->"+studentId);
 			Students studentById = studentDAO.get(studentId);
-			System.out.println("studentById--->"+studentById.getEmail());
 			updateStudentFieldsFromForm(studentById);
 			
 			studentDAO.update(studentById);
@@ -239,37 +229,6 @@ public class StudentServices extends CommonUtility {
 		}
 	}
 	
-	/*
-	public void getResponse() {
-		System.out.println("I AM INSIDE getResponse");
-		try {
-			OkHttpClient client = new OkHttpClient();
-			MediaType mediaType = MediaType.parse("application/json");
-			RequestBody body = RequestBody.create(mediaType, "{\r\n  \"code\": \"public class Test{ public static void main(String []args) { System.out.println(\\\"Meeran\\\");}}\",\r\n  \"language\": \"java\",\r\n  \"input\": \"\"\r\n}");
-			Request request = new Request.Builder()
-			  .url("https://codex-api.herokuapp.com/")
-			  .method("POST", body)
-			  .addHeader("Content-Type", "application/json")
-			  .build();
-			Response response = client.newCall(request).execute();
-			System.out.println("response.body()--->"+response.body().toString());
-			System.out.println("response.body()--->"+response.body().string());
-			System.out.println("response.toString()--->"+response.toString());
-			
-			Gson gson = new Gson(); 
-			ResponseBody responseBody = client.newCall(request).execute().body(); 
-			OkHttpResponse entity = gson.fromJson(responseBody.string(), OkHttpResponse.class);
-			
-			System.out.println("Entity 1---->"+entity.getSuccess());
-			System.out.println("Entity 2---->"+entity.getOutput().trim());
-			System.out.println("Entity 3---->"+entity.getTimestamp());
-			System.out.println("Entity 4---->"+entity.getLanguage());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	*/
 	
 	public void showStudentProfile() throws ServletException, IOException {
 		forwardToPage("frontend/student_profile.jsp", request, response);
@@ -280,22 +239,14 @@ public class StudentServices extends CommonUtility {
 		StudentCodingTestDAO studentCodingTestDAO=new StudentCodingTestDAO();
 		List<StudentCodingTest> listPopLeaders = studentCodingTestDAO.popLeaders();
 		
-		System.out.println("result --> "+listPopLeaders.size());
-		
 		Map<String,Integer> leaderMap = new HashMap<>();
 		
 		StudentDAO studentDao = new StudentDAO();
 
 		
 		for(StudentCodingTest leader: listPopLeaders ) {
-			System.out.println("leader-->"+leader.getStudentCodingTestId());
-			System.out.println("leader-22->"+leader.getHitCount());
-			System.out.println("leader-33->"+leader.getStudentId());
 			
 			Students student = studentDao.get(leader.getStudentId());
-			
-			System.out.println("Id-->"+student.getStudentsId());
-			System.out.println("Name-->"+student.getFullname());
 			
 			String name = student.getFullname();
 		
@@ -307,13 +258,15 @@ public class StudentServices extends CommonUtility {
 			}
 		}
 		
-		request.setAttribute("listPopLeaders", listPopLeaders);
-		
 		ValueComparator CustomComparator = new ValueComparator(leaderMap);
         TreeMap<String, Integer> sorted_map = new TreeMap<String, Integer>(CustomComparator);
-        sorted_map.putAll(leaderMap);
+        if(leaderMap.size()>1) {
+			sorted_map.putAll(leaderMap);
+			request.setAttribute("leaderMap", sorted_map);
+		}else {
+			request.setAttribute("leaderMap", leaderMap);
+		}
         
-		request.setAttribute("leaderMap", sorted_map);
 		
 		long solvedExercise = studentCodingTestDAO.countSolvedExercise();
 		request.setAttribute("solvedExercise", solvedExercise);
@@ -324,6 +277,19 @@ public class StudentServices extends CommonUtility {
 			Integer studentId = student.getStudentsId();
 			long solvedStudentExercise = studentCodingTestDAO.countSolvedStudentExercise(studentId);
 			request.setAttribute("solvedStudentExercise", solvedStudentExercise);
+			String studentName = student.getFullname();
+			int rank = 0;
+			for (String key : sorted_map.keySet()) {
+				rank++;
+				if(key.equals(studentName)) {
+					break;
+				}
+			}
+			
+			if (sorted_map.containsKey(studentName)) {
+				rank = sorted_map.headMap(studentName).size();
+	        }
+			request.setAttribute("rank", rank);
 		}
 		
 		forwardToPage("frontend/index.jsp", request, response);

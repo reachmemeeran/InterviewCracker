@@ -14,13 +14,13 @@ import javax.servlet.http.Part;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.interviewcracker.dao.HashGenerator;
-import com.interviewcracker.dao.PopExerciseDAO;
+import com.interviewcracker.dao.CodingQuestionDAO;
 import com.interviewcracker.dao.StudentCodingTestDAO;
 import com.interviewcracker.dao.StudentDAO;
 import com.interviewcracker.entity.CodingQuestion;
 import com.interviewcracker.entity.CodingTestCase;
 import com.interviewcracker.entity.OkHttpResponse;
-import com.interviewcracker.entity.POPExercises;
+import com.interviewcracker.entity.CodingQuestion;
 import com.interviewcracker.entity.StudentCodingTest;
 import com.interviewcracker.entity.Students;
 import com.squareup.okhttp.MediaType;
@@ -29,42 +29,42 @@ import com.squareup.okhttp.Request;
 import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.ResponseBody;
 
-public class PopExerciseServices extends CommonUtility {
+public class CodeServices extends CommonUtility {
 	
 	private StudentDAO studentDAO;
-	private PopExerciseDAO popExerciseDAO;
+	private CodingQuestionDAO codingQuestionDAO;
 	private HttpServletRequest request;
 	private HttpServletResponse response;
 	
-	public PopExerciseServices(HttpServletRequest request, HttpServletResponse response) {
+	public CodeServices(HttpServletRequest request, HttpServletResponse response) {
 		this.request = request;
 		this.response = response;
 		this.studentDAO = new StudentDAO();
-		this.popExerciseDAO = new PopExerciseDAO();
+		this.codingQuestionDAO = new CodingQuestionDAO();
 	}
 	
-	public void listExercises(String message) throws ServletException, IOException {
-		List<POPExercises> listPOPExercises = popExerciseDAO.listAll();	
+	public void listCode(String message) throws ServletException, IOException {
+		List<CodingQuestion> listCodingQuestion = codingQuestionDAO.listAll();	
 		
 		HttpSession session = request.getSession();
 		Students student = (Students) session.getAttribute("loggedStudent");
 		Integer studentId = student.getStudentsId();
 		StudentCodingTestDAO studentCodingTestDAO = new StudentCodingTestDAO();
 		
-		for(POPExercises pop : listPOPExercises) {
-			Character status = studentCodingTestDAO.getExerciseStatus(studentId,pop.getPopExerciseId());
-			pop.setStatus(status);
+		for(CodingQuestion code : listCodingQuestion) {
+			Character status = studentCodingTestDAO.getExerciseStatus(studentId,code.getCodingQuestionId());
+			code.setStatus(status);
 		}
-		request.setAttribute("listPOPExercises", listPOPExercises);
-		forwardToPage("frontend/popexercise_list.jsp", message, request, response);
+		request.setAttribute("listCodingQuestion", listCodingQuestion);
+		forwardToPage("frontend/codingquestion_list.jsp", message, request, response);
 	}
 	
-	public void listExercises() throws ServletException, IOException {
+	public void listCode() throws ServletException, IOException {
 		request.setAttribute("attemptedCode", null);
-		listExercises(null);
+		listCode(null);
 	}
 	
-	public void attemptExercise(Integer exerciseId) throws ServletException, IOException {
+	public void attemptCode(Integer exerciseId) throws ServletException, IOException {
 		request.setAttribute("exerciseId", exerciseId);
 		
 		HttpSession session = request.getSession();
@@ -84,14 +84,14 @@ public class PopExerciseServices extends CommonUtility {
 		forwardToPage("frontend/popexercises/"+exerciseId+"_exercise.jsp", request, response);
 	}
 	
-	public void attemptExerciseSubmit(Integer exerciseId) throws ServletException, IOException {
+	public void attemptCodeSubmit(Integer exerciseId) throws ServletException, IOException {
 		request.setAttribute("exerciseId", exerciseId);
 		forwardToPage("frontend/popexercises/"+exerciseId+"_exercise.jsp", request, response);
 	}
 	
-	public void attemptExercise() throws ServletException, IOException {
+	public void attemptCode() throws ServletException, IOException {
 		Integer exerciseId = Integer.parseInt(request.getParameter("id"));
-		attemptExercise(exerciseId);
+		attemptCode(exerciseId);
 	}
 	
 	
@@ -199,149 +199,10 @@ public class PopExerciseServices extends CommonUtility {
 				request.setAttribute("output", null);
 			}
 			request.setAttribute("message", message);
-			attemptExerciseSubmit(exerciseId);
+			attemptCodeSubmit(exerciseId);
 		}
 	}
 	
-	public void createStudent() throws ServletException, IOException {
-		String email = request.getParameter("email");
-		Students existStudents = studentDAO.findByEmail(email);
-		
-		if (existStudents != null) {
-			String message = "Could not create new student: the email "
-					+ email + " is already registered by another student.";
-			listExercises(message);
-			
-		} else {
-			Students newStudents = new Students();
-			updateStudentFieldsFromForm(newStudents);
-			studentDAO.create(newStudents);
-			
-			String message = "New student has been created successfully.";
-			listExercises(message);
-			
-		}
-		
-	}
-	
-	private void updateStudentFieldsFromForm(Students student) {
-		String email = request.getParameter("email");
-		String fullname = request.getParameter("fullname");
-		String password = request.getParameter("password");
-		
-		
-		
-		if (email != null && !email.equals("")) {
-			student.setEmail(email);
-		}
-		
-		student.setFullname(fullname);
-		
-		if (password != null & !password.isEmpty()) {
-			String encryptedPassword = HashGenerator.generateMD5(password);
-			student.setPassword(encryptedPassword);				
-		}		
-		
-		try {
-			//String profilepic = request.getParameter("profilepic");
-			Part profilepic = request.getPart("profilepic");
-			InputStream inpStm = null;
-			if(profilepic != null) {
-				
-					inpStm = profilepic.getInputStream();
-					byte[] bFile = new byte[inpStm.available()];
-					inpStm.read(bFile);
-					if(bFile.length>0) {
-						student.setProfilepic(bFile);
-					}
-			}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ServletException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
- 	public void registerStudent() throws ServletException, IOException {
-		String email = request.getParameter("email");
-		Students existStudents = studentDAO.findByEmail(email);
-		String message = "";
-		
-		if (existStudents != null) {
-			message = "Could not register. The email "
-					+ email + " is already registered by another student.";
-		} else {
-			
-			Students newStudents = new Students();
-			updateStudentFieldsFromForm(newStudents);			
-			studentDAO.create(newStudents);
-			
-			message = "You have registered successfully! Thank you.<br/>"
-					+ "<a href='login'>Click here</a> to login";			
-		}
-		
-		showMessageFrontend(message, request, response);
-	}	
-	
-	public void editStudent() throws ServletException, IOException {
-		Integer studentId = Integer.parseInt(request.getParameter("id"));
-		Students student = studentDAO.get(studentId);
-		
-		if (student == null) {
-			String message = "Could not find student with ID " + studentId;
-			showMessageBackend(message, request, response);
-		} else {
-			// set password as null to make the password is left blank by default
-			// if left blank, the student's password won't be updated
-			// this is to work with the encrypted password feature
-			student.setPassword(null);
-			request.setAttribute("student", student);	
-			request.setAttribute("studentId", student.getStudentsId());
-			forwardToPage("student_form.jsp", request, response);		
-		}		
-	}
-
-	public void updateStudent() throws ServletException, IOException {
-		Integer studentId = Integer.parseInt(request.getParameter("studentId"));
-		String email = request.getParameter("email");
-		
-		Students studentByEmail = studentDAO.findByEmail(email);
-		String message = null;
-		
-		if (studentByEmail != null && studentByEmail.getStudentsId() != studentId) {
-			message = "Could not update the student ID " + studentId
-					+ "because there's an existing student having the same email.";
-			
-		} else {
-			
-			Students studentById = studentDAO.get(studentId);
-			updateStudentFieldsFromForm(studentById);
-			
-			studentDAO.update(studentById);
-			
-			message = "The student has been updated successfully.";
-		}
-		
-		listExercises(message);
-	}
-
-	public void deleteStudent() throws ServletException, IOException {
-		Integer studentId = Integer.parseInt(request.getParameter("id"));
-		Students student = studentDAO.get(studentId);
-		
-		if (student != null) {
-			studentDAO.delete(studentId);			
-			String message = "The student has been deleted successfully.";
-			listExercises(message);
-		} else {
-			String message = "Could not find student with ID " + studentId + ", "
-					+ "or it has been deleted by another admin";
-			showMessageBackend(message, request, response);
-		}
-		
-	}
 
 	public void showLogin() throws ServletException, IOException {
 		forwardToPage("frontend/login.jsp", request, response);
@@ -393,12 +254,4 @@ public class PopExerciseServices extends CommonUtility {
 		forwardToPage("frontend/edit_profile.jsp", request, response);
 	}
 
-	public void updateStudentProfile() throws ServletException, IOException {
-		Students student = (Students) request.getSession().getAttribute("loggedStudent");
-		updateStudentFieldsFromForm(student);
-		studentDAO.update(student);
-		
-		showStudentProfile();
-		
-	}
 }

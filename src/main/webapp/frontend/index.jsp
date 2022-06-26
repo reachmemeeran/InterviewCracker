@@ -14,14 +14,14 @@
 	
 	<p>&nbsp;</p> 
 	<p>&nbsp;</p> 
-			<h3 style="background: #002b56; color: #fff; border-radius: 25px; text-align: center;">POP Exercise Progress</h3>
+			<h3 style="background: #002b56; color: #fff; border-radius: 25px; text-align: center;"><p>&nbsp;</p>POP Exercise Progress<p>&nbsp;</p></h3>
 				<p>&nbsp;</p>       
 				<c:if test="${loggedStudent!=null}">
 					<p>POP Exercises Solved:${solvedStudentExercise}</p>
 					<p>&nbsp;</p>  
 					<p>POP Exercises Pending:${22-solvedStudentExercise}</p>  
 					<p>&nbsp;</p>  
-					<p>Total POP Exercises Solved:${solvedExercise}</p>
+					<p>Your Rank:${rank}</p>
 				</c:if>
 				<c:if test="${loggedStudent==null}">
 					<p>Total POP Exercises Solved:${solvedExercise}</p>
@@ -33,7 +33,7 @@
 			<p>&nbsp;</p> 
 			<p>&nbsp;</p> 
 			<p>&nbsp;</p> 
-			<h3 style="background: #002b56; color: #fff; border-radius: 25px; text-align: center;">Coding Challenge Progress</h3>
+			<h3 style="background: #002b56; color: #fff; border-radius: 25px; text-align: center;"><p>&nbsp;</p>Coding Challenge Progress<p>&nbsp;</p></h3>
 				<p>&nbsp;</p>  
 			<p>Coding Question Solved:${totalStudentCode}</p>
 			<p>Coding Question Pending:${totalPendingCode}</p>
@@ -50,9 +50,11 @@
 						<th style="background-color:#002B56; color:#FFF; padding: 10px; height:150px; width:150px;">
 							<a style="color:#FFF" href="attempt_exercise?id=1">Week 1-Lesson 2: Your 1st Program <br> 
 							<p>&nbsp;</p>  Language: C</a></th>
+						<th>&nbsp;</th>
 						<th style="background-color:#002B56; color:#FFF; padding: 10px; height:150px; width:150px;">
 							<a style="color:#FFF" href="attempt_exercise?id=2">Week 1-Lesson 3: Variables<br> 
 							<p>&nbsp;</p>  Language: C</a></th>
+						<th>&nbsp;</th>
 						<th style="background-color:#002B56; color:#FFF; padding: 10px; height:150px; width:150px;">
 							<a style="color:#FFF" href="attempt_exercise?id=3">Week 1-Lesson 4: Errors and Debugging_21<br> 
 							<p>&nbsp;</p>  Language: C</a></th>
@@ -90,38 +92,28 @@
 	
 	<div class="indexrightbar">
 	
-                <h3>POP Leader Board</h3>
-				<p>&nbsp;</p>            
-            <!--  
+	    <h3>POP Leader Board</h3>
+		<p>&nbsp;</p>            
             
-            <c:forEach items="${listPopLeaders}" var="popLeaders">
-            
-            ${popLeaders.studentCodingTestId}
-            ${popLeaders.students.studentsId}
-            ${popLeaders.hitCount}
-            
-            </c:forEach>
-            -->
-            
-            <div align="center">
-			    <table border="1">
+           <div align="center">
+		    <table border="1">
+				<tr>
+					<th style="background-color:#002B56; color:#FFF; padding: 10px;">Leader</th>
+					<th style="background-color:#002B56; color:#FFF; padding: 10px;">Points</th>
+				</tr>
+				<c:forEach items="${leaderMap}" var="entry">
 					<tr>
-						<th style="background-color:#002B56; color:#FFF; padding: 10px;">Leader</th>
-						<th style="background-color:#002B56; color:#FFF; padding: 10px;">Points</th>
+						<td style="background-color:#002B5636; text-align: center">${entry.key}</td>
+						<td style="background-color:#002B5636; text-align: center">${entry.value}</td>
 					</tr>
-					<c:forEach items="${leaderMap}" var="entry">
-						<tr>
-							<td style="background-color:#002B5636; text-align: center">${entry.key}</td>
-							<td style="background-color:#002B5636; text-align: center">${entry.value}</td>
-						</tr>
-					</c:forEach>
-				</table>
-	        </div>
-	        <p>&nbsp;</p>   
-	        <p>&nbsp;</p>   
-	        <p>&nbsp;</p>   
-	        <h3>Coding Challenge Leader Board</h3>
-				<p>&nbsp;</p>    
+				</c:forEach>
+			</table>
+        </div>
+		<p>&nbsp;</p>   
+		<p>&nbsp;</p>   
+		<p>&nbsp;</p>   
+		<h3>Coding Challenge Leader Board</h3>
+		<p>&nbsp;</p>    
 	
 	<jsp:directive.include file="footer.jsp" />
 	</div>

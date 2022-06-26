@@ -3,7 +3,10 @@ package com.interviewcracker.service;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Base64;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,7 +17,11 @@ import javax.servlet.http.Part;
 
 import com.interviewcracker.dao.HashGenerator;
 import com.interviewcracker.dao.StaffDAO;
+import com.interviewcracker.dao.StudentCodingTestDAO;
+import com.interviewcracker.dao.StudentDAO;
 import com.interviewcracker.entity.Staffs;
+import com.interviewcracker.entity.StudentCodingTest;
+import com.interviewcracker.entity.Students;
 
 public class StaffServices extends CommonUtility {
 	private StaffDAO staffDAO;
@@ -149,7 +156,6 @@ public class StaffServices extends CommonUtility {
 		 * HashGenerator.generateMD5(password); staff.setPassword(encryptedPassword); }
 		 */	
 		
-		System.out.println("password->"+staff.getPassword());
 		
 		
 		try {
@@ -157,18 +163,13 @@ public class StaffServices extends CommonUtility {
 			Part profilepic = request.getPart("profilepic");
 			InputStream inpStm = null;
 			
-			System.out.println("111111->"+staff.getPassword());
 			if(profilepic != null) {
-				
-				
-				
-					inpStm = profilepic.getInputStream();
-					byte[] bFile = new byte[inpStm.available()];
-					inpStm.read(bFile);
-					System.out.println("22222->"+bFile.length);
-					if(bFile.length>0) {
-						staff.setProfilepic(bFile);
-					}
+				inpStm = profilepic.getInputStream();
+				byte[] bFile = new byte[inpStm.available()];
+				inpStm.read(bFile);
+				if(bFile.length>0) {
+					staff.setProfilepic(bFile);
+				}
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -248,6 +249,30 @@ public class StaffServices extends CommonUtility {
 				session.setAttribute("profilepic", encode);
 			}else {
 				session.setAttribute("profilepic", null);
+			}
+			
+			
+			StudentCodingTestDAO studentCodingTestDAO=new StudentCodingTestDAO();
+			List<StudentCodingTest> listPopLeaders = studentCodingTestDAO.popLeaders();
+			Map<String,Integer> leaderMap = new HashMap<>();
+			StudentDAO studentDao = new StudentDAO();
+			for(StudentCodingTest leader: listPopLeaders ) {
+				Students student = studentDao.get(leader.getStudentId());
+				String name = student.getFullname();
+				if(leaderMap.containsKey(name)) {
+					Integer value = leaderMap.get(name);
+					leaderMap.put(name, value+1);
+				}else {
+					leaderMap.put(name, +1);
+				}
+			}
+			ValueComparator CustomComparator = new ValueComparator(leaderMap);
+	        TreeMap<String, Integer> sorted_map = new TreeMap<String, Integer>(CustomComparator);
+	        if(leaderMap.size()>1) {
+				sorted_map.putAll(leaderMap);
+				request.setAttribute("leaderMap", sorted_map);
+			}else {
+				request.setAttribute("leaderMap", leaderMap);
 			}
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/");

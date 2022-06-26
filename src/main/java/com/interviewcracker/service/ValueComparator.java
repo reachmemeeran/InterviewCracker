@@ -13,11 +13,14 @@ public class ValueComparator implements Comparator<String> {
 
 	@Override
 	public int compare(String arg0, String arg1) {
-		if (base.get(arg0) >= base.get(arg1)) {
-            return -1;
-        } else {
-            return 1;
-        }
+		if(base!=null && arg0!=null && arg1!=null) {
+			if (base.get(arg0) >= base.get(arg1)) {
+	            return -1;
+	        } else {
+	            return 1;
+	        }
+		}
+		return 0;
 	}
 
 }

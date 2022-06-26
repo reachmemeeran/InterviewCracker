@@ -52,16 +52,12 @@ public class HomeServlet extends HttpServlet {
 
 		
 		for(StudentCodingTest leader: listPopLeaders ) {
-			System.out.println("leader-->"+leader.getStudentCodingTestId());
-			System.out.println("leader-22->"+leader.getHitCount());
-			System.out.println("leader-33->"+leader.getStudentId());
 			
 			Students student = studentDao.get(leader.getStudentId());
 			
-			System.out.println("Id-->"+student.getStudentsId());
-			System.out.println("Name-->"+student.getFullname());
 			
 			String name = student.getFullname();
+			System.out.println("name--->"+name);
 		
 			if(leaderMap.containsKey(name)) {
 				Integer value = leaderMap.get(name);
@@ -71,14 +67,20 @@ public class HomeServlet extends HttpServlet {
 			}
 		}
 		
-		request.setAttribute("listPopLeaders", listPopLeaders);
+		System.out.println("leaderMap--->"+leaderMap.toString());
+		
 		
 		ValueComparator CustomComparator = new ValueComparator(leaderMap);
         TreeMap<String, Integer> sorted_map = new TreeMap<String, Integer>(CustomComparator);
-        sorted_map.putAll(leaderMap);
+        if(leaderMap.size()>1) {
+			sorted_map.putAll(leaderMap);
+			request.setAttribute("leaderMap", sorted_map);
+		}else {
+			request.setAttribute("leaderMap", leaderMap);
+		}
         
-		request.setAttribute("leaderMap", sorted_map);
-		
+        System.out.println("sorted_map--->"+sorted_map.toString());
+        
 		long solvedExercise = studentCodingTestDAO.countSolvedExercise();
 		request.setAttribute("solvedExercise", solvedExercise);
 		
@@ -88,10 +90,20 @@ public class HomeServlet extends HttpServlet {
 			Integer studentId = student.getStudentsId();
 			long solvedStudentExercise = studentCodingTestDAO.countSolvedStudentExercise(studentId);
 			request.setAttribute("solvedStudentExercise", solvedStudentExercise);
+			String studentName = student.getFullname();
+			int rank = 0;
+			for (String key : sorted_map.keySet()) {
+				rank++;
+				if(key.equals(studentName)) {
+					break;
+				}
+			}
+			
+			if (sorted_map.containsKey(studentName)) {
+				rank = sorted_map.headMap(studentName).size();
+	        }
+			request.setAttribute("rank", rank);
 		}
-		
-		
-		
 		String homePage= "frontend/index.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(homePage);
 		dispatcher.forward(request, response);

@@ -47,9 +47,7 @@ public class StudentDAO extends JpaDAO<Students> implements GenericDAO<Students>
 		String encryptedPassword = HashGenerator.generateMD5(password);
 		parameters.put("email", email);
 		parameters.put("password",encryptedPassword);
-		System.out.println("result-am here->");
 		List<Students> result = super.findWithNamedQuery("Students.checkLogin",parameters);
-		System.out.println("result-->"+result.size());
 		if(!result.isEmpty()) {
 			return result.get(0);
 		}

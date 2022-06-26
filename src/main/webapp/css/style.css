@@ -81,8 +81,8 @@
 
 .indexmiddlebaradmin {
 	position: absolute;
-	top: 250px;
-	left: 30%;
+	top: 100px;
+	left: 32%;
 	width: 40%;
 	z-index: 1;
 	padding: 15px;
@@ -206,6 +206,22 @@
 	overflow-x: auto;
     overflow-y: hidden;
     white-space: nowrap;
+}
+
+.courselistmiddlebar {
+	position: absolute;
+	top: 100px;
+	left: 15%;
+	width: 70%;
+	height: 75%;
+	z-index: 1;
+	padding: 15px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	box-shadow: rgb(0, 43, 86) 5px 10px 10px 10px;
+	border-radius: 25px;
+	overflow-y: auto;
 }
 
 

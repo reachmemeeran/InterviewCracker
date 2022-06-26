@@ -77,7 +77,6 @@ public class CodingQuestionDAO extends JpaDAO<CodingQuestion> implements Generic
 		List<CodingQuestion> mostFavoredCodingQuestions = new ArrayList<>();
 		
 		List<Object[]> result = super.findWithNamedQueryObjects("Review.mostFavoredCodingQuestions", 0, 4);
-		System.out.println("result --> "+result.size());
 		
 		if (!result.isEmpty()) {
 			for (Object[] elements : result) {
@@ -85,8 +84,6 @@ public class CodingQuestionDAO extends JpaDAO<CodingQuestion> implements Generic
 				mostFavoredCodingQuestions.add(codingQuestion);
 			}
 		} 
-		
-		System.out.println("mostFavoredCodingQuestions --> "+mostFavoredCodingQuestions.size());
 		
 		return mostFavoredCodingQuestions;
 	}

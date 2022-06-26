@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
 public class StudentLoginFilter implements Filter {
 
 	private static final String[] loginrequiredURLs = {
-			"/view_profile","/edit_profile","/update_profile","/list_pop_exercise"
+			"/view_profile","/edit_profile","/update_profile","/list_pop_exercise","/list_code"
 	};
     public StudentLoginFilter() {
     }
@@ -38,8 +38,6 @@ public class StudentLoginFilter implements Filter {
 		}
 		boolean loggedIn = session !=null && session.getAttribute("loggedStudent")!=null;
 		String requestURL = httpRequest.getRequestURL().toString();
-		System.out.println("path--->"+path);
-		System.out.println("loggedIn--->"+loggedIn);
 		if(!loggedIn && isLoginRequired(requestURL)) {
 			
 			String queryString = httpRequest.getQueryString();
