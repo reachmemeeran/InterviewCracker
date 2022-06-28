@@ -39,8 +39,7 @@ public class CodeServices extends CommonUtility {
 		this.codingQuestionDAO = new CodingQuestionDAO();
 	}
 	
-	public void listCode(String message) throws ServletException, IOException {
-		List<CodingQuestion> listCodingQuestion = codingQuestionDAO.listAll();	
+	public void listCode(String message, List<CodingQuestion> listCodingQuestion) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
 		Students student = (Students) session.getAttribute("loggedStudent");
@@ -49,15 +48,41 @@ public class CodeServices extends CommonUtility {
 		
 		for(CodingQuestion code : listCodingQuestion) {
 			Character status = studentCodingTestDAO.getExerciseStatus(studentId,code.getCodingQuestionId());
+			if(code.getCodeComplexityId()==1) {
+				request.setAttribute("complexity", "Easy");
+			}else if(code.getCodeComplexityId()==2) {
+				request.setAttribute("complexity", "Medium");
+			}else if(code.getCodeComplexityId()==3) {
+				request.setAttribute("complexity", "Advanced");
+			}
 			code.setStatus(status);
 		}
 		request.setAttribute("listCodingQuestion", listCodingQuestion);
-		forwardToPage("frontend/codingquestion_list.jsp", message, request, response);
+		forwardToPage("frontend/code_list.jsp", message, request, response);
 	}
 	
 	public void listCode() throws ServletException, IOException {
 		request.setAttribute("attemptedCode", null);
-		listCode(null);
+		String fileName = "frontend/codingquestion_list.jsp";
+		forwardToPage(fileName, request, response);
+	}
+	
+	public void listEasyCode() throws ServletException, IOException {
+		request.setAttribute("attemptedCode", null);
+		List<CodingQuestion> listCodingQuestion = codingQuestionDAO.listEasy();
+		listCode(null,listCodingQuestion);
+	}
+	
+	public void listMediumCode() throws ServletException, IOException {
+		request.setAttribute("attemptedCode", null);
+		List<CodingQuestion> listCodingQuestion = codingQuestionDAO.listMedium();
+		listCode(null,listCodingQuestion);
+	}
+	
+	public void listAdvancedCode() throws ServletException, IOException {
+		request.setAttribute("attemptedCode", null);
+		List<CodingQuestion> listCodingQuestion = codingQuestionDAO.listAdvanced();
+		listCode(null,listCodingQuestion);
 	}
 	
 	public void attemptCode(Integer exerciseId) throws ServletException, IOException {
@@ -77,7 +102,7 @@ public class CodeServices extends CommonUtility {
 			
 		
 		
-		forwardToPage("frontend/popexercises/"+exerciseId+"_exercise.jsp", request, response);
+		forwardToPage("frontend/code/"+exerciseId+"_exercise.jsp", request, response);
 	}
 	
 	public void attemptCodeSubmit(Integer exerciseId) throws ServletException, IOException {

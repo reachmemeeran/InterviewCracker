@@ -74,6 +74,7 @@ public class PopExerciseServices extends CommonUtility {
 			String attemptedCode = studentCodingTestDAO.getExerciseCode(studentId,exerciseId);
 			if(attemptedCode!=null && !attemptedCode.isEmpty()) {
 				request.setAttribute("attemptedCode", attemptedCode);
+				request.setAttribute("status", "Done");
 			}else {
 				request.setAttribute("attemptedCode", null);
 			}

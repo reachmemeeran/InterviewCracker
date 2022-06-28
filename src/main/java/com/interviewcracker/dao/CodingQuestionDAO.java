@@ -34,6 +34,18 @@ public class CodingQuestionDAO extends JpaDAO<CodingQuestion> implements Generic
 	public List<CodingQuestion> listAll() {
 		return super.findWithNamedQuery("CodingQuestion.findAll");
 	}
+	
+	public List<CodingQuestion> listEasy() {
+		return super.findWithNamedQuery("CodingQuestion.listEasy");
+	}
+	
+	public List<CodingQuestion> listMedium() {
+		return super.findWithNamedQuery("CodingQuestion.listMedium");
+	}
+	
+	public List<CodingQuestion> listAdvanced() {
+		return super.findWithNamedQuery("CodingQuestion.listAdvanced");
+	}
 
 	public CodingQuestion findByTitle(String title) {
 		List<CodingQuestion> result = super.findWithNamedQuery("CodingQuestion.findByTitle","title",title);

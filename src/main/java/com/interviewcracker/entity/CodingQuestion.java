@@ -22,11 +22,11 @@ import javax.persistence.Table;
 	@NamedQuery(name="CodingQuestion.findBySummary",query="SELECT b FROM CodingQuestion b WHERE b.summary=:summary"),
 	@NamedQuery(name="CodingQuestion.listNew",query="SELECT b FROM CodingQuestion b WHERE b.codingQuestionId != 99999 ORDER BY b.codingQuestionId DESC"),
 	@NamedQuery(name="CodingQuestion.listEasy",query="SELECT b FROM CodingQuestion b WHERE b.codeComplexityId=1"
-			+ "and b.codingQuestionId != 99999 ORDER BY b.codingQuestionId DESC"),
+			+ "and b.codingQuestionId != 99999 ORDER BY b.codingQuestionId"),
 	@NamedQuery(name="CodingQuestion.listMedium",query="SELECT b FROM CodingQuestion b WHERE b.codeComplexityId=2 "
-			+ "and b.codingQuestionId != 99999 ORDER BY b.codingQuestionId DESC"),
-	@NamedQuery(name="CodingQuestion.listHard",query="SELECT b FROM CodingQuestion b WHERE b.codeComplexityId=3 "
-			+ "and b.codingQuestionId != 99999 ORDER BY b.codingQuestionId DESC"),
+			+ "and b.codingQuestionId != 99999 ORDER BY b.codingQuestionId"),
+	@NamedQuery(name="CodingQuestion.listAdvanced",query="SELECT b FROM CodingQuestion b WHERE b.codeComplexityId=3 "
+			+ "and b.codingQuestionId != 99999 ORDER BY b.codingQuestionId"),
 	@NamedQuery(name="CodingQuestion.search",query="SELECT b FROM CodingQuestion b WHERE b.summary LIKE '%'|| :keyword || '%'"),
 	@NamedQuery(name="CodingQuestion.countByCodeComplexity",query="SELECT count(b) FROM CodingQuestion b WHERE"
 			+ " b.codeComplexityId=:codeComplexId")
