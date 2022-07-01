@@ -107,7 +107,7 @@ public class CodeServices extends CommonUtility {
 	
 	public void attemptCodeSubmit(Integer exerciseId) throws ServletException, IOException {
 		request.setAttribute("exerciseId", exerciseId);
-		forwardToPage("frontend/popexercises/"+exerciseId+"_exercise.jsp", request, response);
+		forwardToPage("frontend/code/"+exerciseId+"_exercise.jsp", request, response);
 	}
 	
 	public void attemptCode() throws ServletException, IOException {

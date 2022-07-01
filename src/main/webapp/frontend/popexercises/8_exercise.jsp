@@ -32,7 +32,7 @@
 			<h3>Exercise:</h3>
 			<p>&nbsp;</p>
 
-			Complete the fibonacci function below such that it calculates the nth term of the Fibonacci sequence using iteration.<br>
+			Complete the fibonacci function such that it calculates the nth term of the Fibonacci sequence using iteration.<br>
 The first 4 terms of the Fibonacci sequence in this example are  1, 1, 2, 3 <br>
 call fibonacci(10) we should get the value 1 1 2 3 5 8 13 21 34 55 returned <br>
 

@@ -32,7 +32,7 @@
 			<h3>Exercise:</h3>
 			<p>&nbsp;</p>
 
-			Modify the function below so that it prints out the square multiplication tables for a number.  
+			Modify the function squareMultTable so that it prints out the square multiplication tables for a number.  
 How might you modify this function, or add a new function, so it prints out the multiplication tables for numbers? <br>
 
 			<p>&nbsp;</p>

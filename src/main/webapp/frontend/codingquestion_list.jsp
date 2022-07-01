@@ -49,11 +49,11 @@ String
 List
 Set
 Logics:
-  Palindrome
-  Fibonacci series 
   Recursive
   Iterative
+  Palindrome
   Prime numbers
+  Fibonacci series 
 </pre>
 
 <p>&nbsp;</p>
@@ -64,8 +64,8 @@ Logics:
 	<h3 style="background: #002b56; color: #fff; border-radius: 10px; text-align: center;"><p>&nbsp;</p><a style="color:#FFF;" href="list_code_medium">Level - Medium</a><p>&nbsp;</p></h3>
 				<p>&nbsp;</p>       
 <pre>
-Implement Stack with Queue
-Implement Queue with Stack
+Stack
+Queue
 MultiThreading
 Regular Expressions
 

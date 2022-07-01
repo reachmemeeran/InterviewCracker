@@ -70,8 +70,8 @@
 	<h3 style="background: #002b56; color: #fff; border-radius: 10px; text-align: center;"><p>&nbsp;</p><a style="color:#FFF;" href="list_code_medium">Level - Medium</a><p>&nbsp;</p></h3>
 				<p>&nbsp;</p>       
 <pre>
-Implement Stack with Queue
-Implement Queue with Stack
+Stack
+Queue
 MultiThreading
 Regular Expressions
 </pre>
@@ -107,11 +107,11 @@ String
 List
 Set
 Logics:
-  Palindrome
-  Fibonacci series 
   Recursive
   Iterative
+  Palindrome
   Prime numbers
+  Fibonacci series 
 </pre>
 <p>&nbsp;</p>
 <a style="color:red; position: absolute; text-align:right; top: 290px;" href="list_code_easy">Click to Solve</a>  
@@ -170,11 +170,11 @@ String
 List
 Set
 Logics:
-  Palindrome
-  Fibonacci series 
   Recursive
   Iterative
+  Palindrome
   Prime numbers
+  Fibonacci series 
 </pre>
 <p>&nbsp;</p>
 <a style="color:red; position: absolute; text-align:right; top: 290px;" href="list_code_easy">Click to Solve</a>  
@@ -183,8 +183,8 @@ Logics:
 	<h3 style="background: #002b56; color: #fff; border-radius: 10px; text-align: center;"><p>&nbsp;</p><a style="color:#FFF;" href="list_code_medium">Level - Medium</a><p>&nbsp;</p></h3>
 				<p>&nbsp;</p>       
 <pre>
-Implement Stack with Queue
-Implement Queue with Stack
+Stack
+Queue
 MultiThreading
 Regular Expressions
 </pre>

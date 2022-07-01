@@ -32,7 +32,7 @@
 			<h3>Exercise:</h3>
 			<p>&nbsp;</p>
 
-			Modify the function below so that it copies the string from string1 into
+			Modify the function copyAndPrintArray so that it copies the string from string1 into
 			string2 and prints out string2 in reverse.<br>
 
 			<p>&nbsp;</p>

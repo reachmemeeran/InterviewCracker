@@ -32,7 +32,7 @@
 			<h3>Exercise:</h3>
 			<p>&nbsp;</p>
 
-			Complete the recursive function below which performs multiplication of two numbers 
+			Complete the recursive function multiply which performs multiplication of two numbers 
 			without using the inbuilt multiply sign <br>
 
 			<p>&nbsp;</p>

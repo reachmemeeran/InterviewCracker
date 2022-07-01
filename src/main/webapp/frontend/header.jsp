@@ -17,9 +17,7 @@
                 <div class="link-item-h">
                     <a class="ah" href="list_code">Coding Challenge</a>
                 </div>
-                <div class="link-item-h">
-                    <a class="ah" href="#">Java Courses</a>
-                </div>
+                
             </div>
             <div class="link-item-h staff-cont">
             <c:if test="${loggedStudent!=null }">

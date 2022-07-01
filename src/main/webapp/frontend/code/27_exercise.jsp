@@ -26,42 +26,20 @@
 		<br />
 		<jsp:directive.include file="../header.jsp" />
 		<div class="codeheading">
-		<h3>Easy-1: Iterative</h3>
+		<h3>Easy-5: Fibonacci Series</h3>
 		</div>
 
 		<div class="codelefttopbar">
 
 <pre>
-<p style="font-weight: bold;">Loops:</p>Loops can execute a block of code as long as a specified condition is reached.
-Loops are handy because they save time, reduce errors, and they make code more readable.
+<p style="font-weight: bold;">Fibonacci Series:</p>In fibonacci series, next number is the sum of previous two numbers.
+For example 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55 etc. 
+The first two numbers of fibonacci series are 0 and 1.
 
-<p style="font-weight: bold;">While Loop:</p>The while loop loops through a block of code as long as a specified condition is true:
+There are two ways to write the fibonacci series program in java:
 
-while (condition) {
-  // code block to be executed
-}
-
-<p style="font-weight: bold;">Do/While Loop:</p>The do/while loop is a variant of the while loop. This loop will execute the code block 
-once, before checking if the condition is true, then it will repeat the loop as long 
-as the condition is true.
-
-do {
-  // code block to be executed
-}
-while (condition);
-
-<p style="font-weight: bold;">For Loop:</p>When you know exactly how many times you want to loop through a block of code, 
-use the for loop instead of a while loop:
-
-for (statement 1; statement 2; statement 3) {
-  // code block to be executed
-}
-Statement 1 is executed (one time) before the execution of the code block.
-
-Statement 2 defines the condition for executing the code block.
-
-Statement 3 is executed (every time) after the code block has been executed.
-
+Fibonacci Series without using recursion
+Fibonacci Series using recursion
 
 </pre>
 
@@ -74,9 +52,9 @@ Statement 3 is executed (every time) after the code block has been executed.
 			<div align="left">
 
 				<pre>
-<p style="font-weight: bold;">Question:</p>Find Factorial with Iterative function call
-<p style="font-weight: bold;">Expected Output:</p>While Loop: 4 factorial is: 24
-For Loop: 4 factorial is: 24
+<p style="font-weight: bold;">Question:</p>Complete the program to print fibonacci series with and without recursion
+<p style="font-weight: bold;">Expected Output:</p>Non-Recursive Fibonacci is: 0 1 1 2 3 5 8 13 21 34
+Recursive Fibonacci is: 0 1 1 2 3 5 8 13 21 34
 </pre>
 			</div>
 
@@ -94,34 +72,32 @@ For Loop: 4 factorial is: 24
 import java.util.*;
 
 class Main{
+  static int n1=0,n2=1,n3=0;   
   public static void main(String args[]){
-    int number = 4, result, forResult;
-    result = getFactorialWhileLoop(number);
-    System.out.println("While Loop: " + number + " factorial is: " + result);
-    forResult = getFactorialForLoop(number);
-    System.out.println("For Loop: " + number + " factorial is: " + forResult);
+    int count = 10;
+    System.out.print("Non-Recursive Fibonacci is: "+n1+" "+n2);//printing 0 and 1
+    nonRecursiveFibonacci(count);
+    System.out.println("");
+    n1=0;
+    n2=1;
+    System.out.print("Recursive Fibonacci is: "+n1+" "+n2);//printing 0 and 1
+    recursiveFibonacci(count-2);
   }
 
-  public static int getFactorialWhileLoop(int n){
-    int result = 1;
-    while (n > 1) {
-        //Complete While Loop
-        n -= 1;
+  static void nonRecursiveFibonacci(int count){  
+    for(int i=2;i< count;++i) {    
+    //COMPLETE THE LOOP
+      System.out.print(" "+n3);    
+         
     }
-    return result;
-}
+  }
 
-  public static int getFactorialForLoop(int n) {
-    int result = 1;
-  	if (n >= 1) {
-  	    for (int i = 1; i <= n; i++) {
-  	        //Complete For Loop
-  	    }
-  	    return result;
-  	}
-  	else {
-  	  return result;
-  	}
+  static void recursiveFibonacci(int count){  
+    if(count>0){    
+      
+      System.out.print(" "+n3);   
+      // PERFORM RECURSIVE CALL   
+     }  
   }
 }
         </textarea>
@@ -147,34 +123,35 @@ class Main{
 import java.util.*;
 
 class Main{
+  static int n1=0,n2=1,n3=0;   
   public static void main(String args[]){
-    int number = 4, result, forResult;
-    result = getFactorialWhileLoop(number);
-    System.out.println("While Loop: " + number + " factorial is: " + result);
-    forResult = getFactorialForLoop(number);
-    System.out.println("For Loop: " + number + " factorial is: " + forResult);
+    int count = 10;
+    System.out.print("Non-Recursive Fibonacci is: "+n1+" "+n2);//printing 0 and 1
+    nonRecursiveFibonacci(count);
+    System.out.println("");
+    n1=0;
+    n2=1;
+    System.out.print("Recursive Fibonacci is: "+n1+" "+n2);//printing 0 and 1
+    recursiveFibonacci(count-2);
   }
 
-  public static int getFactorialWhileLoop(int n){
-    int result = 1;
-    while (n > 1) {
-        result = result * n;
-        n -= 1;
+  static void nonRecursiveFibonacci(int count){  
+    for(int i=2;i<count;++i) {    
+      n3=n1+n2;    
+      System.out.print(" "+n3);    
+      n1=n2;    
+      n2=n3;    
     }
-    return result;
-}
+  }
 
-  public static int getFactorialForLoop(int n) {
-    int result = 1;
-  	if (n >= 1) {
-  	    for (int i = 1; i <= n; i++) {
-  	        result = result * i;
-  	    }
-  	    return result;
-  	}
-  	else {
-  	  return result;
-  	}
+  static void recursiveFibonacci(int count){  
+    if(count>0){    
+      n3 = n1 + n2;    
+      n1 = n2;    
+      n2 = n3;    
+      System.out.print(" "+n3);   
+      recursiveFibonacci(count-1);    
+     }  
   }
 }
 </textarea>

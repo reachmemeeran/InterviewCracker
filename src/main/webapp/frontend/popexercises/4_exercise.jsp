@@ -33,7 +33,7 @@
 			<p>&nbsp;</p>
 
 			Using the math.h library (imported already)<br>
-			 1. Complete the pow3 function below and returns that value raised to the power of 3 (hint use the pow function in the math library) <br>
+			 1. Complete the pow3 function and returns that value raised to the power of 3 (hint use the pow function in the math library) <br>
 			 2. Create a function that return the natural log of the value. <br>
 			 Demonstrate your functions by calling them the main function and printing out the values returned <br>
 

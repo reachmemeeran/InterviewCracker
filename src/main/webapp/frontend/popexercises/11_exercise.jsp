@@ -32,7 +32,7 @@
 			<h3>Exercise:</h3>
 			<p>&nbsp;</p>
 
-			Modify the function below so that it prints out each character in the
+			Modify the function printCharsInString so that it prints out each character in the
 			string on a new line. <br>Hint: the end of a string is signified
 			by the '\0' char<br>
 

@@ -26,43 +26,15 @@
 		<br />
 		<jsp:directive.include file="../header.jsp" />
 		<div class="codeheading">
-		<h3>Easy-1: Iterative</h3>
+		<h3>Easy-4: Prime Numbers</h3>
 		</div>
 
 		<div class="codelefttopbar">
 
 <pre>
-<p style="font-weight: bold;">Loops:</p>Loops can execute a block of code as long as a specified condition is reached.
-Loops are handy because they save time, reduce errors, and they make code more readable.
-
-<p style="font-weight: bold;">While Loop:</p>The while loop loops through a block of code as long as a specified condition is true:
-
-while (condition) {
-  // code block to be executed
-}
-
-<p style="font-weight: bold;">Do/While Loop:</p>The do/while loop is a variant of the while loop. This loop will execute the code block 
-once, before checking if the condition is true, then it will repeat the loop as long 
-as the condition is true.
-
-do {
-  // code block to be executed
-}
-while (condition);
-
-<p style="font-weight: bold;">For Loop:</p>When you know exactly how many times you want to loop through a block of code, 
-use the for loop instead of a while loop:
-
-for (statement 1; statement 2; statement 3) {
-  // code block to be executed
-}
-Statement 1 is executed (one time) before the execution of the code block.
-
-Statement 2 defines the condition for executing the code block.
-
-Statement 3 is executed (every time) after the code block has been executed.
-
-
+<p style="font-weight: bold;">Prime Number:</p>Prime number is a number that is greater than 1 and divided by 1 or itself only. 
+In other words, prime numbers can't be divided by other numbers than itself or 1. 
+For example 2, 3, 5, 7, 11, 13, 17.... are the prime numbers.
 </pre>
 
  <br>
@@ -74,9 +46,11 @@ Statement 3 is executed (every time) after the code block has been executed.
 			<div align="left">
 
 				<pre>
-<p style="font-weight: bold;">Question:</p>Find Factorial with Iterative function call
-<p style="font-weight: bold;">Expected Output:</p>While Loop: 4 factorial is: 24
-For Loop: 4 factorial is: 24
+<p style="font-weight: bold;">Question:</p>Complete the program to check if the number is Prime Number
+<p style="font-weight: bold;">Expected Output:</p>1 is not prime number
+3 is prime number
+17 is prime number
+20 is not prime number
 </pre>
 			</div>
 
@@ -95,34 +69,24 @@ import java.util.*;
 
 class Main{
   public static void main(String args[]){
-    int number = 4, result, forResult;
-    result = getFactorialWhileLoop(number);
-    System.out.println("While Loop: " + number + " factorial is: " + result);
-    forResult = getFactorialForLoop(number);
-    System.out.println("For Loop: " + number + " factorial is: " + forResult);
+    checkPrime(1);  
+    checkPrime(3);  
+    checkPrime(17);  
+    checkPrime(20); 
   }
 
-  public static int getFactorialWhileLoop(int n){
-    int result = 1;
-    while (n > 1) {
-        //Complete While Loop
-        n -= 1;
-    }
-    return result;
-}
-
-  public static int getFactorialForLoop(int n) {
-    int result = 1;
-  	if (n >= 1) {
-  	    for (int i = 1; i <= n; i++) {
-  	        //Complete For Loop
-  	    }
-  	    return result;
-  	}
-  	else {
-  	  return result;
-  	}
-  }
+  static void checkPrime(int n){  
+    int i,m=0,flag=0;      
+    m=n/2;      
+    if(n==0||n==1){  
+      System.out.println(n+" is not prime number");      
+    }else{  
+      for(i=2;i<=m;i++){      
+        //Complete the loop to find if the number is Prime
+     }      
+    if(flag==0)  { System.out.println(n+" is prime number"); }  
+    } 
+  }  
 }
         </textarea>
 					</c:if>
@@ -148,34 +112,28 @@ import java.util.*;
 
 class Main{
   public static void main(String args[]){
-    int number = 4, result, forResult;
-    result = getFactorialWhileLoop(number);
-    System.out.println("While Loop: " + number + " factorial is: " + result);
-    forResult = getFactorialForLoop(number);
-    System.out.println("For Loop: " + number + " factorial is: " + forResult);
+    checkPrime(1);  
+    checkPrime(3);  
+    checkPrime(17);  
+    checkPrime(20); 
   }
 
-  public static int getFactorialWhileLoop(int n){
-    int result = 1;
-    while (n > 1) {
-        result = result * n;
-        n -= 1;
-    }
-    return result;
-}
-
-  public static int getFactorialForLoop(int n) {
-    int result = 1;
-  	if (n >= 1) {
-  	    for (int i = 1; i <= n; i++) {
-  	        result = result * i;
-  	    }
-  	    return result;
-  	}
-  	else {
-  	  return result;
-  	}
-  }
+  static void checkPrime(int n){  
+    int i,m=0,flag=0;      
+    m=n/2;      
+    if(n==0||n==1){  
+      System.out.println(n+" is not prime number");      
+    }else{  
+      for(i=2;i<=m;i++){      
+        if(n%i==0){      
+          System.out.println(n+" is not prime number");      
+          flag=1;      
+          break;      
+        }      
+     }      
+    if(flag==0)  { System.out.println(n+" is prime number"); }  
+    } 
+  }  
 }
 </textarea>
 					<input type="hidden" name="exerciseId" value="${exerciseId}">

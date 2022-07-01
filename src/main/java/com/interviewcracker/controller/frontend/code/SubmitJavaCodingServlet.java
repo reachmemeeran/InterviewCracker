@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.interviewcracker.service.PopExerciseServices;
+import com.interviewcracker.service.CodeServices;
 
 @WebServlet("/submit_javacoding")
 public class SubmitJavaCodingServlet extends HttpServlet {
@@ -20,8 +20,8 @@ public class SubmitJavaCodingServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		PopExerciseServices popExerciseServices = new PopExerciseServices(request, response);
-		popExerciseServices.submitCode("java");
+		CodeServices codeServices = new CodeServices(request, response);
+		codeServices.submitCode("java");
 	}
 
 }

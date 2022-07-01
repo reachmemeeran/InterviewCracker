@@ -32,7 +32,7 @@
 			<h3>Exercise:</h3>
 			<p>&nbsp;</p>
 
-			Modify the function below so that it populates the array evenNumbers with calculated value rather than printing it out.<br>
+			Modify the function populateArray so that it populates the array evenNumbers with calculated value rather than printing it out.<br>
 Now create a function that prints out this evenNumbers array and call it from the main function<br>
 
 			<p>&nbsp;</p>
