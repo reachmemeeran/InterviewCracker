@@ -26,7 +26,7 @@
 		<br />
 		<jsp:directive.include file="../header.jsp" />
 		<div class="codeheading">
-		<h3>Easy-1: Iterative</h3>
+		<h3>Easy-1: Iteration</h3>
 		</div>
 
 		<div class="codelefttopbar">
@@ -75,6 +75,10 @@ Statement 3 is executed (every time) after the code block has been executed.
 
 				<pre>
 <p style="font-weight: bold;">Question:</p>Find Factorial with Iterative function call
+Factorial, in mathematics, the product of all positive integers less than or 
+equal to a given positive integer and denoted by that integer and an 
+exclamation point. 
+Thus, factorial seven is written 7!, meaning 1 × 2 × 3 × 4 × 5 × 6 × 7.
 <p style="font-weight: bold;">Expected Output:</p>While Loop: 4 factorial is: 24
 For Loop: 4 factorial is: 24
 </pre>
