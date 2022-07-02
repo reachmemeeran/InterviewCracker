@@ -32,7 +32,7 @@ public class StudentCodingTestDAO extends JpaDAO<StudentCodingTest> implements G
 	}
 	
 	public List<StudentCodingTest> popLeaders(){
-		return super.findWithNamedQuery("StudentCodingTest.findAll");
+		return super.findWithNamedQuery("StudentCodingTest.findAllPop");
 		
 		/*List<StudentCodingTest> popLeaders = new ArrayList<>();
 		StudentCodingTest studentCodeTest = new StudentCodingTest();
@@ -49,6 +49,9 @@ public class StudentCodingTestDAO extends JpaDAO<StudentCodingTest> implements G
 		
 		
 		return popLeaders;*/
+	}
+	public List<StudentCodingTest> codeLeaders(){
+		return super.findWithNamedQuery("StudentCodingTest.findAllCode");
 	}
 
 	public List<StudentCodingTest> getStudentCodeDetails(Integer studentId) {
@@ -76,9 +79,17 @@ public class StudentCodingTestDAO extends JpaDAO<StudentCodingTest> implements G
 	public long countSolvedStudentExercise(Integer studentId) {
 		return super.countWithNamedQuery("StudentCodingTest.countSolvedStudentExercise","studentId",studentId);
 	}
+	
+	public long countSolvedStudentCode(Integer studentId) {
+		return super.countWithNamedQuery("StudentCodingTest.countSolvedStudentCode","studentId",studentId);
+	}
 
 	public long countSolvedExercise() {
 		return super.countWithNamedQuery("StudentCodingTest.countSolvedExercise");
+	}
+	
+	public long countSolvedCode() {
+		return super.countWithNamedQuery("StudentCodingTest.countSolvedCode");
 	}
 
 }

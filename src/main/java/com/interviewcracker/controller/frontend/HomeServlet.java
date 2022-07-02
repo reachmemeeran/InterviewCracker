@@ -39,8 +39,15 @@ public class HomeServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		processPOP(request);
+		processCode(request);
 		
-		
+		String homePage= "frontend/index.jsp";
+		RequestDispatcher dispatcher = request.getRequestDispatcher(homePage);
+		dispatcher.forward(request, response);
+	}
+	
+	void processPOP(HttpServletRequest request){
 		StudentCodingTestDAO studentCodingTestDAO=new StudentCodingTestDAO();
 		List<StudentCodingTest> listPopLeaders = studentCodingTestDAO.popLeaders();
 		
@@ -104,9 +111,72 @@ public class HomeServlet extends HttpServlet {
 	        }
 			request.setAttribute("rank", rank);
 		}
-		String homePage= "frontend/index.jsp";
-		RequestDispatcher dispatcher = request.getRequestDispatcher(homePage);
-		dispatcher.forward(request, response);
+	}
+	
+	void processCode(HttpServletRequest request){
+		StudentCodingTestDAO studentCodingTestDAO=new StudentCodingTestDAO();
+		List<StudentCodingTest> listcodeLeaders = studentCodingTestDAO.codeLeaders();
+		
+		System.out.println("code result --> "+listcodeLeaders.size());
+		
+		Map<String,Integer> leaderMap = new HashMap<>();
+		
+		StudentDAO studentDao = new StudentDAO();
+
+		
+		for(StudentCodingTest leader: listcodeLeaders ) {
+			
+			Students student = studentDao.get(leader.getStudentId());
+			
+			
+			String name = student.getFullname();
+			System.out.println("name--->"+name);
+		
+			if(leaderMap.containsKey(name)) {
+				Integer value = leaderMap.get(name);
+				leaderMap.put(name, value+1);
+			}else {
+				leaderMap.put(name, +1);
+			}
+		}
+		
+		System.out.println("codeleaderMap--->"+leaderMap.toString());
+		
+		
+		ValueComparator CustomComparator = new ValueComparator(leaderMap);
+        TreeMap<String, Integer> sorted_map = new TreeMap<String, Integer>(CustomComparator);
+        if(leaderMap.size()>1) {
+			sorted_map.putAll(leaderMap);
+			request.setAttribute("codeleaderMap", sorted_map);
+		}else {
+			request.setAttribute("codeleaderMap", leaderMap);
+		}
+        
+        System.out.println("sorted_code_map--->"+sorted_map.toString());
+        
+		long solvedCode = studentCodingTestDAO.countSolvedCode();
+		request.setAttribute("solvedCode", solvedCode);
+		
+		HttpSession session = request.getSession();
+		Students student = (Students) session.getAttribute("loggedStudent");
+		if(student!=null) {
+			Integer studentId = student.getStudentsId();
+			long solvedStudentCode = studentCodingTestDAO.countSolvedStudentCode(studentId);
+			request.setAttribute("solvedStudentCode", solvedStudentCode);
+			String studentName = student.getFullname();
+			int codeRank = 0;
+			for (String key : sorted_map.keySet()) {
+				codeRank++;
+				if(key.equals(studentName)) {
+					break;
+				}
+			}
+			
+			if (sorted_map.containsKey(studentName)) {
+				codeRank = sorted_map.headMap(studentName).size();
+	        }
+			request.setAttribute("codeRank", codeRank);
+		}
 	}
 
 	

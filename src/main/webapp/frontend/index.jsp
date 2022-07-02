@@ -41,8 +41,19 @@
 			
 			<h3 style="text-decoration: underline; color: #002b56; border-radius: 25px; text-align: center; font-size: 20px;">Coding Challenge Progress</h3>
 				<p>&nbsp;</p>  
-			<p>Coding Question Solved:${totalStudentCode}</p>
-			<p>Coding Question Pending:${totalPendingCode}</p>
+			<c:if test="${loggedStudent!=null}">
+					<p>Coding Question Solved:${solvedStudentCode}</p>
+					<p>&nbsp;</p>  
+					<p>Coding Question Pending:${23-solvedStudentCode}</p>  
+					<p>&nbsp;</p>  
+					<p>Your Rank:${codeRank}</p>
+				</c:if>
+				<c:if test="${loggedStudent==null}">
+					<p>Total Coding Question Solved:${solvedCode}</p>
+					<p>&nbsp;</p>  
+					<p>Login to see your customised statistics</p>
+					<p>&nbsp;</p>  
+				</c:if>
 			
 				
      </div>
@@ -180,6 +191,22 @@ Space Complexity
 			<div class="line"></div>
 		<h3>Coding Challenge Leader Board</h3>
 		<p>&nbsp;</p>    
+		<div align="center">
+		    <table border="1">
+				<tr>
+					<th style="background-color:#002B56; color:#FFF; padding: 10px;">Rank</th>
+					<th style="background-color:#002B56; color:#FFF; padding: 10px;">Programmer</th>
+					<th style="background-color:#002B56; color:#FFF; padding: 10px;">Score</th>
+				</tr>
+				<c:forEach items="${codeleaderMap}" var="entry" varStatus="status">
+					<tr>
+						<td style="background-color:#002B5636; text-align: center">${status.index + 1}</td>
+						<td style="background-color:#002B5636; text-align: center">${entry.key}</td>
+						<td style="background-color:#002B5636; text-align: center">${entry.value}</td>
+					</tr>
+				</c:forEach>
+			</table>
+        </div>
 	
 	<jsp:directive.include file="footer.jsp" />
 	</div>
