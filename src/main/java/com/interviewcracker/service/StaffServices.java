@@ -252,28 +252,8 @@ public class StaffServices extends CommonUtility {
 			}
 			
 			
-			StudentCodingTestDAO studentCodingTestDAO=new StudentCodingTestDAO();
-			List<StudentCodingTest> listPopLeaders = studentCodingTestDAO.popLeaders();
-			Map<String,Integer> leaderMap = new HashMap<>();
-			StudentDAO studentDao = new StudentDAO();
-			for(StudentCodingTest leader: listPopLeaders ) {
-				Students student = studentDao.get(leader.getStudentId());
-				String name = student.getFullname();
-				if(leaderMap.containsKey(name)) {
-					Integer value = leaderMap.get(name);
-					leaderMap.put(name, value+1);
-				}else {
-					leaderMap.put(name, +1);
-				}
-			}
-			ValueComparator CustomComparator = new ValueComparator(leaderMap);
-	        TreeMap<String, Integer> sorted_map = new TreeMap<String, Integer>(CustomComparator);
-	        if(leaderMap.size()>1) {
-				sorted_map.putAll(leaderMap);
-				request.setAttribute("leaderMap", sorted_map);
-			}else {
-				request.setAttribute("leaderMap", leaderMap);
-			}
+			processPOP(request);
+			processCode(request);
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/");
 			dispatcher.forward(request, response);
@@ -286,6 +266,57 @@ public class StaffServices extends CommonUtility {
 			dispatcher.forward(request, response);			
 		}
 	}  
+	
+	
+	void processPOP(HttpServletRequest request) {
+		StudentCodingTestDAO studentCodingTestDAO=new StudentCodingTestDAO();
+		List<StudentCodingTest> listPopLeaders = studentCodingTestDAO.popLeaders();
+		Map<String,Integer> leaderMap = new HashMap<>();
+		StudentDAO studentDao = new StudentDAO();
+		for(StudentCodingTest leader: listPopLeaders ) {
+			Students student = studentDao.get(leader.getStudentId());
+			String name = student.getFullname();
+			if(leaderMap.containsKey(name)) {
+				Integer value = leaderMap.get(name);
+				leaderMap.put(name, value+1);
+			}else {
+				leaderMap.put(name, +1);
+			}
+		}
+		ValueComparator CustomComparator = new ValueComparator(leaderMap);
+        TreeMap<String, Integer> sorted_map = new TreeMap<String, Integer>(CustomComparator);
+        if(leaderMap.size()>1) {
+			sorted_map.putAll(leaderMap);
+			request.setAttribute("leaderMap", sorted_map);
+		}else {
+			request.setAttribute("leaderMap", leaderMap);
+		}
+	}
+	
+	void processCode(HttpServletRequest request) {
+		StudentCodingTestDAO studentCodingTestDAO=new StudentCodingTestDAO();
+		List<StudentCodingTest> listcodeLeaders = studentCodingTestDAO.codeLeaders();
+		Map<String,Integer> leaderMap = new HashMap<>();
+		StudentDAO studentDao = new StudentDAO();
+		for(StudentCodingTest leader: listcodeLeaders ) {
+			Students student = studentDao.get(leader.getStudentId());
+			String name = student.getFullname();
+			if(leaderMap.containsKey(name)) {
+				Integer value = leaderMap.get(name);
+				leaderMap.put(name, value+1);
+			}else {
+				leaderMap.put(name, +1);
+			}
+		}
+		ValueComparator CustomComparator = new ValueComparator(leaderMap);
+        TreeMap<String, Integer> sorted_map = new TreeMap<String, Integer>(CustomComparator);
+        if(leaderMap.size()>1) {
+			sorted_map.putAll(leaderMap);
+			request.setAttribute("codeleaderMap", sorted_map);
+		}else {
+			request.setAttribute("codeleaderMap", leaderMap);
+		}
+	}
 
 	public void showStaffProfile() throws ServletException, IOException {
 		forwardToPage("staff_profile.jsp", request, response);

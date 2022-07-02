@@ -11,21 +11,22 @@
                 </a>
             </div>
             <div class="middle-item-admin">
-                <div class="link-item-h-admin">
-                    <a class="ah" href="list_codingQuestion">Code Module</a>
-                </div>
-                <div class="link-item-h-admin">
-                    <a class="ah" href="list_codeComplexity">Code Complexity</a>
-                </div>
-                <div class="link-item-h-admin">
-                    <a class="ah" href="list_course">Course Module</a>
-                </div>
-                <div class="link-item-h-admin">
+               <div class="link-item-h-admin">
                 	<a class="ah" href="list_staffs">Staffs</a>
                 </div>
                 <div class="link-item-h-admin">
                     <a class="ah" href="list_student">Students</a>
                 </div>
+                <div class="link-item-h-admin">
+                    <a class="ah" href="list_codeComplexity">Code Complexity</a>
+                </div>
+                 <div class="link-item-h-admin">
+                    <a class="ah" href="list_pop_exercise">POP Module</a>
+                </div>
+                 <div class="link-item-h-admin">
+                    <a class="ah" href="list_codingQuestion">Code Module</a>
+                </div>
+                
             </div>
             <div class="link-item-h staff-cont-admin">
                 <c:if test="${sessionScope!=null }">

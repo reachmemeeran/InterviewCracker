@@ -58,6 +58,19 @@ public class PopExerciseServices extends CommonUtility {
 		forwardToPage("frontend/popexercise_list.jsp", message, request, response);
 	}
 	
+	public void listExercisesAdmin(String message) throws ServletException, IOException {
+		List<POPExercises> listPOPExercises = popExerciseDAO.listAll();	
+		request.setAttribute("listPOPExercises", listPOPExercises);
+		
+		if(message !=null) {
+			request.setAttribute("message", message);
+		}
+		
+		String listPage ="popexercise_list.jsp";
+		
+		CommonUtility.forwardToPage(listPage, request, response);
+	}
+	
 	public void listExercises() throws ServletException, IOException {
 		request.setAttribute("attemptedCode", null);
 		listExercises(null);

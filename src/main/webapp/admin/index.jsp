@@ -20,11 +20,8 @@
 		<p>&nbsp;</p>       
 		<p>Total Number of POP Exercises:22</p>
 		<p>&nbsp;</p>  
-		<p>Total Coding Questions:0</p>  
+		<p>Total Coding Questions:23</p>  
 		<p>&nbsp;</p>  
-		<p>Total Course: ${totalCourse}</p>
-	
-		<p>&nbsp;</p> 
 		<p>Total Staffs: ${totalAdmins}</p> 
 		<p>&nbsp;</p> 
 		<p>Total Students: ${totalStudents}</p> 
@@ -41,10 +38,11 @@
 		    <h2 class="pageheading">Quick Actions:</h2> 
 		     <b>
 		     <p>&nbsp;</p>  
+		     <a href="staff_form.jsp">Create New Staff</a> <br>
+		     <a href="student_form.jsp">Create New Student</a><p>&nbsp;</p>  <br>
+		     
+		     <a href="popexercise_form.jsp">Create New POP Exercise</a> <br>
 		     <a href="codingquestion_form.jsp">Create New Coding Question</a><p>&nbsp;</p>  <br>
-		     <a href="course_form.jsp">Create New Course</a><p>&nbsp;</p>  <br>
-		     <a href="staff_form.jsp">Create New Staff</a><p>&nbsp;</p>  <br>
-		     <a href="student_form.jsp">Create New Student</a><br>
 		     </b>
 		</div>
 		
@@ -58,14 +56,12 @@
 		     	<tr>
 		     		<th style="background-color:#002B56; color:#FFF; padding: 10px;">Total POP Exercises</th>
 		     		<th style="background-color:#002B56; color:#FFF; padding: 10px;">Total Coding Question</th>
-		     		<th style="background-color:#002B56; color:#FFF; padding: 10px;">Total Course</th>
 		     		<th style="background-color:#002B56; color:#FFF; padding: 10px;">Total Staffs</th>
 		     		<th style="background-color:#002B56; color:#FFF; padding: 10px;">Total Students</th>
 		     	</tr>
 		     	<tr>
 		     		<td style="background-color:#002B5636; text-align: center">22</td>
-		     		<td style="background-color:#002B5636; text-align: center">0</td>
-					<td style="background-color:#002B5636; text-align: center">0</td>
+		     		<td style="background-color:#002B5636; text-align: center">23</td>
 					<td style="background-color:#002B5636; text-align: center">${totalAdmins}</td>
 					<td style="background-color:#002B5636; text-align: center">${totalStudents}</td>
 		     	</tr>
@@ -84,11 +80,13 @@
            <div align="center">
 		    <table border="1">
 				<tr>
-					<th style="background-color:#002B56; color:#FFF; padding: 10px;">Leader</th>
-					<th style="background-color:#002B56; color:#FFF; padding: 10px;">Points</th>
+					<th style="background-color:#002B56; color:#FFF; padding: 10px;">Rank</th>
+					<th style="background-color:#002B56; color:#FFF; padding: 10px;">Programmer</th>
+					<th style="background-color:#002B56; color:#FFF; padding: 10px;">Score</th>
 				</tr>
-				<c:forEach items="${leaderMap}" var="entry">
+				<c:forEach items="${leaderMap}" var="entry" varStatus="status">
 					<tr>
+						<td style="background-color:#002B5636; text-align: center">${status.index + 1}</td>
 						<td style="background-color:#002B5636; text-align: center">${entry.key}</td>
 						<td style="background-color:#002B5636; text-align: center">${entry.value}</td>
 					</tr>
@@ -100,6 +98,23 @@
 		<p>&nbsp;</p>   
 		<h3>Coding Challenge Leader Board</h3>
 		<p>&nbsp;</p> 
+		
+		<div align="center">
+		    <table border="1">
+				<tr>
+					<th style="background-color:#002B56; color:#FFF; padding: 10px;">Rank</th>
+					<th style="background-color:#002B56; color:#FFF; padding: 10px;">Programmer</th>
+					<th style="background-color:#002B56; color:#FFF; padding: 10px;">Score</th>
+				</tr>
+				<c:forEach items="${codeleaderMap}" var="entry" varStatus="status">
+					<tr>
+						<td style="background-color:#002B5636; text-align: center">${status.index + 1}</td>
+						<td style="background-color:#002B5636; text-align: center">${entry.key}</td>
+						<td style="background-color:#002B5636; text-align: center">${entry.value}</td>
+					</tr>
+				</c:forEach>
+			</table>
+        </div>
 
      </div>
      <jsp:directive.include file="footer.jsp" />

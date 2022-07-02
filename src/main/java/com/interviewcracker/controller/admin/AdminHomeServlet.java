@@ -31,7 +31,7 @@ public class AdminHomeServlet extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	StudentDAO studentDAO = new StudentDAO();
+		StudentDAO studentDAO = new StudentDAO();
     	StaffDAO staffDAO = new StaffDAO();
     	
     	long totalStudents = studentDAO.count();
@@ -42,6 +42,15 @@ public class AdminHomeServlet extends HttpServlet {
 		request.setAttribute("totalStudents", totalStudents);
 		request.setAttribute("totalAdmins", totalAdmins);
 		
+		processPOP(request);
+		processCode(request);
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher(homepage);
+		dispatcher.forward(request, response);
+
+	}
+	
+	void processPOP(HttpServletRequest request) {
 		StudentCodingTestDAO studentCodingTestDAO=new StudentCodingTestDAO();
 		List<StudentCodingTest> listPopLeaders = studentCodingTestDAO.popLeaders();
 		Map<String,Integer> leaderMap = new HashMap<>();
@@ -64,10 +73,31 @@ public class AdminHomeServlet extends HttpServlet {
 		}else {
 			request.setAttribute("leaderMap", leaderMap);
 		}
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher(homepage);
-		dispatcher.forward(request, response);
-
+	}
+	
+	void processCode(HttpServletRequest request) {
+		StudentCodingTestDAO studentCodingTestDAO=new StudentCodingTestDAO();
+		List<StudentCodingTest> listcodeLeaders = studentCodingTestDAO.codeLeaders();
+		Map<String,Integer> leaderMap = new HashMap<>();
+		StudentDAO studentDao = new StudentDAO();
+		for(StudentCodingTest leader: listcodeLeaders ) {
+			Students student = studentDao.get(leader.getStudentId());
+			String name = student.getFullname();
+			if(leaderMap.containsKey(name)) {
+				Integer value = leaderMap.get(name);
+				leaderMap.put(name, value+1);
+			}else {
+				leaderMap.put(name, +1);
+			}
+		}
+		ValueComparator CustomComparator = new ValueComparator(leaderMap);
+        TreeMap<String, Integer> sorted_map = new TreeMap<String, Integer>(CustomComparator);
+        if(leaderMap.size()>1) {
+			sorted_map.putAll(leaderMap);
+			request.setAttribute("codeleaderMap", sorted_map);
+		}else {
+			request.setAttribute("codeleaderMap", leaderMap);
+		}
 	}
 
 
