@@ -16,19 +16,14 @@
 <body>
 <div class="main-container">
 	<jsp:directive.include file="header.jsp" />
-	<br/><br/><br/><br/><br/><br/><br/><br/>
-	<jsp:directive.include file="header.jsp" />
-	<div align="center">
+	<div class="card one" style="width:40%; min-height:200px; margin-left:30%;margin-top:5%;">
 
-		<h2 class="pageheading">
-			Edit My Profile
+		<h2 style="margin-left:35%;margin-right:auto;">Edit My Profile
 		</h2>
-	</div>
 
-	<div align="center">
 		<form action="update_profile" method="post" id="studentForm" enctype="multipart/form-data">
 
-		<table class="form">
+		<table style="margin-left:auto;margin-right:auto;">
 			<tr>
 				<td align="right">Email:</td>
 				<td align="left"><b>${loggedStudent.email }</b>(Cannot be changed)</td>
@@ -54,7 +49,7 @@
 			
 			<tr>
 				<td><b>Profile Picture:</b></td>
-				<td><img src="data:image/jpeg;base64,${profilepic}" style="width:200px;height:300px;"/></td>
+				<td><img src="data:image/jpeg;base64,${profilepic}" style="width:250px;height:250px;"/></td>
 			</tr>
 			<tr>
 				<td></td>
@@ -71,9 +66,8 @@
 			</tr>
 		</table>
 		</form>
-	</div>
 
-
+</div>
 	<jsp:directive.include file="footer.jsp" />
 	</div>
 </body>

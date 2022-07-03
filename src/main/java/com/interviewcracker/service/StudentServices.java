@@ -292,6 +292,7 @@ public class StudentServices extends CommonUtility {
 	        	}
 	        	i++;
 	        }
+			sorted_pop_map = newSortMapByValue(sorted_pop_map);
 			request.setAttribute("leaderMap", sorted_pop_map);
 		}else {
 			request.setAttribute("leaderMap", leaderMap);
@@ -321,6 +322,7 @@ public class StudentServices extends CommonUtility {
 			if(!sorted_map.containsKey(studentName)) {
 				rank=0;
 			}
+			request.setAttribute("rank", rank);
 		}
 	}
 	
@@ -399,6 +401,7 @@ public class StudentServices extends CommonUtility {
 	        	}
 	        	i++;
 	        }
+			sorted_code_map = newSortMapByValue(sorted_code_map);
 			request.setAttribute("codeleaderMap", sorted_code_map);
 		}else {
 			request.setAttribute("codeleaderMap", leaderMap);

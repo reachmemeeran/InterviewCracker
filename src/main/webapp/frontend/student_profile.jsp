@@ -10,16 +10,14 @@
 <body>
 <div class="main-container">
 	<jsp:directive.include file="header.jsp" />
-	<br/><br/><br/><br/><br/><br/><br/><br/>
-	<jsp:directive.include file="header.jsp" />
 
-	<div align="center">
+	<div class="card one" style="width:40%; min-height:200px; margin-left:30%;margin-top:10%;">
 		<br/>
-		<h2>Welcome, ${loggedStudent.fullname}</h2>
+		<h2 style="margin-left:15%;margin-right:auto;">Welcome, ${loggedStudent.fullname}</h2>
 		<br/>
 	
 	
-		<table class="normal">
+		<table style="margin-left:auto;margin-right:auto;">
 			<tr>
 				<td><b>E-mail Address:</b></td>
 				<td>${loggedStudent.email}</td>
@@ -32,12 +30,12 @@
 			<tr></tr>
 			<tr>
 				<td><b>Profile Picture:</b></td>
-				<td><img src="data:image/jpeg;base64,${profilepic}" style="width:200px;height:300px;"/></td>
+				<td><img src="data:image/jpeg;base64,${profilepic}" style="width:250px;height:250px;"/></td>
 			</tr>
 			<tr><td>&nbsp;</td></tr>
 			<tr>
 				<td colspan="2" align="center">
-					<b><a href="edit_profile">Edit My Profile</a></b>
+					<b><a class="button-1" href="edit_profile">Edit My Profile</a></b>
 				</td>
 			</tr>
 		</table>

@@ -104,6 +104,7 @@ public class HomeServlet extends HttpServlet {
 	        	}
 	        	i++;
 	        }
+			sorted_pop_map = newSortMapByValue(sorted_pop_map);
 			request.setAttribute("leaderMap", sorted_pop_map);
 		}else {
 			request.setAttribute("leaderMap", leaderMap);
@@ -212,6 +213,7 @@ public class HomeServlet extends HttpServlet {
 	        	}
 	        	i++;
 	        }
+			sorted_code_map = newSortMapByValue(sorted_code_map);
 			request.setAttribute("codeleaderMap", sorted_code_map);
 		}else {
 			request.setAttribute("codeleaderMap", leaderMap);

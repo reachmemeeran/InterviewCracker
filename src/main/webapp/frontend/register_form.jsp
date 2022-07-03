@@ -16,19 +16,14 @@
 <body>
 <div class="main-container">
 	<jsp:directive.include file="header.jsp" />
-	<br/><br/><br/><br/><br/><br/><br/><br/>
-	<jsp:directive.include file="header.jsp" />
-	<div align="center">
+	<div class="card one" style="min-width:40%; min-height:250px; margin-left:30%;margin-top:15%;">
 
-		<h2 class="pageheading">
+		<h2 style="margin-left:35%;margin-right:auto;">
 			Register as a Student
 		</h2>
-	</div>
-
-	<div align="center">
 		<form action="register_student" method="post" id="studentForm" enctype="multipart/form-data">
 
-		<table class="form">
+		<table style="margin-left:auto;margin-right:auto;">
 			<tr>
 				<td align="right">Email:</td>
 				<td align="left"><input type="text" id="email" name="email" size="45" /></td>
@@ -54,8 +49,8 @@
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
-					<button type="submit">Save</button>&nbsp;&nbsp;&nbsp;
-					<button id="buttonCancel">Cancel</button>
+					<button class="button-3" style="float:right;margin-right:80px;margin-top:8px;" type="submit">Save</button>&nbsp;&nbsp;&nbsp;
+					<button class="button-1" style="margin-top:8px;" type="BUTTON" value="Cancel" id="buttonCancel">Cancel</button>
 				</td>
 			</tr>
 		</table>
