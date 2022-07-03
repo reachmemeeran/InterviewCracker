@@ -96,6 +96,7 @@ public class CodeServices extends CommonUtility {
 			String attemptedCode = studentCodingTestDAO.getExerciseCode(studentId,exerciseId);
 			if(attemptedCode!=null && !attemptedCode.isEmpty()) {
 				request.setAttribute("attemptedCode", attemptedCode);
+				request.setAttribute("status", "Done");
 			}else {
 				request.setAttribute("attemptedCode", null);
 			}
@@ -199,7 +200,13 @@ public class CodeServices extends CommonUtility {
 					studentCodeTest.setStatus('Y');
 					
 					StudentCodingTestDAO studentCodingTestDAO = new StudentCodingTestDAO();
-					studentCodingTestDAO.create(studentCodeTest);
+					Integer id = studentCodingTestDAO.getId(student.getStudentsId(),exerciseId);
+					if(id==0) {
+						studentCodingTestDAO.create(studentCodeTest);
+					}else {
+						studentCodeTest.setStudentCodingTestId(id);
+						studentCodingTestDAO.update(studentCodeTest);
+					}
 					request.setAttribute("status", "Done");
 					
 				}else {

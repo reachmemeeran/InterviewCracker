@@ -15,33 +15,39 @@
 </head>
 <body>
 	<div class="main-container">
-		<jsp:directive.include file="../header.jsp" />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<jsp:directive.include file="../header.jsp" />
-		<div class="codeheading">
-		<h3>Easy-1: Iteration</h3>
-		</div>
+	<jsp:directive.include file="../header.jsp" />
+		<div class="card one" style="width:92%; height:600px;margin-bottom:30px;">
+		<h3 class="title" style="margin-left:40%;margin-top:20px;">Easy-1: Iteration</h3>
+		
 
-		<div class="codelefttopbar">
+		<div class="card one" style="width:53%;margin-top:-1px;margin-right:-1px;margin-bottom:-1px;margin-left:15px;border-radius:0px;">
+		
+		<div class="card one" style="width:100%;margin-top:-1px;margin-right:-1px;margin-bottom:-1px;margin-left:15px;border-radius:0px;min-height:30px;background:#000;">
+
+				<pre>
+<p style="font-weight: bold;color:green;">Question:</p>Find Factorial with Iterative function call
+Factorial, in mathematics, the product of all positive integers less than or 
+equal to a given positive integer and denoted by that integer and an 
+exclamation point. 
+Thus, factorial seven is written 7!, meaning 1 × 2 × 3 × 4 × 5 × 6 × 7.
+&nbsp;
+<p style="font-weight: bold;color:green;">Expected Output:</p>While Loop: 4 factorial is: 24
+For Loop: 4 factorial is: 24
+</pre>
+			</div>
 
 <pre>
-<p style="font-weight: bold;">Loops:</p>Loops can execute a block of code as long as a specified condition is reached.
+
+<p style="font-weight: bold;color:cyan;">Loops:</p>Loops can execute a block of code as long as a specified condition is reached.
 Loops are handy because they save time, reduce errors, and they make code more readable.
 
-<p style="font-weight: bold;">While Loop:</p>The while loop loops through a block of code as long as a specified condition is true:
+<p style="font-weight: bold;color:cyan;">While Loop:</p>The while loop loops through a block of code as long as a specified condition is true:
 
 while (condition) {
   // code block to be executed
 }
 
-<p style="font-weight: bold;">Do/While Loop:</p>The do/while loop is a variant of the while loop. This loop will execute the code block 
+<p style="font-weight: bold;color:cyan;">Do/While Loop:</p>The do/while loop is a variant of the while loop. This loop will execute the code block 
 once, before checking if the condition is true, then it will repeat the loop as long 
 as the condition is true.
 
@@ -50,7 +56,7 @@ do {
 }
 while (condition);
 
-<p style="font-weight: bold;">For Loop:</p>When you know exactly how many times you want to loop through a block of code, 
+<p style="font-weight: bold;color:cyan;">For Loop:</p>When you know exactly how many times you want to loop through a block of code, 
 use the for loop instead of a while loop:
 
 for (statement 1; statement 2; statement 3) {
@@ -62,39 +68,41 @@ Statement 2 defines the condition for executing the code block.
 
 Statement 3 is executed (every time) after the code block has been executed.
 
-
 </pre>
 
- <br>
- <br>
-			<br>
-		</div>
-		<div class="codemiddlebar">
+
+
 			
-			<div align="left">
+		</div>
+		<div class="card one" style="width:43%;margin-top:-1px;margin-right:-1px;margin-bottom:-1px;margin-left:15px;border-radius:0px;">
+			
+			<div class="card one" style="width:100%;margin-top:-1px;margin-right:-1px;margin-bottom:-1px;margin-left:15px;border-radius:0px;min-height:30px;background:#000;">
+			<h3>Output and Results</h3>
 
-				<pre>
-<p style="font-weight: bold;">Question:</p>Find Factorial with Iterative function call
-Factorial, in mathematics, the product of all positive integers less than or 
-equal to a given positive integer and denoted by that integer and an 
-exclamation point. 
-Thus, factorial seven is written 7!, meaning 1 × 2 × 3 × 4 × 5 × 6 × 7.
-<p style="font-weight: bold;">Expected Output:</p>While Loop: 4 factorial is: 24
-For Loop: 4 factorial is: 24
-</pre>
-			</div>
+			<c:if test="${output!=null}">
+					<pre style="text-align: left; width: 100%; color: #c8ff05; overflow-x: auto; overflow-y: hidden;">Output for your code is: <br>${output}</pre>
+			</c:if>
 
-
-			<div align="center">
+			<c:if test="${message!=null}">
+					<c:if test="${message=='Successfully passed the test case'}">
+						<pre style="text-align: left; width: 100%; color: #05ffd0">${message}</pre>
+					</c:if>
+					<c:if test="${message!='Successfully passed the test case'}">
+						<pre style="text-align: left; width: 100%; color: red; overflow-x: auto; overflow-y: hidden;">${message}</pre>
+					</c:if>
+			</c:if>
+		</div>
+		
+		<div class="card one" style="width:100%;margin-top:-1px;margin-right:-1px;margin-bottom:-1px;margin-left:15px;border-radius:0px;min-height:30px;">
+		
 				<form action="submit_javacoding" method="post" id="submitJavaCodeForm">
-
-					<p>&nbsp;</p>
+					&nbsp;
 					<c:if test="${attemptedCode!=null}">
-						<textarea name="ccode" rows="20" cols="70" style="background-color:#002b56 ; color:#fff">${attemptedCode}</textarea>
+						<textarea name="ccode" rows="23" cols="80" style="background-color:rgba(0, 231, 255, 0.45) ; color:#fff">${attemptedCode}</textarea>
 
 					</c:if>
 					<c:if test="${attemptedCode==null}">
-						<textarea name="ccode" rows="20" cols="70" style="background-color:#002b56 ; color:#fff" required="true">
+						<textarea name="ccode" rows="23" cols="80" style="background-color:rgba(0, 231, 255, 0.45) ; color:#fff" required="true">
 import java.util.*;
 
 class Main{
@@ -132,17 +140,8 @@ class Main{
 					</c:if>
 
 					<c:if test="${status!=null}">
-						<table class="form">
-							<tr>
-								<td>&nbsp;</td>
-							</tr>
-							<tr>
-								<td colspan="1" align="center"><input type="BUTTON"
-									value="Back"
-									onclick="window.location.href='list_code_easy'"></td>
-							</tr>
-						</table>
-
+						<button class="button-3" style="float:right;margin-right:80px;margin-top:20px;"  type="submit">Re-Run</button>&nbsp;&nbsp;&nbsp;&nbsp;
+					 	<input class="button-1" style="margin-top:20px;" type="BUTTON" value="Back" onclick="window.location.href='list_code_easy'">
 					</c:if>
 
 
@@ -185,43 +184,16 @@ class Main{
 					<input type="hidden" name="exerciseId" value="${exerciseId}">
 
 					<c:if test="${status==null}">
-						<table class="form">
-							<tr>
-								<td>&nbsp;</td>
-							</tr>
-							<tr>
-								<td colspan="2" align="center">
-									<button type="submit">Save</button>&nbsp;&nbsp;&nbsp; <input
-									type="BUTTON" value="Back"
-									onclick="window.location.href='list_code_easy'">
-								</td>
-							</tr>
-						</table>
+						<button class="button-3" style="float:right;margin-right:80px;margin-top:20px;"  type="submit">Run</button>&nbsp;&nbsp;&nbsp;&nbsp;
+					 	<input class="button-1" style="margin-top:20px;" type="BUTTON" value="Back" onclick="window.location.href='list_code_easy'">
 					</c:if>
 				</form>
-			</div>
 
 
+</div>
 
 		</div>
-		<div class="codeleftbottombar">
-			<h3>Output and Results</h3>
-			<p>&nbsp;</p>
-
-			<c:if test="${output!=null}">
-					<pre style="text-align: left; width: 100%; color: blue; overflow-x: auto; overflow-y: auto;">Output for your code is: <br>${output}<br></br><p>&nbsp;</p></pre>
-			</c:if>
-
-			<p>&nbsp;</p>
-
-			<c:if test="${message!=null}">
-					<c:if test="${message=='Successfully passed the test case'}">
-						<pre style="text-align: left; width: 100%; color: green">${message}</pre>
-					</c:if>
-					<c:if test="${message!='Successfully passed the test case'}">
-						<pre style="text-align: left; width: 100%; color: red; overflow-x: auto; overflow-y: auto;">${message}<br></br><p>&nbsp;</p></pre>
-					</c:if>
-			</c:if>
+		
 		</div>
 		<jsp:directive.include file="../footer.jsp" />
 	</div>
