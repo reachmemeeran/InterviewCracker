@@ -16,14 +16,8 @@
 	<script type="text/javascript" src="js/jquery.validate.min.js"></script>
 </head>
 <body>
+	<div class="main-container">
 	<jsp:directive.include file="header.jsp" />
-	<div class="poplistmiddlebar">
-	<div align="center">
-
-		<h2 class="pageheading">
-			Coding Challenges - ${complexity}
-		</h2>
-	</div>
 
 	<div align="center">
 		<h3>
@@ -39,47 +33,65 @@
 		</div>
 	</c:if>
 	
-	<p>&nbsp;</p>
-	<p>&nbsp;</p>
+
+<div class="card one" style="width:92%; height:400px; overflow:hidden;">
+		<h3 class="title" style="margin-left:40%;margin-top:30px;">Coding Challenges - ${complexity}</h3>
+		<p>&nbsp;</p>  
+		<h4 style="color:orange; text-align:center; " >Inspiration from the book "Cracking the Coding Interview 189 Programming Questions and Solutions by Gayle Laakmann McDowell"</h4> 
+
 
 <c:if test="${fn:contains(complexity, 'Easy')}">
-	<div class="costeasybarone">
-	Level - ${complexity}
-			<table border="1" cellpadding="5">
-				<tr>
-					<th style="background-color:#002B56; color:#FFF; padding: 10px;">Summary</th>
-					<th style="background-color:#002B56; color:#FFF; padding: 10px;">Actions</th>
-				</tr>
-				<c:forEach var="codingQuestion" items="${listCodingQuestion}"
-					varStatus="status">
+	<div class="card one">
+	
+	<table style="margin-left:auto;margin-right:auto;">
 						<tr>
-							<td style="background-color:#002B5636">${status.index + 1}. ${codingQuestion.summary}</td>
+							<th>Index</th>
+							<th>Summary</th>
+							<th>Actions</th>
+						</tr>
+						<c:forEach var="codingQuestion" items="${listCodingQuestion}" varStatus="status">
+						<tr>
 							<td>
+								<p class="num">${status.index + 1}</p>
+							</td>
+							<td style="width:1000px; border-radius: 30px; background: rgba(0, 231, 255, 0.45);">
+								<p class="link" style="margin:0.4rem">${codingQuestion.summary}</p>
+							</td>
+							<td style="width:200px; border-radius: 30px;padding: .01rem 2%;">
+							<form>
 								<c:if test="${fn:contains(codingQuestion.status, 'Y')}">
-									<a style="color:#3CA234" href="attempt_code?id=${codingQuestion.codingQuestionId}">Solved</a> &nbsp; 
+									<a class="button-1" href="attempt_code?id=${codingQuestion.codingQuestionId}">Solved</a>
 								</c:if>
 								<c:if test="${fn:contains(codingQuestion.status, 'N')}">
-									<a style="color:#BD1B1B" href="attempt_code?id=${codingQuestion.codingQuestionId}">Solve</a> &nbsp; 
+									<a class="button-3" href="attempt_code?id=${codingQuestion.codingQuestionId}">Solve</a>
 								</c:if>
-							</td>
+								</form>
+		 					</td>
+		 					
+							
 						</tr>
-				</c:forEach>
-			</table>
+							</c:forEach>
+							
+						
+						</table>
+
 		</div>
-			<div class="costmediumbar">
-	<h3 style="background: #002b56; color: #fff; border-radius: 10px; text-align: center;"><p>&nbsp;</p><a style="color:#FFF;" href="list_code_medium">Level - Medium</a><p>&nbsp;</p></h3>
+			<div class="card one" style="width:20%;height:200px;  ">
+	<h3 style="background: rgb(19, 126, 144); color: #fff; border-radius: 10px; text-align: center;"><a style="color:#FFF;" href="list_code_medium">Level - Medium</a></h3>
 				<p>&nbsp;</p>       
 <pre>
 Stack
 Queue
 MultiThreading
 Regular Expressions
+
 </pre>
 <p>&nbsp;</p>
-<a style="color:red; position: absolute; text-align:right; top: 290px;" href="list_code_medium">Click to Solve</a> 
+<a class="button-3" href="list_code_medium">Solve Challenge</a>
 	</div>
-	<div class="costAdvancedbar">
-	<h3 style="background: #002b56; color: #fff; border-radius: 10px; text-align: center;"><p>&nbsp;</p><a style="color:#FFF;" href="list_code_advanced">Level - Advanced</a><p>&nbsp;</p></h3>
+	
+	<div class="card one" style="width:20%;height:200px;  ">
+	<h3 style="background: rgb(19, 126, 144); color: #fff; border-radius: 10px; text-align: center;"><a style="color:#FFF;" href="list_code_advanced">Level - Advanced</a></h3>
 				<p>&nbsp;</p>       
 <pre>
 Trees
@@ -93,14 +105,15 @@ Big O:
   Space Complexity
 </pre>
 <p>&nbsp;</p>
-<a style="color:red; position: absolute; text-align:right; top: 290px;" href="list_code_advanced">Click to Solve</a> 
+<a class="button-3" href="list_code_advanced">Solve Challenge</a>
 	</div>
 		</c:if>	
 
 <c:if test="${fn:contains(complexity, 'Medium')}">
-<div class="costeasybar">
-	<h3 style="background: #002b56; color: #fff; border-radius: 10px; text-align: center;"><p>&nbsp;</p><a style="color:#FFF;" href="list_code_easy">Level - Easy</a><p>&nbsp;</p></h3>
+<div class="card one" style="width:20%; height:200px; ">
+	<h3 style="background: rgb(19, 126, 144); color: #fff; border-radius: 10px; text-align: center;"><a style="color:#FFF;" href="list_code_easy">Level - Easy</a></h3>
 				<p>&nbsp;</p>  
+				
 		<pre>
 Arrays
 String
@@ -113,34 +126,47 @@ Logics:
   Prime numbers
   Fibonacci series 
 </pre>
+
 <p>&nbsp;</p>
-<a style="color:red; position: absolute; text-align:right; top: 290px;" href="list_code_easy">Click to Solve</a>  
+<a class="button-3" href="list_code_easy">Solve Challenge</a>
 	</div>
-	<div class="costmediumbarone">
-	Level - ${complexity}
-			<table border="1" cellpadding="5">
-				<tr>
-					<th style="background-color:#002B56; color:#FFF; padding: 10px;">Summary</th>
-					<th style="background-color:#002B56; color:#FFF; padding: 10px;">Actions</th>
-				</tr>
-				<c:forEach var="codingQuestion" items="${listCodingQuestion}"
-					varStatus="status">
+	<div class="card one">
+	
+	<table style="margin-left:auto;margin-right:auto;">
 						<tr>
-							<td style="background-color:#002B5636">${status.index + 1}. ${codingQuestion.summary}</td>
+							<th>Index</th>
+							<th>Summary</th>
+							<th>Actions</th>
+						</tr>
+						<c:forEach var="codingQuestion" items="${listCodingQuestion}" varStatus="status">
+						<tr>
 							<td>
+								<p class="num">${status.index + 1}</p>
+							</td>
+							<td style="width:800px; border-radius: 20px; background: rgba(0, 231, 255, 0.45);">
+								<p class="link" style="margin:0.4rem">${codingQuestion.summary}</p>
+							</td>
+							<td style="width:200px; border-radius: 20px;padding: .01rem 2%;">
+							<form>
 								<c:if test="${fn:contains(codingQuestion.status, 'Y')}">
-									<a style="color:#3CA234" href="attempt_code?id=${codingQuestion.codingQuestionId}">Solved</a> &nbsp; 
+									<a class="button-1" href="attempt_code?id=${codingQuestion.codingQuestionId}">Solved</a>
 								</c:if>
 								<c:if test="${fn:contains(codingQuestion.status, 'N')}">
-									<a style="color:#BD1B1B" href="attempt_code?id=${codingQuestion.codingQuestionId}">Solve</a> &nbsp; 
+									<a class="button-3" href="attempt_code?id=${codingQuestion.codingQuestionId}">Solve</a>
 								</c:if>
-							</td>
+								</form>
+		 					</td>
+		 					
+							
 						</tr>
-				</c:forEach>
-			</table>
+							</c:forEach>
+							
+						
+						</table>
+
 		</div>
-	<div class="costAdvancedbar">
-	<h3 style="background: #002b56; color: #fff; border-radius: 10px; text-align: center;"><p>&nbsp;</p><a style="color:#FFF;" href="list_code_advanced">Level - Advanced</a><p>&nbsp;</p></h3>
+		<div class="card one" style="width:20%;height:200px;  ">
+	<h3 style="background: rgb(19, 126, 144); color: #fff; border-radius: 10px; text-align: center;"><a style="color:#FFF;" href="list_code_advanced">Level - Advanced</a></h3>
 				<p>&nbsp;</p>       
 <pre>
 Trees
@@ -154,16 +180,18 @@ Big O:
   Space Complexity
 </pre>
 <p>&nbsp;</p>
-<a style="color:red; position: absolute; text-align:right; top: 290px;" href="list_code_advanced">Click to Solve</a> 
+<a class="button-3" href="list_code_advanced">Solve Challenge</a>
 	</div>
 		</c:if>	
 		
 
 
 <c:if test="${fn:contains(complexity, 'Advanced')}">
-<div class="costeasybar">
-	<h3 style="background: #002b56; color: #fff; border-radius: 10px; text-align: center;"><p>&nbsp;</p><a style="color:#FFF;" href="list_code_easy">Level - Easy</a><p>&nbsp;</p></h3>
+	
+	<div class="card one" style="width:20%; height:200px; ">
+	<h3 style="background: rgb(19, 126, 144); color: #fff; border-radius: 10px; text-align: center;"><a style="color:#FFF;" href="list_code_easy">Level - Easy</a></h3>
 				<p>&nbsp;</p>  
+				
 		<pre>
 Arrays
 String
@@ -176,50 +204,63 @@ Logics:
   Prime numbers
   Fibonacci series 
 </pre>
+
 <p>&nbsp;</p>
-<a style="color:red; position: absolute; text-align:right; top: 290px;" href="list_code_easy">Click to Solve</a>  
-	</div>	
-			<div class="costmediumbar">
-	<h3 style="background: #002b56; color: #fff; border-radius: 10px; text-align: center;"><p>&nbsp;</p><a style="color:#FFF;" href="list_code_medium">Level - Medium</a><p>&nbsp;</p></h3>
+<a class="button-3" href="list_code_easy">Solve Challenge</a>
+	</div>
+	
+	<div class="card one" style="width:20%;height:200px;  ">
+	<h3 style="background: rgb(19, 126, 144); color: #fff; border-radius: 10px; text-align: center;"><a style="color:#FFF;" href="list_code_medium">Level - Medium</a></h3>
 				<p>&nbsp;</p>       
 <pre>
 Stack
 Queue
 MultiThreading
 Regular Expressions
+
 </pre>
 <p>&nbsp;</p>
-<a style="color:red; position: absolute; text-align:right; top: 290px;" href="list_code_medium">Click to Solve</a> 
+<a class="button-3" href="list_code_medium">Solve Challenge</a>
 	</div>
+	<div class="card one">
 	
-<div class="costAdvancedbarone">
-	Level - ${complexity}
-			<table border="1" cellpadding="5">
-				<tr>
-					<th style="background-color:#002B56; color:#FFF; padding: 10px;">Summary</th>
-					<th style="background-color:#002B56; color:#FFF; padding: 10px;">Actions</th>
-				</tr>
-				<c:forEach var="codingQuestion" items="${listCodingQuestion}"
-					varStatus="status">
+	<table style="margin-left:auto;margin-right:auto;">
 						<tr>
-							<td style="background-color:#002B5636">${status.index + 1}. ${codingQuestion.summary}</td>
+							<th>Index</th>
+							<th>Summary</th>
+							<th>Actions</th>
+						</tr>
+						<c:forEach var="codingQuestion" items="${listCodingQuestion}" varStatus="status">
+						<tr>
 							<td>
+								<p class="num">${status.index + 1}</p>
+							</td>
+							<td style="width:400px; border-radius: 30px; background: rgba(0, 231, 255, 0.45);">
+								<p class="link" style="margin:0.4rem">${codingQuestion.summary}</p>
+							</td>
+							<td style="width:200px; border-radius: 30px;padding: .01rem 2%;">
+							<form>
 								<c:if test="${fn:contains(codingQuestion.status, 'Y')}">
-									<a style="color:#3CA234" href="attempt_code?id=${codingQuestion.codingQuestionId}">Solved</a> &nbsp; 
+									<a class="button-1" href="attempt_code?id=${codingQuestion.codingQuestionId}">Solved</a>
 								</c:if>
 								<c:if test="${fn:contains(codingQuestion.status, 'N')}">
-									<a style="color:#BD1B1B" href="attempt_code?id=${codingQuestion.codingQuestionId}">Solve</a> &nbsp; 
+									<a class="button-3" href="attempt_code?id=${codingQuestion.codingQuestionId}">Solve</a>
 								</c:if>
-							</td>
+								</form>
+		 					</td>
+		 					
+							
 						</tr>
-				</c:forEach>
-			</table>
+							</c:forEach>
+							
+						
+						</table>
+
 		</div>
 		</c:if>	
 		
-			<a style="color:orange; position: absolute; text-align:right; top: 480px;" >Inspiration from the book "Cracking the Coding Interview 189 Programming Questions and Solutions by Gayle Laakmann McDowell"</a> 
 		
-		
+		</div>
 </div>
 
 	<jsp:directive.include file="footer.jsp" />

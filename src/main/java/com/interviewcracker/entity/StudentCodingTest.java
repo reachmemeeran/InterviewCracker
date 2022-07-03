@@ -25,6 +25,7 @@ import javax.persistence.Table;
 	@NamedQuery(name="StudentCodingTest.findAllCode", query= "SELECT c FROM StudentCodingTest c where c.codingQuestionId>22 ORDER BY c.studentCodingTestId"),
 	@NamedQuery(name="StudentCodingTest.findStudentCode", query="SELECT c from StudentCodingTest c where c.studentId=:studentId"),
 	@NamedQuery(name="StudentCodingTest.findExerciseStatus", query="SELECT c.status from StudentCodingTest c where c.studentId=:studentId and c.codingQuestionId=:popExerciseId"),
+	@NamedQuery(name="StudentCodingTest.findId", query="SELECT c.studentCodingTestId from StudentCodingTest c where c.studentId=:studentId and c.codingQuestionId=:popExerciseId"),
 	@NamedQuery(name="StudentCodingTest.findExerciseCode", query="SELECT c.code from StudentCodingTest c where c.studentId=:studentId and c.codingQuestionId=:popExerciseId"),
 	@NamedQuery(name="StudentCodingTest.countSolvedStudentExercise", query= "SELECT count(c) FROM StudentCodingTest c where c.studentId=:studentId and c.codingQuestionId<=22"),
 	@NamedQuery(name="StudentCodingTest.countSolvedStudentCode", query= "SELECT count(c) FROM StudentCodingTest c where c.studentId=:studentId and c.codingQuestionId>22"),

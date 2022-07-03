@@ -124,7 +124,6 @@ public class PopExerciseServices extends CommonUtility {
 	    
 	    Gson gsonC = new Gson();
 	    String jsonCString = gsonC.toJson(rootObject);
-	    System.out.println("jsonCString--->"+jsonCString);
 		
 		OkHttpClient client = new OkHttpClient();
 		MediaType mediaType = MediaType.parse("application/json; charset=utf-8");
@@ -149,7 +148,6 @@ public class PopExerciseServices extends CommonUtility {
 		ansObject.addProperty("input", "");
 	    
 	    String jsonCAnsString = gsonC.toJson(ansObject);
-	    System.out.println("jsonCAnsString--->"+jsonCAnsString);
 		
 		RequestBody ansBody = RequestBody.create(mediaType, jsonCAnsString);
 
@@ -193,7 +191,14 @@ public class PopExerciseServices extends CommonUtility {
 					studentCodeTest.setStatus('Y');
 					
 					StudentCodingTestDAO studentCodingTestDAO = new StudentCodingTestDAO();
-					studentCodingTestDAO.create(studentCodeTest);
+					Integer id = studentCodingTestDAO.getId(student.getStudentsId(),exerciseId);
+					if(id==0) {
+						studentCodingTestDAO.create(studentCodeTest);
+					}else {
+						studentCodeTest.setStudentCodingTestId(id);
+						studentCodingTestDAO.update(studentCodeTest);
+					}
+					
 					request.setAttribute("status", "Done");
 					
 				}else {

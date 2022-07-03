@@ -16,20 +16,10 @@
 	<script type="text/javascript" src="js/jquery.validate.min.js"></script>
 </head>
 <body>
+	
+	<div class="main-container">
 	<jsp:directive.include file="header.jsp" />
-	<div class="poplistmiddlebar">
-	<div align="center">
 
-		<h2 class="pageheading">
-			POP Exercises
-		</h2>
-	</div>
-
-	<div align="center">
-		<h3>
-			
-		</h3>
-	</div>
 
 	<c:if test="${message!=null}">
 		<div align="center">
@@ -38,7 +28,55 @@
 			</h4>
 		</div>
 	</c:if>
-
+	
+	
+	<div class="card one" style="width:92%; ">
+			<h3 class="title" style="margin-left:40%;margin-top:30px;">POP Exercises</h3>
+			
+					<table style="margin-left:auto;margin-right:auto;">
+						<tr>
+							<th>Index</th>
+							<th>Week</th>
+							<th>Lesson</th>
+							<th>Language</th>
+							<th>Actions</th>
+						</tr>
+						<c:forEach var="popExercise" items="${listPOPExercises}" varStatus="status">
+						<tr>
+							<td>
+								<p class="num">${popExercise.popExerciseId}</p>
+							</td>
+							<td style="width:400px; border-radius: 30px; background: rgba(0, 231, 255, 0.45);">
+								<p class="link" style="margin:0.4rem">${popExercise.week}</p>
+							</td>
+							<td style="width:300px; border-radius: 30px; background: rgba(0, 231, 255, 0.45);">
+								<p class="link" style="margin:0.4rem">${popExercise.lesson}</p>
+							</td>
+							<td style="width:50px; border-radius: 30px; background: rgba(0, 231, 255, 0.45);">
+								<p class="link" style="margin:0.4rem">${popExercise.language}</p>
+							</td>
+							<td style="width:200px; border-radius: 30px;padding: .01rem 2%;">
+							<form>
+								<c:if test="${fn:contains(popExercise.status, 'Y')}">
+									<a class="button-1" href="attempt_exercise?id=${popExercise.popExerciseId}">Solved</a>
+								</c:if>
+								<c:if test="${fn:contains(popExercise.status, 'N')}">
+									<a class="button-3" href="attempt_exercise?id=${popExercise.popExerciseId}">Solve Exercise</a>
+								</c:if>
+								</form>
+		 					</td>
+		 					
+							
+						</tr>
+							</c:forEach>
+							
+						
+						</table>
+						<p>&nbsp;</p>  
+						<p>&nbsp;</p>  
+			
+		</div>
+<!--  
 	<div align="center">
 		<table border="1" cellpadding="5">
 			<tr>
@@ -166,6 +204,7 @@
 			</c:forEach>
 		</table>
 	</div>
+	-->
 </div>
 
 	<jsp:directive.include file="footer.jsp" />

@@ -132,7 +132,6 @@ public class CodeServices extends CommonUtility {
 	    
 	    Gson gsonC = new Gson();
 	    String jsonCString = gsonC.toJson(rootObject);
-	    System.out.println("jsonCString--->"+jsonCString);
 		
 		OkHttpClient client = new OkHttpClient();
 		MediaType mediaType = MediaType.parse("application/json; charset=utf-8");
@@ -157,7 +156,6 @@ public class CodeServices extends CommonUtility {
 		ansObject.addProperty("input", "");
 	    
 	    String jsonCAnsString = gsonC.toJson(ansObject);
-	    System.out.println("jsonCAnsString--->"+jsonCAnsString);
 		
 		RequestBody ansBody = RequestBody.create(mediaType, jsonCAnsString);
 

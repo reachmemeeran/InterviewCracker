@@ -76,6 +76,15 @@ public class StudentCodingTestDAO extends JpaDAO<StudentCodingTest> implements G
 		return null;
 	}
 	
+	public Integer getId(Integer studentId, Integer popExerciseId) {
+		List<Object> statusList = super.findWithNamedQuery("StudentCodingTest.findId","studentId",
+				studentId,"popExerciseId",popExerciseId);
+		if(statusList !=null && statusList.size()>0) {
+			return (Integer) statusList.get(0);
+		}
+		return 0;
+	}
+	
 	public long countSolvedStudentExercise(Integer studentId) {
 		return super.countWithNamedQuery("StudentCodingTest.countSolvedStudentExercise","studentId",studentId);
 	}
