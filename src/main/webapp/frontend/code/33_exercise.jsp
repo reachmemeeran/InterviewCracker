@@ -15,24 +15,31 @@
 </head>
 <body>
 	<div class="main-container">
-		<jsp:directive.include file="../header.jsp" />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<jsp:directive.include file="../header.jsp" />
-		<div class="codeheading">
-		<h3>Medium-2: Implement Queue with Stack</h3>
-		</div>
+	<jsp:directive.include file="../header.jsp" />
+		<div class="card one" style="width:92%; height:600px;margin-bottom:30px;">
+		<h3 class="title" style="margin-left:40%;margin-top:20px;">Medium-2: Implement Queue with Stack</h3>
+		
 
-		<div class="codelefttopbar">
+		<div class="card one" style="width:53%;margin-top:-1px;margin-right:-1px;margin-bottom:-1px;margin-left:15px;border-radius:0px;">
+		
+		<div class="card one" style="width:100%;margin-top:-1px;margin-right:-1px;margin-bottom:-1px;margin-left:15px;border-radius:0px;min-height:30px;background:#000;">
+
+				<pre>
+<p style="font-weight: bold;color:green;">Question:</p>Implement Queue with Stack operations
+Functionalities to implement: Stack.push to Queue.add, pop to remove, 
+peek to peek, isEmpty to isEmpty.
+&nbsp;
+<p style="font-weight: bold;color:green;">Expected Output:</p>Is Queue is empty: true
+Top of the Queue is: 5
+Top of the Queue is: 5
+Top of the Queue is: 10
+Is Queue is empty: false
+</pre>
+			</div>
 
 <pre>
-Stack and Queue are fundamental data structures in Java Collections Framework. 
+
+<p style="font-weight: bold;color:cyan;">Stack and Queue:</p>Stack and Queue are fundamental data structures in Java Collections Framework. 
 They are used to store the same type of data and retrive the data in specific order. 
 Stack and Queue both are Linear Data Structures.
 
@@ -42,7 +49,7 @@ The operations are denoted as push and pop for insertion and deletion respective
 Queue follows the FIFO principle i.e. First In First Out. 
 Insertion operation is known as enqueue and deletion operation is known as dequeue.
 
-<p style="font-weight: bold;">Stack:</p>Basic Syntax
+<p style="font-weight: bold;color:cyan;">Stack:</p>Basic Syntax
 Stack< Object> stack = new Stack<>();
 Stack< Integer> stack = new Stack<>();  //Example stack of Integer datatype.
 stack.push(varible_name); // To add Element to the top of the stack
@@ -51,7 +58,7 @@ stack.peek(); // Returns the top element of the stack
 stack.size(); // Returns the no. of elements of the stack
 stack.empty(); // Returns a Boolean indicating whether the stack is empty
 
-<p style="font-weight: bold;">Queue:</p>Basic Syntax
+<p style="font-weight: bold;color:cyan;">Queue:</p>Basic Syntax
 Queue< Object> queue = new LinkedListQueue<Obj>();
 Queue< String> animal1 = new LinkedList<>();// LinkedList implementation of Queue
 Queue< String> animal2 = new ArrayDeque<>();// Array implementation of Queue
@@ -69,37 +76,39 @@ poll() - Returns and removes the head of the queue. Returns null if the queue is
 
 </pre>
 
- <br>
- <br>
-			<br>
-		</div>
-		<div class="codemiddlebar">
+
+
 			
-			<div align="left">
+		</div>
+		<div class="card one" style="width:43%;margin-top:-1px;margin-right:-1px;margin-bottom:-1px;margin-left:15px;border-radius:0px;">
+			
+			<div class="card one" style="width:100%;margin-top:-1px;margin-right:-1px;margin-bottom:-1px;margin-left:15px;border-radius:0px;min-height:30px;background:#000;">
+			<h3>Output and Results</h3>
 
-				<pre>
-<p style="font-weight: bold;">Question:</p>Implement Queue with Stack operations
-Functionalities to implement: Stack.push to Queue.add, pop to remove, 
-peek to peek, isEmpty to isEmpty
-<p style="font-weight: bold;">Expected Output:</p>Is Queue is empty: true
-Top of the Queue is: 5
-Top of the Queue is: 5
-Top of the Queue is: 10
-Is Queue is empty: false
-</pre>
-			</div>
+			<c:if test="${output!=null}">
+					<pre style="text-align: left; width: 100%; color: #c8ff05; overflow-x: auto; overflow-y: hidden;">Output for your code is: <br>${output}</pre>
+			</c:if>
 
-
-			<div align="center">
+			<c:if test="${message!=null}">
+					<c:if test="${message=='Successfully passed the test case'}">
+						<pre style="text-align: left; width: 100%; color: #05ffd0">${message}</pre>
+					</c:if>
+					<c:if test="${message!='Successfully passed the test case'}">
+						<pre style="text-align: left; width: 100%; color: red; overflow-x: auto; overflow-y: hidden;">${message}</pre>
+					</c:if>
+			</c:if>
+		</div>
+		
+		<div class="card one" style="width:100%;margin-top:-1px;margin-right:-1px;margin-bottom:-1px;margin-left:15px;border-radius:0px;min-height:30px;">
+		
 				<form action="submit_javacoding" method="post" id="submitJavaCodeForm">
-
-					<p>&nbsp;</p>
+					&nbsp;
 					<c:if test="${attemptedCode!=null}">
-						<textarea name="ccode" rows="20" cols="70" style="background-color:#002b56 ; color:#fff">${attemptedCode}</textarea>
+						<textarea name="ccode" rows="23" cols="80" style="background-color:rgba(0, 231, 255, 0.45) ; color:#fff">${attemptedCode}</textarea>
 
 					</c:if>
 					<c:if test="${attemptedCode==null}">
-						<textarea name="ccode" rows="20" cols="70" style="background-color:#002b56 ; color:#fff" required="true">
+						<textarea name="ccode" rows="23" cols="80" style="background-color:rgba(0, 231, 255, 0.45) ; color:#fff" required="true">
 import java.util.*;
 
 class Main{
@@ -134,17 +143,8 @@ class QueueImplementationUsingStack{
 					</c:if>
 
 					<c:if test="${status!=null}">
-						<table class="form">
-							<tr>
-								<td>&nbsp;</td>
-							</tr>
-							<tr>
-								<td colspan="1" align="center"><input type="BUTTON"
-									value="Back"
-									onclick="window.location.href='list_code_medium'"></td>
-							</tr>
-						</table>
-
+						<button class="button-3" style="float:right;margin-right:80px;margin-top:20px;"  type="submit">Re-Run</button>&nbsp;&nbsp;&nbsp;&nbsp;
+					 	<input class="button-1" style="margin-top:20px;" type="BUTTON" value="Back" onclick="window.location.href='list_code_medium'">
 					</c:if>
 
 
@@ -192,43 +192,16 @@ class QueueImplementationUsingStack{
 					<input type="hidden" name="exerciseId" value="${exerciseId}">
 
 					<c:if test="${status==null}">
-						<table class="form">
-							<tr>
-								<td>&nbsp;</td>
-							</tr>
-							<tr>
-								<td colspan="2" align="center">
-									<button type="submit">Save</button>&nbsp;&nbsp;&nbsp; <input
-									type="BUTTON" value="Back"
-									onclick="window.location.href='list_code_medium'">
-								</td>
-							</tr>
-						</table>
+						<button class="button-3" style="float:right;margin-right:80px;margin-top:20px;"  type="submit">Run</button>&nbsp;&nbsp;&nbsp;&nbsp;
+					 	<input class="button-1" style="margin-top:20px;" type="BUTTON" value="Back" onclick="window.location.href='list_code_medium'">
 					</c:if>
 				</form>
-			</div>
 
 
+</div>
 
 		</div>
-		<div class="codeleftbottombar">
-			<h3>Output and Results</h3>
-			<p>&nbsp;</p>
-
-			<c:if test="${output!=null}">
-					<pre style="text-align: left; width: 100%; color: blue; overflow-x: auto; overflow-y: auto;">Output for your code is: <br>${output}<br></br><p>&nbsp;</p></pre>
-			</c:if>
-
-			<p>&nbsp;</p>
-
-			<c:if test="${message!=null}">
-					<c:if test="${message=='Successfully passed the test case'}">
-						<pre style="text-align: left; width: 100%; color: green">${message}</pre>
-					</c:if>
-					<c:if test="${message!='Successfully passed the test case'}">
-						<pre style="text-align: left; width: 100%; color: red; overflow-x: auto; overflow-y: auto;">${message}<br></br><p>&nbsp;</p></pre>
-					</c:if>
-			</c:if>
+		
 		</div>
 		<jsp:directive.include file="../footer.jsp" />
 	</div>
