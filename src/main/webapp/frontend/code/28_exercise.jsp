@@ -15,24 +15,27 @@
 </head>
 <body>
 	<div class="main-container">
-		<jsp:directive.include file="../header.jsp" />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<jsp:directive.include file="../header.jsp" />
-		<div class="codeheading">
-		<h3>Easy-6: ArrayList</h3>
-		</div>
+	<jsp:directive.include file="../header.jsp" />
+		<div class="card one" style="width:92%; height:600px;margin-bottom:30px;">
+		<h3 class="title" style="margin-left:40%;margin-top:20px;">Easy-6: ArrayList</h3>
+		
 
-		<div class="codelefttopbar">
+		<div class="card one" style="width:53%;margin-top:-1px;margin-right:-1px;margin-bottom:-1px;margin-left:15px;border-radius:0px;">
+		
+		<div class="card one" style="width:100%;margin-top:-1px;margin-right:-1px;margin-bottom:-1px;margin-left:15px;border-radius:0px;min-height:30px;background:#000;">
+
+				<pre>
+<p style="font-weight: bold;color:green;">Question:</p>Check if the two strings have identical character counts.
+&nbsp;
+<p style="font-weight: bold;color:green;">Expected Output:</p>Is same & same have identical character counts: true
+Is same & emsa have identical character counts: true
+Is yepsame & nopsame have identical character counts: false
+</pre>
+			</div>
 
 <pre>
-In Few languages, arrays (often called lists in this case) are automatically resizable. 
+
+<p style="font-weight: bold;color:cyan;">Arrays:</p>In Few languages, arrays (often called lists in this case) are automatically resizable. 
 The array or list will grow as you append items. 
 But in Java, arrays are fixed length. The size is defined when you 
 create the array. When you need an array-like data structure that offers dynamic 
@@ -49,9 +52,8 @@ is still O (1).
 		for (String w: more) sentence.add(w);
 		return sentence;
 	}
-	
 
-Why is the amortized insertion runtime 0(1)?
+<p style="font-weight: bold;color:cyan;">Why is the amortized insertion runtime 0(1)?</p>
 Suppose you have an array of size N. We can work backwards to compute how many elements 
 we copied at each capacity increase. 
 Observe that when we increase the array to K elements, the array was previously half 
@@ -66,36 +68,42 @@ that size. Therefore, we needed to copy k/2 elements.
 	
 Therefore, the total number of copies to insert N elements is roughly 
 N/2 + N/4 + N/8 + . . . + 2 + 1, which is just less than N.
+
 </pre>
 
- <br>
- <br>
-			<br>
-		</div>
-		<div class="codemiddlebar">
+
+
 			
-			<div align="left">
+		</div>
+		<div class="card one" style="width:43%;margin-top:-1px;margin-right:-1px;margin-bottom:-1px;margin-left:15px;border-radius:0px;">
+			
+			<div class="card one" style="width:100%;margin-top:-1px;margin-right:-1px;margin-bottom:-1px;margin-left:15px;border-radius:0px;min-height:30px;background:#000;">
+			<h3>Output and Results</h3>
 
-				<pre>
-<p style="font-weight: bold;">Question:</p>Check if the two strings have identical character counts
-<p style="font-weight: bold;">Expected Output:</p>Is same & same have identical character counts: true
-Is same & emsa have identical character counts: true
-Is yepsame & nopsame have identical character counts: false
+			<c:if test="${output!=null}">
+					<pre style="text-align: left; width: 100%; color: #c8ff05; overflow-x: auto; overflow-y: hidden;">Output for your code is: <br>${output}</pre>
+			</c:if>
 
-</pre>
-			</div>
-
-
-			<div align="center">
+			<c:if test="${message!=null}">
+					<c:if test="${message=='Successfully passed the test case'}">
+						<pre style="text-align: left; width: 100%; color: #05ffd0">${message}</pre>
+					</c:if>
+					<c:if test="${message!='Successfully passed the test case'}">
+						<pre style="text-align: left; width: 100%; color: red; overflow-x: auto; overflow-y: hidden;">${message}</pre>
+					</c:if>
+			</c:if>
+		</div>
+		
+		<div class="card one" style="width:100%;margin-top:-1px;margin-right:-1px;margin-bottom:-1px;margin-left:15px;border-radius:0px;min-height:30px;">
+		
 				<form action="submit_javacoding" method="post" id="submitJavaCodeForm">
-
-					<p>&nbsp;</p>
+					&nbsp;
 					<c:if test="${attemptedCode!=null}">
-						<textarea name="ccode" rows="20" cols="70" style="background-color:#002b56 ; color:#fff">${attemptedCode}</textarea>
+						<textarea name="ccode" rows="23" cols="80" style="background-color:rgba(0, 231, 255, 0.45) ; color:#fff">${attemptedCode}</textarea>
 
 					</c:if>
 					<c:if test="${attemptedCode==null}">
-						<textarea name="ccode" rows="20" cols="70" style="background-color:#002b56 ; color:#fff" required="true">
+						<textarea name="ccode" rows="23" cols="80" style="background-color:rgba(0, 231, 255, 0.45) ; color:#fff" required="true">
 import java.util.*;
 
 class Main{
@@ -127,17 +135,8 @@ public class Permutation{
 					</c:if>
 
 					<c:if test="${status!=null}">
-						<table class="form">
-							<tr>
-								<td>&nbsp;</td>
-							</tr>
-							<tr>
-								<td colspan="1" align="center"><input type="BUTTON"
-									value="Back"
-									onclick="window.location.href='list_code_easy'"></td>
-							</tr>
-						</table>
-
+						<button class="button-3" style="float:right;margin-right:80px;margin-top:20px;"  type="submit">Re-Run</button>&nbsp;&nbsp;&nbsp;&nbsp;
+					 	<input class="button-1" style="margin-top:20px;" type="BUTTON" value="Back" onclick="window.location.href='list_code_easy'">
 					</c:if>
 
 
@@ -178,43 +177,16 @@ public class Permutation{
 					<input type="hidden" name="exerciseId" value="${exerciseId}">
 
 					<c:if test="${status==null}">
-						<table class="form">
-							<tr>
-								<td>&nbsp;</td>
-							</tr>
-							<tr>
-								<td colspan="2" align="center">
-									<button type="submit">Save</button>&nbsp;&nbsp;&nbsp; <input
-									type="BUTTON" value="Back"
-									onclick="window.location.href='list_code_easy'">
-								</td>
-							</tr>
-						</table>
+						<button class="button-3" style="float:right;margin-right:80px;margin-top:20px;"  type="submit">Run</button>&nbsp;&nbsp;&nbsp;&nbsp;
+					 	<input class="button-1" style="margin-top:20px;" type="BUTTON" value="Back" onclick="window.location.href='list_code_easy'">
 					</c:if>
 				</form>
-			</div>
 
 
+</div>
 
 		</div>
-		<div class="codeleftbottombar">
-			<h3>Output and Results</h3>
-			<p>&nbsp;</p>
-
-			<c:if test="${output!=null}">
-					<pre style="text-align: left; width: 100%; color: blue; overflow-x: auto; overflow-y: auto;">Output for your code is: <br>${output}<br></br><p>&nbsp;</p></pre>
-			</c:if>
-
-			<p>&nbsp;</p>
-
-			<c:if test="${message!=null}">
-					<c:if test="${message=='Successfully passed the test case'}">
-						<pre style="text-align: left; width: 100%; color: green">${message}</pre>
-					</c:if>
-					<c:if test="${message!='Successfully passed the test case'}">
-						<pre style="text-align: left; width: 100%; color: red; overflow-x: auto; overflow-y: auto;">${message}<br></br><p>&nbsp;</p></pre>
-					</c:if>
-			</c:if>
+		
 		</div>
 		<jsp:directive.include file="../footer.jsp" />
 	</div>

@@ -15,24 +15,29 @@
 </head>
 <body>
 	<div class="main-container">
-		<jsp:directive.include file="../header.jsp" />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<jsp:directive.include file="../header.jsp" />
-		<div class="codeheading">
-		<h3>Easy-9: Set</h3>
-		</div>
+	<jsp:directive.include file="../header.jsp" />
+		<div class="card one" style="width:92%; height:600px;margin-bottom:30px;">
+		<h3 class="title" style="margin-left:40%;margin-top:20px;">Easy-9: Set</h3>
+		
 
-		<div class="codelefttopbar">
+		<div class="card one" style="width:53%;margin-top:-1px;margin-right:-1px;margin-bottom:-1px;margin-left:15px;border-radius:0px;">
+		
+		<div class="card one" style="width:100%;margin-top:-1px;margin-right:-1px;margin-bottom:-1px;margin-left:15px;border-radius:0px;min-height:30px;background:#000;">
+
+				<pre>
+<p style="font-weight: bold;color:green;">Question:</p>Convert the ArrayList to HashSet and witness the difference.
+&nbsp;
+<p style="font-weight: bold;color:green;">Expected Output:</p>Print ArrayList: [warren buffett, Jeff Bezos, Larry Ellison, Larry Page, , , 
+Jeff Bezos]
+ArrayList size is: 7
+Print Hashset: [Larry Page, , warren buffett, Jeff Bezos, Larry Ellison]
+Hashset size is: 5
+</pre>
+			</div>
 
 <pre>
-Reference: https://docs.oracle.com/javase/8/docs/api/java/util/Set.html
+
+<p style="font-weight: bold;color:cyan;">Set:</p>Reference: https://docs.oracle.com/javase/8/docs/api/java/util/Set.html
 public interface Set<E>
 extends Collection<E>
 
@@ -50,7 +55,7 @@ interface, but they do not contain any additional stipulations.)
 The additional stipulation on constructors is, not surprisingly, that all constructors 
 must create a set that contains no duplicate elements (as defined above).
 
-Note: Great care must be exercised if mutable objects are used as set elements. 
+<p style="font-weight: bold;color:cyan;">Note:</p>Great care must be exercised if mutable objects are used as set elements. 
 The behavior of a set is not specified if the value of an object is changed in a manner 
 that affects equals comparisons while the object is an element in the set. A special 
 case of this prohibition is that it is not permissible for a set to contain itself as an 
@@ -70,38 +75,43 @@ or it may succeed, at the option of the implementation. Such exceptions are mark
 
 This interface is a member of the Java Collections Framework.
 
-Example: {1,2,3,4,5} is a set but {1,2,3,4,4} is not a set
+<p style="font-weight: bold;color:cyan;">Example:</p>{1,2,3,4,5} is a set but {1,2,3,4,4} is not a set.
+
 </pre>
 
- <br>
- <br>
-			<br>
-		</div>
-		<div class="codemiddlebar">
+
+
 			
-			<div align="left">
+		</div>
+		<div class="card one" style="width:43%;margin-top:-1px;margin-right:-1px;margin-bottom:-1px;margin-left:15px;border-radius:0px;">
+			
+			<div class="card one" style="width:100%;margin-top:-1px;margin-right:-1px;margin-bottom:-1px;margin-left:15px;border-radius:0px;min-height:30px;background:#000;">
+			<h3>Output and Results</h3>
 
-				<pre>
-<p style="font-weight: bold;">Question:</p>Convert the ArrayList to HashSet and witness the difference
-<p style="font-weight: bold;">Expected Output:</p>Print ArrayList: [warren buffett, Jeff Bezos, Larry Ellison, Larry Page, , , 
-Jeff Bezos]
-ArrayList size is: 7
-Print Hashset: [Larry Page, , warren buffett, Jeff Bezos, Larry Ellison]
-Hashset size is: 5
-</pre>
-			</div>
+			<c:if test="${output!=null}">
+					<pre style="text-align: left; width: 100%; color: #c8ff05; overflow-x: auto; overflow-y: hidden;">Output for your code is: <br>${output}</pre>
+			</c:if>
 
-
-			<div align="center">
+			<c:if test="${message!=null}">
+					<c:if test="${message=='Successfully passed the test case'}">
+						<pre style="text-align: left; width: 100%; color: #05ffd0">${message}</pre>
+					</c:if>
+					<c:if test="${message!='Successfully passed the test case'}">
+						<pre style="text-align: left; width: 100%; color: red; overflow-x: auto; overflow-y: hidden;">${message}</pre>
+					</c:if>
+			</c:if>
+		</div>
+		
+		<div class="card one" style="width:100%;margin-top:-1px;margin-right:-1px;margin-bottom:-1px;margin-left:15px;border-radius:0px;min-height:30px;">
+		
 				<form action="submit_javacoding" method="post" id="submitJavaCodeForm">
-
-					<p>&nbsp;</p>
+					&nbsp;
 					<c:if test="${attemptedCode!=null}">
-						<textarea name="ccode" rows="20" cols="70" style="background-color:#002b56 ; color:#fff">${attemptedCode}</textarea>
+						<textarea name="ccode" rows="23" cols="80" style="background-color:rgba(0, 231, 255, 0.45) ; color:#fff">${attemptedCode}</textarea>
 
 					</c:if>
 					<c:if test="${attemptedCode==null}">
-						<textarea name="ccode" rows="20" cols="70" style="background-color:#002b56 ; color:#fff" required="true">
+						<textarea name="ccode" rows="23" cols="80" style="background-color:rgba(0, 231, 255, 0.45) ; color:#fff" required="true">
 import java.util.*;
 
 class Main{
@@ -132,17 +142,8 @@ class Main{
 					</c:if>
 
 					<c:if test="${status!=null}">
-						<table class="form">
-							<tr>
-								<td>&nbsp;</td>
-							</tr>
-							<tr>
-								<td colspan="1" align="center"><input type="BUTTON"
-									value="Back"
-									onclick="window.location.href='list_code_easy'"></td>
-							</tr>
-						</table>
-
+						<button class="button-3" style="float:right;margin-right:80px;margin-top:20px;"  type="submit">Re-Run</button>&nbsp;&nbsp;&nbsp;&nbsp;
+					 	<input class="button-1" style="margin-top:20px;" type="BUTTON" value="Back" onclick="window.location.href='list_code_easy'">
 					</c:if>
 
 
@@ -178,43 +179,16 @@ class Main{
 					<input type="hidden" name="exerciseId" value="${exerciseId}">
 
 					<c:if test="${status==null}">
-						<table class="form">
-							<tr>
-								<td>&nbsp;</td>
-							</tr>
-							<tr>
-								<td colspan="2" align="center">
-									<button type="submit">Save</button>&nbsp;&nbsp;&nbsp; <input
-									type="BUTTON" value="Back"
-									onclick="window.location.href='list_code_easy'">
-								</td>
-							</tr>
-						</table>
+						<button class="button-3" style="float:right;margin-right:80px;margin-top:20px;"  type="submit">Run</button>&nbsp;&nbsp;&nbsp;&nbsp;
+					 	<input class="button-1" style="margin-top:20px;" type="BUTTON" value="Back" onclick="window.location.href='list_code_easy'">
 					</c:if>
 				</form>
-			</div>
 
 
+</div>
 
 		</div>
-		<div class="codeleftbottombar">
-			<h3>Output and Results</h3>
-			<p>&nbsp;</p>
-
-			<c:if test="${output!=null}">
-					<pre style="text-align: left; width: 100%; color: blue; overflow-x: auto; overflow-y: auto;">Output for your code is: <br>${output}<br></br><p>&nbsp;</p></pre>
-			</c:if>
-
-			<p>&nbsp;</p>
-
-			<c:if test="${message!=null}">
-					<c:if test="${message=='Successfully passed the test case'}">
-						<pre style="text-align: left; width: 100%; color: green">${message}</pre>
-					</c:if>
-					<c:if test="${message!='Successfully passed the test case'}">
-						<pre style="text-align: left; width: 100%; color: red; overflow-x: auto; overflow-y: auto;">${message}<br></br><p>&nbsp;</p></pre>
-					</c:if>
-			</c:if>
+		
 		</div>
 		<jsp:directive.include file="../footer.jsp" />
 	</div>
