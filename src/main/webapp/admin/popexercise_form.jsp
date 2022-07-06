@@ -6,93 +6,84 @@
 <html>
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Create new coding interview questions</title>
+	<title>Create New POP Exercise</title>
 	<link rel="stylesheet" href="../css/style.css">
 	<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
 	<script type="text/javascript" src="../js/jquery.validate.min.js"></script>
 </head>
 <body>
+	<div class="main-container">
 	<jsp:directive.include file="header.jsp" />
-	<div class="indexmiddlebar">
+	<div class="card one" style="width:40%; min-height:200px; margin-left:30%;margin-top:10%;">
 	<div align="center">
 
 		<h2 class="pageheading">
 			<c:if test="${codingQuestion!=null}">
-				Update codingQuestion Information
+				Update POP Exercise
 			</c:if>
 			<c:if test="${codingQuestion==null}">
-				New codingQuestion Information
+				New POP Exercise
 			</c:if>
 		</h2>
 	</div>
 	
+	&nbsp;
 	<div align="center">
-		<c:if test="${codingQuestion!=null}">
-			<form action="update_codingQuestion" method="post" id="codingQuestionForm">
-				<input type="hidden" name="codeComplexityId" value="${codeComplexity.codeComplexityId}">
+		<c:if test="${popExercise!=null}">
+			<form action="update_popExercise" method="post" id="popExerciseForm">
+				<input type="hidden" name="popExerciseId" value="${popExercise.popExerciseId}">
 		</c:if>
-		<c:if test="${codingQuestion==null}">
-			<form action="create_codingQuestion" method="post" id="codingQuestionForm">
+		<c:if test="${popExercise==null}">
+			<form action="create_popExercise" method="post" id="popExerciseForm">
 		</c:if>
 		
-		<table class="form">
+		<table style="margin-left:auto;margin-right:auto;">
 			<tr>
-				<td align="right">CodeComplexity:</td>
-				<td align="left"><select name="codeComplexity">
-						<option>Please select your CodeComplexity</option>
-						<c:forEach items="${listCodeComplexity}" var="codeComplexity">
-							<c:if test="${codeComplexity.codeComplexityId eq codingQuestion.codeComplexity.codeComplexityId}">
-								<option value="${codeComplexity.codeComplexityId}" selected>
-							</c:if>
-							<c:if test="${codeComplexity.codeComplexityId ne codingQuestion.codeComplexity.codeComplexityId}">
-								<option value="${codeComplexity.codeComplexityId}">
-							</c:if>
-							${codeComplexity.name}
-							</option>
-						</c:forEach>
-					</select>
-				</td>
+				<td align="right">week:</td>
+				<td align="left"><input type="text" id="week" name="week"
+					size="50" value="${popExercise.week}" /></td>
 			</tr>
 			<tr>
-				<td align="right">Summary:</td>
-				<td align="left"><input type="text" id="summary" name="summary"
-					size="20" value="${codingQuestion.summary}" /></td>
+				<td align="right">lesson:</td>
+				<td align="left"><input type="text" id="lesson" name="lesson"
+					size="50" value="${popExercise.lesson}" /></td>
 			</tr>
 			<tr>
-				<td align="right">Coding Question:</td>
-				<td align="left"><textarea name="question"
-						rows="10 placeholder=" placeholder="Enter Coding Question here">${codingQuestion.question}</textarea>
-				</td>
+				<td align="right">language:</td>
+				<td align="left"><input type="text" id="language" name="language"
+					size="20" value="${popExercise.language}" /></td>
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
-					<button type="submit">Save</button>&nbsp;&nbsp;&nbsp;
-					<button id="buttonCancel">Cancel</button>
+					<button class="button-3" type="submit">Save</button>&nbsp;&nbsp;&nbsp;
+					<button class="button-1" id="buttonCancel">Cancel</button>
 				</td>
 			</tr>
 		</table>
 		</form>
 		</div>
+		&nbsp;
 	</div>
 
 
 	<jsp:directive.include file="footer.jsp" />
+	</div>
 </body>
 <script type='text/javascript'>
 	$(document).ready(function() {
-		$("#codingQuestionForm").validate({
+		$("#popExerciseForm").validate({
 			rules : {
-				codeComplexity : "required",
-				summary : "required",
-				question : "required",
+				week : "required",
+				lesson : "required",
+				language : "required",
 			},
 			messages : {
-				codeComplexity : "Please select a codeComplexity for the codingQuestion.",
-				summary : "Please enter summary of the codingQuestion.",
-				question : "Please enter coding Question.",
+				week : "Please enter a week.",
+				lesson : "Please enter lesson.",
+				language : "Please enter language.",
 			}
 		});
 		$("#buttonCancel").click(function() {

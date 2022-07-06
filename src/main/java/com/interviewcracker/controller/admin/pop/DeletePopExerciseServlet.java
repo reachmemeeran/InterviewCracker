@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.interviewcracker.service.CodingQuestionServices;
+import com.interviewcracker.service.PopExerciseServices;
 
 @WebServlet("/admin/delete_popExercise")
 public class DeletePopExerciseServlet extends HttpServlet {
@@ -19,8 +19,8 @@ public class DeletePopExerciseServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		CodingQuestionServices codingQuestionServices = new CodingQuestionServices(request, response);
-		codingQuestionServices.deleteCodingQuestion();
+		PopExerciseServices popExerciseServices = new PopExerciseServices(request, response);
+		popExerciseServices.deletePopExercise();
 	}
 
 }

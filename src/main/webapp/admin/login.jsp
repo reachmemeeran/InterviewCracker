@@ -11,12 +11,11 @@
 	<script type="text/javascript" src="../js/jquery.validate.min.js"></script>
 </head>
 <body>
-	<div class="main-container">
-		<div class="indexmiddlebar">
-			<div align="center">
-				<h1>InterviewCracker Administrator</h1>
-				<h2>Admin Login</h2>
-				
+<div class="main-container">
+	<div class="card one" style="width:40%; min-height:200px; margin-left:30%;margin-top:15%;">
+		<h1 style="margin-left:12%;margin-right:auto;">InterviewCracker Administrator</h1>
+		<h2 style="margin-left:35%;margin-right:auto;">Admin Login</h2>
+				<h2>&nbsp;</h2>
 				<c:if test="${message!=null}">
 					<div align="center">
 						<h4 class="message">
@@ -25,19 +24,25 @@
 					</div>
 				</c:if>
 				<form id="formLogin" action="login" method="post">
-					<table>
+					<table style="margin-left:auto;margin-right:auto;">
 						<tr>
 							<td>Email:</td>
-							<td><input type="text" name="email" id="email" size="20"></td>
+							<td><input type="text" name="email" id="email" size="30"></td>
 						</tr>
 						<tr>
 							<td>Password:</td>
-							<td><input type="password" name="password" id="password" size="20"></td>
+							<td><input type="password" name="password" id="password" size="30"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
 						</tr>
 						<tr>
 							<td colspan="2" align="center">
-								<button type="submit">Login</button>
+								<button class="button-1" type="submit">Login</button>
 							</td>	
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
 						</tr>
 					</table>
 				</form>

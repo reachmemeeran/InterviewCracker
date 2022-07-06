@@ -17,7 +17,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "pop_exercise", catalog = "interviewcrackerdb")
 @NamedQueries({
-	@NamedQuery(name="POPExercises.findAll", query= "SELECT c FROM POPExercises c ORDER BY c.popExerciseId")
+	@NamedQuery(name="POPExercises.findAll", query= "SELECT c FROM POPExercises c ORDER BY c.popExerciseId"),
+	@NamedQuery(name="POPExercises.findPOPExercise", query= "SELECT c FROM POPExercises c where c.week=:week AND c.lesson=:lesson")
 })
 public class POPExercises implements java.io.Serializable {
 

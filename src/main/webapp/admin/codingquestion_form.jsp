@@ -12,8 +12,9 @@
 	<script type="text/javascript" src="../js/jquery.validate.min.js"></script>
 </head>
 <body>
+	<div class="main-container">
 	<jsp:directive.include file="header.jsp" />
-	<div class="indexmiddlebar">
+	<div class="card one" style="width:40%; min-height:200px; margin-left:30%;margin-top:10%;">
 	<div align="center">
 
 		<h2 class="pageheading">
@@ -26,6 +27,7 @@
 		</h2>
 	</div>
 	
+	&nbsp;
 	<div align="center">
 		<c:if test="${codingQuestion!=null}">
 			<form action="update_codingQuestion" method="post" id="codingQuestionForm">
@@ -35,21 +37,29 @@
 			<form action="create_codingQuestion" method="post" id="codingQuestionForm">
 		</c:if>
 		
-		<table class="form">
+		<table style="margin-left:auto;margin-right:auto;">
 			<tr>
 				<td align="right">CodeComplexity:</td>
 				<td align="left"><select name="codeComplexity">
 						<option>Please select your CodeComplexity</option>
-						<c:forEach items="${listCodeComplexity}" var="codeComplexity">
-							<c:if test="${codeComplexity.codeComplexityId eq codingQuestion.codeComplexity.codeComplexityId}">
-								<option value="${codeComplexity.codeComplexityId}" selected>
-							</c:if>
-							<c:if test="${codeComplexity.codeComplexityId ne codingQuestion.codeComplexity.codeComplexityId}">
-								<option value="${codeComplexity.codeComplexityId}">
-							</c:if>
-							${codeComplexity.name}
-							</option>
-						</c:forEach>
+						<c:if test="${codingQuestion!=null}">
+							<c:forEach items="${listCodeComplexity}" var="codeComplexity">
+								<c:if test="${codeComplexity.codeComplexityId eq codingQuestion.codeComplexityId}">
+									<option value="${codeComplexity.codeComplexityId}" selected>
+								</c:if>
+								<c:if test="${codeComplexity.codeComplexityId ne codingQuestion.codeComplexityId}">
+									<option value="${codeComplexity.codeComplexityId}">
+								</c:if>
+								${codeComplexity.name}
+								</option>
+							</c:forEach>
+						</c:if>
+						<c:if test="${codingQuestion==null}">
+							<c:forEach items="${listCodeComplexity}" var="codeComplexity">
+								${codeComplexity.name}
+								</option>
+							</c:forEach>
+						</c:if>
 					</select>
 				</td>
 			</tr>
@@ -69,17 +79,19 @@
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
-					<button type="submit">Save</button>&nbsp;&nbsp;&nbsp;
-					<button id="buttonCancel">Cancel</button>
+					<button class="button-3" type="submit">Save</button>&nbsp;&nbsp;&nbsp;
+					<button class="button-1" id="buttonCancel">Cancel</button>
 				</td>
 			</tr>
 		</table>
 		</form>
 		</div>
+		&nbsp;
 	</div>
 
 
 	<jsp:directive.include file="footer.jsp" />
+	</div>
 </body>
 <script type='text/javascript'>
 	$(document).ready(function() {

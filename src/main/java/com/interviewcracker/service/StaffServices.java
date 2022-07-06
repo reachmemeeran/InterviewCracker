@@ -3,10 +3,13 @@ package com.interviewcracker.service;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Base64;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -283,11 +286,36 @@ public class StaffServices extends CommonUtility {
 				leaderMap.put(name, +1);
 			}
 		}
-		ValueComparator CustomComparator = new ValueComparator(leaderMap);
-        TreeMap<String, Integer> sorted_map = new TreeMap<String, Integer>(CustomComparator);
+		
+		Map<String,Integer>  sorted_map = newSortMapByValue(leaderMap);
         if(leaderMap.size()>1) {
 			sorted_map.putAll(leaderMap);
-			request.setAttribute("leaderMap", sorted_map);
+			int i=1;
+			Map<String, Integer> sorted_pop_map = new HashMap<>();
+			for (Map.Entry<String, Integer> entry : sorted_map.entrySet()) {
+				String name = entry.getKey();
+			     if(name.contains(" ")){
+			    	 name= name.substring(0, name.indexOf(" ")); 
+			     }
+	        	if(i==1) {
+	        		request.setAttribute("pop1key", name);
+	        		request.setAttribute("pop1value", entry.getValue());
+	        	}else if(i==2) {
+	        		request.setAttribute("pop2key", name);
+	        		request.setAttribute("pop2value", entry.getValue());
+	        	}else if(i==3) {
+	        		request.setAttribute("pop3key", name);
+	        		request.setAttribute("pop3value", entry.getValue());
+	        	}
+	        	if(i<=5) {
+	        		sorted_pop_map.put(entry.getKey(), entry.getValue());
+	        	}else {
+	        		break;
+	        	}
+	        	i++;
+	        }
+			sorted_pop_map = newSortMapByValue(sorted_pop_map);
+			request.setAttribute("leaderMap", sorted_pop_map);
 		}else {
 			request.setAttribute("leaderMap", leaderMap);
 		}
@@ -308,14 +336,61 @@ public class StaffServices extends CommonUtility {
 				leaderMap.put(name, +1);
 			}
 		}
-		ValueComparator CustomComparator = new ValueComparator(leaderMap);
-        TreeMap<String, Integer> sorted_map = new TreeMap<String, Integer>(CustomComparator);
+		
+        Map<String, Integer> sorted_map = newSortMapByValue(leaderMap);
+        Map<String, Integer> sorted_code_map = new HashMap<String, Integer>();
         if(leaderMap.size()>1) {
-			sorted_map.putAll(leaderMap);
-			request.setAttribute("codeleaderMap", sorted_map);
+        	sorted_map.putAll(leaderMap);
+			int i=1;
+			for (Map.Entry<String, Integer> entry : sorted_map.entrySet()) {
+				String name = entry.getKey();
+			     if(name.contains(" ")){
+			    	 name= name.substring(0, name.indexOf(" ")); 
+			     }
+	        	if(i==1) {
+	        		request.setAttribute("code1key", name);
+	        		request.setAttribute("code1value", entry.getValue());
+	        	}else if(i==2) {
+	        		request.setAttribute("code2key", name);
+	        		request.setAttribute("code2value", entry.getValue());
+	        	}else if(i==3) {
+	        		request.setAttribute("code3key", name);
+	        		request.setAttribute("code3value", entry.getValue());
+	        	}
+	        	if(i<=5) {
+	        		sorted_code_map.put(entry.getKey(), entry.getValue());
+	        	}else {
+	        		break;
+	        	}
+	        	i++;
+	        }
+			sorted_code_map = newSortMapByValue(sorted_code_map);
+			request.setAttribute("codeleaderMap", sorted_code_map);
 		}else {
 			request.setAttribute("codeleaderMap", leaderMap);
 		}
+	}
+	
+	public static <K extends Comparable<? super K>, V extends Comparable<? super V>> Map<K, V> newSortMapByValue(Map<K, V> map) {
+        List<Map.Entry<K, V>> list = new LinkedList<>(map.entrySet());
+        Collections.sort(list, new Comparator<Map.Entry<K, V>>() {
+            @Override
+            public int compare(Map.Entry<K, V> e1, Map.Entry<K, V> e2) {
+                // Check if values are the same
+                if (e1.getValue().equals(e2.getValue()))
+                    // Compare e1 to e2, because A should be first element
+                    return e1.getKey().compareTo(e2.getKey());
+                else
+                    // Compare e2 to e1, because largest number should be first
+                    return e2.getValue().compareTo(e1.getValue());
+            }
+        });
+
+        Map<K, V> result = new LinkedHashMap<>();
+        for (Map.Entry<K, V> entry : list) {
+            result.put(entry.getKey(), entry.getValue());
+        }
+        return result;
 	}
 
 	public void showStaffProfile() throws ServletException, IOException {

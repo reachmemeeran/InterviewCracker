@@ -52,20 +52,11 @@ public class HomeServlet extends HttpServlet {
 	void processPOP(HttpServletRequest request){
 		StudentCodingTestDAO studentCodingTestDAO=new StudentCodingTestDAO();
 		List<StudentCodingTest> listPopLeaders = studentCodingTestDAO.popLeaders();
-		
-		
 		Map<String,Integer> leaderMap = new HashMap<>();
-		
 		StudentDAO studentDao = new StudentDAO();
-
-		
 		for(StudentCodingTest leader: listPopLeaders ) {
-			
 			Students student = studentDao.get(leader.getStudentId());
-			
-			
 			String name = student.getFullname();
-		
 			if(leaderMap.containsKey(name)) {
 				Integer value = leaderMap.get(name);
 				leaderMap.put(name, value+1);
@@ -74,12 +65,9 @@ public class HomeServlet extends HttpServlet {
 			}
 		}
 		
-		
-		
 		Map<String,Integer>  sorted_map = newSortMapByValue(leaderMap);
         if(leaderMap.size()>1) {
 			sorted_map.putAll(leaderMap);
-			
 			int i=1;
 			Map<String, Integer> sorted_pop_map = new HashMap<>();
 			for (Map.Entry<String, Integer> entry : sorted_map.entrySet()) {
@@ -109,10 +97,6 @@ public class HomeServlet extends HttpServlet {
 		}else {
 			request.setAttribute("leaderMap", leaderMap);
 		}
-        
-   
-        
-        System.out.println("sorted_map--->"+sorted_map.toString());
         
 		long solvedExercise = studentCodingTestDAO.countSolvedExercise();
 		request.setAttribute("solvedExercise", solvedExercise);
@@ -163,20 +147,11 @@ public class HomeServlet extends HttpServlet {
 	void processCode(HttpServletRequest request){
 		StudentCodingTestDAO studentCodingTestDAO=new StudentCodingTestDAO();
 		List<StudentCodingTest> listcodeLeaders = studentCodingTestDAO.codeLeaders();
-		
-		
 		Map<String,Integer> leaderMap = new HashMap<>();
-		
 		StudentDAO studentDao = new StudentDAO();
-
-		
 		for(StudentCodingTest leader: listcodeLeaders ) {
-			
 			Students student = studentDao.get(leader.getStudentId());
-			
-			
 			String name = student.getFullname();
-		
 			if(leaderMap.containsKey(name)) {
 				Integer value = leaderMap.get(name);
 				leaderMap.put(name, value+1);
@@ -189,7 +164,6 @@ public class HomeServlet extends HttpServlet {
         Map<String, Integer> sorted_code_map = new HashMap<String, Integer>();
         if(leaderMap.size()>1) {
         	sorted_map.putAll(leaderMap);
-			
 			int i=1;
 			for (Map.Entry<String, Integer> entry : sorted_map.entrySet()) {
 				String name = entry.getKey();
@@ -218,8 +192,6 @@ public class HomeServlet extends HttpServlet {
 		}else {
 			request.setAttribute("codeleaderMap", leaderMap);
 		}
-        
-        System.out.println("sorted_code_map--->"+sorted_map.toString());
         
 		long solvedCode = studentCodingTestDAO.countSolvedCode();
 		request.setAttribute("solvedCode", solvedCode);

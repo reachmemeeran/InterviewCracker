@@ -16,19 +16,14 @@
 <body>
 <div class="main-container">
 	<jsp:directive.include file="header.jsp" />
-	<br/><br/><br/><br/><br/><br/><br/><br/>
-	<jsp:directive.include file="header.jsp" />
-	<div align="center">
+	<div class="card one" style="width:40%; min-height:200px; margin-left:30%;margin-top:10%;">
 
-		<h2 class="pageheading">
-			Edit My Profile
+		<h2 style="margin-left:35%;margin-right:auto;">Edit My Profile
 		</h2>
-	</div>
 
-	<div align="center">
 		<form action="update_profile" method="post" id="staffForm" enctype="multipart/form-data">
 
-		<table class="form">
+		<table style="margin-left:auto;margin-right:auto;">
 			<tr>
 				<td align="right">Email:</td>
 				<td align="left"><b>${loggedStaff.email }</b>(Cannot be changed)</td>
@@ -54,7 +49,7 @@
 			
 			<tr>
 				<td><b>Profile Picture:</b></td>
-				<td><img src="data:image/jpeg;base64,${profilepic}" style="width:200px;height:300px;"/></td>
+				<td><img src="data:image/jpeg;base64,${profilepic}" style="width:250px;height:250px;"/></td>
 			</tr>
 			<tr>
 				<td></td>
@@ -65,15 +60,15 @@
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
-					<button type="submit">Save</button>&nbsp;&nbsp;&nbsp;
-					<button id="buttonCancel">Cancel</button>
+					<button class="button-3" type="submit">Save</button>&nbsp;&nbsp;&nbsp;
+					<button class="button-1" id="buttonCancel">Cancel</button>
 				</td>
 			</tr>
 		</table>
+		&nbsp;
 		</form>
-	</div>
 
-
+</div>
 	<jsp:directive.include file="footer.jsp" />
 	</div>
 </body>

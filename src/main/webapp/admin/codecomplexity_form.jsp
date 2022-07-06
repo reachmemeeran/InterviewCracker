@@ -11,8 +11,9 @@
 	<script type="text/javascript" src="../js/jquery.validate.min.js"></script>
 </head>
 <body>
+<div class="main-container">
 	<jsp:directive.include file="header.jsp" />
-	<div class="indexmiddlebar">
+	<div class="card one" style="width:40%; min-height:200px; margin-left:30%;margin-top:10%;">
 	<div align="center">
 
 		<h2 class="pageheading">
@@ -34,7 +35,8 @@
 			<form action="create_codeComplexity" method="post" id="codeComplexityForm">
 		</c:if>
 
-		<table class="form">
+&nbsp;
+		<table style="margin-left:auto;margin-right:auto;">
 			<tr>
 				<td align="right">Name:</td>
 				<td align="left"><input type="text" id="name" name="name"
@@ -45,8 +47,8 @@
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
-					<button type="submit">Save</button>&nbsp;&nbsp;&nbsp;
-					<button id="buttonCancel">Cancel</button>
+					<button class="button-3" type="submit">Save</button>&nbsp;&nbsp;&nbsp;
+					<button class="button-1" id="buttonCancel">Cancel</button>
 				</td>
 			</tr>
 		</table>
@@ -56,6 +58,7 @@
 
 
 	<jsp:directive.include file="footer.jsp" />
+	</div>
 </body>
 <script type="text/javascript">
 	$(document).ready(function() {

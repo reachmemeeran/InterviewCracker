@@ -139,29 +139,9 @@ public class CodingQuestionServices extends CommonUtility {
 
 	public void deleteCodingQuestion() throws ServletException, IOException {
 		Integer codingQuestionId = Integer.parseInt(request.getParameter("id"));
-		CodingQuestion codingQuestion =  codingQuestionDAO.get(codingQuestionId);
-		
-		if (codingQuestion == null) {
-			String message = "Could not find codingQuestion with ID " + codingQuestionId 
-					+ ", or it might have been deleted";
-			showMessageBackend(message, request, response);
-			
-		} else {
-			/*
-			 * if (!codingQuestion.getReviews().isEmpty()) { String message =
-			 * "Could not delete the codingQuestion with ID " + codingQuestionId +
-			 * " because it has reviews"; showMessageBackend(message, request, response); }
-			 * else { OrderDAO orderDAO = new OrderDAO(); long countByOrder =
-			 * orderDAO.countOrderDetailByCodingQuestion(codingQuestionId);
-			 * 
-			 * if (countByOrder > 0) { String message =
-			 * "Could not delete codingQuestion with ID " + codingQuestionId +
-			 * " because there are orders associated with it."; showMessageBackend(message,
-			 * request, response); } else { String message =
-			 * "The codingQuestion has been deleted successfully.";
-			 * codingQuestionDAO.delete(codingQuestionId); listCodingQuestion(message); } }
-			 */
-		}
+		codingQuestionDAO.delete(codingQuestionId);
+		String message = "The codingQuestion has been deleted successfully.";
+		listCodingQuestion(message);
 	}
 
 	public void listCodingQuestionByCodeComplexity() throws ServletException, IOException {

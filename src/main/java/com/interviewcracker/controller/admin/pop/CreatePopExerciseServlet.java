@@ -3,20 +3,14 @@ package com.interviewcracker.controller.admin.pop;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.interviewcracker.service.CodingQuestionServices;
+import com.interviewcracker.service.PopExerciseServices;
 
 @WebServlet("/admin/create_popExercise")
-@MultipartConfig(
-		fileSizeThreshold = 1204 * 10, // 10KB
-		maxFileSize = 1024*1024, // 1MB
-		maxRequestSize = 1024*1024*5 // 5MB
-)
 public class CreatePopExerciseServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -25,8 +19,8 @@ public class CreatePopExerciseServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		CodingQuestionServices codingQuestionServices = new CodingQuestionServices(request, response);
-		codingQuestionServices.createCodingQuestion();
+		PopExerciseServices popExerciseServices = new PopExerciseServices(request, response);
+		popExerciseServices.createPopExercise();
 	}
 
 }

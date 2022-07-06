@@ -31,7 +31,9 @@
 	
 	
 	<div class="card one" style="width:92%; ">
-			<h3 class="title" style="margin-left:40%;margin-top:30px;">POP Exercises</h3>
+			<div align="center">
+				<h3 class="pageheading">POP Exercises</h3>
+			</div>
 			
 					<table style="margin-left:auto;margin-right:auto;">
 						<tr>

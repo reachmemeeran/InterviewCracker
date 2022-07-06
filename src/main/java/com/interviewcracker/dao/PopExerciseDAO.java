@@ -53,6 +53,17 @@ public class PopExerciseDAO extends JpaDAO<POPExercises> implements GenericDAO<P
 		}
 		return null;
 	}
+	
+	public POPExercises findByWeekLesseon(String week, String lesson) {
+		Map<String,Object> parameters = new HashMap<>();
+		parameters.put("week", week);
+		parameters.put("lesson",lesson);
+		List<POPExercises> result = super.findWithNamedQuery("POPExercises.findPOPExercise",parameters);
+		if(!result.isEmpty()) {
+			return result.get(0);
+		}
+		return null;
+	}
 
 	
 }

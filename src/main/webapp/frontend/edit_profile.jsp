@@ -16,7 +16,7 @@
 <body>
 <div class="main-container">
 	<jsp:directive.include file="header.jsp" />
-	<div class="card one" style="width:40%; min-height:200px; margin-left:30%;margin-top:5%;">
+	<div class="card one" style="width:40%; min-height:200px; margin-left:30%;margin-top:10%;">
 
 		<h2 style="margin-left:35%;margin-right:auto;">Edit My Profile
 		</h2>
@@ -60,8 +60,8 @@
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
-					<button type="submit">Save</button>&nbsp;&nbsp;&nbsp;
-					<button id="buttonCancel">Cancel</button>
+					<button class="button-3" type="submit">Save</button>&nbsp;&nbsp;&nbsp;
+					<button class="button-1" id="buttonCancel">Cancel</button>
 				</td>
 			</tr>
 		</table>

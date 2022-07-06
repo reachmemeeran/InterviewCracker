@@ -1,75 +1,83 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
+<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Manage Code Questions - InterviewCracker Administration</title>
+	<title>Manage Code Complexity - InterviewCracker Administration</title>
 	<link rel="stylesheet" href="../css/style.css">
 	<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
 	<script type="text/javascript" src="../js/jquery.validate.min.js"></script>
 </head>
 <body>
+	<div class="main-container">
 	<jsp:directive.include file="header.jsp" />
-	<div class="courselistmiddlebar">
-		<div align="center">
-			<h2 class="pageheading">Coding Question Management</h2>
-		</div>
-		<p>&nbsp;</p>
-		<div align="center">
-			<h3>
-				<a href="codingquestion_form.jsp">Create New Coding Question</a>
-			</h3>
-		</div>
-
-		<p>&nbsp;</p>
+	<div class="card one" style="width:60%; min-height:200px; margin-left:20%;margin-top:10%;">
 	
-		<c:if test="${message!=null}">
-			<div align="center">
-				<h4 class="message">${message}</h4>
-			</div>
-		</c:if>
+	<div align="center">
+		<h3 class="pageheading">Coding Question Management</h3>
+	</div>
+	
 
-		<div align="center" style="height:400px;">
-			<table border="1" cellpadding="5">
+	<div align="center">
+		<h3>
+			<a class="button-1" href="codingquestion_form.jsp">Create New Coding Question</a>
+		</h3>
+	</div>
+
+	<c:if test="${message!=null}">
+		<div align="center">
+			<h4 class="message">
+				${message}
+			</h4>
+		</div>
+	</c:if>
+
+	&nbsp;
+
+		<table style="margin-left:auto;margin-right:auto;">
 				<tr>
-					<th style="background-color:#002B56; color:#FFF; padding: 10px;">Index</th>
-					<th style="background-color:#002B56; color:#FFF; padding: 10px;">ID</th>
-					<th style="background-color:#002B56; color:#FFF; padding: 10px;">CodeComplexity</th>
-					<th style="background-color:#002B56; color:#FFF; padding: 10px;">Summary</th>
-					<th style="background-color:#002B56; color:#FFF; padding: 10px;">Actions</th>
-					<th>&nbsp;</th>
+					<th>Index</th>
+					<th>ID</th>
+					<th>CodeComplexity</th>
+					<th>Summary</th>
+					<th>Actions</th>
 				</tr>
-				<c:forEach var="codingQuestion" items="${listcodingQuestions}"
-					varStatus="status">
+				<c:forEach var="codingQuestion" items="${listcodingQuestions}" varStatus="status">
 						<tr>
-							<td style="background-color:#002B5636">${status.index + 1}</td>
-							<td style="background-color:#002B5636">${codingQuestion.codingQuestionId}</td>
-							<td style="background-color:#002B5636">${codingQuestion.codeComplexityId}</td>
-							<td style="background-color:#002B5636">${codingQuestion.summary}</td>
 							<td>
-								<a href="edit_codingQuestion?id=${codingQuestion.codingQuestionId}">Edit</a> &nbsp; 
-								<a href="javascript:void(0);" class="deleteLink" id="${codingQuestion.codingQuestionId}">Delete</a>
+								<p class="num">${status.index+1}</p>
 							</td>
-							<td> &nbsp;</td>
+							<td style="width:100px; border-radius: 30px; background: rgba(0, 231, 255, 0.45);">
+								<p class="link" style="margin:0.4rem">${codingQuestion.codingQuestionId}</p>
+							</td>
+							<td style="width:100px; border-radius: 30px; background: rgba(0, 231, 255, 0.45);">
+								<p class="link" style="margin:0.4rem">${codingQuestion.codeComplexityId}</p>
+							</td>
+							<td style="width:300px; border-radius: 30px; background: rgba(0, 231, 255, 0.45);">
+								<p class="link" style="margin:0.4rem">${codingQuestion.summary}</p>
+							</td>
+							<td style="width:200px; padding: .01rem 2%;">
+								<a class="button-3" href="edit_codingQuestion?id=${codingQuestion.codingQuestionId}">Edit</a>
+								<a class="button-1" onclick="deleteFunction(this.id);" id="${codingQuestion.codingQuestionId}">Delete</a>
+							</td>
 						</tr>
 				</c:forEach>
 			</table>
-		</div>
+			&nbsp;
 	</div>
+</div>
 
 	<jsp:directive.include file="footer.jsp" />
-</body>
-<script>
-	function deleteFunction(codingQuestionId) {
-		console.log("CodingQuestion id: " + codingQuestionId);
-		if (confirm('Are you sure you want to soft delete the codingQuestion with ID '
-				+ codingQuestionId + '?')) {
-			window.location = 'delete_codingQuestion?id=' + codingQuestionId;
+
+	<script>
+		function deleteFunction(codeQuestionId) {
+			console.log("codeQuestionId: " + codeQuestionId);
+			if(confirm("Are you sure you want to delete the codeQuestion with ID " + codeQuestionId + " ?")){
+				window.location = 'delete_codingQuestion?id='+codeQuestionId;
+			}
 		}
-	}
-</script>
+	</script>
+</body>
 </html>

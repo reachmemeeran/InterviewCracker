@@ -11,8 +11,9 @@
 	<script type="text/javascript" src="../js/jquery.validate.min.js"></script>
 </head>
 <body>
+<div class="main-container">
 	<jsp:directive.include file="header.jsp" />
-	<div class="indexmiddlebar">
+	<div class="card one" style="width:40%; min-height:200px; margin-left:30%;margin-top:10%;">
 	<div align="center">
 
 		<h2 class="pageheading">
@@ -24,12 +25,12 @@
 			</c:if>
 		</h2>
 	</div>
-
+&nbsp;
 		<div align="center">
 			<c:if test="${student != null}">
 				<form action="update_student" method="post" id="studentForm" enctype="multipart/form-data">
 					<input type="hidden" name="studentId" value="${student.studentsId}">
-					<table class="form">
+					<table style="margin-left:auto;margin-right:auto;">
 						<tr>
 							<td align="right">Email:</td>
 							<td align="left"><b>${student.email }</b>(Cannot be changed)</td>
@@ -64,8 +65,8 @@
 						</tr>
 						<tr>
 							<td colspan="2" align="center">
-								<button type="submit">Save</button>&nbsp;&nbsp;&nbsp;
-								<button id="buttonCancel">Cancel</button>
+								<button class="button-3" type="submit">Save</button>&nbsp;&nbsp;&nbsp;
+								<button class="button-1" id="buttonCancel">Cancel</button>
 							</td>
 						</tr>
 					</table>
@@ -73,7 +74,7 @@
 			</c:if>
 			<c:if test="${student == null}">
 				<form action="create_student" method="post" id="studentForm" enctype="multipart/form-data">
-					<table class="form">
+					<table style="margin-left:auto;margin-right:auto;">
 						<tr>
 							<td align="right">Email:</td>
 							<td align="left"><input type="text" id="email" name="email" size="45" /></td>
@@ -99,18 +100,20 @@
 						</tr>
 						<tr>
 							<td colspan="2" align="center">
-								<button type="submit">Save</button>&nbsp;&nbsp;&nbsp;
-								<button id="buttonCancel">Cancel</button>
+								<button class="button-3" type="submit">Save</button>&nbsp;&nbsp;&nbsp;
+								<button class="button-1" id="buttonCancel">Cancel</button>
 							</td>
 						</tr>
 					</table>
 				</form>
 			</c:if>
 		</div>
+		&nbsp;
 
 	</div>
 
 	<jsp:directive.include file="footer.jsp" />
+	</div>
 </body>
 <script type="text/javascript">
 

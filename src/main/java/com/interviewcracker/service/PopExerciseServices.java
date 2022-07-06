@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.util.Base64;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,10 +14,12 @@ import javax.servlet.http.Part;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.interviewcracker.dao.CodeComplexityDAO;
 import com.interviewcracker.dao.HashGenerator;
 import com.interviewcracker.dao.PopExerciseDAO;
 import com.interviewcracker.dao.StudentCodingTestDAO;
 import com.interviewcracker.dao.StudentDAO;
+import com.interviewcracker.entity.CodeComplexity;
 import com.interviewcracker.entity.CodingTestCase;
 import com.interviewcracker.entity.OkHttpResponse;
 import com.interviewcracker.entity.POPExercises;
@@ -32,6 +35,7 @@ public class PopExerciseServices extends CommonUtility {
 	
 	private StudentDAO studentDAO;
 	private PopExerciseDAO popExerciseDAO;
+	private CodeComplexityDAO codeComplexityDAO;
 	private HttpServletRequest request;
 	private HttpServletResponse response;
 	
@@ -40,6 +44,7 @@ public class PopExerciseServices extends CommonUtility {
 		this.response = response;
 		this.studentDAO = new StudentDAO();
 		this.popExerciseDAO = new PopExerciseDAO();
+		this.codeComplexityDAO = new CodeComplexityDAO();
 	}
 	
 	public void listExercises(String message) throws ServletException, IOException {
@@ -418,5 +423,80 @@ public class PopExerciseServices extends CommonUtility {
 		
 		showStudentProfile();
 		
+	}
+	
+	public void createPopExercise() throws ServletException, IOException {
+		
+		String week = request.getParameter("week");
+		String lesson = request.getParameter("lesson");
+		String language = request.getParameter("language");
+		
+		POPExercises existCodingQuestion = popExerciseDAO.findByWeekLesseon(week,lesson);
+		
+		if(existCodingQuestion !=null) {
+			String message = "Could not create new POP Exercise because the title '" + week + " and lesson "+ lesson +"' already Exists";
+			listExercisesAdmin(message);
+			return;
+		}
+		
+		POPExercises newPOPExercises = new POPExercises();
+		newPOPExercises.setWeek(week);
+		newPOPExercises.setLesson(lesson);
+		newPOPExercises.setLanguage(language);
+		newPOPExercises.setStatus('N');
+		
+		POPExercises createdPOPExercise = popExerciseDAO.create(newPOPExercises);
+		
+		if(createdPOPExercise.getPopExerciseId()>0) {
+			String message = "A new CodingQuestion has been created successfully.";
+			listExercisesAdmin(message);
+		}
+	}
+	
+	public void editPopExercises() throws ServletException, IOException {
+		Integer popExerciseId = Integer.parseInt(request.getParameter("id"));
+		POPExercises popExercise = popExerciseDAO.get(popExerciseId);
+		String destPage = "popexercise_form.jsp";
+		
+		if (popExercise != null) {
+			List<CodeComplexity> listCodeComplexity = codeComplexityDAO.listAll();
+			
+			request.setAttribute("popExercise", popExercise);
+			request.setAttribute("listCodeComplexity", listCodeComplexity);
+			
+		} else {
+			destPage = "message.jsp";
+			String message = "Could not find POP Exercise with ID " + popExerciseId;
+			request.setAttribute("message", message);			
+		}
+		
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher(destPage);
+		requestDispatcher.forward(request, response);	
+	}
+	
+	public void updatePopExercise() throws ServletException, IOException {
+		Integer popExerciseId = Integer.parseInt(request.getParameter("popExerciseId"));
+		String week = request.getParameter("week");
+		String lesson = request.getParameter("lesson");
+		String language = request.getParameter("language");
+		
+		POPExercises popExercise = new POPExercises();
+		popExercise.setPopExerciseId(popExerciseId);
+		popExercise.setWeek(week);
+		popExercise.setLesson(lesson);
+		popExercise.setLanguage(language);
+		popExercise.setStatus('N');
+		
+		popExerciseDAO.update(popExercise);
+		
+		String message = "The Pop Exercise has been updated successfully.";
+		listExercisesAdmin(message);
+	}
+	
+	public void deletePopExercise() throws ServletException, IOException {
+		Integer popExerciseId = Integer.parseInt(request.getParameter("id"));
+		popExerciseDAO.delete(popExerciseId);
+		String message = "The Pop Exercise has been deleted successfully.";
+		listExercisesAdmin(message);
 	}
 }
