@@ -51,7 +51,8 @@ public class StaffDAOTest {
 		staff.setStaffId(1);
 		staff.setEmail("admincracker@admin.com");
 		staff.setFullname("Admin Cracker");
-		staff.setPassword("secretadmin");
+		//staff.setPassword("secretadmin");
+		staff.setPassword("ea909ccfbf42c1d230f26167db4d4fdb");
 		
 		staffDAO.update(staff);
 		String expected = "ea909ccfbf42c1d230f26167db4d4fdb";

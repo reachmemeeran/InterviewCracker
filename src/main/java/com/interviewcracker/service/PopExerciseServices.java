@@ -20,7 +20,6 @@ import com.interviewcracker.dao.PopExerciseDAO;
 import com.interviewcracker.dao.StudentCodingTestDAO;
 import com.interviewcracker.dao.StudentDAO;
 import com.interviewcracker.entity.CodeComplexity;
-import com.interviewcracker.entity.CodingTestCase;
 import com.interviewcracker.entity.OkHttpResponse;
 import com.interviewcracker.entity.POPExercises;
 import com.interviewcracker.entity.StudentCodingTest;
@@ -187,9 +186,6 @@ public class PopExerciseServices extends CommonUtility {
 					
 					StudentCodingTest studentCodeTest = new StudentCodingTest();
 					studentCodeTest.setCodingQuestionId(exerciseId);
-					CodingTestCase codingTestCase = new CodingTestCase();
-					codingTestCase.setCodingTestCaseId(99999);
-					studentCodeTest.setCodingTestCase(codingTestCase);
 					studentCodeTest.setStudents(student);
 					studentCodeTest.setCode(code);
 					studentCodeTest.setHitCount(1);

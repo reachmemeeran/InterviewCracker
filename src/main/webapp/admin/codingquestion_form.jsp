@@ -31,7 +31,7 @@
 	<div align="center">
 		<c:if test="${codingQuestion!=null}">
 			<form action="update_codingQuestion" method="post" id="codingQuestionForm">
-				<input type="hidden" name="codeComplexityId" value="${codeComplexity.codeComplexityId}">
+				<input type="hidden" name="codingQuestionId" value="${codingQuestion.codingQuestionId}">
 		</c:if>
 		<c:if test="${codingQuestion==null}">
 			<form action="create_codingQuestion" method="post" id="codingQuestionForm">
@@ -40,39 +40,13 @@
 		<table style="margin-left:auto;margin-right:auto;">
 			<tr>
 				<td align="right">CodeComplexity:</td>
-				<td align="left"><select name="codeComplexity">
-						<option>Please select your CodeComplexity</option>
-						<c:if test="${codingQuestion!=null}">
-							<c:forEach items="${listCodeComplexity}" var="codeComplexity">
-								<c:if test="${codeComplexity.codeComplexityId eq codingQuestion.codeComplexityId}">
-									<option value="${codeComplexity.codeComplexityId}" selected>
-								</c:if>
-								<c:if test="${codeComplexity.codeComplexityId ne codingQuestion.codeComplexityId}">
-									<option value="${codeComplexity.codeComplexityId}">
-								</c:if>
-								${codeComplexity.name}
-								</option>
-							</c:forEach>
-						</c:if>
-						<c:if test="${codingQuestion==null}">
-							<c:forEach items="${listCodeComplexity}" var="codeComplexity">
-								${codeComplexity.name}
-								</option>
-							</c:forEach>
-						</c:if>
-					</select>
-				</td>
+				<td align="left"><input type="text" id="codeComplexityId" name="codeComplexityId"
+					size="20" value="${codingQuestion.codeComplexityId}" /></td>
 			</tr>
 			<tr>
 				<td align="right">Summary:</td>
 				<td align="left"><input type="text" id="summary" name="summary"
-					size="20" value="${codingQuestion.summary}" /></td>
-			</tr>
-			<tr>
-				<td align="right">Coding Question:</td>
-				<td align="left"><textarea name="question"
-						rows="10 placeholder=" placeholder="Enter Coding Question here">${codingQuestion.question}</textarea>
-				</td>
+					size="40" value="${codingQuestion.summary}" /></td>
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
@@ -99,12 +73,10 @@
 			rules : {
 				codeComplexity : "required",
 				summary : "required",
-				question : "required",
 			},
 			messages : {
 				codeComplexity : "Please select a codeComplexity for the codingQuestion.",
 				summary : "Please enter summary of the codingQuestion.",
-				question : "Please enter coding Question.",
 			}
 		});
 		$("#buttonCancel").click(function() {

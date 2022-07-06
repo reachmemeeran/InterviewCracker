@@ -39,7 +39,6 @@ public class StudentCodingTest implements java.io.Serializable {
 
 	private Integer studentCodingTestId;
 	private Integer codingQuestionId;
-	private CodingTestCase codingTestCase;
 	private Students students;
 	private Integer studentId;
 	private String code;
@@ -50,15 +49,13 @@ public class StudentCodingTest implements java.io.Serializable {
 	public StudentCodingTest() {
 	}
 
-	public StudentCodingTest(CodingTestCase codingTestCase, Students students) {
-		this.codingTestCase = codingTestCase;
+	public StudentCodingTest(Students students) {
 		this.students = students;
 	}
 
-	public StudentCodingTest(Integer codingQuestionId, CodingTestCase codingTestCase, Students students,
+	public StudentCodingTest(Integer codingQuestionId, Students students,
 			Integer studentId,String code, Integer hitCount, Character status) {
 		this.codingQuestionId = codingQuestionId;
-		this.codingTestCase = codingTestCase;
 		this.students = students;
 		this.studentId = studentId;
 		this.code = code;
@@ -85,16 +82,6 @@ public class StudentCodingTest implements java.io.Serializable {
 
 	public void setCodingQuestionId(Integer codingQuestionId) {
 		this.codingQuestionId = codingQuestionId;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "coding_test_case_id", nullable = false)
-	public CodingTestCase getCodingTestCase() {
-		return this.codingTestCase;
-	}
-
-	public void setCodingTestCase(CodingTestCase codingTestCase) {
-		this.codingTestCase = codingTestCase;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)

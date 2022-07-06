@@ -151,15 +151,9 @@ public class StaffServices extends CommonUtility {
 		
 		staff.setFullname(fullname);
 		if (password != null & !password.isEmpty()) {
-			staff.setPassword(password);
+			String encryptedPassword = HashGenerator.generateMD5(password);
+			staff.setPassword(encryptedPassword);
 		}
-		
-		/*
-		 * if (password != null & !password.isEmpty()) { String encryptedPassword =
-		 * HashGenerator.generateMD5(password); staff.setPassword(encryptedPassword); }
-		 */	
-		
-		
 		
 		try {
 			//String profilepic = request.getParameter("profilepic");
@@ -402,22 +396,51 @@ public class StaffServices extends CommonUtility {
 	}
 	
 	public void updateStaffProfile() throws ServletException, IOException {
-		Staffs staff = (Staffs) request.getSession().getAttribute("loggedStaff");
-		String password = staff.getPassword();
-		updateStaffFieldsFromForm(staff);
-		staffDAO.update(staff);
+		int staffId = Integer.parseInt(request.getParameter("staffId"));
+		String fullName = request.getParameter("fullname");
+		String password = request.getParameter("password");
 		
-		staff.setPassword(password);
-		byte[] profilepic = staff.getProfilepic(); 
-		if(profilepic!=null) {
-			String encode = Base64.getEncoder().encodeToString(profilepic);
-			request.getSession().setAttribute("profilepic", encode);
-		}else {
-			request.getSession().setAttribute("profilepic", null);
+		Staffs staffById = staffDAO.get(staffId);
+		
+		staffById.setFullname(fullName);
+		
+		if (password != null & !password.isEmpty()) {
+			String encryptedPassword = HashGenerator.generateMD5(password);
+			staffById.setPassword(encryptedPassword);				
 		}
 		
-		request.getSession().setAttribute("loggedStaff", staff);
+		try {
+			Part profilepic = request.getPart("profilepic");
+			InputStream inpStm = null;
+			
+			if(profilepic != null) {
+				inpStm = profilepic.getInputStream();
+				byte[] bFile = new byte[inpStm.available()];
+				inpStm.read(bFile);
+				if(bFile.length>0) {
+					staffById.setProfilepic(bFile);
+				}
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ServletException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
+		Staffs updatedStaff = staffDAO.update(staffById);
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("loggedStaff", updatedStaff);
+		byte[] profilepic = updatedStaff.getProfilepic(); 
+		if(profilepic!=null) {
+			String encode = Base64.getEncoder().encodeToString(profilepic);
+			session.setAttribute("profilepic", encode);
+		}else {
+			session.setAttribute("profilepic", null);
+		}
+	
 		showStaffProfile();
 		
 	}

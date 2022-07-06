@@ -48,11 +48,29 @@
 				<td align="left"><input type="text" id="fullname"
 					name="fullname" size="20" value="${staff.fullname}" /></td>
 			</tr>
-			<tr>
-				<td align="right">Password:</td>
-				<td align="left"><input type="password" id="password"
-					name="password" size="20" value="${staff.password}" /></td>
-			</tr>
+			<c:if test="${staff==null}">
+				<tr>
+					<td align="right">Password:</td>
+					<td align="left"><input type="password" id="password"
+						name="password" size="20" value="${staff.password}" /></td>
+				</tr>
+			</c:if>
+			
+			<c:if test="${staff!=null}">
+				<tr>
+					<td colspan="2" align="center">
+						<i>(Leave password fields blank, if you don't want to change the password)</i>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">Password:</td>
+					<td align="left"><input type="password" id="password" name="password" size="45"  /></td>
+				</tr>
+				<tr>
+					<td align="right">Confirm Password:</td>
+					<td align="left"><input type="password" id="confirmPassword" name="confirmPassword" size="45"  /></td>
+				</tr>
+			</c:if>
 			<tr>
 				<td>&nbsp;</td>
 			</tr>
@@ -84,8 +102,11 @@
 				fullname: "required",
 				
 				<c:if test="${staff == null}">
-				password: "required"
+				password: "required",
 				</c:if>
+				confirmPassword: {
+					equalTo: "#password",
+				},
 			},
 			
 			messages: {
@@ -97,8 +118,11 @@
 				fullname: "Please enter full name",
 				
 				<c:if test="${staff == null}">
-				password: "Please enter password"
+				password: "Please enter password",
 				</c:if>				
+				confirmPassword: {
+					equalTo: "Confirm Password does not match the password",
+				},
 			}
 		});
 		

@@ -12,11 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.interviewcracker.service.CodingQuestionServices;
 
 @WebServlet("/admin/create_codingQuestion")
-@MultipartConfig(
-		fileSizeThreshold = 1204 * 10, // 10KB
-		maxFileSize = 1024*1024, // 1MB
-		maxRequestSize = 1024*1024*5 // 5MB
-)
 public class CreateCodingQuestionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

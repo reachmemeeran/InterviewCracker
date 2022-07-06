@@ -53,14 +53,6 @@
 						</tr>
 
 						<tr>
-							<td><b>Profile Picture:</b></td>
-							<td><img src="data:image/jpeg;base64,${profilepic}" style="width: 200px; height: 300px;" /></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td align="left"><input type="file" id="profilepic" name="profilepic" /></td>
-						</tr>
-						<tr>
 							<td>&nbsp;</td>
 						</tr>
 						<tr>

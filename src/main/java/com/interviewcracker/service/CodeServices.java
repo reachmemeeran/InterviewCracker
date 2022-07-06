@@ -15,7 +15,6 @@ import com.interviewcracker.dao.CodingQuestionDAO;
 import com.interviewcracker.dao.StudentCodingTestDAO;
 import com.interviewcracker.dao.StudentDAO;
 import com.interviewcracker.entity.CodingQuestion;
-import com.interviewcracker.entity.CodingTestCase;
 import com.interviewcracker.entity.OkHttpResponse;
 import com.interviewcracker.entity.StudentCodingTest;
 import com.interviewcracker.entity.Students;
@@ -191,9 +190,6 @@ public class CodeServices extends CommonUtility {
 					
 					StudentCodingTest studentCodeTest = new StudentCodingTest();
 					studentCodeTest.setCodingQuestionId(exerciseId);
-					CodingTestCase codingTestCase = new CodingTestCase();
-					codingTestCase.setCodingTestCaseId(99999);
-					studentCodeTest.setCodingTestCase(codingTestCase);
 					studentCodeTest.setStudents(student);
 					studentCodeTest.setCode(code);
 					studentCodeTest.setHitCount(1);

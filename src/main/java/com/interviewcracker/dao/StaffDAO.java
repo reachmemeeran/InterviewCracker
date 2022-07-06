@@ -13,16 +13,7 @@ public class StaffDAO extends JpaDAO<Staffs> implements GenericDAO<Staffs> {
 	
 	@Override
 	public Staffs create(Staffs staff) {
-		String encryptedPassword = HashGenerator.generateMD5(staff.getPassword());
-		staff.setPassword(encryptedPassword);
 		return super.create(staff);
-	}
-
-	@Override
-	public Staffs update(Staffs staff) {
-		String encryptedPassword = HashGenerator.generateMD5(staff.getPassword());
-		staff.setPassword(encryptedPassword);
-		return super.update(staff);
 	}
 
 	@Override

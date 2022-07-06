@@ -22,6 +22,7 @@
 		</h2>
 
 		<form action="update_profile" method="post" id="staffForm" enctype="multipart/form-data">
+		<input type="hidden" name="staffId" value="${loggedStaff.staffId}">
 
 		<table style="margin-left:auto;margin-right:auto;">
 			<tr>

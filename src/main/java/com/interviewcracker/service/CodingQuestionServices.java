@@ -55,19 +55,21 @@ public class CodingQuestionServices extends CommonUtility {
 	}
 
 	public void createCodingQuestion() throws ServletException, IOException {
+		Integer codeComplexityId = Integer.parseInt(request.getParameter("codeComplexityId"));
+		String summary = request.getParameter("summary");
 		
-		String title = request.getParameter("title");
-		
-		CodingQuestion existCodingQuestion = codingQuestionDAO.findByTitle(title);
+		CodingQuestion existCodingQuestion = codingQuestionDAO.findBySummary(summary);
 		
 		if(existCodingQuestion !=null) {
-			String message = "Could not create new codingQuestion because the title '" + title + "' already Exists";
+			String message = "Could not create new codingQuestion because the summary '" + summary + "' already Exists";
 			listCodingQuestion(message);
 			return;
 		}
 		
 		CodingQuestion newCodingQuestion = new CodingQuestion();
-		readCodingQuestionFields(newCodingQuestion);
+		newCodingQuestion.setCodeComplexityId(codeComplexityId);
+		newCodingQuestion.setSummary(summary);
+		newCodingQuestion.setStatus('N');
 		
 		CodingQuestion createdCodingQuestion = codingQuestionDAO.create(newCodingQuestion);
 		
@@ -79,20 +81,8 @@ public class CodingQuestionServices extends CommonUtility {
 	
 	public void readCodingQuestionFields(CodingQuestion codingQuestion) throws ServletException, IOException {
 		Integer codeComplexityId = Integer.parseInt(request.getParameter("codeComplexity"));
-		String title = request.getParameter("title");
-		String description = request.getParameter("description");
+		String title = request.getParameter("summary");
 		
-		Part part = request.getPart("codingQuestionImage");
-		
-		if(part !=null && part.getSize()>0) {
-			long size = part.getSize();
-			byte[] imageBytes = new byte[(int) size];
-			
-			InputStream inputStream = part.getInputStream();
-			inputStream.read(imageBytes);
-			inputStream.close();
-			
-		}
 	}
 
 	public void editCodingQuestion() throws ServletException, IOException {
@@ -118,18 +108,14 @@ public class CodingQuestionServices extends CommonUtility {
 
 	public void updateCodingQuestion() throws ServletException, IOException {
 		Integer codingQuestionId = Integer.parseInt(request.getParameter("codingQuestionId"));
-		String title = request.getParameter("title");
+		Integer codeComplexityId = Integer.parseInt(request.getParameter("codeComplexityId"));
+		String summary = request.getParameter("summary");
 		
-		CodingQuestion existCodingQuestion = codingQuestionDAO.get(codingQuestionId);
-		CodingQuestion codingQuestionByTitle = codingQuestionDAO.findByTitle(title);
-		
-		if(codingQuestionByTitle !=null && !existCodingQuestion.equals(codingQuestionByTitle)) {
-			String message = "Could not update codingQuestion because there is another codingQuestion having the same title";
-			listCodingQuestion(message);
-			return;
-		}
-		
-		readCodingQuestionFields(existCodingQuestion);
+		CodingQuestion existCodingQuestion = new CodingQuestion();
+		existCodingQuestion.setCodingQuestionId(codingQuestionId);
+		existCodingQuestion.setCodeComplexityId(codeComplexityId);
+		existCodingQuestion.setSummary(summary);
+		existCodingQuestion.setStatus('N');
 		
 		codingQuestionDAO.update(existCodingQuestion);
 		
