@@ -23,14 +23,14 @@
 					style="border-radius: 25px; text-align: center; font-size: 20px;padding: .7em 10%;">POP
 					Exercise Progress</h3>
 				<div class="pie"
-					style="--p:${(solvedStudentExercise/22) * 100};--b:25px;--c:orange;left:50px;">${solvedStudentExercise}</div>
+					style="--p:${(solvedStudentExercise/22) * 100};--b:25px;--c:orange;left:50px;">${solvedStudentExercise} / 22</div>
 				<p style="padding: 1em 30%;">Your Rank:${rank}</p>
 
 			<h3
 				style="border-radius: 25px; text-align: center; font-size: 20px;padding: .7em 10%;">Coding
 				Challenge Progress</h3>
 				<div class="pie"
-					style="--p:${(solvedStudentCode/22) * 100};--b:25px;--c:purple;left:50px;">${solvedStudentCode}</div>
+					style="--p:${(solvedStudentCode/20) * 100};--b:25px;--c:purple;left:50px;">${solvedStudentCode} / 20</div>
 				<p style="padding: 1em 30%;">Your Rank:${codeRank}</p>
 				</div>
 			</c:if>

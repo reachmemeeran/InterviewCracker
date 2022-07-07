@@ -22,7 +22,7 @@
 					var xValues = [ "POP", "Code","Staffs","Students" ,"" ];
 					var admins = ${totalAdmins};
 					var students = ${totalStudents};
-					var yValues = [ 22, 23,admins,students, 0 ];
+					var yValues = [ 22, 20,admins,students, 0 ];
 					var barColors = [ "cyan", "gold","purple","orange" ];
 
 					new Chart("progressChart", {

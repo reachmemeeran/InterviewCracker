@@ -98,11 +98,7 @@ Trees
 Graphs
 Sorting
 Searching
-System Design
-Design Patterns
-Big O:
-  Time Complexity
-  Space Complexity
+Lambda Expressions
 </pre>
 <p>&nbsp;</p>
 <a class="button-3" href="list_code_advanced">Solve Challenge</a>
@@ -173,11 +169,7 @@ Trees
 Graphs
 Sorting
 Searching
-System Design
-Design Patterns
-Big O:
-  Time Complexity
-  Space Complexity
+Lambda Expressions
 </pre>
 <p>&nbsp;</p>
 <a class="button-3" href="list_code_advanced">Solve Challenge</a>
