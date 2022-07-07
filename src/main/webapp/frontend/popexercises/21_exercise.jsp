@@ -21,7 +21,7 @@
 		<h3 class="title" style="margin-left:25%;margin-top:20px;">21. Week 10: Object Oriented Classes and Inheritance - Lesson 3: Implement Different Shapes</h3>
 		<div class="card one" style="width:22%;margin-top:-1px;margin-right:-1px;margin-bottom:-1px;margin-left:15px;">
 
-			<h3 style="margin-top:2%;">Exercise:</h3>
+			<p style="font-weight: bold;color:green;">Exercise:</p>
 			<p>&nbsp;</p>
 
 Implement different shapes by extending the Shape class. For example, implement a Triangle, Square and Circle. <br>
@@ -31,7 +31,7 @@ This Circle has a radius of 5 and a circumference of 31.42 <br>
 
 
 			<p>&nbsp;</p>
-			<h4 style="margin-top:2%;">Expected Output:</h4>
+			<p style="font-weight: bold;color:green;">Expected Output:</p>
 			<br>  This Shape has the edges, 3, 4, 5, <br>
 This Circle has a radius of 5 and a circumference of 31.415901<br>
 This Triangle has a base of 3 and a height of 4<br>
@@ -186,7 +186,7 @@ return ("This Triangle has a base of " + base + " and a height of " + height);
 				</form>
 
 		</div>
-		<div class="card one" style="width:20%;margin-top:-1px;margin-right:-1px;margin-bottom:-1px;margin-left:15px;">
+		<div class="card one" style="width:20%;margin-top:-1px;margin-right:-1px;margin-bottom:-1px;margin-left:15px;background:#000;">
 			<h3>Output and Results</h3>
 			<p>&nbsp;</p>
 

@@ -21,7 +21,7 @@
 		<h3 class="title" style="margin-left:25%;margin-top:20px;">1. Week 1: Writing and Running Your First Programs - Lesson 2: Your 1st Program</h3>
 		<div class="card one" style="width:22%;margin-top:-1px;margin-right:-1px;margin-bottom:-1px;margin-left:15px;">
 
-			<h3 style="margin-top:2%;">Exercise:</h3>
+			<p style="font-weight: bold;color:green;">Exercise:</p>
 			<p>&nbsp;</p>
 
 			1. Run the "Hello World" program below by selecting the run button<br>
@@ -29,7 +29,7 @@
 			 3. Edit the code further so the program prints out different text<br>
 
 			<p>&nbsp;</p>
-			<h4 style="margin-top:2%;">Expected Output:</h4>
+			<p style="font-weight: bold;color:green;">Expected Output:</p>
 			<br> Goodbye World <br>
 			<br>
 		</div>
@@ -75,7 +75,7 @@ int main(void) {
 				</form>
 
 		</div>
-		<div class="card one" style="width:20%;margin-top:-1px;margin-right:-1px;margin-bottom:-1px;margin-left:15px;">
+		<div class="card one" style="width:20%;margin-top:-1px;margin-right:-1px;margin-bottom:-1px;margin-left:15px;background:#000;">
 			<h3>Output and Results</h3>
 			<p>&nbsp;</p>
 

@@ -21,7 +21,7 @@
 		<h3 class="title" style="margin-left:25%;margin-top:20px;">19. Week 10: Object Oriented Classes and Inheritance - Lesson 1: Class Methods</h3>
 		<div class="card one" style="width:22%;margin-top:-1px;margin-right:-1px;margin-bottom:-1px;margin-left:15px;">
 
-			<h3 style="margin-top:2%;">Exercise:</h3>
+			<p style="font-weight: bold;color:green;">Exercise:</p>
 			<p>&nbsp;</p>
 
 			Implement the class methods in MyMath class. <br>
@@ -29,7 +29,7 @@
 
 
 			<p>&nbsp;</p>
-			<h4 style="margin-top:2%;">Expected Output:</h4>
+			<p style="font-weight: bold;color:green;">Expected Output:</p>
 			<br>  Add: 5<br>
 Sub: 1<br>
 Multiply: 6<br>
@@ -147,7 +147,7 @@ return (int)Math.sqrt(x);
 				</form>
 
 		</div>
-		<div class="card one" style="width:20%;margin-top:-1px;margin-right:-1px;margin-bottom:-1px;margin-left:15px;">
+		<div class="card one" style="width:20%;margin-top:-1px;margin-right:-1px;margin-bottom:-1px;margin-left:15px;background:#000;">
 			<h3>Output and Results</h3>
 			<p>&nbsp;</p>
 

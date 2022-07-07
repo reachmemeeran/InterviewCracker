@@ -21,7 +21,7 @@
 		<h3 class="title" style="margin-left:25%;margin-top:20px;">5. Week 2: Functions and Parameters - Lesson 2: Global Variables</h3>
 		<div class="card one" style="width:22%;margin-top:-1px;margin-right:-1px;margin-bottom:-1px;margin-left:15px;">
 
-			<h3 style="margin-top:2%;">Exercise:</h3>
+			<p style="font-weight: bold;color:green;">Exercise:</p>
 			<p>&nbsp;</p>
 
 			Create a function that contains a local variable n.  Initialise this variable to 
@@ -32,7 +32,7 @@
  and by using a global variable.<br>
 
 			<p>&nbsp;</p>
-			<h4 style="margin-top:2%;">Expected Output:</h4>
+			<p style="font-weight: bold;color:green;">Expected Output:</p>
 			<br> Global Variable 4 <br>Local Variable 10000 <br>
 			<br>
 		</div>
@@ -90,7 +90,7 @@ return 0;
 				</form>
 
 		</div>
-		<div class="card one" style="width:20%;margin-top:-1px;margin-right:-1px;margin-bottom:-1px;margin-left:15px;">
+		<div class="card one" style="width:20%;margin-top:-1px;margin-right:-1px;margin-bottom:-1px;margin-left:15px;background:#000;">
 			<h3>Output and Results</h3>
 			<p>&nbsp;</p>
 

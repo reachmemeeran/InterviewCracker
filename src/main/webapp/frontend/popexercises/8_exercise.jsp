@@ -21,7 +21,7 @@
 		<h3 class="title" style="margin-left:25%;margin-top:20px;">8. Week 2: Functions and Parameters - Lesson 5: Iteration</h3>
 		<div class="card one" style="width:22%;margin-top:-1px;margin-right:-1px;margin-bottom:-1px;margin-left:15px;">
 
-			<h3 style="margin-top:2%;">Exercise:</h3>
+			<p style="font-weight: bold;color:green;">Exercise:</p>
 			<p>&nbsp;</p>
 
 			Complete the fibonacci function such that it calculates the nth term of the Fibonacci sequence using iteration.<br>
@@ -29,7 +29,7 @@ The first 4 terms of the Fibonacci sequence in this example are  1, 1, 2, 3 <br>
 call fibonacci(10) we should get the value 1 1 2 3 5 8 13 21 34 55 returned <br>
 
 			<p>&nbsp;</p>
-			<h4 style="margin-top:2%;">Expected Output:</h4>
+			<p style="font-weight: bold;color:green;">Expected Output:</p>
 			<br> The Fibonacci series of 10 is : 1 1 2 3 5 8 13 21 34 55 <br>
 			<br>
 		</div>
@@ -105,7 +105,7 @@ return 0;
 				</form>
 
 		</div>
-		<div class="card one" style="width:20%;margin-top:-1px;margin-right:-1px;margin-bottom:-1px;margin-left:15px;">
+		<div class="card one" style="width:20%;margin-top:-1px;margin-right:-1px;margin-bottom:-1px;margin-left:15px;background:#000;">
 			<h3>Output and Results</h3>
 			<p>&nbsp;</p>
 

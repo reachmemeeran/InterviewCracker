@@ -21,14 +21,14 @@
 		<h3 class="title" style="margin-left:25%;margin-top:20px;">13. Week 5: Abstract Data Types - Lesson 1 Exercise: Abstract Datatypes</h3>
 		<div class="card one" style="width:22%;margin-top:-1px;margin-right:-1px;margin-bottom:-1px;margin-left:15px;">
 
-			<h3 style="margin-top:2%;">Exercise:</h3>
+			<p style="font-weight: bold;color:green;">Exercise:</p>
 			<p>&nbsp;</p>
 
 			Complete the function printDate below so that it prints out the data in a struct Date in the format 
  <br>
  DD:MMM:YYYY - e.g. 01:JAN:2019<br>
 			<p>&nbsp;</p>
-			<h4 style="margin-top:2%;">Expected Output:</h4>
+			<p style="font-weight: bold;color:green;">Expected Output:</p>
 			<br>  01:JAN:2019 <br> 14:MAY:1980 <br>
 			<br>
 		</div>
@@ -127,7 +127,7 @@ int main(void) {
 				</form>
 
 		</div>
-		<div class="card one" style="width:20%;margin-top:-1px;margin-right:-1px;margin-bottom:-1px;margin-left:15px;">
+		<div class="card one" style="width:20%;margin-top:-1px;margin-right:-1px;margin-bottom:-1px;margin-left:15px;background:#000;">
 			<h3>Output and Results</h3>
 			<p>&nbsp;</p>
 
