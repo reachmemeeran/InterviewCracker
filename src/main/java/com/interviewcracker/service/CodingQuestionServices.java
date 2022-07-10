@@ -57,6 +57,11 @@ public class CodingQuestionServices extends CommonUtility {
 	public void createCodingQuestion() throws ServletException, IOException {
 		Integer codeComplexityId = Integer.parseInt(request.getParameter("codeComplexityId"));
 		String summary = request.getParameter("summary");
+		String question = request.getParameter("question");
+		String output = request.getParameter("output");
+		String lesson = request.getParameter("lesson");
+		String code = request.getParameter("code");
+		String anscode = request.getParameter("anscode");
 		
 		CodingQuestion existCodingQuestion = codingQuestionDAO.findBySummary(summary);
 		
@@ -69,6 +74,11 @@ public class CodingQuestionServices extends CommonUtility {
 		CodingQuestion newCodingQuestion = new CodingQuestion();
 		newCodingQuestion.setCodeComplexityId(codeComplexityId);
 		newCodingQuestion.setSummary(summary);
+		newCodingQuestion.setQuestion(question);
+		newCodingQuestion.setOutput(output);
+		newCodingQuestion.setLesson(lesson);
+		newCodingQuestion.setCode(code);
+		newCodingQuestion.setAnscode(anscode);
 		newCodingQuestion.setStatus('N');
 		
 		CodingQuestion createdCodingQuestion = codingQuestionDAO.create(newCodingQuestion);
@@ -110,11 +120,21 @@ public class CodingQuestionServices extends CommonUtility {
 		Integer codingQuestionId = Integer.parseInt(request.getParameter("codingQuestionId"));
 		Integer codeComplexityId = Integer.parseInt(request.getParameter("codeComplexityId"));
 		String summary = request.getParameter("summary");
+		String question = request.getParameter("question");
+		String output = request.getParameter("output");
+		String lesson = request.getParameter("lesson");
+		String code = request.getParameter("code");
+		String anscode = request.getParameter("anscode");
 		
 		CodingQuestion existCodingQuestion = new CodingQuestion();
 		existCodingQuestion.setCodingQuestionId(codingQuestionId);
 		existCodingQuestion.setCodeComplexityId(codeComplexityId);
 		existCodingQuestion.setSummary(summary);
+		existCodingQuestion.setQuestion(question);
+		existCodingQuestion.setOutput(output);
+		existCodingQuestion.setLesson(lesson);
+		existCodingQuestion.setCode(code);
+		existCodingQuestion.setAnscode(anscode);
 		existCodingQuestion.setStatus('N');
 		
 		codingQuestionDAO.update(existCodingQuestion);

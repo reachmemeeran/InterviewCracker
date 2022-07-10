@@ -56,6 +56,15 @@ public class CodingQuestionDAO extends JpaDAO<CodingQuestion> implements Generic
 		return null;
 	}
 	
+	public CodingQuestion findByExerciseId(Integer exerciseId) {
+		List<CodingQuestion> result = super.findWithNamedQuery("CodingQuestion.findByExerciseId","exerciseId",exerciseId);
+		
+		if(!result.isEmpty()) {
+			return result.get(0);
+		}
+		return null;
+	}
+	
 	public List<CodingQuestion> listByCodeComplexity(int codeComplexityId){
 		return super.findWithNamedQuery("CodingQuestion.findByCodeComplexity","catId",codeComplexityId);
 	}
@@ -81,22 +90,4 @@ public class CodingQuestionDAO extends JpaDAO<CodingQuestion> implements Generic
 		return super.countWithNamedQuery("CodingQuestion.countByCodeComplexity","codeComplexId",codeComplexityId);
 	}
 	
-	public List<CodingQuestion> listBestSellingCodingQuestions() {
-		return super.findWithNamedQuery("OrderDetail.bestSelling", 0, 4);
-	}
-	
-	public List<CodingQuestion> listMostFavoredCodingQuestions() {
-		List<CodingQuestion> mostFavoredCodingQuestions = new ArrayList<>();
-		
-		List<Object[]> result = super.findWithNamedQueryObjects("Review.mostFavoredCodingQuestions", 0, 4);
-		
-		if (!result.isEmpty()) {
-			for (Object[] elements : result) {
-				CodingQuestion codingQuestion = (CodingQuestion) elements[0];
-				mostFavoredCodingQuestions.add(codingQuestion);
-			}
-		} 
-		
-		return mostFavoredCodingQuestions;
-	}
 }

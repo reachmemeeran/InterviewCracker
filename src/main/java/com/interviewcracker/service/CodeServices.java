@@ -46,7 +46,7 @@ public class CodeServices extends CommonUtility {
 		StudentCodingTestDAO studentCodingTestDAO = new StudentCodingTestDAO();
 		
 		for(CodingQuestion code : listCodingQuestion) {
-			Character status = studentCodingTestDAO.getExerciseStatus(studentId,code.getCodingQuestionId());
+			Character status = studentCodingTestDAO.getExerciseStatus(studentId,code.getCodingQuestionId(),"CODE");
 			if(code.getCodeComplexityId()==1) {
 				request.setAttribute("complexity", "Easy");
 			}else if(code.getCodeComplexityId()==2) {
@@ -90,9 +90,13 @@ public class CodeServices extends CommonUtility {
 		HttpSession session = request.getSession();
 		Students student = (Students) session.getAttribute("loggedStudent");
 		Integer studentId = student.getStudentsId();
+		
+		CodingQuestion codingQuestion = codingQuestionDAO.findByExerciseId(exerciseId);
+		request.setAttribute("codingQuestion", codingQuestion);
+		
 		StudentCodingTestDAO studentCodingTestDAO = new StudentCodingTestDAO();
 		
-			String attemptedCode = studentCodingTestDAO.getExerciseCode(studentId,exerciseId);
+			String attemptedCode = studentCodingTestDAO.getExerciseCode(studentId,exerciseId,"CODE");
 			if(attemptedCode!=null && !attemptedCode.isEmpty()) {
 				request.setAttribute("attemptedCode", attemptedCode);
 				request.setAttribute("status", "Done");
@@ -102,12 +106,14 @@ public class CodeServices extends CommonUtility {
 			
 		
 		
-		forwardToPage("frontend/code/"+exerciseId+"_exercise.jsp", request, response);
+		forwardToPage("frontend/coding_exercise.jsp", request, response);
 	}
 	
 	public void attemptCodeSubmit(Integer exerciseId) throws ServletException, IOException {
 		request.setAttribute("exerciseId", exerciseId);
-		forwardToPage("frontend/code/"+exerciseId+"_exercise.jsp", request, response);
+		CodingQuestion codingQuestion = codingQuestionDAO.findByExerciseId(exerciseId);
+		request.setAttribute("codingQuestion", codingQuestion);
+		forwardToPage("frontend/coding_exercise.jsp", request, response);
 	}
 	
 	public void attemptCode() throws ServletException, IOException {
@@ -123,6 +129,8 @@ public class CodeServices extends CommonUtility {
 		request.setAttribute("attemptedCode", code);
 		
 		String answerCode = request.getParameter("answerCode");
+		
+		System.out.println("answerCode--->"+answerCode);
 		
 		// User Answer
 		JsonObject rootObject = new JsonObject();
@@ -194,6 +202,7 @@ public class CodeServices extends CommonUtility {
 					studentCodeTest.setCode(code);
 					studentCodeTest.setHitCount(1);
 					studentCodeTest.setStatus('Y');
+					studentCodeTest.setModule("CODE");
 					
 					StudentCodingTestDAO studentCodingTestDAO = new StudentCodingTestDAO();
 					Integer id = studentCodingTestDAO.getId(student.getStudentsId(),exerciseId);

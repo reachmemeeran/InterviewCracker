@@ -21,16 +21,16 @@ import javax.persistence.Table;
 @Table(name = "student_coding_test", catalog = "interviewcrackerdb")
 @NamedQueries({
 	@NamedQuery(name="StudentCodingTest.findAll", query= "SELECT c FROM StudentCodingTest c ORDER BY c.studentCodingTestId"),
-	@NamedQuery(name="StudentCodingTest.findAllPop", query= "SELECT c FROM StudentCodingTest c where c.codingQuestionId<=22 ORDER BY c.studentCodingTestId"),
-	@NamedQuery(name="StudentCodingTest.findAllCode", query= "SELECT c FROM StudentCodingTest c where c.codingQuestionId>22 ORDER BY c.studentCodingTestId"),
+	@NamedQuery(name="StudentCodingTest.findAllPop", query= "SELECT c FROM StudentCodingTest c where c.module='POP' ORDER BY c.studentCodingTestId"),
+	@NamedQuery(name="StudentCodingTest.findAllCode", query= "SELECT c FROM StudentCodingTest c where c.module='CODE' ORDER BY c.studentCodingTestId"),
 	@NamedQuery(name="StudentCodingTest.findStudentCode", query="SELECT c from StudentCodingTest c where c.studentId=:studentId"),
-	@NamedQuery(name="StudentCodingTest.findExerciseStatus", query="SELECT c.status from StudentCodingTest c where c.studentId=:studentId and c.codingQuestionId=:popExerciseId"),
+	@NamedQuery(name="StudentCodingTest.findExerciseStatus", query="SELECT c.status from StudentCodingTest c where c.studentId=:studentId and c.codingQuestionId=:popExerciseId and c.module=:module"),
 	@NamedQuery(name="StudentCodingTest.findId", query="SELECT c.studentCodingTestId from StudentCodingTest c where c.studentId=:studentId and c.codingQuestionId=:popExerciseId"),
-	@NamedQuery(name="StudentCodingTest.findExerciseCode", query="SELECT c.code from StudentCodingTest c where c.studentId=:studentId and c.codingQuestionId=:popExerciseId"),
-	@NamedQuery(name="StudentCodingTest.countSolvedStudentExercise", query= "SELECT count(c) FROM StudentCodingTest c where c.studentId=:studentId and c.codingQuestionId<=22"),
-	@NamedQuery(name="StudentCodingTest.countSolvedStudentCode", query= "SELECT count(c) FROM StudentCodingTest c where c.studentId=:studentId and c.codingQuestionId>22"),
-	@NamedQuery(name="StudentCodingTest.countSolvedExercise", query= "SELECT count(c) FROM StudentCodingTest c where c.codingQuestionId<=22"),
-	@NamedQuery(name="StudentCodingTest.countSolvedCode", query= "SELECT count(c) FROM StudentCodingTest c where c.codingQuestionId>22")
+	@NamedQuery(name="StudentCodingTest.findExerciseCode", query="SELECT c.code from StudentCodingTest c where c.studentId=:studentId and c.codingQuestionId=:popExerciseId and c.module=:module"),
+	@NamedQuery(name="StudentCodingTest.countSolvedStudentExercise", query= "SELECT count(c) FROM StudentCodingTest c where c.studentId=:studentId and c.module='POP'"),
+	@NamedQuery(name="StudentCodingTest.countSolvedStudentCode", query= "SELECT count(c) FROM StudentCodingTest c where c.studentId=:studentId and c.module='CODE'"),
+	@NamedQuery(name="StudentCodingTest.countSolvedExercise", query= "SELECT count(c) FROM StudentCodingTest c where c.module='POP'"),
+	@NamedQuery(name="StudentCodingTest.countSolvedCode", query= "SELECT count(c) FROM StudentCodingTest c where c.module='CODE'")
 	//@NamedQuery(name = "StudentCodingTest.findPOPLeaders", query = "SELECT c.students, COUNT(c.hitCount) AS POPLeaderCount FROM  StudentCodingTest c "
 		//	+ "GROUP BY c.students.studentsId "
 		//	+ "ORDER BY POPLeaderCount DESC") 
@@ -44,6 +44,7 @@ public class StudentCodingTest implements java.io.Serializable {
 	private String code;
 	private Integer hitCount;
 	private Character status;
+	private String module;
 	
 
 	public StudentCodingTest() {
@@ -54,13 +55,14 @@ public class StudentCodingTest implements java.io.Serializable {
 	}
 
 	public StudentCodingTest(Integer codingQuestionId, Students students,
-			Integer studentId,String code, Integer hitCount, Character status) {
+			Integer studentId,String code, Integer hitCount, Character status,String module) {
 		this.codingQuestionId = codingQuestionId;
 		this.students = students;
 		this.studentId = studentId;
 		this.code = code;
 		this.hitCount = hitCount;
 		this.status = status;
+		this.module = module;
 	}
 
 	@Id
@@ -129,5 +131,15 @@ public class StudentCodingTest implements java.io.Serializable {
 	public void setStatus(Character status) {
 		this.status = status;
 	}
+
+	@Column(name = "module")
+	public String getModule() {
+		return module;
+	}
+
+	public void setModule(String module) {
+		this.module = module;
+	}
+	
 
 }

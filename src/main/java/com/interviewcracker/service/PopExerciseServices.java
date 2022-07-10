@@ -55,7 +55,7 @@ public class PopExerciseServices extends CommonUtility {
 		StudentCodingTestDAO studentCodingTestDAO = new StudentCodingTestDAO();
 		
 		for(POPExercises pop : listPOPExercises) {
-			Character status = studentCodingTestDAO.getExerciseStatus(studentId,pop.getPopExerciseId());
+			Character status = studentCodingTestDAO.getExerciseStatus(studentId,pop.getPopExerciseId(),"POP");
 			pop.setStatus(status);
 		}
 		request.setAttribute("listPOPExercises", listPOPExercises);
@@ -86,9 +86,13 @@ public class PopExerciseServices extends CommonUtility {
 		HttpSession session = request.getSession();
 		Students student = (Students) session.getAttribute("loggedStudent");
 		Integer studentId = student.getStudentsId();
+		
+		POPExercises popExercises = popExerciseDAO.findByExerciseId(exerciseId);
+		request.setAttribute("popExercises", popExercises);
+		
 		StudentCodingTestDAO studentCodingTestDAO = new StudentCodingTestDAO();
 		
-			String attemptedCode = studentCodingTestDAO.getExerciseCode(studentId,exerciseId);
+			String attemptedCode = studentCodingTestDAO.getExerciseCode(studentId,exerciseId,"POP");
 			if(attemptedCode!=null && !attemptedCode.isEmpty()) {
 				request.setAttribute("attemptedCode", attemptedCode);
 				request.setAttribute("status", "Done");
@@ -98,12 +102,14 @@ public class PopExerciseServices extends CommonUtility {
 			
 		
 		
-		forwardToPage("frontend/popexercises/"+exerciseId+"_exercise.jsp", request, response);
+		forwardToPage("frontend/pop_exercise.jsp", request, response);
 	}
 	
 	public void attemptExerciseSubmit(Integer exerciseId) throws ServletException, IOException {
 		request.setAttribute("exerciseId", exerciseId);
-		forwardToPage("frontend/popexercises/"+exerciseId+"_exercise.jsp", request, response);
+		POPExercises popExercises = popExerciseDAO.findByExerciseId(exerciseId);
+		request.setAttribute("popExercises", popExercises);
+		forwardToPage("frontend/pop_exercise.jsp", request, response);
 	}
 	
 	public void attemptExercise() throws ServletException, IOException {
@@ -125,6 +131,7 @@ public class PopExerciseServices extends CommonUtility {
 	    rootObject.addProperty("code", code);
 	    rootObject.addProperty("language", language);
 	    rootObject.addProperty("input", "");
+	    System.out.println("code---->"+code);
 	    
 	    Gson gsonC = new Gson();
 	    String jsonCString = gsonC.toJson(rootObject);
@@ -190,6 +197,7 @@ public class PopExerciseServices extends CommonUtility {
 					studentCodeTest.setCode(code);
 					studentCodeTest.setHitCount(1);
 					studentCodeTest.setStatus('Y');
+					studentCodeTest.setModule("POP");
 					
 					StudentCodingTestDAO studentCodingTestDAO = new StudentCodingTestDAO();
 					Integer id = studentCodingTestDAO.getId(student.getStudentsId(),exerciseId);
@@ -426,6 +434,10 @@ public class PopExerciseServices extends CommonUtility {
 		String week = request.getParameter("week");
 		String lesson = request.getParameter("lesson");
 		String language = request.getParameter("language");
+		String question = request.getParameter("question");
+		String output = request.getParameter("output");
+		String code = request.getParameter("code");
+		String anscode = request.getParameter("anscode");
 		
 		POPExercises existCodingQuestion = popExerciseDAO.findByWeekLesseon(week,lesson);
 		
@@ -439,6 +451,10 @@ public class PopExerciseServices extends CommonUtility {
 		newPOPExercises.setWeek(week);
 		newPOPExercises.setLesson(lesson);
 		newPOPExercises.setLanguage(language);
+		newPOPExercises.setQuestion(question);
+		newPOPExercises.setOutput(output);
+		newPOPExercises.setCode(code);
+		newPOPExercises.setAnscode(anscode);
 		newPOPExercises.setStatus('N');
 		
 		POPExercises createdPOPExercise = popExerciseDAO.create(newPOPExercises);
@@ -475,12 +491,20 @@ public class PopExerciseServices extends CommonUtility {
 		String week = request.getParameter("week");
 		String lesson = request.getParameter("lesson");
 		String language = request.getParameter("language");
+		String question = request.getParameter("question");
+		String output = request.getParameter("output");
+		String code = request.getParameter("code");
+		String anscode = request.getParameter("anscode");
 		
 		POPExercises popExercise = new POPExercises();
 		popExercise.setPopExerciseId(popExerciseId);
 		popExercise.setWeek(week);
 		popExercise.setLesson(lesson);
 		popExercise.setLanguage(language);
+		popExercise.setQuestion(question);
+		popExercise.setOutput(output);
+		popExercise.setCode(code);
+		popExercise.setAnscode(anscode);
 		popExercise.setStatus('N');
 		
 		popExerciseDAO.update(popExercise);

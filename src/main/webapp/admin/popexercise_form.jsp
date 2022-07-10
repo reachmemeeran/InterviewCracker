@@ -14,14 +14,14 @@
 <body>
 	<div class="main-container">
 	<jsp:directive.include file="header.jsp" />
-	<div class="card one" style="width:40%; min-height:200px; margin-left:30%;margin-top:10%;">
+	<div class="card one" style="width:90%; min-height:200px; margin-left:7%;margin-top:5%;">
 	<div align="center">
 
 		<h2 class="pageheading">
-			<c:if test="${codingQuestion!=null}">
+			<c:if test="${popExercise!=null}">
 				Update POP Exercise
 			</c:if>
-			<c:if test="${codingQuestion==null}">
+			<c:if test="${popExercise==null}">
 				New POP Exercise
 			</c:if>
 		</h2>
@@ -54,12 +54,32 @@
 					size="20" value="${popExercise.language}" /></td>
 			</tr>
 			<tr>
+				<td align="right">Question:</td>
+				<td align="left"><textarea id="question" name="question"
+					cols="140" rows="5">${popExercise.question}</textarea></td>
+			</tr>
+			<tr>
+				<td align="right">Expected Output:</td>
+				<td align="left"><textarea id="output" name="output"
+					cols="140" rows="4">${popExercise.output}</textarea></td>
+			</tr>
+			<tr>
+				<td align="right">Sample Code:</td>
+				<td align="left"><textarea id="code" name="code"
+					cols="140" rows="30" style="background-color:rgba(0, 231, 255, 0.45) ; color:#000">${popExercise.code}</textarea></td>
+			</tr>
+			<tr>
+				<td align="right">Answer Code:</td>
+				<td align="left"><textarea id="anscode" name="anscode"
+					cols="140" rows="30" style="background-color:#000 ; color:#fff">${popExercise.anscode}</textarea></td>
+			</tr>
+			<tr>
 				<td>&nbsp;</td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
-					<button class="button-3" type="submit">Save</button>&nbsp;&nbsp;&nbsp;
 					<button class="button-1" id="buttonCancel">Cancel</button>
+					<button class="button-3" type="submit">Save</button>&nbsp;&nbsp;&nbsp;
 				</td>
 			</tr>
 		</table>

@@ -9,16 +9,18 @@ public class OkHttpResponse {
 	private String output;
 	private String error;
 	private String language;
+	private String version;
 
 	public OkHttpResponse() {
 	}
 
-	public OkHttpResponse(Boolean success,Date timestamp,String output,String error,String language) {
+	public OkHttpResponse(Boolean success,Date timestamp,String output,String error,String language, String version) {
 		this.success = success;
 		this.timestamp = timestamp;
 		this.output = output;
 		this.error=error;
 		this.language = language;
+		this.version = version;
 	}
 
 	public Boolean getSuccess() {
@@ -59,6 +61,14 @@ public class OkHttpResponse {
 
 	public void setLanguage(String language) {
 		this.language = language;
+	}
+
+	public String getVersion() {
+		return version;
+	}
+
+	public void setVersion(String version) {
+		this.version = version;
 	}
 	
 }

@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.interviewcracker.entity.CodingQuestion;
 import com.interviewcracker.entity.POPExercises;
 
 public class PopExerciseDAO extends JpaDAO<POPExercises> implements GenericDAO<POPExercises> {
@@ -59,6 +60,15 @@ public class PopExerciseDAO extends JpaDAO<POPExercises> implements GenericDAO<P
 		parameters.put("week", week);
 		parameters.put("lesson",lesson);
 		List<POPExercises> result = super.findWithNamedQuery("POPExercises.findPOPExercise",parameters);
+		if(!result.isEmpty()) {
+			return result.get(0);
+		}
+		return null;
+	}
+
+	public POPExercises findByExerciseId(Integer exerciseId) {
+		List<POPExercises> result = super.findWithNamedQuery("POPExercises.findByExerciseId","exerciseId",exerciseId);
+		
 		if(!result.isEmpty()) {
 			return result.get(0);
 		}

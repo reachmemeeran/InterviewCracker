@@ -20,6 +20,7 @@ import javax.persistence.Table;
 	@NamedQuery(name="CodingQuestion.findAll", query= "SELECT b FROM CodingQuestion b ORDER BY b.codingQuestionId"),
 	@NamedQuery(name="CodingQuestion.countAll", query= "SELECT count(b) FROM CodingQuestion b "),
 	@NamedQuery(name="CodingQuestion.findBySummary",query="SELECT b FROM CodingQuestion b WHERE b.summary=:summary"),
+	@NamedQuery(name="CodingQuestion.findByExerciseId",query="SELECT b FROM CodingQuestion b WHERE b.codingQuestionId=:exerciseId"),
 	@NamedQuery(name="CodingQuestion.listNew",query="SELECT b FROM CodingQuestion b ORDER BY b.codingQuestionId DESC"),
 	@NamedQuery(name="CodingQuestion.listEasy",query="SELECT b FROM CodingQuestion b WHERE b.codeComplexityId=1"
 			+ " ORDER BY b.codingQuestionId"),
@@ -36,14 +37,25 @@ public class CodingQuestion implements java.io.Serializable {
 	private Integer codingQuestionId;
 	private Integer codeComplexityId;
 	private String summary;
+	private String question;
+	private String output;
+	private String lesson;
+	private String code;
+	private String anscode;
 	private Character status;
 
 	public CodingQuestion() {
 	}
 
-	public CodingQuestion(Integer codeComplexityId, String summary,Character status) {
+	public CodingQuestion(Integer codeComplexityId, String summary, String question, String output, 
+			String lesson, String code, String anscode, Character status) {
 		this.codeComplexityId = codeComplexityId;
 		this.summary = summary;
+		this.question = question;
+		this.output = output;
+		this.lesson = lesson;
+		this.code = code;
+		this.anscode = anscode;
 		this.status = status;
 	}
 
@@ -78,6 +90,51 @@ public class CodingQuestion implements java.io.Serializable {
 		this.summary = summary;
 	}
 	
+	@Column(name = "question")
+	public String getQuestion() {
+		return question;
+	}
+
+	public void setQuestion(String question) {
+		this.question = question;
+	}
+
+	@Column(name = "output")
+	public String getOutput() {
+		return output;
+	}
+
+	public void setOutput(String output) {
+		this.output = output;
+	}
+
+	@Column(name = "lesson")
+	public String getLesson() {
+		return lesson;
+	}
+
+	public void setLesson(String lesson) {
+		this.lesson = lesson;
+	}
+	
+	@Column(name = "code")
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	@Column(name = "anscode")
+	public String getAnscode() {
+		return anscode;
+	}
+
+	public void setAnscode(String anscode) {
+		this.anscode = anscode;
+	}
+
 	@Column(name = "status")
 	public Character getStatus() {
 		return status;

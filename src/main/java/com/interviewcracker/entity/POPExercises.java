@@ -18,7 +18,8 @@ import javax.persistence.Table;
 @Table(name = "pop_exercise", catalog = "interviewcrackerdb")
 @NamedQueries({
 	@NamedQuery(name="POPExercises.findAll", query= "SELECT c FROM POPExercises c ORDER BY c.popExerciseId"),
-	@NamedQuery(name="POPExercises.findPOPExercise", query= "SELECT c FROM POPExercises c where c.week=:week AND c.lesson=:lesson")
+	@NamedQuery(name="POPExercises.findPOPExercise", query= "SELECT c FROM POPExercises c where c.week=:week AND c.lesson=:lesson"),
+	@NamedQuery(name="POPExercises.findByExerciseId", query= "SELECT c FROM POPExercises c where c.popExerciseId=:exerciseId")
 })
 public class POPExercises implements java.io.Serializable {
 
@@ -26,15 +27,24 @@ public class POPExercises implements java.io.Serializable {
 	private String week;
 	private String lesson;
 	private String language;
+	private String question;
+	private String output;
+	private String code;
+	private String anscode;
 	private Character status;
 
 	public POPExercises() {
 	}
 
-	public POPExercises(String week, String lesson,String language,Character status) {
+	public POPExercises(String week, String lesson,String language, String question, String output, 
+			String code, String anscode,Character status) {
 		this.week = week;
 		this.lesson = lesson;
 		this.language = language;
+		this.question = question;
+		this.output = output;
+		this.code = code;
+		this.anscode = anscode;
 		this.status=status;
 	}
 
@@ -75,6 +85,42 @@ public class POPExercises implements java.io.Serializable {
 
 	public void setLanguage(String language) {
 		this.language = language;
+	}
+	
+	@Column(name = "question")
+	public String getQuestion() {
+		return question;
+	}
+
+	public void setQuestion(String question) {
+		this.question = question;
+	}
+
+	@Column(name = "output")
+	public String getOutput() {
+		return output;
+	}
+
+	public void setOutput(String output) {
+		this.output = output;
+	}
+
+	@Column(name = "code")
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	@Column(name = "anscode")
+	public String getAnscode() {
+		return anscode;
+	}
+
+	public void setAnscode(String anscode) {
+		this.anscode = anscode;
 	}
 
 	@Column(name = "status", length = 1)

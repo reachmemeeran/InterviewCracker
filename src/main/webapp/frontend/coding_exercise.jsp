@@ -15,9 +15,9 @@
 </head>
 <body>
 	<div class="main-container">
-	<jsp:directive.include file="../header.jsp" />
+	<jsp:directive.include file="header.jsp" />
 		<div class="card one" style="width:92%; height:600px;margin-bottom:30px;">
-		<h3 class="title" style="margin-left:40%;margin-top:20px;">Easy-4: Prime Numbers</h3>
+		<h3 class="title" style="margin-left:40%;margin-top:20px;">${codingQuestion.summary}</h3>
 		
 
 		<div class="card one" style="width:53%;margin-top:-1px;margin-right:-1px;margin-bottom:-1px;margin-left:15px;border-radius:0px;">
@@ -25,20 +25,15 @@
 		<div class="card one" style="width:100%;margin-top:-1px;margin-right:-1px;margin-bottom:-1px;margin-left:15px;border-radius:0px;min-height:30px;background:#000;">
 
 				<pre>
-<p style="font-weight: bold;color:green;">Question:</p>Complete the program to check if the number is Prime Number.
+<p style="font-weight: bold;color:green;">Question:</p>${codingQuestion.question}
 &nbsp;
-<p style="font-weight: bold;color:green;">Expected Output:</p>1 is not prime number
-3 is prime number
-17 is prime number
-20 is not prime number
+<p style="font-weight: bold;color:green;">Expected Output:</p>${codingQuestion.output}
 </pre>
 			</div>
 
 <pre>
 
-<p style="font-weight: bold;color:cyan;">Prime Number:</p>Prime number is a number that is greater than 1 and divided by 1 or itself only. 
-In other words, prime numbers can't be divided by other numbers than itself or 1. 
-For example 2, 3, 5, 7, 11, 13, 17.... are the prime numbers.
+<p>${codingQuestion.lesson}</p>
 
 </pre>
 
@@ -74,31 +69,7 @@ For example 2, 3, 5, 7, 11, 13, 17.... are the prime numbers.
 
 					</c:if>
 					<c:if test="${attemptedCode==null}">
-						<textarea name="ccode" rows="23" cols="80" style="background-color:rgba(0, 231, 255, 0.45) ; color:#fff" required="true">
-import java.util.*;
-
-class Main{
-  public static void main(String args[]){
-    checkPrime(1);  
-    checkPrime(3);  
-    checkPrime(17);  
-    checkPrime(20); 
-  }
-
-  static void checkPrime(int n){  
-    int i,m=0,flag=0;      
-    m=n/2;      
-    if(n==0||n==1){  
-      System.out.println(n+" is not prime number");      
-    }else{  
-      for(i=2;i<=m;i++){      
-        //Complete the loop to find if the number is Prime
-     }      
-    if(flag==0)  { System.out.println(n+" is prime number"); }  
-    } 
-  }  
-}
-        </textarea>
+						<textarea name="ccode" rows="23" cols="80" style="background-color:rgba(0, 231, 255, 0.45) ; color:#fff" required="true">${codingQuestion.code}</textarea>
 					</c:if>
 
 					<c:if test="${status!=null}">
@@ -108,35 +79,7 @@ class Main{
 
 
 
-					<textarea name="answerCode" style="display: none;">
-import java.util.*;
-
-class Main{
-  public static void main(String args[]){
-    checkPrime(1);  
-    checkPrime(3);  
-    checkPrime(17);  
-    checkPrime(20); 
-  }
-
-  static void checkPrime(int n){  
-    int i,m=0,flag=0;      
-    m=n/2;      
-    if(n==0||n==1){  
-      System.out.println(n+" is not prime number");      
-    }else{  
-      for(i=2;i<=m;i++){      
-        if(n%i==0){      
-          System.out.println(n+" is not prime number");      
-          flag=1;      
-          break;      
-        }      
-     }      
-    if(flag==0)  { System.out.println(n+" is prime number"); }  
-    } 
-  }  
-}
-</textarea>
+					<textarea name="answerCode" style="display: none;">${codingQuestion.anscode}</textarea>
 					<input type="hidden" name="exerciseId" value="${exerciseId}">
 
 					<c:if test="${status==null}">
@@ -151,7 +94,7 @@ class Main{
 		</div>
 		
 		</div>
-		<jsp:directive.include file="../footer.jsp" />
+		<jsp:directive.include file="footer.jsp" />
 	</div>
 </body>
 <script type="text/javascript">

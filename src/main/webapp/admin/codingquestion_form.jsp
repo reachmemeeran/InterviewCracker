@@ -14,7 +14,7 @@
 <body>
 	<div class="main-container">
 	<jsp:directive.include file="header.jsp" />
-	<div class="card one" style="width:40%; min-height:200px; margin-left:30%;margin-top:10%;">
+	<div class="card one" style="width:90%; min-height:200px; margin-left:7%;margin-top:5%;">
 	<div align="center">
 
 		<h2 class="pageheading">
@@ -49,12 +49,49 @@
 					size="40" value="${codingQuestion.summary}" /></td>
 			</tr>
 			<tr>
+				<td align="right">Question:</td>
+				<td align="left"><textarea id="question" name="question"
+					cols="140" rows="5">${codingQuestion.question}</textarea></td>
+			</tr>
+			<tr>
+				<td align="right">Expected Output:</td>
+				<td align="left"><textarea id="output" name="output"
+					cols="140" rows="4">${codingQuestion.output}</textarea></td>
+			</tr>
+			<tr>
+				<td align="right">Lesson:</td>
+				
+				<c:if test="${codingQuestion!=null}">
+					<td align="left"><textarea id="lesson" name="lesson"
+					cols="140" rows="10">${codingQuestion.lesson}</textarea></td>
+				</c:if>
+				<c:if test="${codingQuestion==null}">
+					<td align="left"><textarea id="lesson" name="lesson"
+					cols="140" rows="10"><p style="font-weight: bold;color:cyan;">Heading:</p>Explanation
+//Code if any
+while (condition) {
+  // code block to be executed
+}
+					</textarea></td>
+				</c:if>
+			</tr>
+			<tr>
+				<td align="right">Sample Code:</td>
+				<td align="left"><textarea id="code" name="code"
+					cols="140" rows="30" style="background-color:rgba(0, 231, 255, 0.45) ; color:#000">${codingQuestion.code}</textarea></td>
+			</tr>
+			<tr>
+				<td align="right">Answer Code:</td>
+				<td align="left"><textarea id="anscode" name="anscode"
+					cols="140" rows="30" style="background-color:#000 ; color:#fff">${codingQuestion.anscode}</textarea></td>
+			</tr>
+			<tr>
 				<td>&nbsp;</td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
-					<button class="button-3" type="submit">Save</button>&nbsp;&nbsp;&nbsp;
 					<button class="button-1" id="buttonCancel">Cancel</button>
+					<button class="button-3" type="submit">Save</button>&nbsp;&nbsp;&nbsp;
 				</td>
 			</tr>
 		</table>
@@ -73,10 +110,20 @@
 			rules : {
 				codeComplexity : "required",
 				summary : "required",
+				question: "required",
+				output: "required",
+				lesson: "required",
+				code: "required",
+				anscode: "required",
 			},
 			messages : {
-				codeComplexity : "Please select a codeComplexity for the codingQuestion.",
-				summary : "Please enter summary of the codingQuestion.",
+				codeComplexity : "Please select a codeComplexity.",
+				summary : "Please enter summary.",
+				question: "Please enter Question.",
+				output: "Please enter Expected Output.",
+				lesson: "Please enter Lesson.",
+				code: "Please enter Default code.",
+				anscode: "Please enter the expected answer code",
 			}
 		});
 		$("#buttonCancel").click(function() {
