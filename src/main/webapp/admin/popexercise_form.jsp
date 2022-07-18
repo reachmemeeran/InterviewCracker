@@ -50,8 +50,66 @@
 			</tr>
 			<tr>
 				<td align="right">language:</td>
-				<td align="left"><input type="text" id="language" name="language"
-					size="20" value="${popExercise.language}" /></td>
+				<td>
+					<c:if test="${popExercise==null}">
+						<select name="language" id="language">
+					        <option value="java">Java</option>
+					        <option value="py">Python </option>
+					        <option value="cpp">C++</option>
+					        <option value="c" selected>C</option>
+					        <option value="go">GoLang</option>
+					        <option value="cs">C#</option>
+					        <option value="js">NodeJS</option>
+					    </select>
+				    </c:if>
+				    <c:if test="${popExercise!=null}">
+						<select name="language" id="language">
+					        <c:if test="${'java' eq popExercise.language}">
+								<option value="${popExercise.language}" selected>Java
+							</c:if>
+							<c:if test="${'java' ne popExercise.language}">
+								<option value="${popExercise.language}">Java
+							</c:if>
+							<c:if test="${'py' eq popExercise.language}">
+								<option value="${popExercise.language}" selected>Python
+							</c:if>
+							<c:if test="${'py' ne popExercise.language}">
+								<option value="${popExercise.language}">Python
+							</c:if>
+							<c:if test="${'cpp' eq popExercise.language}">
+								<option value="${popExercise.language}" selected>C++
+							</c:if>
+							<c:if test="${'cpp' ne popExercise.language}">
+								<option value="${popExercise.language}">C++
+							</c:if>
+							<c:if test="${'c' eq popExercise.language}">
+								<option value="${popExercise.language}" selected>C
+							</c:if>
+							<c:if test="${'c' ne popExercise.language}">
+								<option value="${popExercise.language}">C
+							</c:if>
+							<c:if test="${'go' eq popExercise.language}">
+								<option value="${popExercise.language}" selected>GoLang
+							</c:if>
+							<c:if test="${'go' ne popExercise.language}">
+								<option value="${popExercise.language}">GoLang
+							</c:if>
+							<c:if test="${'cs' eq popExercise.language}">
+								<option value="${popExercise.language}" selected>C#
+							</c:if>
+							<c:if test="${'cs' ne popExercise.language}">
+								<option value="${popExercise.language}">C#
+							</c:if>
+							<c:if test="${'js' eq popExercise.language}">
+								<option value="${popExercise.language}" selected>NodeJS
+							</c:if>
+							<c:if test="${'js' ne popExercise.language}">
+								<option value="${popExercise.language}">NodeJS
+							</c:if>
+								</option>
+					    </select>
+				    </c:if>
+				</td>
 			</tr>
 			<tr>
 				<td align="right">Question:</td>

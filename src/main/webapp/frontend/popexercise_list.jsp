@@ -54,8 +54,8 @@
 							<td style="width:300px; border-radius: 30px; background: rgba(0, 231, 255, 0.45);">
 								<p class="link" style="margin:0.4rem">${popExercise.lesson}</p>
 							</td>
-							<td style="width:50px; border-radius: 30px; background: rgba(0, 231, 255, 0.45);">
-								<p class="link" style="margin:0.4rem">${popExercise.language}</p>
+							<td style="width:50px; border-radius: 30px; background: rgba(0, 231, 255, 0.45); text-align:center;">
+								<p class="link" style="margin:0.4rem; text-transform: uppercase;">${popExercise.language}</p>
 							</td>
 							<td style="width:200px; border-radius: 30px;padding: .01rem 2%;">
 							<form>

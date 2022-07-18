@@ -38,6 +38,8 @@ public class CodingQuestionServices extends CommonUtility {
 	public void listCodingQuestion(String message) throws ServletException, IOException {
 		List<CodingQuestion> listcodingQuestions =  codingQuestionDAO.listAll();
 		request.setAttribute("listcodingQuestions", listcodingQuestions);
+		List<CodeComplexity> listCodeComplexity = codeComplexityDAO.listAll();
+		request.setAttribute("listCodeComplexity", listCodeComplexity);
 		
 		if(message !=null) {
 			request.setAttribute("message", message);
@@ -51,6 +53,10 @@ public class CodingQuestionServices extends CommonUtility {
 	public void showCodingQuestionNewForm() throws ServletException, IOException {
 		
 		String listPage ="codingquestion_form.jsp";
+		
+		List<CodeComplexity> listCodeComplexity = codeComplexityDAO.listAll();
+		request.setAttribute("listCodeComplexity", listCodeComplexity);
+		
 		CommonUtility.forwardToPage(listPage, request, response);
 	}
 

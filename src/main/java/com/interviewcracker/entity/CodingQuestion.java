@@ -17,7 +17,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "coding_question", catalog = "interviewcrackerdb")
 @NamedQueries({
-	@NamedQuery(name="CodingQuestion.findAll", query= "SELECT b FROM CodingQuestion b ORDER BY b.codingQuestionId"),
+	@NamedQuery(name="CodingQuestion.findAll", query= "SELECT b FROM CodingQuestion b ORDER BY b.codeComplexityId, b.codingQuestionId"),
 	@NamedQuery(name="CodingQuestion.countAll", query= "SELECT count(b) FROM CodingQuestion b "),
 	@NamedQuery(name="CodingQuestion.findBySummary",query="SELECT b FROM CodingQuestion b WHERE b.summary=:summary"),
 	@NamedQuery(name="CodingQuestion.findByExerciseId",query="SELECT b FROM CodingQuestion b WHERE b.codingQuestionId=:exerciseId"),

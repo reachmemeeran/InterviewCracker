@@ -13,7 +13,7 @@
 <body>
 	<div class="main-container">
 	<jsp:directive.include file="header.jsp" />
-	<div class="card one" style="width:60%; min-height:200px; margin-left:20%;margin-top:10%;">
+	<div class="card one" style="width:55%; min-height:200px; margin-left:25%;margin-top:10%;">
 	
 	<div align="center">
 		<h3 class="pageheading">Coding Question Management</h3>
@@ -22,7 +22,7 @@
 
 	<div align="center">
 		<h3>
-			<a class="button-1" href="codingquestion_form.jsp">Create New Coding Question</a>
+			<a class="button-1" href="new_codingQuestion">Create New Coding Question</a>
 		</h3>
 	</div>
 
@@ -49,16 +49,22 @@
 							<td>
 								<p class="num">${status.index+1}</p>
 							</td>
-							<td style="width:100px; border-radius: 30px; background: rgba(0, 231, 255, 0.45);">
+							<td style="width:50px; border-radius: 10px; background: rgba(0, 231, 255, 0.45); text-align:center;">
 								<p class="link" style="margin:0.4rem">${codingQuestion.codingQuestionId}</p>
 							</td>
-							<td style="width:100px; border-radius: 30px; background: rgba(0, 231, 255, 0.45);">
-								<p class="link" style="margin:0.4rem">${codingQuestion.codeComplexityId}</p>
+							<td style="width:100px; border-radius: 10px; background: rgba(0, 231, 255, 0.45);">
+								<c:forEach items="${listCodeComplexity}" var="codeComplexity">
+									<c:if test="${codeComplexity.codeComplexityId eq codingQuestion.codeComplexityId}">
+										<p class="link" style="margin:0.4rem">${codeComplexity.complexityDesc}</p>
+									</c:if>
+							</c:forEach>
+							
+							
 							</td>
 							<td style="width:300px; border-radius: 30px; background: rgba(0, 231, 255, 0.45);">
 								<p class="link" style="margin:0.4rem">${codingQuestion.summary}</p>
 							</td>
-							<td style="width:200px; padding: .01rem 2%;">
+							<td style="width:170px; padding: .01rem 2%;">
 								<a class="button-3" href="edit_codingQuestion?id=${codingQuestion.codingQuestionId}">Edit</a>
 								<a class="button-1" onclick="deleteFunction(this.id);" id="${codingQuestion.codingQuestionId}">Delete</a>
 							</td>

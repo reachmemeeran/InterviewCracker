@@ -230,6 +230,119 @@ public class PopExerciseServices extends CommonUtility {
 		}
 	}
 	
+	public void submitExercise() throws ServletException, IOException {
+		
+		String code = request.getParameter("ccode");
+		String language = request.getParameter("language");
+		Integer exerciseId = Integer.parseInt(request.getParameter("exerciseId"));
+		request.setAttribute("attemptedCode", code);
+		
+		String answerCode = request.getParameter("answerCode");
+		
+		// User Answer
+		JsonObject rootObject = new JsonObject();
+	    rootObject.addProperty("code", code);
+	    rootObject.addProperty("language", language);
+	    rootObject.addProperty("input", "");
+	    System.out.println("code---->"+code);
+	    
+	    Gson gsonC = new Gson();
+	    String jsonCString = gsonC.toJson(rootObject);
+		
+		OkHttpClient client = new OkHttpClient();
+		MediaType mediaType = MediaType.parse("application/json; charset=utf-8");
+		//RequestBody body = RequestBody.create(mediaType, "{\r\n  \"code\": \"public class Test{ public static void main(String []args) { System.out.println(\\\"Meeran\\\");}}\",\r\n  \"language\": \"java\",\r\n  \"input\": \"\"\r\n}");
+		RequestBody body = RequestBody.create(mediaType, jsonCString);
+
+		Request requestBuild = new Request.Builder()
+		  .url("https://codex-api.herokuapp.com/")
+		  .method("POST", body)
+		  .addHeader("Content-Type", "application/json")
+		  .build();
+		
+		Gson gson = new Gson(); 
+		ResponseBody responseBody = client.newCall(requestBuild).execute().body(); 
+		OkHttpResponse entity = gson.fromJson(responseBody.string(), OkHttpResponse.class);
+		//
+		
+		// Answer
+		JsonObject ansObject = new JsonObject();
+		ansObject.addProperty("code", answerCode);
+		ansObject.addProperty("language", language);
+		ansObject.addProperty("input", "");
+	    
+	    String jsonCAnsString = gsonC.toJson(ansObject);
+		
+		RequestBody ansBody = RequestBody.create(mediaType, jsonCAnsString);
+
+		Request requestAnsBuild = new Request.Builder()
+		  .url("https://codex-api.herokuapp.com/")
+		  .method("POST", ansBody)
+		  .addHeader("Content-Type", "application/json")
+		  .build();
+		
+		ResponseBody responseAnsBody = client.newCall(requestAnsBuild).execute().body(); 
+		OkHttpResponse ansEntity = gson.fromJson(responseAnsBody.string(), OkHttpResponse.class);
+		
+		if(ansEntity.getOutput()!=null) {
+			System.out.println("ansEntity--Output?-->"+ansEntity.getOutput());
+		}else if (ansEntity.getError()!=null) {
+			System.out.println("ansEntity--Error?-->"+ansEntity.getError());
+		}
+		
+		//
+		
+		
+		if(entity != null) {
+			String message = "";
+			if (entity.getSuccess()) {
+				System.out.println("Entity--Output?-->"+entity.getOutput());
+				
+				if(entity.getOutput().trim().equals(ansEntity.getOutput().trim())) {
+					message = "Successfully passed the test case";
+					
+					HttpSession session = request.getSession();
+					Students student = (Students) session.getAttribute("loggedStudent");
+					
+					StudentCodingTest studentCodeTest = new StudentCodingTest();
+					studentCodeTest.setCodingQuestionId(exerciseId);
+					studentCodeTest.setStudents(student);
+					studentCodeTest.setCode(code);
+					studentCodeTest.setHitCount(1);
+					studentCodeTest.setStatus('Y');
+					studentCodeTest.setModule("POP");
+					
+					StudentCodingTestDAO studentCodingTestDAO = new StudentCodingTestDAO();
+					Integer id = studentCodingTestDAO.getId(student.getStudentsId(),exerciseId);
+					if(id==0) {
+						studentCodingTestDAO.create(studentCodeTest);
+					}else {
+						studentCodeTest.setStudentCodingTestId(id);
+						studentCodingTestDAO.update(studentCodeTest);
+					}
+					
+					request.setAttribute("status", "Done");
+					
+				}else {
+					message = "Test Case Failed - Expected output is:\n"+ansEntity.getOutput();
+				}
+				request.setAttribute("output", entity.getOutput().trim());
+			} else {		
+				System.out.println("Entity 2--Error?-->"+entity.getError().trim());
+				
+				message = entity.getError();
+				if(message.contains("error")) {
+					message=message.substring(message.indexOf("error: ") , message.length());
+				}else if(message.contains("warning")) {
+					message=message.substring(message.indexOf("warning: ") , message.length());
+				}
+				request.setAttribute("output", null);
+			}
+			request.setAttribute("message", message);
+			attemptExerciseSubmit(exerciseId);
+		}
+	}
+	
 	public void createStudent() throws ServletException, IOException {
 		String email = request.getParameter("email");
 		Students existStudents = studentDAO.findByEmail(email);
@@ -491,6 +604,7 @@ public class PopExerciseServices extends CommonUtility {
 		String week = request.getParameter("week");
 		String lesson = request.getParameter("lesson");
 		String language = request.getParameter("language");
+		System.out.println("language--->"+language);
 		String question = request.getParameter("question");
 		String output = request.getParameter("output");
 		String code = request.getParameter("code");

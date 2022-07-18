@@ -40,8 +40,28 @@
 		<table style="margin-left:auto;margin-right:auto;">
 			<tr>
 				<td align="right">CodeComplexity:</td>
-				<td align="left"><input type="text" id="codeComplexityId" name="codeComplexityId"
-					size="20" value="${codingQuestion.codeComplexityId}" /></td>
+				<td>
+					<select id="codeComplexityId" name="codeComplexityId">
+						<c:if test="${codingQuestion!=null}">
+							<c:forEach items="${listCodeComplexity}" var="codeComplexity">
+								<c:if test="${codeComplexity.codeComplexityId eq codingQuestion.codeComplexityId}">
+									<option value="${codeComplexity.codeComplexityId}" selected>
+								</c:if>
+								<c:if test="${codeComplexity.codeComplexityId ne codingQuestion.codeComplexityId}">
+									<option value="${codeComplexity.codeComplexityId}">
+								</c:if>
+								${codeComplexity.complexityDesc}
+								</option>
+							</c:forEach>
+						</c:if>
+						<c:if test="${codingQuestion==null}">
+							<c:forEach items="${listCodeComplexity}" var="codeComplexity">
+								<option value="${codeComplexity.codeComplexityId}">${codeComplexity.complexityDesc}
+								</option>
+							</c:forEach>
+						</c:if>
+					</select>
+				</td>
 			</tr>
 			<tr>
 				<td align="right">Summary:</td>

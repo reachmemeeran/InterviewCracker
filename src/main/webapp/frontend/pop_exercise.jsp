@@ -31,13 +31,7 @@
 		</div>
 		<div class="card one" style="width:50%;margin-top:-1px;margin-right:-1px;margin-bottom:-1px;margin-left:15px;">
 
-			<c:if test="${popExercises.language=='C'}">
-				<form action="submit_ccode" method="post" id="submitCodeForm">
-			</c:if>
-			<c:if test="${popExercises.language=='Java'}">
-				<form action="submit_javacode" method="post" id="submitCodeForm">
-			</c:if>
-
+				<form action="submit_exercise" method="post" id="submitCodeForm">
 					<p>&nbsp;</p>
 					<c:if test="${attemptedCode!=null}">
 						<textarea name="ccode" rows="23" cols="80" style="background-color:rgba(0, 231, 255, 0.45) ; color:#fff">${attemptedCode}</textarea>
@@ -56,6 +50,7 @@
 
 					<textarea name="answerCode" style="display: none;">${popExercises.anscode}</textarea>
 					<input type="hidden" name="exerciseId" value="${exerciseId}">
+					<input type="hidden" name="language" value="${popExercises.language}">
 
 					<c:if test="${status==null}">
 						<button class="button-3" style="float:right;margin-right:80px;margin-top:20px;"  type="submit">Run</button>&nbsp;&nbsp;&nbsp;&nbsp;
