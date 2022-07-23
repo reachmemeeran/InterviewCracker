@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -74,7 +75,15 @@
 
 					<c:if test="${status!=null}">
 						<button class="button-3" style="float:right;margin-right:80px;margin-top:20px;"  type="submit">Re-Run</button>&nbsp;&nbsp;&nbsp;&nbsp;
-					 	<input class="button-1" style="margin-top:20px;" type="BUTTON" value="Back" onclick="window.location.href='list_code_easy'">
+						<c:if test="${codingQuestion.codeComplexityId==1}">
+					 		<input class="button-1" style="margin-top:20px;" type="BUTTON" value="Back" onclick="window.location.href='list_code_easy'">
+					 	</c:if>
+					 	<c:if test="${codingQuestion.codeComplexityId==2}">
+					 		<input class="button-1" style="margin-top:20px;" type="BUTTON" value="Back" onclick="window.location.href='list_code_medium'">
+					 	</c:if>
+					 	<c:if test="${codingQuestion.codeComplexityId==3}">
+					 		<input class="button-1" style="margin-top:20px;" type="BUTTON" value="Back" onclick="window.location.href='list_code_advanced'">
+					 	</c:if>
 					</c:if>
 
 
@@ -84,7 +93,15 @@
 
 					<c:if test="${status==null}">
 						<button class="button-3" style="float:right;margin-right:80px;margin-top:20px;"  type="submit">Run</button>&nbsp;&nbsp;&nbsp;&nbsp;
-					 	<input class="button-1" style="margin-top:20px;" type="BUTTON" value="Back" onclick="window.location.href='list_code_easy'">
+					 	<c:if test="${codingQuestion.codeComplexityId==1}">
+					 		<input class="button-1" style="margin-top:20px;" type="BUTTON" value="Back" onclick="window.location.href='list_code_easy'">
+					 	</c:if>
+					 	<c:if test="${codingQuestion.codeComplexityId==2}">
+					 		<input class="button-1" style="margin-top:20px;" type="BUTTON" value="Back" onclick="window.location.href='list_code_medium'">
+					 	</c:if>
+					 	<c:if test="${codingQuestion.codeComplexityId==3}">
+					 		<input class="button-1" style="margin-top:20px;" type="BUTTON" value="Back" onclick="window.location.href='list_code_advanced'">
+					 	</c:if>
 					</c:if>
 				</form>
 
@@ -109,5 +126,8 @@
 			history.back();
 		});
 	});
+	fn:contains(){
+		boolean contains(java.lang.String, java.lang.String)
+	}
 </script>
 </html>
