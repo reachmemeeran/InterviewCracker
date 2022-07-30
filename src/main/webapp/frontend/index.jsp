@@ -18,26 +18,24 @@
 		</div>
 
 			<c:if test="${loggedStudent!=null}">
-			<div class="card one" style="margin-left:150px;">
+			<div class="card one" style="margin-left:80px;">
 				<h3
 					style="border-radius: 25px; text-align: center; font-size: 20px;padding: .7em 10%;">POP
 					Exercise Progress</h3>
 				<div class="pie"
 					style="--p:${(solvedStudentExercise/22) * 100};--b:25px;--c:orange;left:50px;">${solvedStudentExercise} / 22</div>
-				<p style="padding: 1em 30%;">Your Rank:${rank}</p>
-
-			<h3
-				style="border-radius: 25px; text-align: center; font-size: 20px;padding: .7em 10%;">Coding
-				Challenge Progress</h3>
-				<div class="pie"
-					style="--p:${(solvedStudentCode/20) * 100};--b:25px;--c:purple;left:50px;">${solvedStudentCode} / 20</div>
-				<p style="padding: 1em 30%;">Your Rank:${codeRank}</p>
+				<p style="padding: 1em 35%;margin-top: 30px;">Your Rank:${rank}</p>
+				<form method="post" action="pop_certificate">
+					<input type="hidden" name="rank" value="${rank}">
+					<input type="hidden" name="solvedExercise" value="${solvedStudentExercise}">
+					<button class="button-3" style="margin-left:50px; margin-top: 30px; text-align: center;"  type="submit">Generate Your Certificate</button>
+				</form>
 				</div>
 			</c:if>
 		
 
 		<c:if test="${loggedStudent==null}">
-			<div class="card one" style="margin-left:150px;">
+			<div class="card one" style="margin-left:80px;">
 				<h3 style="border-radius: 25px; text-align: center; font-size: 20px; padding: .7em 20%;">Progress</h3>
 
 				<canvas id="progressChart" style="width: 100%; max-width: 500px; margin:2rem"></canvas>
@@ -68,11 +66,11 @@
 						}
 					});
 				</script>
-				<p style="margin:2rem">Login to see your customised statistics</p>
+				<a class="ah" style="margin:2rem" href="login">Login to see your customised statistics</a>
 			</div>
 		</c:if>
 
-		<div class="card one">
+		<div class="card one" style="margin-left:-50px;">
 			<h3 class="title" style="padding: .7em 20%;">POP Leaderboard</h3>
 			<div></div>
 			<div class="profile">
@@ -123,7 +121,60 @@
 			</c:forEach>
 		</div>
 		
-		<div class="card one" style="margin-right:10px;">
+		<c:if test="${loggedStudent!=null}">
+			<div class="card one" style="margin-left:-50px;">
+			<h3
+				style="border-radius: 25px; text-align: center; font-size: 20px;padding: .7em 10%;">Coding
+				Challenge Progress</h3>
+				<div class="pie"
+					style="--p:${(solvedStudentCode/20) * 100};--b:25px;--c:purple;left:50px;">${solvedStudentCode} / 20</div>
+				<p style="padding: 1em 35%; margin-top: 30px;">Your Rank:${codeRank}</p>
+				<form method="post" action="code_certificate">
+					<input type="hidden" name="codeRank" value="${codeRank}">
+					<input type="hidden" name="solvedStudentCode" value="${solvedStudentCode}">
+					<button class="button-3" style="margin-left:50px; margin-top: 30px; text-align: center;"  type="submit">Generate Your Certificate</button>
+				</form>
+				</div>
+			</c:if>
+		
+
+		<c:if test="${loggedStudent==null}">
+			<div class="card one" style="margin-left:-50px;">
+				<h3 style="border-radius: 25px; text-align: center; font-size: 20px; padding: .7em 20%;">Progress</h3>
+
+				<canvas id="progressChart1" style="width: 100%; max-width: 500px; margin:2rem"></canvas>
+				<script>
+					var xValues = [ "POP", "Code", "" ];
+					var pop = ${solvedExercise};
+					var code = ${solvedCode};
+					var yValues = [ pop, code, 0 ];
+					var barColors = [ "cyan", "gold" ];
+
+					new Chart("progressChart1", {
+						type : "bar",
+						data : {
+							labels : xValues,
+							datasets : [ {
+								backgroundColor : barColors,
+								data : yValues
+							} ]
+						},
+						options : {
+							legend : {
+								display : false
+							},
+							title : {
+								display : true,
+								text : "Total problems solved"
+							}
+						}
+					});
+				</script>
+				<a class="ah" style="margin:2rem" href="login">Login to see your customised statistics</a>
+			</div>
+		</c:if>
+		
+		<div class="card one" style="margin-left:-60px;">
 			<h3 class="title" style="padding: .7em 10%;">Code Challenge Leaderboard</h3>
 			<div></div>
 			<div class="profile">

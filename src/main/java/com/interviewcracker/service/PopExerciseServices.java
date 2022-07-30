@@ -633,4 +633,13 @@ public class PopExerciseServices extends CommonUtility {
 		String message = "The Pop Exercise has been deleted successfully.";
 		listExercisesAdmin(message);
 	}
+
+	public void generatePOPCertificate() throws ServletException, IOException {
+		
+		String rank = request.getParameter("rank");
+		String solvedExercise = request.getParameter("solvedExercise");
+		request.setAttribute("rank", rank);
+		request.setAttribute("solvedExercise", solvedExercise);
+		forwardToPage("frontend/pop_certificate.jsp", request, response);
+	}
 }

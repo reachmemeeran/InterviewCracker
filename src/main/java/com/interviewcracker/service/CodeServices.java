@@ -285,4 +285,12 @@ public class CodeServices extends CommonUtility {
 		forwardToPage("frontend/edit_profile.jsp", request, response);
 	}
 
+	public void generateCodeCertificate() throws ServletException, IOException {
+		String codeRank = request.getParameter("codeRank");
+		String solvedStudentCode = request.getParameter("solvedStudentCode");
+		request.setAttribute("codeRank", codeRank);
+		request.setAttribute("solvedStudentCode", solvedStudentCode);
+		forwardToPage("frontend/code_certificate.jsp", request, response);
+	}
+
 }

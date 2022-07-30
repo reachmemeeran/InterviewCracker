@@ -10,6 +10,11 @@
 	height: 100vh;
 }
 
+.cert-container {
+	width: 70%;
+	height: 90%;
+}
+
 .background {
   background-image: url("../images/UOB.jpeg");
   background-position: center;
@@ -54,7 +59,7 @@
   position: relative;
   display: inline-grid;
   place-content: center;
-  margin: 5px;
+  margin-left: 20px;
   font-size: 25px;
   font-weight: bold;
   font-family: sans-serif;
@@ -307,7 +312,8 @@ body{
   position: relative;
   display: inline-grid;
   place-content: center;
-  margin: 5px;
+  margin-left: 20px;
+  margin-top: 40px;
   font-size: 25px;
   font-weight: bold;
   font-family: sans-serif;
@@ -507,4 +513,75 @@ body{
 
 .button-3:hover {
   background-color: #2c974b;
+}
+
+.certhead {
+  font-family: Marker Felt;
+  font-size: 40px;
+  color: #ff0707ed;
+  margin-left: 3%;
+  margin-top: 7%;
+}
+.certheadAchieve {
+  font-family: Comic Sans MS;
+  font-size: 20px;
+  color: #0e59b9;
+  margin-left: 3%;
+  margin-top: -3%;
+}
+.hr {
+  border:none;
+  border-top:1px dashed #f00;
+  color:#fff;
+  background-color:#fff;
+  height:1px;
+  width:45%;
+  margin-left: 3%;
+}
+.certpresent {
+  margin-left: 3%;
+  margin-top: 8%;
+  margin-bottom: 5%;
+  color:#dfdbdb;
+}
+
+.module-border-wrap {
+  min-width: 40px;
+  position: fixed;
+  background: linear-gradient(to right, #ff0707ed, #0e59b9);
+  padding: 3px;
+  margin-left: 1%;
+  color: white;
+  font-family: Apple Chancery;
+  font-size: 30px;
+}
+
+
+.module {
+  background: #222;
+  color: white;
+  padding: 2rem;
+  margin-left: 3%;
+}
+
+.certcontent {
+  margin-left: 3%;
+  margin-top: 20%;
+  margin-bottom: 3%;
+  color:#dfdbdb;
+}
+.certdatedis{
+	margin-left: 5%;
+  	margin-top: 30%;
+  	color:#dfdbdb;
+}
+.certsigndis{
+	margin-left: 6%;
+  	margin-top: 30%;
+  	color:#dfdbdb;
+}
+.certdate{
+	margin-left: 30%;
+	margin-top: 1%;
+	color:#dfdbdb;
 }
