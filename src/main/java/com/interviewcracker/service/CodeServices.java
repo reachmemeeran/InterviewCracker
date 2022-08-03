@@ -48,11 +48,11 @@ public class CodeServices extends CommonUtility {
 		for(CodingQuestion code : listCodingQuestion) {
 			Character status = studentCodingTestDAO.getExerciseStatus(studentId,code.getCodingQuestionId(),"CODE");
 			if(code.getCodeComplexityId()==1) {
-				request.setAttribute("complexity", "Easy");
+				request.setAttribute("complexity", "Beginner");
 			}else if(code.getCodeComplexityId()==2) {
-				request.setAttribute("complexity", "Medium");
+				request.setAttribute("complexity", "Intermediate");
 			}else if(code.getCodeComplexityId()==3) {
-				request.setAttribute("complexity", "Advanced");
+				request.setAttribute("complexity", "Expert");
 			}
 			code.setStatus(status);
 		}

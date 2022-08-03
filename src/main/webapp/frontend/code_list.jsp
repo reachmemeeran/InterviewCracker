@@ -40,7 +40,7 @@
 		<h4 style="color:orange; text-align:center; " >Inspiration from the book "Cracking the Coding Interview 189 Programming Questions and Solutions by Gayle Laakmann McDowell"</h4> 
 
 
-<c:if test="${fn:contains(complexity, 'Easy')}">
+<c:if test="${fn:contains(complexity, 'Beginner')}">
 	<div class="card one">
 	
 	<table style="margin-left:auto;margin-right:auto;">
@@ -77,7 +77,7 @@
 
 		</div>
 			<div class="card one" style="width:20%;height:200px;  ">
-	<h3 style="background: rgb(19, 126, 144); color: #fff; border-radius: 10px; text-align: center;"><a style="color:#FFF;" href="list_code_medium">Level - Medium</a></h3>
+	<h3 style="background: rgb(19, 126, 144); color: #fff; border-radius: 10px; text-align: center;"><a style="color:#FFF;" href="list_code_medium">Level - Intermediate</a></h3>
 				<p>&nbsp;</p>       
 <pre>
 Stack
@@ -91,7 +91,7 @@ Regular Expressions
 	</div>
 	
 	<div class="card one" style="width:20%;height:200px;  ">
-	<h3 style="background: rgb(19, 126, 144); color: #fff; border-radius: 10px; text-align: center;"><a style="color:#FFF;" href="list_code_advanced">Level - Advanced</a></h3>
+	<h3 style="background: rgb(19, 126, 144); color: #fff; border-radius: 10px; text-align: center;"><a style="color:#FFF;" href="list_code_advanced">Level - Expert</a></h3>
 				<p>&nbsp;</p>       
 <pre>
 Trees
@@ -105,9 +105,9 @@ Lambda Expressions
 	</div>
 		</c:if>	
 
-<c:if test="${fn:contains(complexity, 'Medium')}">
+<c:if test="${fn:contains(complexity, 'Intermediate')}">
 <div class="card one" style="width:20%; height:200px; ">
-	<h3 style="background: rgb(19, 126, 144); color: #fff; border-radius: 10px; text-align: center;"><a style="color:#FFF;" href="list_code_easy">Level - Easy</a></h3>
+	<h3 style="background: rgb(19, 126, 144); color: #fff; border-radius: 10px; text-align: center;"><a style="color:#FFF;" href="list_code_easy">Level - Beginner</a></h3>
 				<p>&nbsp;</p>  
 				
 		<pre>
@@ -162,7 +162,7 @@ Logics:
 
 		</div>
 		<div class="card one" style="width:20%;height:200px;  ">
-	<h3 style="background: rgb(19, 126, 144); color: #fff; border-radius: 10px; text-align: center;"><a style="color:#FFF;" href="list_code_advanced">Level - Advanced</a></h3>
+	<h3 style="background: rgb(19, 126, 144); color: #fff; border-radius: 10px; text-align: center;"><a style="color:#FFF;" href="list_code_advanced">Level - Expert</a></h3>
 				<p>&nbsp;</p>       
 <pre>
 Trees
@@ -178,10 +178,10 @@ Lambda Expressions
 		
 
 
-<c:if test="${fn:contains(complexity, 'Advanced')}">
+<c:if test="${fn:contains(complexity, 'Expert')}">
 	
 	<div class="card one" style="width:20%; height:200px; ">
-	<h3 style="background: rgb(19, 126, 144); color: #fff; border-radius: 10px; text-align: center;"><a style="color:#FFF;" href="list_code_easy">Level - Easy</a></h3>
+	<h3 style="background: rgb(19, 126, 144); color: #fff; border-radius: 10px; text-align: center;"><a style="color:#FFF;" href="list_code_easy">Level - Beginner</a></h3>
 				<p>&nbsp;</p>  
 				
 		<pre>
@@ -202,7 +202,7 @@ Logics:
 	</div>
 	
 	<div class="card one" style="width:20%;height:200px;  ">
-	<h3 style="background: rgb(19, 126, 144); color: #fff; border-radius: 10px; text-align: center;"><a style="color:#FFF;" href="list_code_medium">Level - Medium</a></h3>
+	<h3 style="background: rgb(19, 126, 144); color: #fff; border-radius: 10px; text-align: center;"><a style="color:#FFF;" href="list_code_medium">Level - Intermediate</a></h3>
 				<p>&nbsp;</p>       
 <pre>
 Stack
