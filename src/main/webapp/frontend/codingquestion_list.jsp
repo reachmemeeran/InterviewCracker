@@ -35,7 +35,7 @@
 	<div class="card one" style="width:92%; height:400px; overflow:hidden;">
 		<h3 class="title" style="margin-left:40%;margin-top:30px;">Coding Challenges</h3>
 		<p>&nbsp;</p>  
-		<h4 style="color:orange; text-align:center; " >Inspiration from the book "Cracking the Coding Interview 189 Programming Questions and Solutions by Gayle Laakmann McDowell"</h4> 
+		<h4 style="color:orange; text-align:center; " >Inspiration from the book <i>"Cracking the Coding Interview"</i> by Gayle Laakmann McDowell</h4> 
 			
 	<div class="card one" style="width:20%; height:200px; ">
 	<h3 style="background: rgb(19, 126, 144); color: #fff; border-radius: 10px; text-align: center;"><a style="color:#FFF;" href="list_code_easy">Level - Beginner</a></h3>

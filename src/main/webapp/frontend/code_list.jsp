@@ -37,7 +37,7 @@
 <div class="card one" style="width:92%; height:400px; overflow:hidden;">
 		<h3 class="title" style="margin-left:40%;margin-top:30px;">Coding Challenges - ${complexity}</h3>
 		<p>&nbsp;</p>  
-		<h4 style="color:orange; text-align:center; " >Inspiration from the book "Cracking the Coding Interview 189 Programming Questions and Solutions by Gayle Laakmann McDowell"</h4> 
+		<h4 style="color:orange; text-align:center; " >Inspiration from the book <i>"Cracking the Coding Interview"</i> by Gayle Laakmann McDowell</h4> 
 
 
 <c:if test="${fn:contains(complexity, 'Beginner')}">
