@@ -1,10 +1,8 @@
 package com.interviewcracker.dao;
 
-import static org.junit.Assert.assertTrue;
-
 public class HashGeneratorTest {
 
-	//@Test
+	/*@Test
 	public void testGenerateMD5() {
 		String password = "mysecret";
 		String encryptedPassword = HashGenerator.generateMD5(password);
@@ -13,5 +11,5 @@ public class HashGeneratorTest {
 		
 		assertTrue(true);
 	}
-
+*/
 }
