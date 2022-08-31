@@ -2,8 +2,6 @@ package com.interviewcracker.dao;
 
 import static org.junit.Assert.assertTrue;
 
-import org.junit.Test;
-
 public class HashGeneratorTest {
 
 	//@Test

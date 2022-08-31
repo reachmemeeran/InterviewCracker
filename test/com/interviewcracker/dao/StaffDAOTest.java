@@ -8,13 +8,6 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
-import javax.persistence.EntityNotFoundException;
-import javax.persistence.PersistenceException;
-
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
 import com.interviewcracker.entity.Staffs;
 
 public class StaffDAOTest {
