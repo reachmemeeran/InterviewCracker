@@ -1,8 +1,12 @@
 package com.interviewcracker.dao;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.Test;
+
 public class HashGeneratorTest {
 
-	/*@Test
+	@Test
 	public void testGenerateMD5() {
 		String password = "mysecret";
 		String encryptedPassword = HashGenerator.generateMD5(password);
@@ -11,5 +15,5 @@ public class HashGeneratorTest {
 		
 		assertTrue(true);
 	}
-*/
+
 }

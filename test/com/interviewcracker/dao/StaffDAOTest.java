@@ -1,8 +1,25 @@
 package com.interviewcracker.dao;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
+import java.util.List;
+
+import javax.persistence.EntityNotFoundException;
+import javax.persistence.PersistenceException;
+
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import com.interviewcracker.entity.Staffs;
+
 public class StaffDAOTest {
 
-	/*private static StaffDAO staffDAO;
+	private static StaffDAO staffDAO;
 	
 	@BeforeClass
 	public static void setupClass() throws Exception {
@@ -121,5 +138,4 @@ public class StaffDAOTest {
 	public static void tearDownClass() throws Exception {
 		staffDAO.close();
 	}
-	*/
 }
