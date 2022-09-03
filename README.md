@@ -1,18 +1,10 @@
 # Interview Cracker - Web Application
 University of Bath | MSc Computer Science | Dissertation | InterviewCracker
 
-Gamification is the process of incorporating gaming elements and principles into non-gaming environments in order to increase user engagement. 
-This project uses a gamification methodology to make learning Java programming language fun and engaging activity.
-Students today are accustomed to social and gamified real-life experiences, and worldwide, online course completion rates have averaged less than 13%. 
-So that the courses would be interactive, we created an e-learning web application with features like leader boards, progress bars, and certificates.
+Gamification is the process of incorporating gaming elements and principles into non-gaming environments in order to increase user engagement. This project uses a gamification methodology to make learning Java programming language fun and engaging activity. Students today are accustomed to social and gamified real-life experiences, and worldwide, online course completion rates have averaged less than 13%. So that the courses would be interactive, we created an e-learning web application with features like leader boards, progress bars, and certificates.
 
 
-This project seeks to validate gamification hypothesis through a web application, 'Interview Cracker'. Through this application, 
-University of Bath's Principles of Programming (POP) module work sheets have been transformed into online code editor test sheets with pre-loaded test cases. 
-This application can help students to evaluate their codes and run tests instantly. This process of simplifying students’ learning to a task-driven 
-approach will help us gamify the process further. An app-based course that given rise to a new coding interview questions has been introduced to assist 
-students prepare for and succeed in job interviews. Additionally, based on different levels, such as beginner, intermediate, and expert, students can 
-tailor their experience.
+This project seeks to validate gamification hypothesis through a web application, 'Interview Cracker'. Through this application, University of Bath's Principles of Programming (POP) module work sheets have been transformed into online code editor test sheets with pre-loaded test cases. This application can help students to evaluate their codes and run tests instantly. This process of simplifying students’ learning to a task-driven approach will help us gamify the process further. An app-based course that given rise to a new coding interview questions has been introduced to assist students prepare for and succeed in job interviews. Additionally, based on different levels, such as beginner, intermediate, and expert, students can tailor their experience.
 
 ## Tech Stack
 
@@ -56,23 +48,16 @@ tailor their experience.
   * Coding Question Management module
 
 ## Java Package Organisation
-The top level package name is com.interviewcracker, and it is preceded by the controller package, which consists of java servlet source files.
-Since this project includes both a student and an administrator portal, there are two sub-branches under the controller package: admin for the instructor 
-portal and frontend for the student portal. Under each part of the package there are many sub packages corresponding to each module such as code, 
-code complexity, pop, student and staff.
+The top level package name is com.interviewcracker, and it is preceded by the controller package, which consists of java servlet source files. Since this project includes both a student and an administrator portal, there are two sub-branches under the controller package: admin for the instructor portal and frontend for the student portal. Under each part of the package there are many sub packages corresponding to each module such as code, code complexity, pop, student and staff.
 
-The model layer package is com.interviewcracker.dao and it consists of all the DAO classes. The package for the model is com.interviewcracker.entity, and 
-it contains all model or entity classes. com.interviewcracker.service is the package for the business/service layer. 
+The model layer package is com.interviewcracker.dao and it consists of all the DAO classes. The package for the model is com.interviewcracker.entity, and it contains all model or entity classes. com.interviewcracker.service is the package for the business/service layer. 
 
 This structure makes the code well-organised and is easy to maintain.
 
 <img width="745" alt="Screenshot 2022-09-03 at 9 52 51 PM" src="https://user-images.githubusercontent.com/85428685/188287351-7a2a84e1-98e3-4df8-b79e-3b44b3c15a15.png">
 
 ## UI Directory Organisation
-The student portal module's jsp files are all located in the frontend directory, the instructor module's jsp files are all located in the admin directory,
-all CSS styles are located in the css directory, error pages are located in the error directory, JS files are located in the js directory, and images are 
-located in the images directory.
-For ease of comprehension by visitors, all directories' names have been kept simple and straight forward.
+The student portal module's jsp files are all located in the frontend directory, the instructor module's jsp files are all located in the admin directory, all CSS styles are located in the css directory, error pages are located in the error directory, JS files are located in the js directory, and images are  located in the images directory. For ease of comprehension by visitors, all directories' names have been kept simple and straight forward.
 
 <img width="193" alt="Screenshot 2022-09-03 at 9 54 57 PM" src="https://user-images.githubusercontent.com/85428685/188287516-3bbd896d-3dbb-4e6f-9b79-0639bd8aae5a.png">
 
@@ -104,9 +89,4 @@ For ease of comprehension by visitors, all directories' names have been kept sim
 * Participant -4- I feel accomplished with certificates of 100% solved status.
 * Participant -5- It is easier to use, offers better navigation to exercises, and enables instructors to keep track of student progress.
 
-The primary objective of the research is to bridge the gap between learning the principles of programming module in semester 1 and implementing those 
-programming skills to succeed in coding job interviews. It can be referred from the user evaluation that this application based research has helped the 
-students eliminate their huddles and the gamification aspect has accelerated their learning. The gamification components employed has increased the user 
-motivation leading to significant increase in user engagement. This approach to learning helps students improve their coding skills, in turn boosting 
-their confidence and success in Job interviews. Finally, the research can conclude that the description and research findings of implementing the web 
-application Interview cracker has been comprehensive and hence should be sufficient for researchers to further extend and asses an equivalent system.
+The primary objective of the research is to bridge the gap between learning the principles of programming module in semester 1 and implementing those  programming skills to succeed in coding job interviews. It can be referred from the user evaluation that this application based research has helped the  students eliminate their huddles and the gamification aspect has accelerated their learning. The gamification components employed has increased the user  motivation leading to significant increase in user engagement. This approach to learning helps students improve their coding skills, in turn boosting  their confidence and success in Job interviews. Finally, the research can conclude that the description and research findings of implementing the web  application Interview cracker has been comprehensive and hence should be sufficient for researchers to further extend and asses an equivalent system.
