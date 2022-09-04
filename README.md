@@ -82,7 +82,7 @@ The student portal module's jsp files are all located in the frontend directory,
 <img width="1440" alt="c10" src="https://user-images.githubusercontent.com/85428685/188287900-7e9ff879-81d8-4808-ac80-c7365736090a.png">
 
 
-## Testimonials
+## Testimonials (User Evaluation Outcome)
 * Participant -1- I'm motivated and captivated by leaderboards and pie charts for progress. 
 * Participant -2- Better Visibility compared to Moodle.
 * Participant -3- Fun to solve and easy to track. 
